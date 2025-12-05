@@ -843,6 +843,28 @@
         transform: translateY(-2px);
       }
 
+      /* FAQ-Kachel */
+      .faq-card {
+        border: 2px solid #10b981;
+        background: radial-gradient(
+            circle at top left,
+            rgba(16, 185, 129, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(5, 150, 105, 0.14),
+            transparent 55%
+          ),
+          #020617;
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+      }
+      .faq-card:hover {
+        border-color: #34d399;
+        box-shadow: 0 0 28px rgba(16, 185, 129, 0.5);
+        transform: translateY(-2px);
+      }
+
       /* Masterquiz-Modal */
       .master-quiz-modal {
         position: fixed;
@@ -1163,6 +1185,332 @@
         color: #9ca3af;
       }
 
+      /* FAQ Knowledge Base Modal */
+      .faq-modal {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 60;
+      }
+      .faq-modal.hidden {
+        display: none;
+      }
+      .faq-modal-inner {
+        position: relative;
+        z-index: 61;
+        width: min(1000px, 100% - 2rem);
+        height: min(90vh, 800px);
+        background: #020617;
+        border-radius: 1rem;
+        border: 1px solid #1f2937;
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .faq-modal-body {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+        gap: 0;
+      }
+
+      /* FAQ Sidebar */
+      .faq-sidebar {
+        width: 280px;
+        background: rgba(15, 23, 42, 0.5);
+        border-right: 1px solid #1f2937;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        flex-shrink: 0;
+      }
+      .faq-search-container {
+        padding: 1rem;
+        border-bottom: 1px solid #1f2937;
+        position: sticky;
+        top: 0;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(8px);
+        z-index: 10;
+      }
+      .faq-search-input {
+        width: 100%;
+        padding: 0.6rem 0.9rem;
+        background: #111827;
+        border: 1px solid #1f2937;
+        border-radius: 0.6rem;
+        color: #e5e7eb;
+        font-size: 0.85rem;
+        font-family: inherit;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .faq-search-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      .faq-search-input::placeholder {
+        color: #6b7280;
+      }
+
+      .faq-category-list {
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .faq-category-item {
+        padding: 0.65rem 0.85rem;
+        border-radius: 0.6rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid transparent;
+        color: #d1d5db;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .faq-category-item:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: #334155;
+      }
+      .faq-category-item.active {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: #3b82f6;
+        color: #93c5fd;
+        font-weight: 600;
+      }
+      .faq-category-icon {
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .faq-category-name {
+        flex: 1;
+      }
+      .faq-category-count {
+        font-size: 0.75rem;
+        color: #9ca3af;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 0.15rem 0.4rem;
+        border-radius: 999px;
+      }
+      .faq-category-item.active .faq-category-count {
+        background: rgba(59, 130, 246, 0.2);
+        color: #bfdbfe;
+      }
+
+      /* FAQ Content Area */
+      .faq-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .faq-category-header {
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #1f2937;
+      }
+      .faq-category-header h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: #f3f4f6;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .faq-category-header .faq-category-icon {
+        font-size: 1.4rem;
+      }
+
+      /* FAQ Accordion Items */
+      .faq-accordion-item {
+        border: 1px solid #1f2937;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.02);
+        overflow: hidden;
+        transition: all 0.2s ease;
+      }
+      .faq-accordion-item:hover {
+        border-color: #334155;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .faq-accordion-item.expanded {
+        border-color: #3b82f6;
+        background: rgba(59, 130, 246, 0.05);
+      }
+      .faq-question {
+        padding: 1rem 1.25rem;
+        cursor: pointer;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        user-select: none;
+      }
+      .faq-question:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .faq-question-text {
+        flex: 1;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #e5e7eb;
+        line-height: 1.5;
+      }
+      .faq-question-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0;
+      }
+      .faq-bookmark-btn {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        border: 1px solid transparent;
+        background: transparent;
+        color: #9ca3af;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        font-size: 1rem;
+      }
+      .faq-bookmark-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #334155;
+      }
+      .faq-bookmark-btn.bookmarked {
+        color: #fbbf24;
+        border-color: rgba(251, 191, 36, 0.3);
+        background: rgba(251, 191, 36, 0.1);
+      }
+      .faq-expand-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #9ca3af;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+      }
+      .faq-accordion-item.expanded .faq-expand-icon {
+        transform: rotate(180deg);
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 1.25rem;
+      }
+      .faq-accordion-item.expanded .faq-answer {
+        max-height: 2000px;
+        padding: 0 1.25rem 1.25rem;
+      }
+      .faq-answer-content {
+        padding-top: 1rem;
+        color: #d1d5db;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+      .faq-answer-content code {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.3rem;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 0.85em;
+        color: #93c5fd;
+      }
+      .faq-answer-content mark {
+        background: rgba(251, 191, 36, 0.3);
+        color: #fde68a;
+        padding: 0.1rem 0.2rem;
+        border-radius: 0.2rem;
+      }
+
+      /* Verwandte Commands */
+      .faq-related-commands {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #1f2937;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .faq-related-commands-label {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        font-weight: 600;
+      }
+      .faq-related-command-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.4rem 0.65rem;
+        border-radius: 0.5rem;
+        background: rgba(59, 130, 246, 0.12);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #93c5fd;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        text-decoration: none;
+      }
+      .faq-related-command-badge:hover {
+        background: rgba(59, 130, 246, 0.2);
+        border-color: #3b82f6;
+        transform: translateY(-1px);
+      }
+
+      /* Empty State */
+      .faq-empty-state {
+        text-align: center;
+        padding: 3rem 1.5rem;
+        color: #9ca3af;
+      }
+      .faq-empty-state-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+      .faq-empty-state-text {
+        font-size: 1rem;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .faq-modal-inner {
+          width: 100%;
+          height: 100vh;
+          border-radius: 0;
+          max-height: none;
+        }
+        .faq-modal-body {
+          flex-direction: column;
+        }
+        .faq-sidebar {
+          width: 100%;
+          max-height: 200px;
+          border-right: none;
+          border-bottom: 1px solid #1f2937;
+        }
+        .faq-content {
+          padding: 1rem;
+        }
+      }
+
       /* Kali-Tools-Modal */
       .kali-tools-modal {
         position: fixed;
@@ -1460,6 +1808,29 @@
         align-items: center;
         gap: 0.5rem;
         margin-bottom: 0.15rem;
+        position: relative;
+      }
+      .command-faq-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        border: 2px solid #3b82f6;
+        background: rgba(59, 130, 246, 0.15);
+        color: #93c5fd;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        margin-left: auto;
+      }
+      .command-faq-badge:hover {
+        background: rgba(59, 130, 246, 0.25);
+        border-color: #60a5fa;
+        transform: scale(1.1);
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
       }
       .command-name {
         margin: 0;
@@ -2587,6 +2958,20 @@
             </p>
           </div>
         </article>
+
+        <!-- FAQ Knowledge Base Kachel -->
+        <article class="command-card faq-card" id="faq-card">
+          <div class="command-header">
+            <h2 class="command-name">❓ Kali Linux FAQ</h2>
+            <span class="command-tag">Wissen</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Häufig gestellte Fragen zur Kommandozeilennutzung – durchsuchbar,
+              kategorisiert und mit direkten Links zu verwandten Commands.
+            </p>
+          </div>
+        </article>
       </section>
     </main>
 
@@ -2809,6 +3194,45 @@
         </div>
 
         <div class="quiz-body" id="mistakes-body"></div>
+      </div>
+    </div>
+
+    <!-- FAQ Knowledge Base Modal -->
+    <div id="faq-modal-root" class="faq-modal hidden" aria-hidden="true">
+      <div class="quiz-backdrop"></div>
+      <div class="faq-modal-inner">
+        <div class="quiz-header">
+          <div>
+            <div class="quiz-title">❓ Kali Linux FAQ</div>
+            <div class="quiz-level-pill">
+              Häufig gestellte Fragen zur Kommandozeilennutzung
+            </div>
+          </div>
+          <button class="quiz-close-btn" type="button" id="faq-modal-close-btn">
+            ESC
+          </button>
+        </div>
+
+        <div class="faq-modal-body">
+          <div class="faq-sidebar" id="faq-sidebar">
+            <div class="faq-search-container">
+              <input
+                type="text"
+                id="faq-search-input"
+                class="faq-search-input"
+                placeholder="FAQ durchsuchen..."
+                aria-label="FAQ durchsuchen"
+              />
+            </div>
+            <div class="faq-category-list" id="faq-category-list">
+              <!-- Kategorien werden dynamisch eingefügt -->
+            </div>
+          </div>
+
+          <div class="faq-content" id="faq-content">
+            <!-- FAQ-Inhalte werden dynamisch eingefügt -->
+          </div>
+        </div>
       </div>
     </div>
 
@@ -3037,32 +3461,32 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Eine Ebene hoch gehen und dann prüfen wo du bist</strong><br>
-<code>cd ..</code><br>
-<code>pwd</code><br>
-→ Geht eine Ebene nach oben, pwd zeigt den neuen Pfad<br><br>
+      ✅ <strong>1. Eine Ebene hoch gehen und dann prüfen wo du bist</strong><br>
+      <code>cd ..</code><br>
+      <code>pwd</code><br>
+      → Geht eine Ebene nach oben, pwd zeigt den neuen Pfad<br><br>
 
-✅ <strong>2. Nach oben gehen und dann den Inhalt auflisten</strong><br>
-<code>cd ..</code><br>
-<code>ls</code><br>
-→ Wechselt ins Parent-Verzeichnis, ls zeigt was dort ist<br><br>
+      ✅ <strong>2. Nach oben gehen und dann den Inhalt auflisten</strong><br>
+      <code>cd ..</code><br>
+      <code>ls</code><br>
+      → Wechselt ins Parent-Verzeichnis, ls zeigt was dort ist<br><br>
 
-✅ <strong>3. Zwei Ebenen hoch gehen</strong><br>
-<code>cd ../..</code><br>
-<code>pwd</code><br>
-→ Geht zwei Ebenen nach oben, pwd zeigt den neuen Pfad<br><br>
+      ✅ <strong>3. Zwei Ebenen hoch gehen</strong><br>
+      <code>cd ../..</code><br>
+      <code>pwd</code><br>
+      → Geht zwei Ebenen nach oben, pwd zeigt den neuen Pfad<br><br>
 
-✅ <strong>4. In einen Ordner wechseln, dann zurück nach oben</strong><br>
-<code>cd Documents</code><br>
-<code>cd ..</code><br>
-<code>ls</code><br>
-→ Wechselt ins Documents-Verzeichnis, geht zurück nach oben, ls zeigt den Inhalt<br><br>
+      ✅ <strong>4. In einen Ordner wechseln, dann zurück nach oben</strong><br>
+      <code>cd Documents</code><br>
+      <code>cd ..</code><br>
+      <code>ls</code><br>
+      → Wechselt ins Documents-Verzeichnis, geht zurück nach oben, ls zeigt den Inhalt<br><br>
 
-✅ <strong>5. Nach oben gehen und dann Dateien kopieren</strong><br>
-<code>cd ..</code><br>
-<code>cp file.txt backup/</code><br>
-→ Geht eine Ebene hoch, kopiert dann eine Datei ins backup-Verzeichnis
-          `,
+      ✅ <strong>5. Nach oben gehen und dann Dateien kopieren</strong><br>
+      <code>cd ..</code><br>
+      <code>cp file.txt backup/</code><br>
+      → Geht eine Ebene hoch, kopiert dann eine Datei ins backup-Verzeichnis
+                `,
           questions: [
             {
               level: "leicht",
@@ -3157,31 +3581,31 @@
             "Mit -n Zeilennummern anzeigen, mit -i Groß-/Kleinschreibung ignorieren.",
           complexExample: 'grep -n "TODO" *.sh',
           additionalExamples: `
-✅ <strong>1. In einer Datei suchen (die du mit cat anzeigen könntest)</strong><br>
-<code>cat log.txt</code><br>
-<code>grep "Error" log.txt</code><br>
-→ cat zeigt den ganzen Inhalt, grep filtert nur Zeilen mit "Error"<br><br>
+      ✅ <strong>1. In einer Datei suchen (die du mit cat anzeigen könntest)</strong><br>
+      <code>cat log.txt</code><br>
+      <code>grep "Error" log.txt</code><br>
+      → cat zeigt den ganzen Inhalt, grep filtert nur Zeilen mit "Error"<br><br>
 
-✅ <strong>2. Suche und dann sortiere die Ergebnisse</strong><br>
-<code>grep "user" names.txt</code><br>
-<code>grep "user" names.txt | sort</code><br>
-→ Findet alle Zeilen mit "user", sort sortiert sie alphabetisch<br><br>
+      ✅ <strong>2. Suche und dann sortiere die Ergebnisse</strong><br>
+      <code>grep "user" names.txt</code><br>
+      <code>grep "user" names.txt | sort</code><br>
+      → Findet alle Zeilen mit "user", sort sortiert sie alphabetisch<br><br>
 
-✅ <strong>3. Suche in mehreren Dateien (die du mit find finden könntest)</strong><br>
-<code>find . -name "*.log"</code><br>
-<code>grep "Error" *.log</code><br>
-→ find zeigt alle .log-Dateien, grep sucht "Error" in allen .log-Dateien<br><br>
+      ✅ <strong>3. Suche in mehreren Dateien (die du mit find finden könntest)</strong><br>
+      <code>find . -name "*.log"</code><br>
+      <code>grep "Error" *.log</code><br>
+      → find zeigt alle .log-Dateien, grep sucht "Error" in allen .log-Dateien<br><br>
 
-✅ <strong>4. Suche und zeige nur die ersten 5 Treffer</strong><br>
-<code>grep "TODO" *.txt</code><br>
-<code>grep "TODO" *.txt | head -n 5</code><br>
-→ Findet alle "TODO" Einträge, head zeigt nur die ersten 5 Zeilen<br><br>
+      ✅ <strong>4. Suche und zeige nur die ersten 5 Treffer</strong><br>
+      <code>grep "TODO" *.txt</code><br>
+      <code>grep "TODO" *.txt | head -n 5</code><br>
+      → Findet alle "TODO" Einträge, head zeigt nur die ersten 5 Zeilen<br><br>
 
-✅ <strong>5. Suche, sortiere und entferne Duplikate</strong><br>
-<code>grep "admin" users.txt</code><br>
-<code>grep "admin" users.txt | sort | uniq</code><br>
-→ Findet "admin", sort sortiert, uniq entfernt doppelte Zeilen
-          `,
+      ✅ <strong>5. Suche, sortiere und entferne Duplikate</strong><br>
+      <code>grep "admin" users.txt</code><br>
+      <code>grep "admin" users.txt | sort | uniq</code><br>
+      → Findet "admin", sort sortiert, uniq entfernt doppelte Zeilen
+                `,
           complexExampleExplanation: [
             {
               line: 'grep -n "TODO" *.sh',
@@ -3251,31 +3675,31 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Dateien auflisten und sortieren</strong><br>
-<code>ls</code><br>
-<code>ls | sort</code><br>
-→ ls zeigt Dateien, sort sortiert sie alphabetisch<br><br>
+      ✅ <strong>1. Dateien auflisten und sortieren</strong><br>
+      <code>ls</code><br>
+      <code>ls | sort</code><br>
+      → ls zeigt Dateien, sort sortiert sie alphabetisch<br><br>
 
-✅ <strong>2. Datei anzeigen, dann nach etwas suchen</strong><br>
-<code>cat log.txt</code><br>
-<code>cat log.txt | grep "Error"</code><br>
-→ cat zeigt den Inhalt, grep filtert nur Zeilen mit "Error"<br><br>
+      ✅ <strong>2. Datei anzeigen, dann nach etwas suchen</strong><br>
+      <code>cat log.txt</code><br>
+      <code>cat log.txt | grep "Error"</code><br>
+      → cat zeigt den Inhalt, grep filtert nur Zeilen mit "Error"<br><br>
 
-✅ <strong>3. Suche, sortiere und entferne Duplikate</strong><br>
-<code>grep "user" names.txt</code><br>
-<code>grep "user" names.txt | sort | uniq</code><br>
-→ Findet "user", sort sortiert, uniq entfernt doppelte Zeilen<br><br>
+      ✅ <strong>3. Suche, sortiere und entferne Duplikate</strong><br>
+      <code>grep "user" names.txt</code><br>
+      <code>grep "user" names.txt | sort | uniq</code><br>
+      → Findet "user", sort sortiert, uniq entfernt doppelte Zeilen<br><br>
 
-✅ <strong>4. Dateien auflisten und zählen</strong><br>
-<code>ls</code><br>
-<code>ls | wc -l</code><br>
-→ ls zeigt Dateien, wc -l zählt wie viele es sind<br><br>
+      ✅ <strong>4. Dateien auflisten und zählen</strong><br>
+      <code>ls</code><br>
+      <code>ls | wc -l</code><br>
+      → ls zeigt Dateien, wc -l zählt wie viele es sind<br><br>
 
-✅ <strong>5. Suche, zeige nur die ersten Treffer</strong><br>
-<code>grep "TODO" *.txt</code><br>
-<code>grep "TODO" *.txt | head -n 10</code><br>
-→ Findet alle "TODO" Einträge, head zeigt nur die ersten 10
-          `,
+      ✅ <strong>5. Suche, zeige nur die ersten Treffer</strong><br>
+      <code>grep "TODO" *.txt</code><br>
+      <code>grep "TODO" *.txt | head -n 10</code><br>
+      → Findet alle "TODO" Einträge, head zeigt nur die ersten 10
+                `,
           questions: [
             {
               level: "leicht",
@@ -3469,31 +3893,31 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Normale Liste vs. alle Dateien</strong><br>
-<code>ls</code><br>
-<code>ls -a</code><br>
-→ ls zeigt nur normale Dateien, ls -a zeigt auch versteckte (mit .)<br><br>
+      ✅ <strong>1. Normale Liste vs. alle Dateien</strong><br>
+      <code>ls</code><br>
+      <code>ls -a</code><br>
+      → ls zeigt nur normale Dateien, ls -a zeigt auch versteckte (mit .)<br><br>
 
-✅ <strong>2. In ein Verzeichnis wechseln und dann alles anzeigen</strong><br>
-<code>cd Documents</code><br>
-<code>ls -a</code><br>
-→ Wechselt ins Documents-Verzeichnis, ls -a zeigt alle Dateien dort<br><br>
+      ✅ <strong>2. In ein Verzeichnis wechseln und dann alles anzeigen</strong><br>
+      <code>cd Documents</code><br>
+      <code>ls -a</code><br>
+      → Wechselt ins Documents-Verzeichnis, ls -a zeigt alle Dateien dort<br><br>
 
-✅ <strong>3. Prüfen wo du bist, dann alles auflisten</strong><br>
-<code>pwd</code><br>
-<code>ls -a</code><br>
-→ pwd zeigt deinen Pfad, ls -a zeigt alle Dateien im aktuellen Verzeichnis<br><br>
+      ✅ <strong>3. Prüfen wo du bist, dann alles auflisten</strong><br>
+      <code>pwd</code><br>
+      <code>ls -a</code><br>
+      → pwd zeigt deinen Pfad, ls -a zeigt alle Dateien im aktuellen Verzeichnis<br><br>
 
-✅ <strong>4. Liste speichern und dann anzeigen</strong><br>
-<code>ls -a > alle_dateien.txt</code><br>
-<code>cat alle_dateien.txt</code><br>
-→ Speichert die Liste in eine Datei, cat zeigt den Inhalt<br><br>
+      ✅ <strong>4. Liste speichern und dann anzeigen</strong><br>
+      <code>ls -a > alle_dateien.txt</code><br>
+      <code>cat alle_dateien.txt</code><br>
+      → Speichert die Liste in eine Datei, cat zeigt den Inhalt<br><br>
 
-✅ <strong>5. Versteckte Dateien finden und dann auflisten</strong><br>
-<code>ls -a</code><br>
-<code>ls -a | grep "^\\.bash"</code><br>
-→ Zeigt alle Dateien, grep filtert nur .bash-Dateien (versteckte Config-Dateien)
-          `,
+      ✅ <strong>5. Versteckte Dateien finden und dann auflisten</strong><br>
+      <code>ls -a</code><br>
+      <code>ls -a | grep "^\\.bash"</code><br>
+      → Zeigt alle Dateien, grep filtert nur .bash-Dateien (versteckte Config-Dateien)
+                `,
           questions: [
             {
               level: "leicht",
@@ -3555,31 +3979,31 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Normale Liste vs. detaillierte Liste</strong><br>
-<code>ls</code><br>
-<code>ls -la</code><br>
-→ ls zeigt nur Namen, ls -la zeigt Details (Rechte, Besitzer, Größe, Datum)<br><br>
+      ✅ <strong>1. Normale Liste vs. detaillierte Liste</strong><br>
+      <code>ls</code><br>
+      <code>ls -la</code><br>
+      → ls zeigt nur Namen, ls -la zeigt Details (Rechte, Besitzer, Größe, Datum)<br><br>
 
-✅ <strong>2. Prüfen wo du bist, dann Details anzeigen</strong><br>
-<code>pwd</code><br>
-<code>ls -la</code><br>
-→ pwd zeigt deinen Pfad, ls -la zeigt alle Dateien mit Details<br><br>
+      ✅ <strong>2. Prüfen wo du bist, dann Details anzeigen</strong><br>
+      <code>pwd</code><br>
+      <code>ls -la</code><br>
+      → pwd zeigt deinen Pfad, ls -la zeigt alle Dateien mit Details<br><br>
 
-✅ <strong>3. In einen Ordner wechseln und Details anzeigen</strong><br>
-<code>cd Documents</code><br>
-<code>ls -la</code><br>
-→ Wechselt ins Documents-Verzeichnis, zeigt alle Dateien mit Details<br><br>
+      ✅ <strong>3. In einen Ordner wechseln und Details anzeigen</strong><br>
+      <code>cd Documents</code><br>
+      <code>ls -la</code><br>
+      → Wechselt ins Documents-Verzeichnis, zeigt alle Dateien mit Details<br><br>
 
-✅ <strong>4. Details speichern und dann anzeigen</strong><br>
-<code>ls -la > dateien_details.txt</code><br>
-<code>cat dateien_details.txt</code><br>
-→ Speichert die detaillierte Liste in eine Datei, cat zeigt den Inhalt<br><br>
+      ✅ <strong>4. Details speichern und dann anzeigen</strong><br>
+      <code>ls -la > dateien_details.txt</code><br>
+      <code>cat dateien_details.txt</code><br>
+      → Speichert die detaillierte Liste in eine Datei, cat zeigt den Inhalt<br><br>
 
-✅ <strong>5. Details anzeigen und dann nach etwas suchen</strong><br>
-<code>ls -la</code><br>
-<code>ls -la | grep ".txt"</code><br>
-→ Zeigt alle Details, grep filtert nur .txt-Dateien
-          `,
+      ✅ <strong>5. Details anzeigen und dann nach etwas suchen</strong><br>
+      <code>ls -la</code><br>
+      <code>ls -la | grep ".txt"</code><br>
+      → Zeigt alle Details, grep filtert nur .txt-Dateien
+                `,
           questions: [
             {
               level: "leicht",
@@ -3641,33 +4065,33 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Ordner erstellen und dann prüfen wo du bist</strong><br>
-<code>mkdir my_folder</code><br>
-<code>pwd</code><br>
-→ Erstellt den Ordner, pwd zeigt deinen aktuellen Pfad<br><br>
+      ✅ <strong>1. Ordner erstellen und dann prüfen wo du bist</strong><br>
+      <code>mkdir my_folder</code><br>
+      <code>pwd</code><br>
+      → Erstellt den Ordner, pwd zeigt deinen aktuellen Pfad<br><br>
 
-✅ <strong>2. Ordner erstellen und dann den Inhalt anzeigen</strong><br>
-<code>mkdir backup</code><br>
-<code>ls</code><br>
-→ Erstellt backup, ls zeigt dass der neue Ordner existiert<br><br>
+      ✅ <strong>2. Ordner erstellen und dann den Inhalt anzeigen</strong><br>
+      <code>mkdir backup</code><br>
+      <code>ls</code><br>
+      → Erstellt backup, ls zeigt dass der neue Ordner existiert<br><br>
 
-✅ <strong>3. Ordner erstellen, hinein wechseln, prüfen</strong><br>
-<code>mkdir projects</code><br>
-<code>cd projects</code><br>
-<code>pwd</code><br>
-→ Erstellt projects, wechselt hinein, zeigt den neuen Pfad<br><br>
+      ✅ <strong>3. Ordner erstellen, hinein wechseln, prüfen</strong><br>
+      <code>mkdir projects</code><br>
+      <code>cd projects</code><br>
+      <code>pwd</code><br>
+      → Erstellt projects, wechselt hinein, zeigt den neuen Pfad<br><br>
 
-✅ <strong>4. Mehrere Ordner erstellen und dann auflisten</strong><br>
-<code>mkdir folder1 folder2 folder3</code><br>
-<code>ls</code><br>
-→ Erstellt drei Ordner auf einmal, ls zeigt alle<br><br>
+      ✅ <strong>4. Mehrere Ordner erstellen und dann auflisten</strong><br>
+      <code>mkdir folder1 folder2 folder3</code><br>
+      <code>ls</code><br>
+      → Erstellt drei Ordner auf einmal, ls zeigt alle<br><br>
 
-✅ <strong>5. Ordner erstellen, Dateien kopieren, dann Inhalt prüfen</strong><br>
-<code>mkdir archive</code><br>
-<code>cp *.txt archive/</code><br>
-<code>ls archive/</code><br>
-→ Erstellt archive, kopiert Dateien hinein, ls zeigt den Inhalt
-          `,
+      ✅ <strong>5. Ordner erstellen, Dateien kopieren, dann Inhalt prüfen</strong><br>
+      <code>mkdir archive</code><br>
+      <code>cp *.txt archive/</code><br>
+      <code>ls archive/</code><br>
+      → Erstellt archive, kopiert Dateien hinein, ls zeigt den Inhalt
+                `,
           questions: [
             {
               level: "leicht",
@@ -3798,61 +4222,61 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Datei verschieben und dann prüfen wo du bist</strong><br>
-<code>mv file.txt backup/</code><br>
-<code>pwd</code><br>
-→ Verschiebt die Datei, pwd zeigt deinen aktuellen Pfad<br><br>
+      ✅ <strong>1. Datei verschieben und dann prüfen wo du bist</strong><br>
+      <code>mv file.txt backup/</code><br>
+      <code>pwd</code><br>
+      → Verschiebt die Datei, pwd zeigt deinen aktuellen Pfad<br><br>
 
-✅ <strong>2. Datei umbenennen und dann den Ordner auflisten</strong><br>
-<code>mv old.txt new.txt</code><br>
-<code>ls</code><br>
-→ Benennt die Datei um, ls zeigt dass nur new.txt existiert<br><br>
+      ✅ <strong>2. Datei umbenennen und dann den Ordner auflisten</strong><br>
+      <code>mv old.txt new.txt</code><br>
+      <code>ls</code><br>
+      → Benennt die Datei um, ls zeigt dass nur new.txt existiert<br><br>
 
-✅ <strong>3. In einen Ordner wechseln, verschieben, zurückkehren</strong><br>
-<code>cd Documents</code><br>
-<code>mv report.txt ../archive/</code><br>
-<code>cd ..</code><br>
-→ Wechselt ins Documents-Verzeichnis, verschiebt eine Datei eine Ebene nach oben, kehrt zurück<br><br>
+      ✅ <strong>3. In einen Ordner wechseln, verschieben, zurückkehren</strong><br>
+      <code>cd Documents</code><br>
+      <code>mv report.txt ../archive/</code><br>
+      <code>cd ..</code><br>
+      → Wechselt ins Documents-Verzeichnis, verschiebt eine Datei eine Ebene nach oben, kehrt zurück<br><br>
 
-✅ <strong>4. Mehrere Dateien verschieben und dann prüfen</strong><br>
-<code>mv *.log logs/</code><br>
-<code>ls logs/</code><br>
-→ Verschiebt alle .log-Dateien ins logs-Verzeichnis, ls zeigt den Inhalt<br><br>
+      ✅ <strong>4. Mehrere Dateien verschieben und dann prüfen</strong><br>
+      <code>mv *.log logs/</code><br>
+      <code>ls logs/</code><br>
+      → Verschiebt alle .log-Dateien ins logs-Verzeichnis, ls zeigt den Inhalt<br><br>
 
-✅ <strong>5. Ordner erstellen, dann Dateien hinein verschieben</strong><br>
-<code>mkdir old_files</code><br>
-<code>mv file1.txt file2.txt old_files/</code><br>
-<code>ls old_files/</code><br>
-→ Erstellt den Ordner, verschiebt Dateien hinein, prüft den Inhalt
-          `,
+      ✅ <strong>5. Ordner erstellen, dann Dateien hinein verschieben</strong><br>
+      <code>mkdir old_files</code><br>
+      <code>mv file1.txt file2.txt old_files/</code><br>
+      <code>ls old_files/</code><br>
+      → Erstellt den Ordner, verschiebt Dateien hinein, prüft den Inhalt
+                `,
           additionalExamples: `
-✅ <strong>1. Datei verschieben und dann prüfen wo du bist</strong><br>
-<code>mv file.txt backup/</code><br>
-<code>pwd</code><br>
-→ Verschiebt die Datei, pwd zeigt deinen aktuellen Pfad<br><br>
+      ✅ <strong>1. Datei verschieben und dann prüfen wo du bist</strong><br>
+      <code>mv file.txt backup/</code><br>
+      <code>pwd</code><br>
+      → Verschiebt die Datei, pwd zeigt deinen aktuellen Pfad<br><br>
 
-✅ <strong>2. Datei umbenennen und dann den Ordner auflisten</strong><br>
-<code>mv old.txt new.txt</code><br>
-<code>ls</code><br>
-→ Benennt die Datei um, ls zeigt dass nur new.txt existiert<br><br>
+      ✅ <strong>2. Datei umbenennen und dann den Ordner auflisten</strong><br>
+      <code>mv old.txt new.txt</code><br>
+      <code>ls</code><br>
+      → Benennt die Datei um, ls zeigt dass nur new.txt existiert<br><br>
 
-✅ <strong>3. In einen Ordner wechseln, verschieben, zurückkehren</strong><br>
-<code>cd Documents</code><br>
-<code>mv report.txt ../archive/</code><br>
-<code>cd ..</code><br>
-→ Wechselt ins Documents-Verzeichnis, verschiebt eine Datei eine Ebene nach oben, kehrt zurück<br><br>
+      ✅ <strong>3. In einen Ordner wechseln, verschieben, zurückkehren</strong><br>
+      <code>cd Documents</code><br>
+      <code>mv report.txt ../archive/</code><br>
+      <code>cd ..</code><br>
+      → Wechselt ins Documents-Verzeichnis, verschiebt eine Datei eine Ebene nach oben, kehrt zurück<br><br>
 
-✅ <strong>4. Mehrere Dateien verschieben und dann prüfen</strong><br>
-<code>mv *.log logs/</code><br>
-<code>ls logs/</code><br>
-→ Verschiebt alle .log-Dateien ins logs-Verzeichnis, ls zeigt den Inhalt<br><br>
+      ✅ <strong>4. Mehrere Dateien verschieben und dann prüfen</strong><br>
+      <code>mv *.log logs/</code><br>
+      <code>ls logs/</code><br>
+      → Verschiebt alle .log-Dateien ins logs-Verzeichnis, ls zeigt den Inhalt<br><br>
 
-✅ <strong>5. Ordner erstellen, dann Dateien hinein verschieben</strong><br>
-<code>mkdir old_files</code><br>
-<code>mv file1.txt file2.txt old_files/</code><br>
-<code>ls old_files/</code><br>
-→ Erstellt den Ordner, verschiebt Dateien hinein, prüft den Inhalt
-          `,
+      ✅ <strong>5. Ordner erstellen, dann Dateien hinein verschieben</strong><br>
+      <code>mkdir old_files</code><br>
+      <code>mv file1.txt file2.txt old_files/</code><br>
+      <code>ls old_files/</code><br>
+      → Erstellt den Ordner, verschiebt Dateien hinein, prüft den Inhalt
+                `,
           questions: [
             {
               level: "leicht",
@@ -3912,33 +4336,33 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Backup erstellen und dann prüfen wo du bist</strong><br>
-<code>cp notes.txt notes_backup.txt</code><br>
-<code>pwd</code><br>
-→ Kopiert die Datei, dann zeigt pwd deinen aktuellen Pfad<br><br>
+      ✅ <strong>1. Backup erstellen und dann prüfen wo du bist</strong><br>
+      <code>cp notes.txt notes_backup.txt</code><br>
+      <code>pwd</code><br>
+      → Kopiert die Datei, dann zeigt pwd deinen aktuellen Pfad<br><br>
 
-✅ <strong>2. Datei kopieren und dann den Inhalt des Ordners anzeigen</strong><br>
-<code>cp datei.txt backup/</code><br>
-<code>ls backup/</code><br>
-→ Kopiert die Datei ins backup-Verzeichnis, ls zeigt was drin ist<br><br>
+      ✅ <strong>2. Datei kopieren und dann den Inhalt des Ordners anzeigen</strong><br>
+      <code>cp datei.txt backup/</code><br>
+      <code>ls backup/</code><br>
+      → Kopiert die Datei ins backup-Verzeichnis, ls zeigt was drin ist<br><br>
 
-✅ <strong>3. In einen Ordner wechseln, kopieren, zurückkehren</strong><br>
-<code>cd Documents</code><br>
-<code>cp report.txt ../backup/</code><br>
-<code>cd ..</code><br>
-→ Wechselt ins Documents-Verzeichnis, kopiert eine Datei eine Ebene nach oben ins backup, kehrt zurück<br><br>
+      ✅ <strong>3. In einen Ordner wechseln, kopieren, zurückkehren</strong><br>
+      <code>cd Documents</code><br>
+      <code>cp report.txt ../backup/</code><br>
+      <code>cd ..</code><br>
+      → Wechselt ins Documents-Verzeichnis, kopiert eine Datei eine Ebene nach oben ins backup, kehrt zurück<br><br>
 
-✅ <strong>4. Mehrere Dateien kopieren und dann auflisten</strong><br>
-<code>cp *.txt backup/</code><br>
-<code>ls -a backup/</code><br>
-→ Kopiert alle .txt-Dateien ins backup-Verzeichnis, ls -a zeigt alle Dateien (inkl. versteckter)<br><br>
+      ✅ <strong>4. Mehrere Dateien kopieren und dann auflisten</strong><br>
+      <code>cp *.txt backup/</code><br>
+      <code>ls -a backup/</code><br>
+      → Kopiert alle .txt-Dateien ins backup-Verzeichnis, ls -a zeigt alle Dateien (inkl. versteckter)<br><br>
 
-✅ <strong>5. Ordner erstellen, dann Datei hinein kopieren</strong><br>
-<code>mkdir my_backup</code><br>
-<code>cp important.txt my_backup/</code><br>
-<code>ls my_backup/</code><br>
-→ Erstellt zuerst den Ordner, kopiert dann die Datei hinein, prüft mit ls
-          `,
+      ✅ <strong>5. Ordner erstellen, dann Datei hinein kopieren</strong><br>
+      <code>mkdir my_backup</code><br>
+      <code>cp important.txt my_backup/</code><br>
+      <code>ls my_backup/</code><br>
+      → Erstellt zuerst den Ordner, kopiert dann die Datei hinein, prüft mit ls
+                `,
           questions: [
             {
               level: "leicht",
@@ -4056,32 +4480,32 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Datei löschen und dann prüfen ob sie weg ist</strong><br>
-<code>rm temp.txt</code><br>
-<code>ls</code><br>
-→ Löscht die Datei, ls zeigt dass sie nicht mehr existiert<br><br>
+      ✅ <strong>1. Datei löschen und dann prüfen ob sie weg ist</strong><br>
+      <code>rm temp.txt</code><br>
+      <code>ls</code><br>
+      → Löscht die Datei, ls zeigt dass sie nicht mehr existiert<br><br>
 
-✅ <strong>2. Dateien auflisten, dann bestimmte löschen</strong><br>
-<code>ls *.log</code><br>
-<code>rm *.log</code><br>
-→ Zeigt alle .log-Dateien, rm löscht sie alle<br><br>
+      ✅ <strong>2. Dateien auflisten, dann bestimmte löschen</strong><br>
+      <code>ls *.log</code><br>
+      <code>rm *.log</code><br>
+      → Zeigt alle .log-Dateien, rm löscht sie alle<br><br>
 
-✅ <strong>3. In einen Ordner wechseln, löschen, zurückkehren</strong><br>
-<code>cd temp/</code><br>
-<code>rm old_file.txt</code><br>
-<code>cd ..</code><br>
-→ Wechselt ins temp-Verzeichnis, löscht eine Datei, kehrt zurück<br><br>
+      ✅ <strong>3. In einen Ordner wechseln, löschen, zurückkehren</strong><br>
+      <code>cd temp/</code><br>
+      <code>rm old_file.txt</code><br>
+      <code>cd ..</code><br>
+      → Wechselt ins temp-Verzeichnis, löscht eine Datei, kehrt zurück<br><br>
 
-✅ <strong>4. Datei kopieren, dann Original löschen</strong><br>
-<code>cp important.txt backup/</code><br>
-<code>rm important.txt</code><br>
-→ Kopiert die Datei ins Backup, löscht dann das Original<br><br>
+      ✅ <strong>4. Datei kopieren, dann Original löschen</strong><br>
+      <code>cp important.txt backup/</code><br>
+      <code>rm important.txt</code><br>
+      → Kopiert die Datei ins Backup, löscht dann das Original<br><br>
 
-✅ <strong>5. Liste speichern, dann Dateien löschen</strong><br>
-<code>ls > dateien_liste.txt</code><br>
-<code>rm temp*.txt</code><br>
-→ Speichert die Liste, löscht dann alle temp*.txt Dateien
-          `,
+      ✅ <strong>5. Liste speichern, dann Dateien löschen</strong><br>
+      <code>ls > dateien_liste.txt</code><br>
+      <code>rm temp*.txt</code><br>
+      → Speichert die Liste, löscht dann alle temp*.txt Dateien
+                `,
           questions: [
             {
               level: "leicht",
@@ -4257,31 +4681,31 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Datei anzeigen, dann sortieren</strong><br>
-<code>cat namen.txt</code><br>
-<code>sort namen.txt</code><br>
-→ cat zeigt den Inhalt, sort zeigt die sortierte Version<br><br>
+      ✅ <strong>1. Datei anzeigen, dann sortieren</strong><br>
+      <code>cat namen.txt</code><br>
+      <code>sort namen.txt</code><br>
+      → cat zeigt den Inhalt, sort zeigt die sortierte Version<br><br>
 
-✅ <strong>2. Nach bestimmten Zeilen suchen, dann sortieren</strong><br>
-<code>grep "admin" users.txt</code><br>
-<code>grep "admin" users.txt | sort</code><br>
-→ grep findet alle "admin" Zeilen, sort sortiert sie alphabetisch<br><br>
+      ✅ <strong>2. Nach bestimmten Zeilen suchen, dann sortieren</strong><br>
+      <code>grep "admin" users.txt</code><br>
+      <code>grep "admin" users.txt | sort</code><br>
+      → grep findet alle "admin" Zeilen, sort sortiert sie alphabetisch<br><br>
 
-✅ <strong>3. Mehrere Dateien zusammenfügen und sortieren</strong><br>
-<code>cat liste1.txt liste2.txt</code><br>
-<code>cat liste1.txt liste2.txt | sort</code><br>
-→ cat zeigt beide Dateien zusammen, sort sortiert das kombinierte Ergebnis<br><br>
+      ✅ <strong>3. Mehrere Dateien zusammenfügen und sortieren</strong><br>
+      <code>cat liste1.txt liste2.txt</code><br>
+      <code>cat liste1.txt liste2.txt | sort</code><br>
+      → cat zeigt beide Dateien zusammen, sort sortiert das kombinierte Ergebnis<br><br>
 
-✅ <strong>4. Sortieren und nur die ersten 10 Zeilen zeigen</strong><br>
-<code>sort große_liste.txt</code><br>
-<code>sort große_liste.txt | head -n 10</code><br>
-→ Sortiert die Liste, head zeigt nur die ersten 10 Zeilen<br><br>
+      ✅ <strong>4. Sortieren und nur die ersten 10 Zeilen zeigen</strong><br>
+      <code>sort große_liste.txt</code><br>
+      <code>sort große_liste.txt | head -n 10</code><br>
+      → Sortiert die Liste, head zeigt nur die ersten 10 Zeilen<br><br>
 
-✅ <strong>5. Sortieren, Duplikate entfernen, dann zählen</strong><br>
-<code>sort emails.txt | uniq</code><br>
-<code>sort emails.txt | uniq | wc -l</code><br>
-→ Sortiert, entfernt Duplikate mit uniq, wc -l zählt die eindeutigen Zeilen
-          `,
+      ✅ <strong>5. Sortieren, Duplikate entfernen, dann zählen</strong><br>
+      <code>sort emails.txt | uniq</code><br>
+      <code>sort emails.txt | uniq | wc -l</code><br>
+      → Sortiert, entfernt Duplikate mit uniq, wc -l zählt die eindeutigen Zeilen
+                `,
           questions: [
             {
               level: "leicht",
@@ -4341,30 +4765,30 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Datei anzeigen, dann numerisch sortieren</strong><br>
-<code>cat zahlen.txt</code><br>
-<code>sort -n zahlen.txt</code><br>
-→ cat zeigt den Inhalt, sort -n sortiert Zahlen korrekt (2 vor 10)<br><br>
+      ✅ <strong>1. Datei anzeigen, dann numerisch sortieren</strong><br>
+      <code>cat zahlen.txt</code><br>
+      <code>sort -n zahlen.txt</code><br>
+      → cat zeigt den Inhalt, sort -n sortiert Zahlen korrekt (2 vor 10)<br><br>
 
-✅ <strong>2. Normal sortieren vs. numerisch sortieren</strong><br>
-<code>sort zahlen.txt</code><br>
-<code>sort -n zahlen.txt</code><br>
-→ sort sortiert als Text (10 vor 2), sort -n sortiert numerisch (2 vor 10)<br><br>
+      ✅ <strong>2. Normal sortieren vs. numerisch sortieren</strong><br>
+      <code>sort zahlen.txt</code><br>
+      <code>sort -n zahlen.txt</code><br>
+      → sort sortiert als Text (10 vor 2), sort -n sortiert numerisch (2 vor 10)<br><br>
 
-✅ <strong>3. Sortieren und dann die größten Zahlen zeigen</strong><br>
-<code>sort -n zahlen.txt</code><br>
-<code>sort -n zahlen.txt | tail -n 5</code><br>
-→ Sortiert numerisch, tail zeigt die letzten 5 (die größten)<br><br>
+      ✅ <strong>3. Sortieren und dann die größten Zahlen zeigen</strong><br>
+      <code>sort -n zahlen.txt</code><br>
+      <code>sort -n zahlen.txt | tail -n 5</code><br>
+      → Sortiert numerisch, tail zeigt die letzten 5 (die größten)<br><br>
 
-✅ <strong>4. Sortieren, Duplikate entfernen, dann zählen</strong><br>
-<code>sort -n zahlen.txt | uniq</code><br>
-<code>sort -n zahlen.txt | uniq | wc -l</code><br>
-→ Sortiert numerisch, entfernt Duplikate, wc -l zählt eindeutige Zahlen<br><br>
+      ✅ <strong>4. Sortieren, Duplikate entfernen, dann zählen</strong><br>
+      <code>sort -n zahlen.txt | uniq</code><br>
+      <code>sort -n zahlen.txt | uniq | wc -l</code><br>
+      → Sortiert numerisch, entfernt Duplikate, wc -l zählt eindeutige Zahlen<br><br>
 
-✅ <strong>5. Mehrere Dateien kombinieren und numerisch sortieren</strong><br>
-<code>cat liste1.txt liste2.txt | sort -n</code><br>
-→ Kombiniert beide Dateien, sort -n sortiert alle Zahlen korrekt
-          `,
+      ✅ <strong>5. Mehrere Dateien kombinieren und numerisch sortieren</strong><br>
+      <code>cat liste1.txt liste2.txt | sort -n</code><br>
+      → Kombiniert beide Dateien, sort -n sortiert alle Zahlen korrekt
+                `,
           questions: [
             {
               level: "leicht",
@@ -4424,31 +4848,31 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Datei anzeigen, dann Duplikate entfernen</strong><br>
-<code>cat liste.txt</code><br>
-<code>uniq liste.txt</code><br>
-→ cat zeigt den Inhalt, uniq entfernt aufeinanderfolgende Duplikate<br><br>
+      ✅ <strong>1. Datei anzeigen, dann Duplikate entfernen</strong><br>
+      <code>cat liste.txt</code><br>
+      <code>uniq liste.txt</code><br>
+      → cat zeigt den Inhalt, uniq entfernt aufeinanderfolgende Duplikate<br><br>
 
-✅ <strong>2. Erst sortieren, dann Duplikate entfernen</strong><br>
-<code>sort namen.txt</code><br>
-<code>sort namen.txt | uniq</code><br>
-→ Sortiert die Namen, uniq entfernt dann alle Duplikate (weil sie zusammen sind)<br><br>
+      ✅ <strong>2. Erst sortieren, dann Duplikate entfernen</strong><br>
+      <code>sort namen.txt</code><br>
+      <code>sort namen.txt | uniq</code><br>
+      → Sortiert die Namen, uniq entfernt dann alle Duplikate (weil sie zusammen sind)<br><br>
 
-✅ <strong>3. Mehrere Dateien kombinieren, sortieren, Duplikate entfernen</strong><br>
-<code>cat file1.txt file2.txt | sort</code><br>
-<code>cat file1.txt file2.txt | sort | uniq</code><br>
-→ Kombiniert beide Dateien, sort sortiert, uniq entfernt Duplikate<br><br>
+      ✅ <strong>3. Mehrere Dateien kombinieren, sortieren, Duplikate entfernen</strong><br>
+      <code>cat file1.txt file2.txt | sort</code><br>
+      <code>cat file1.txt file2.txt | sort | uniq</code><br>
+      → Kombiniert beide Dateien, sort sortiert, uniq entfernt Duplikate<br><br>
 
-✅ <strong>4. Nach etwas suchen, dann Duplikate entfernen</strong><br>
-<code>grep "user" log.txt</code><br>
-<code>grep "user" log.txt | sort | uniq</code><br>
-→ Findet alle "user" Einträge, sort sortiert, uniq entfernt doppelte Zeilen<br><br>
+      ✅ <strong>4. Nach etwas suchen, dann Duplikate entfernen</strong><br>
+      <code>grep "user" log.txt</code><br>
+      <code>grep "user" log.txt | sort | uniq</code><br>
+      → Findet alle "user" Einträge, sort sortiert, uniq entfernt doppelte Zeilen<br><br>
 
-✅ <strong>5. Duplikate entfernen und dann zählen</strong><br>
-<code>sort emails.txt | uniq</code><br>
-<code>sort emails.txt | uniq | wc -l</code><br>
-→ Sortiert, entfernt Duplikate, wc -l zählt wie viele eindeutige Einträge es gibt
-          `,
+      ✅ <strong>5. Duplikate entfernen und dann zählen</strong><br>
+      <code>sort emails.txt | uniq</code><br>
+      <code>sort emails.txt | uniq | wc -l</code><br>
+      → Sortiert, entfernt Duplikate, wc -l zählt wie viele eindeutige Einträge es gibt
+                `,
           questions: [
             {
               level: "leicht",
@@ -4508,36 +4932,36 @@
             },
           ],
           additionalExamples: `
-✅ <strong>1. Alle .config-Dateien im aktuellen Verzeichnis finden</strong><br>
-<code>find . -name "*.config"</code><br><br>
+      ✅ <strong>1. Alle .config-Dateien im aktuellen Verzeichnis finden</strong><br>
+      <code>find . -name "*.config"</code><br><br>
 
-✅ <strong>2. .config-Dateien nur im aktuellen Verzeichnis (ohne Unterordner)</strong><br>
-<code>find . -maxdepth 1 -name "*.config"</code><br><br>
+      ✅ <strong>2. .config-Dateien nur im aktuellen Verzeichnis (ohne Unterordner)</strong><br>
+      <code>find . -maxdepth 1 -name "*.config"</code><br><br>
 
-✅ <strong>3. Nur reguläre Dateien (keine Ordner, keine Symlinks)</strong><br>
-<code>find . -type f -name "*.config"</code><br><br>
+      ✅ <strong>3. Nur reguläre Dateien (keine Ordner, keine Symlinks)</strong><br>
+      <code>find . -type f -name "*.config"</code><br><br>
 
-✅ <strong>4. Rekursiv und case-insensitive (.CONFIG, .Config usw.)</strong><br>
-<code>find . -iname "*.config"</code><br><br>
+      ✅ <strong>4. Rekursiv und case-insensitive (.CONFIG, .Config usw.)</strong><br>
+      <code>find . -iname "*.config"</code><br><br>
 
-✅ <strong>5. Alle .config-Dateien + Dateigröße anzeigen</strong><br>
-<code>find . -type f -name "*.config" -exec ls -lh {} \\;</code><br><br>
+      ✅ <strong>5. Alle .config-Dateien + Dateigröße anzeigen</strong><br>
+      <code>find . -type f -name "*.config" -exec ls -lh {} \\;</code><br><br>
 
-✅ <strong>6. Nur die Anzahl der .config-Dateien</strong><br>
-<code>find . -type f -name "*.config" | wc -l</code><br><br>
+      ✅ <strong>6. Nur die Anzahl der .config-Dateien</strong><br>
+      <code>find . -type f -name "*.config" | wc -l</code><br><br>
 
-✅ <strong>7. Unterhalb eines bestimmten Verzeichnisses (z. B. /etc)</strong><br>
-<code>find /etc -type f -name "*.config"</code><br><br>
+      ✅ <strong>7. Unterhalb eines bestimmten Verzeichnisses (z. B. /etc)</strong><br>
+      <code>find /etc -type f -name "*.config"</code><br><br>
 
-🛑 <strong>Gefährliche Varianten (nur Info, nicht nutzen!)</strong><br>
-<em>(Niemals löschen ohne exakt getestetes Pattern)</em><br><br>
-<code>find . -name "*.config" -delete</code><br>
-→ sehr riskant, löscht sofort.<br><br>
+      🛑 <strong>Gefährliche Varianten (nur Info, nicht nutzen!)</strong><br>
+      <em>(Niemals löschen ohne exakt getestetes Pattern)</em><br><br>
+      <code>find . -name "*.config" -delete</code><br>
+      → sehr riskant, löscht sofort.<br><br>
 
-💡 <strong>Safe Default für dich:</strong><br>
-Wenn du einfach alle .config-Dateien finden möchtest:<br>
-<code>find . -type f -name "*.config"</code>
-          `,
+      💡 <strong>Safe Default für dich:</strong><br>
+      Wenn du einfach alle .config-Dateien finden möchtest:<br>
+      <code>find . -type f -name "*.config"</code>
+                `,
           questions: [
             {
               level: "leicht",
@@ -4661,31 +5085,31 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             },
           ],
           additionalExamples: `
-✅ <strong>1. Normale Liste vs. rekursive Liste</strong><br>
-<code>ls</code><br>
-<code>ls -R</code><br>
-→ ls zeigt nur das aktuelle Verzeichnis, ls -R zeigt alles rekursiv<br><br>
+      ✅ <strong>1. Normale Liste vs. rekursive Liste</strong><br>
+      <code>ls</code><br>
+      <code>ls -R</code><br>
+      → ls zeigt nur das aktuelle Verzeichnis, ls -R zeigt alles rekursiv<br><br>
 
-✅ <strong>2. Rekursive Liste speichern und dann anzeigen</strong><br>
-<code>ls -R > alle_struktur.txt</code><br>
-<code>cat alle_struktur.txt</code><br>
-→ Speichert die gesamte Struktur in eine Datei, cat zeigt den Inhalt<br><br>
+      ✅ <strong>2. Rekursive Liste speichern und dann anzeigen</strong><br>
+      <code>ls -R > alle_struktur.txt</code><br>
+      <code>cat alle_struktur.txt</code><br>
+      → Speichert die gesamte Struktur in eine Datei, cat zeigt den Inhalt<br><br>
 
-✅ <strong>3. Nach bestimmten Dateien suchen in der rekursiven Liste</strong><br>
-<code>ls -R</code><br>
-<code>ls -R | grep ".txt$"</code><br>
-→ Zeigt alles rekursiv, grep filtert nur .txt-Dateien<br><br>
+      ✅ <strong>3. Nach bestimmten Dateien suchen in der rekursiven Liste</strong><br>
+      <code>ls -R</code><br>
+      <code>ls -R | grep ".txt$"</code><br>
+      → Zeigt alles rekursiv, grep filtert nur .txt-Dateien<br><br>
 
-✅ <strong>4. Nur Ordner aus der rekursiven Liste zeigen</strong><br>
-<code>ls -R</code><br>
-<code>ls -R | grep ":$"</code><br>
-→ Zeigt alles rekursiv, grep filtert nur Ordner (endet mit :)<br><br>
+      ✅ <strong>4. Nur Ordner aus der rekursiven Liste zeigen</strong><br>
+      <code>ls -R</code><br>
+      <code>ls -R | grep ":$"</code><br>
+      → Zeigt alles rekursiv, grep filtert nur Ordner (endet mit :)<br><br>
 
-✅ <strong>5. Rekursive Liste sortieren und dann begrenzen</strong><br>
-<code>ls -R | sort</code><br>
-<code>ls -R | sort | head -n 20</code><br>
-→ Sortiert die rekursive Liste alphabetisch, head zeigt nur die ersten 20 Einträge
-          `,
+      ✅ <strong>5. Rekursive Liste sortieren und dann begrenzen</strong><br>
+      <code>ls -R | sort</code><br>
+      <code>ls -R | sort | head -n 20</code><br>
+      → Sortiert die rekursive Liste alphabetisch, head zeigt nur die ersten 20 Einträge
+                `,
           questions: [
             {
               level: "leicht",
@@ -4804,31 +5228,31 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             },
           ],
           additionalExamples: `
-✅ <strong>1. Normale Liste vs. Baumstruktur</strong><br>
-<code>ls</code><br>
-<code>tree</code><br>
-→ ls zeigt flache Liste, tree zeigt hierarchische Struktur<br><br>
+      ✅ <strong>1. Normale Liste vs. Baumstruktur</strong><br>
+      <code>ls</code><br>
+      <code>tree</code><br>
+      → ls zeigt flache Liste, tree zeigt hierarchische Struktur<br><br>
 
-✅ <strong>2. Baumstruktur speichern und dann anzeigen</strong><br>
-<code>tree > struktur.txt</code><br>
-<code>cat struktur.txt</code><br>
-→ Speichert die Baumstruktur in eine Datei, cat zeigt den Inhalt<br><br>
+      ✅ <strong>2. Baumstruktur speichern und dann anzeigen</strong><br>
+      <code>tree > struktur.txt</code><br>
+      <code>cat struktur.txt</code><br>
+      → Speichert die Baumstruktur in eine Datei, cat zeigt den Inhalt<br><br>
 
-✅ <strong>3. In einen Ordner wechseln und Baumstruktur zeigen</strong><br>
-<code>cd projects</code><br>
-<code>tree</code><br>
-→ Wechselt ins projects-Verzeichnis, zeigt die Struktur dort<br><br>
+      ✅ <strong>3. In einen Ordner wechseln und Baumstruktur zeigen</strong><br>
+      <code>cd projects</code><br>
+      <code>tree</code><br>
+      → Wechselt ins projects-Verzeichnis, zeigt die Struktur dort<br><br>
 
-✅ <strong>4. Baumstruktur begrenzen und dann speichern</strong><br>
-<code>tree -L 2</code><br>
-<code>tree -L 2 > struktur_2_ebenen.txt</code><br>
-→ Zeigt nur 2 Ebenen, speichert das Ergebnis<br><br>
+      ✅ <strong>4. Baumstruktur begrenzen und dann speichern</strong><br>
+      <code>tree -L 2</code><br>
+      <code>tree -L 2 > struktur_2_ebenen.txt</code><br>
+      → Zeigt nur 2 Ebenen, speichert das Ergebnis<br><br>
 
-✅ <strong>5. Baumstruktur anzeigen und dann nach etwas suchen</strong><br>
-<code>tree</code><br>
-<code>tree | grep "config"</code><br>
-→ Zeigt die Struktur, grep filtert nur Zeilen mit "config"
-          `,
+      ✅ <strong>5. Baumstruktur anzeigen und dann nach etwas suchen</strong><br>
+      <code>tree</code><br>
+      <code>tree | grep "config"</code><br>
+      → Zeigt die Struktur, grep filtert nur Zeilen mit "config"
+                `,
           questions: [
             {
               level: "leicht",
@@ -4996,33 +5420,33 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             },
           ],
           additionalExamples: `
-✅ <strong>1. Text ausgeben und dann in eine Datei schreiben</strong><br>
-<code>echo "Hallo"</code><br>
-<code>echo "Hallo" > greeting.txt</code><br>
-→ Erst zeigt echo den Text, dann schreibt > ihn in eine Datei<br><br>
+      ✅ <strong>1. Text ausgeben und dann in eine Datei schreiben</strong><br>
+      <code>echo "Hallo"</code><br>
+      <code>echo "Hallo" > greeting.txt</code><br>
+      → Erst zeigt echo den Text, dann schreibt > ihn in eine Datei<br><br>
 
-✅ <strong>2. Text an eine Datei anhängen (statt überschreiben)</strong><br>
-<code>echo "Zeile 1" > log.txt</code><br>
-<code>echo "Zeile 2" >> log.txt</code><br>
-→ > überschreibt, >> hängt an (beide Zeilen bleiben erhalten)<br><br>
+      ✅ <strong>2. Text an eine Datei anhängen (statt überschreiben)</strong><br>
+      <code>echo "Zeile 1" > log.txt</code><br>
+      <code>echo "Zeile 2" >> log.txt</code><br>
+      → > überschreibt, >> hängt an (beide Zeilen bleiben erhalten)<br><br>
 
-✅ <strong>3. Mehrere Zeilen schreiben und dann anzeigen</strong><br>
-<code>echo "Start" > status.txt</code><br>
-<code>echo "Läuft" >> status.txt</code><br>
-<code>cat status.txt</code><br>
-→ Schreibt zwei Zeilen, cat zeigt den Inhalt<br><br>
+      ✅ <strong>3. Mehrere Zeilen schreiben und dann anzeigen</strong><br>
+      <code>echo "Start" > status.txt</code><br>
+      <code>echo "Läuft" >> status.txt</code><br>
+      <code>cat status.txt</code><br>
+      → Schreibt zwei Zeilen, cat zeigt den Inhalt<br><br>
 
-✅ <strong>4. Text in Datei schreiben und dann den Ordner auflisten</strong><br>
-<code>echo "Test" > test.txt</code><br>
-<code>ls</code><br>
-→ Erstellt eine Datei mit echo, ls zeigt dass sie existiert<br><br>
+      ✅ <strong>4. Text in Datei schreiben und dann den Ordner auflisten</strong><br>
+      <code>echo "Test" > test.txt</code><br>
+      <code>ls</code><br>
+      → Erstellt eine Datei mit echo, ls zeigt dass sie existiert<br><br>
 
-✅ <strong>5. Fehlerausgabe umleiten (statt normale Ausgabe)</strong><br>
-<code>echo "Fehler!"</code><br>
-<code>echo "Fehler!" > output.txt</code><br>
-<code>echo "Fehler!" 2> error.txt</code><br>
-→ > schreibt normale Ausgabe, 2> schreibt Fehlerausgabe
-          `,
+      ✅ <strong>5. Fehlerausgabe umleiten (statt normale Ausgabe)</strong><br>
+      <code>echo "Fehler!"</code><br>
+      <code>echo "Fehler!" > output.txt</code><br>
+      <code>echo "Fehler!" 2> error.txt</code><br>
+      → > schreibt normale Ausgabe, 2> schreibt Fehlerausgabe
+                `,
           questions: [
             {
               level: "leicht",
@@ -5082,32 +5506,32 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             },
           ],
           additionalExamples: `
-✅ <strong>1. Text ausgeben vs. in Datei speichern</strong><br>
-<code>echo "Hallo"</code><br>
-<code>echo "Hallo" > greeting.txt</code><br>
-→ Erst zeigt echo den Text, dann speichert > ihn in eine Datei<br><br>
+      ✅ <strong>1. Text ausgeben vs. in Datei speichern</strong><br>
+      <code>echo "Hallo"</code><br>
+      <code>echo "Hallo" > greeting.txt</code><br>
+      → Erst zeigt echo den Text, dann speichert > ihn in eine Datei<br><br>
 
-✅ <strong>2. Dateiliste speichern und dann anzeigen</strong><br>
-<code>ls</code><br>
-<code>ls > dateien.txt</code><br>
-<code>cat dateien.txt</code><br>
-→ ls zeigt Dateien, > speichert die Liste, cat zeigt den Inhalt<br><br>
+      ✅ <strong>2. Dateiliste speichern und dann anzeigen</strong><br>
+      <code>ls</code><br>
+      <code>ls > dateien.txt</code><br>
+      <code>cat dateien.txt</code><br>
+      → ls zeigt Dateien, > speichert die Liste, cat zeigt den Inhalt<br><br>
 
-✅ <strong>3. Dateiinhalt kopieren in neue Datei</strong><br>
-<code>cat original.txt</code><br>
-<code>cat original.txt > backup.txt</code><br>
-→ Zeigt den Inhalt, dann speichert > ihn in backup.txt<br><br>
+      ✅ <strong>3. Dateiinhalt kopieren in neue Datei</strong><br>
+      <code>cat original.txt</code><br>
+      <code>cat original.txt > backup.txt</code><br>
+      → Zeigt den Inhalt, dann speichert > ihn in backup.txt<br><br>
 
-✅ <strong>4. Nach etwas suchen und Ergebnisse speichern</strong><br>
-<code>grep "Error" log.txt</code><br>
-<code>grep "Error" log.txt > fehler.txt</code><br>
-→ Findet Fehler, > speichert alle Treffer in fehler.txt<br><br>
+      ✅ <strong>4. Nach etwas suchen und Ergebnisse speichern</strong><br>
+      <code>grep "Error" log.txt</code><br>
+      <code>grep "Error" log.txt > fehler.txt</code><br>
+      → Findet Fehler, > speichert alle Treffer in fehler.txt<br><br>
 
-✅ <strong>5. Mehrere Dateien kombinieren und speichern</strong><br>
-<code>cat file1.txt file2.txt</code><br>
-<code>cat file1.txt file2.txt > kombiniert.txt</code><br>
-→ Zeigt beide Dateien zusammen, > speichert das kombinierte Ergebnis
-          `,
+      ✅ <strong>5. Mehrere Dateien kombinieren und speichern</strong><br>
+      <code>cat file1.txt file2.txt</code><br>
+      <code>cat file1.txt file2.txt > kombiniert.txt</code><br>
+      → Zeigt beide Dateien zusammen, > speichert das kombinierte Ergebnis
+                `,
           questions: [
             {
               level: "leicht",
@@ -5166,32 +5590,32 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             },
           ],
           additionalExamples: `
-✅ <strong>1. Überschreiben vs. Anhängen</strong><br>
-<code>echo "Zeile 1" > log.txt</code><br>
-<code>echo "Zeile 2" >> log.txt</code><br>
-→ > überschreibt, >> hängt an (beide Zeilen bleiben erhalten)<br><br>
+      ✅ <strong>1. Überschreiben vs. Anhängen</strong><br>
+      <code>echo "Zeile 1" > log.txt</code><br>
+      <code>echo "Zeile 2" >> log.txt</code><br>
+      → > überschreibt, >> hängt an (beide Zeilen bleiben erhalten)<br><br>
 
-✅ <strong>2. Text anhängen und dann anzeigen</strong><br>
-<code>echo "Neu" >> status.txt</code><br>
-<code>cat status.txt</code><br>
-→ Hängt Text an die Datei, cat zeigt den gesamten Inhalt<br><br>
+      ✅ <strong>2. Text anhängen und dann anzeigen</strong><br>
+      <code>echo "Neu" >> status.txt</code><br>
+      <code>cat status.txt</code><br>
+      → Hängt Text an die Datei, cat zeigt den gesamten Inhalt<br><br>
 
-✅ <strong>3. Liste speichern, dann weitere Einträge anhängen</strong><br>
-<code>ls > dateien.txt</code><br>
-<code>ls -a >> dateien.txt</code><br>
-→ Speichert normale Liste, >> hängt versteckte Dateien an<br><br>
+      ✅ <strong>3. Liste speichern, dann weitere Einträge anhängen</strong><br>
+      <code>ls > dateien.txt</code><br>
+      <code>ls -a >> dateien.txt</code><br>
+      → Speichert normale Liste, >> hängt versteckte Dateien an<br><br>
 
-✅ <strong>4. Mehrere Zeilen nacheinander anhängen</strong><br>
-<code>echo "Start" >> log.txt</code><br>
-<code>echo "Mitte" >> log.txt</code><br>
-<code>echo "Ende" >> log.txt</code><br>
-→ Hängt drei Zeilen nacheinander an, alle bleiben erhalten<br><br>
+      ✅ <strong>4. Mehrere Zeilen nacheinander anhängen</strong><br>
+      <code>echo "Start" >> log.txt</code><br>
+      <code>echo "Mitte" >> log.txt</code><br>
+      <code>echo "Ende" >> log.txt</code><br>
+      → Hängt drei Zeilen nacheinander an, alle bleiben erhalten<br><br>
 
-✅ <strong>5. Suche-Ergebnisse anhängen statt überschreiben</strong><br>
-<code>grep "Error" log1.txt > fehler.txt</code><br>
-<code>grep "Error" log2.txt >> fehler.txt</code><br>
-→ Speichert erste Suche, >> hängt zweite Suche an (kombiniert beide)
-          `,
+      ✅ <strong>5. Suche-Ergebnisse anhängen statt überschreiben</strong><br>
+      <code>grep "Error" log1.txt > fehler.txt</code><br>
+      <code>grep "Error" log2.txt >> fehler.txt</code><br>
+      → Speichert erste Suche, >> hängt zweite Suche an (kombiniert beide)
+                `,
           questions: [
             {
               level: "leicht",
@@ -5658,31 +6082,31 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             },
           ],
           additionalExamples: `
-✅ <strong>1. Ganze Datei anzeigen vs. nur Anfang</strong><br>
-<code>cat große_datei.txt</code><br>
-<code>head große_datei.txt</code><br>
-→ cat zeigt alles, head zeigt nur die ersten 10 Zeilen<br><br>
+      ✅ <strong>1. Ganze Datei anzeigen vs. nur Anfang</strong><br>
+      <code>cat große_datei.txt</code><br>
+      <code>head große_datei.txt</code><br>
+      → cat zeigt alles, head zeigt nur die ersten 10 Zeilen<br><br>
 
-✅ <strong>2. Nach etwas suchen, dann nur die ersten Treffer zeigen</strong><br>
-<code>grep "Error" log.txt</code><br>
-<code>grep "Error" log.txt | head -n 5</code><br>
-→ grep findet alle Fehler, head zeigt nur die ersten 5<br><br>
+      ✅ <strong>2. Nach etwas suchen, dann nur die ersten Treffer zeigen</strong><br>
+      <code>grep "Error" log.txt</code><br>
+      <code>grep "Error" log.txt | head -n 5</code><br>
+      → grep findet alle Fehler, head zeigt nur die ersten 5<br><br>
 
-✅ <strong>3. Datei sortieren und dann nur den Anfang zeigen</strong><br>
-<code>sort namen.txt</code><br>
-<code>sort namen.txt | head -n 10</code><br>
-→ Sortiert die Namen, head zeigt nur die ersten 10 (alphabetisch erste)<br><br>
+      ✅ <strong>3. Datei sortieren und dann nur den Anfang zeigen</strong><br>
+      <code>sort namen.txt</code><br>
+      <code>sort namen.txt | head -n 10</code><br>
+      → Sortiert die Namen, head zeigt nur die ersten 10 (alphabetisch erste)<br><br>
 
-✅ <strong>4. Erste Zeilen zeigen und dann zählen</strong><br>
-<code>head -n 20 data.txt</code><br>
-<code>head -n 20 data.txt | wc -l</code><br>
-→ Zeigt die ersten 20 Zeilen, wc -l zählt dass es genau 20 sind<br><br>
+      ✅ <strong>4. Erste Zeilen zeigen und dann zählen</strong><br>
+      <code>head -n 20 data.txt</code><br>
+      <code>head -n 20 data.txt | wc -l</code><br>
+      → Zeigt die ersten 20 Zeilen, wc -l zählt dass es genau 20 sind<br><br>
 
-✅ <strong>5. Mehrere Dateien zusammenfügen und nur Anfang zeigen</strong><br>
-<code>cat file1.txt file2.txt</code><br>
-<code>cat file1.txt file2.txt | head -n 15</code><br>
-→ cat kombiniert beide Dateien, head zeigt nur die ersten 15 Zeilen
-          `,
+      ✅ <strong>5. Mehrere Dateien zusammenfügen und nur Anfang zeigen</strong><br>
+      <code>cat file1.txt file2.txt</code><br>
+      <code>cat file1.txt file2.txt | head -n 15</code><br>
+      → cat kombiniert beide Dateien, head zeigt nur die ersten 15 Zeilen
+                `,
           questions: [
             {
               level: "leicht",
@@ -5741,31 +6165,31 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             },
           ],
           additionalExamples: `
-✅ <strong>1. Ganze Datei vs. nur Ende anzeigen</strong><br>
-<code>cat log.txt</code><br>
-<code>tail log.txt</code><br>
-→ cat zeigt alles, tail zeigt nur die letzten 10 Zeilen<br><br>
+      ✅ <strong>1. Ganze Datei vs. nur Ende anzeigen</strong><br>
+      <code>cat log.txt</code><br>
+      <code>tail log.txt</code><br>
+      → cat zeigt alles, tail zeigt nur die letzten 10 Zeilen<br><br>
 
-✅ <strong>2. Nach Fehlern suchen, dann nur die letzten Treffer zeigen</strong><br>
-<code>grep "Error" log.txt</code><br>
-<code>grep "Error" log.txt | tail -n 5</code><br>
-→ grep findet alle Fehler, tail zeigt nur die letzten 5<br><br>
+      ✅ <strong>2. Nach Fehlern suchen, dann nur die letzten Treffer zeigen</strong><br>
+      <code>grep "Error" log.txt</code><br>
+      <code>grep "Error" log.txt | tail -n 5</code><br>
+      → grep findet alle Fehler, tail zeigt nur die letzten 5<br><br>
 
-✅ <strong>3. Datei sortieren und dann das Ende zeigen</strong><br>
-<code>sort namen.txt</code><br>
-<code>sort namen.txt | tail -n 10</code><br>
-→ Sortiert die Namen, tail zeigt die letzten 10 (alphabetisch letzte)<br><br>
+      ✅ <strong>3. Datei sortieren und dann das Ende zeigen</strong><br>
+      <code>sort namen.txt</code><br>
+      <code>sort namen.txt | tail -n 10</code><br>
+      → Sortiert die Namen, tail zeigt die letzten 10 (alphabetisch letzte)<br><br>
 
-✅ <strong>4. Letzte Zeilen zeigen und dann zählen</strong><br>
-<code>tail -n 20 data.txt</code><br>
-<code>tail -n 20 data.txt | wc -l</code><br>
-→ Zeigt die letzten 20 Zeilen, wc -l zählt dass es genau 20 sind<br><br>
+      ✅ <strong>4. Letzte Zeilen zeigen und dann zählen</strong><br>
+      <code>tail -n 20 data.txt</code><br>
+      <code>tail -n 20 data.txt | wc -l</code><br>
+      → Zeigt die letzten 20 Zeilen, wc -l zählt dass es genau 20 sind<br><br>
 
-✅ <strong>5. Mehrere Dateien zusammenfügen und nur Ende zeigen</strong><br>
-<code>cat file1.txt file2.txt</code><br>
-<code>cat file1.txt file2.txt | tail -n 15</code><br>
-→ cat kombiniert beide Dateien, tail zeigt nur die letzten 15 Zeilen
-          `,
+      ✅ <strong>5. Mehrere Dateien zusammenfügen und nur Ende zeigen</strong><br>
+      <code>cat file1.txt file2.txt</code><br>
+      <code>cat file1.txt file2.txt | tail -n 15</code><br>
+      → cat kombiniert beide Dateien, tail zeigt nur die letzten 15 Zeilen
+                `,
           questions: [
             {
               level: "leicht",
@@ -5824,31 +6248,31 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             },
           ],
           additionalExamples: `
-✅ <strong>1. Datei anzeigen und dann Zeilen zählen</strong><br>
-<code>cat log.txt</code><br>
-<code>wc -l log.txt</code><br>
-→ cat zeigt den Inhalt, wc -l zählt wie viele Zeilen es sind<br><br>
+      ✅ <strong>1. Datei anzeigen und dann Zeilen zählen</strong><br>
+      <code>cat log.txt</code><br>
+      <code>wc -l log.txt</code><br>
+      → cat zeigt den Inhalt, wc -l zählt wie viele Zeilen es sind<br><br>
 
-✅ <strong>2. Dateien auflisten und dann zählen</strong><br>
-<code>ls</code><br>
-<code>ls | wc -l</code><br>
-→ ls zeigt Dateien, wc -l zählt wie viele Dateien/Ordner es sind<br><br>
+      ✅ <strong>2. Dateien auflisten und dann zählen</strong><br>
+      <code>ls</code><br>
+      <code>ls | wc -l</code><br>
+      → ls zeigt Dateien, wc -l zählt wie viele Dateien/Ordner es sind<br><br>
 
-✅ <strong>3. Nach etwas suchen und Treffer zählen</strong><br>
-<code>grep "Error" log.txt</code><br>
-<code>grep "Error" log.txt | wc -l</code><br>
-→ Findet alle Fehler, wc -l zählt wie viele Treffer es gibt<br><br>
+      ✅ <strong>3. Nach etwas suchen und Treffer zählen</strong><br>
+      <code>grep "Error" log.txt</code><br>
+      <code>grep "Error" log.txt | wc -l</code><br>
+      → Findet alle Fehler, wc -l zählt wie viele Treffer es gibt<br><br>
 
-✅ <strong>4. Erste Zeilen zeigen und dann zählen</strong><br>
-<code>head -n 20 data.txt</code><br>
-<code>head -n 20 data.txt | wc -l</code><br>
-→ Zeigt die ersten 20 Zeilen, wc -l bestätigt dass es genau 20 sind<br><br>
+      ✅ <strong>4. Erste Zeilen zeigen und dann zählen</strong><br>
+      <code>head -n 20 data.txt</code><br>
+      <code>head -n 20 data.txt | wc -l</code><br>
+      → Zeigt die ersten 20 Zeilen, wc -l bestätigt dass es genau 20 sind<br><br>
 
-✅ <strong>5. Sortieren, Duplikate entfernen, dann zählen</strong><br>
-<code>sort namen.txt | uniq</code><br>
-<code>sort namen.txt | uniq | wc -l</code><br>
-→ Sortiert und entfernt Duplikate, wc -l zählt wie viele eindeutige Namen es gibt
-          `,
+      ✅ <strong>5. Sortieren, Duplikate entfernen, dann zählen</strong><br>
+      <code>sort namen.txt | uniq</code><br>
+      <code>sort namen.txt | uniq | wc -l</code><br>
+      → Sortiert und entfernt Duplikate, wc -l zählt wie viele eindeutige Namen es gibt
+                `,
           questions: [
             {
               level: "leicht",
@@ -5907,31 +6331,31 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             },
           ],
           additionalExamples: `
-✅ <strong>1. Datei anzeigen und dann Wörter zählen</strong><br>
-<code>cat text.txt</code><br>
-<code>wc -w text.txt</code><br>
-→ cat zeigt den Inhalt, wc -w zählt wie viele Wörter es sind<br><br>
+      ✅ <strong>1. Datei anzeigen und dann Wörter zählen</strong><br>
+      <code>cat text.txt</code><br>
+      <code>wc -w text.txt</code><br>
+      → cat zeigt den Inhalt, wc -w zählt wie viele Wörter es sind<br><br>
 
-✅ <strong>2. Erste Zeilen zeigen und dann Wörter zählen</strong><br>
-<code>head -n 10 log.txt</code><br>
-<code>head -n 10 log.txt | wc -w</code><br>
-→ Zeigt die ersten 10 Zeilen, wc -w zählt die Wörter darin<br><br>
+      ✅ <strong>2. Erste Zeilen zeigen und dann Wörter zählen</strong><br>
+      <code>head -n 10 log.txt</code><br>
+      <code>head -n 10 log.txt | wc -w</code><br>
+      → Zeigt die ersten 10 Zeilen, wc -w zählt die Wörter darin<br><br>
 
-✅ <strong>3. Nach etwas suchen und dann Wörter zählen</strong><br>
-<code>grep "Error" log.txt</code><br>
-<code>grep "Error" log.txt | wc -w</code><br>
-→ Findet alle Fehler-Zeilen, wc -w zählt die Wörter in den Treffern<br><br>
+      ✅ <strong>3. Nach etwas suchen und dann Wörter zählen</strong><br>
+      <code>grep "Error" log.txt</code><br>
+      <code>grep "Error" log.txt | wc -w</code><br>
+      → Findet alle Fehler-Zeilen, wc -w zählt die Wörter in den Treffern<br><br>
 
-✅ <strong>4. Letzte Zeilen zeigen und dann Wörter zählen</strong><br>
-<code>tail -n 5 status.txt</code><br>
-<code>tail -n 5 status.txt | wc -w</code><br>
-→ Zeigt die letzten 5 Zeilen, wc -w zählt die Wörter<br><br>
+      ✅ <strong>4. Letzte Zeilen zeigen und dann Wörter zählen</strong><br>
+      <code>tail -n 5 status.txt</code><br>
+      <code>tail -n 5 status.txt | wc -w</code><br>
+      → Zeigt die letzten 5 Zeilen, wc -w zählt die Wörter<br><br>
 
-✅ <strong>5. Mehrere Dateien kombinieren und Wörter zählen</strong><br>
-<code>cat file1.txt file2.txt</code><br>
-<code>cat file1.txt file2.txt | wc -w</code><br>
-→ Kombiniert beide Dateien, wc -w zählt alle Wörter zusammen
-          `,
+      ✅ <strong>5. Mehrere Dateien kombinieren und Wörter zählen</strong><br>
+      <code>cat file1.txt file2.txt</code><br>
+      <code>cat file1.txt file2.txt | wc -w</code><br>
+      → Kombiniert beide Dateien, wc -w zählt alle Wörter zusammen
+                `,
           questions: [
             {
               level: "leicht",
@@ -7324,21 +7748,21 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
           }
 
           badge.innerHTML = `
-            <div class="main-badge-header">
-              <span class="main-badge-icon">${mainBadge.icon}</span>
-              <span class="main-badge-name">${mainBadge.name}</span>
-            </div>
-            <div class="main-badge-progress-container">
-              <div class="main-badge-progress-bar">
-                <div class="main-badge-progress-fill" style="width: ${
-                  progress.percentage
-                }%"></div>
-              </div>
-              <div class="main-badge-progress-text">${progress.completed}/${
-            progress.total || 0
-          }</div>
-            </div>
-          `;
+                  <div class="main-badge-header">
+                    <span class="main-badge-icon">${mainBadge.icon}</span>
+                    <span class="main-badge-name">${mainBadge.name}</span>
+                  </div>
+                  <div class="main-badge-progress-container">
+                    <div class="main-badge-progress-bar">
+                      <div class="main-badge-progress-fill" style="width: ${
+                        progress.percentage
+                      }%"></div>
+                    </div>
+                    <div class="main-badge-progress-text">${
+                      progress.completed
+                    }/${progress.total || 0}</div>
+                  </div>
+                `;
 
           mainRow.appendChild(badge);
 
@@ -7356,9 +7780,9 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
                 const subBadge = document.createElement("div");
                 subBadge.className = `sub-badge ${segment.colorClass}`;
                 subBadge.innerHTML = `
-                  <span>${segment.icon}</span>
-                  <span>${segment.name}</span>
-                `;
+                        <span>${segment.icon}</span>
+                        <span>${segment.name}</span>
+                      `;
                 subBadgeContainer.appendChild(subBadge);
               }
             });
@@ -7423,6 +7847,54 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             }
           });
         });
+        // Agent 4: FAQ-Badges hinzufügen
+        showFaqBadgeOnCards();
+      }
+
+      // Agent 4: FAQ-Badge Integration
+      function showFaqBadgeOnCards() {
+        if (!faqData || !faqData.commandToFaqMap) return;
+
+        commandCards.forEach((card) => {
+          const commandId = card.dataset.command || card.dataset.quizId;
+          if (!commandId) return;
+
+          const hasFaq =
+            faqData.commandToFaqMap[commandId] &&
+            faqData.commandToFaqMap[commandId].length > 0;
+          if (!hasFaq) return;
+
+          const header = card.querySelector(".command-header");
+          if (!header) return;
+
+          // Prüfe ob Badge bereits existiert
+          if (header.querySelector(".command-faq-badge")) return;
+
+          const faqBadge = document.createElement("button");
+          faqBadge.type = "button";
+          faqBadge.className = "command-faq-badge";
+          faqBadge.textContent = "❓";
+          faqBadge.title = "FAQ verfügbar - Klicken für Details";
+          faqBadge.setAttribute("aria-label", "FAQ verfügbar");
+          faqBadge.dataset.commandId = commandId;
+
+          faqBadge.addEventListener("click", (e) => {
+            e.stopPropagation();
+            handleFaqBadgeClick(commandId);
+          });
+
+          header.appendChild(faqBadge);
+        });
+      }
+
+      function handleFaqBadgeClick(commandId) {
+        if (!faqData || !faqData.commandToFaqMap) return;
+
+        const faqIds = faqData.commandToFaqMap[commandId];
+        if (faqIds && faqIds.length > 0) {
+          closeCommandModal(); // Schließe Command Modal falls offen
+          openFaqModal(null, faqIds[0]); // Öffne FAQ Modal und scrollt zur ersten FAQ
+        }
       }
 
       // Open Master Quiz
@@ -7456,19 +7928,19 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         const optionsHTML = masterQuiz.options
           .map(
             (opt, idx) => `
-              <label class="quiz-option" data-option-index="${idx}">
-                <input type="radio" name="master-quiz-option" value="${idx}" />
-                <span><code>${opt}</code></span>
-              </label>
-            `
+                    <label class="quiz-option" data-option-index="${idx}">
+                      <input type="radio" name="master-quiz-option" value="${idx}" />
+                      <span><code>${opt}</code></span>
+                    </label>
+                  `
           )
           .join("");
         questionDiv.innerHTML = `
-          <div class="quiz-question-title">${masterQuiz.question}</div>
-          <div class="quiz-options">
-            ${optionsHTML}
-          </div>
-        `;
+                <div class="quiz-question-title">${masterQuiz.question}</div>
+                <div class="quiz-options">
+                  ${optionsHTML}
+                </div>
+              `;
         // Chicken-Button für Master-Quiz hinzufügen
         const chickenBtn = document.createElement("button");
         chickenBtn.type = "button";
@@ -7744,682 +8216,514 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         },
       ];
 
-      // Parse FAQ Data (Agent 1)
+      // Parse FAQ Data - Agent 1: Datenstruktur & Parsing
       function parseFaqData() {
-        // Kategorien-Mapping
-        const categoryMap = {
-          "Navigieren im Dateisystem": {
+        // FAQ-Kategorien basierend auf der FAQ-Datei
+        const categories = [
+          {
             id: "navigation",
             name: "Navigieren im Dateisystem",
             icon: "🧭",
-          },
-          "Dateiverwaltung (Dateien und Ordner)": {
-            id: "fileManagement",
-            name: "Dateiverwaltung",
-            icon: "📂",
-          },
-          "Paketmanagement (Software installieren/aktualisieren)": {
-            id: "packageManagement",
-            name: "Paketmanagement",
-            icon: "📦",
-          },
-          Netzwerkgrundlagen: {
-            id: "networking",
-            name: "Netzwerkgrundlagen",
-            icon: "🌐",
-          },
-          "Rechte und Berechtigungen": {
-            id: "permissions",
-            name: "Rechte & Berechtigungen",
-            icon: "🔐",
-          },
-          "Grundlagen der Shell (Bash & nützliche Hilfen)": {
-            id: "shell",
-            name: "Shell-Grundlagen",
-            icon: "💻",
-          },
-          "Fehlermeldungen und ihre Behebung": {
-            id: "troubleshooting",
-            name: "Fehlermeldungen",
-            icon: "🔧",
-          },
-          "Systeminformationen und -überwachung": {
-            id: "systemInfo",
-            name: "Systeminformationen",
-            icon: "🖥️",
-          },
-          "Nützliche Tools und Befehle": {
-            id: "tools",
-            name: "Tools & Befehle",
-            icon: "🛠️",
-          },
-        };
-
-        // FAQ-Rohdaten (manuell strukturiert aus der TXT-Datei)
-        const faqRawData = [
-          {
-            category: "Navigieren im Dateisystem",
             questions: [
               {
+                id: "nav-001",
                 question: "Wie wechsle ich in ein anderes Verzeichnis?",
                 answer:
-                  'Mit dem Befehl cd ("change directory") kann man in ein gewünschtes Verzeichnis wechseln. Beispiel: cd Videos wechselt in den Unterordner Videos. Alternativ kann man auch den absoluten Pfad angeben, z. B. cd /home/kali/Documents/Videos.',
-                commands: ["cd"],
+                  "Mit dem Befehl cd (change directory) kann man in ein gewünschtes Verzeichnis wechseln. Beispiel: cd Videos wechselt in den Unterordner Videos. Alternativ kann man auch den absoluten Pfad angeben, z. B. cd /home/kali/Documents/Videos.",
+                relatedCommands: ["cd"],
+                tags: ["cd", "verzeichnis", "navigation"],
               },
               {
+                id: "nav-002",
                 question: "Wie gelange ich in mein Home-Verzeichnis?",
                 answer:
                   "Gibt man cd ohne Pfad an, wechselt man automatisch ins eigene Home-Verzeichnis. Dasselbe erreicht man mit cd ~ (Tilde steht für das Home-Verzeichnis).",
-                commands: ["cd"],
+                relatedCommands: ["cd"],
+                tags: ["cd", "home", "~"],
               },
               {
+                id: "nav-003",
                 question: "Wie wechsle ich ins Root-Verzeichnis (/)?",
                 answer:
                   "Verwende cd /, um ins Wurzelverzeichnis des Dateisystems zu gelangen. Der Schrägstrich / steht in Linux für das Root-Verzeichnis (oberste Ebene des Dateisystems).",
-                commands: ["cd"],
+                relatedCommands: ["cd"],
+                tags: ["cd", "root", "/"],
               },
               {
+                id: "nav-004",
                 question: "Wie gehe ich eine Verzeichnisebene nach oben?",
                 answer:
                   "Mit cd .. wechselt man in das übergeordnete Verzeichnis (ein Ordner nach oben). Die zwei Punkte .. stehen in Pfadangaben immer für das Parent-Verzeichnis.",
-                commands: ["cd"],
+                relatedCommands: ["cd"],
+                tags: ["cd", "parent", ".."],
               },
               {
+                id: "nav-005",
                 question: "Wie komme ich in das vorherige Verzeichnis zurück?",
                 answer:
                   "Mit cd - wechselt man in das zuletzt besuchte Verzeichnis zurück. Dies ist praktisch, um schnell zwischen zwei Verzeichnissen hin- und herzuspringen.",
-                commands: ["cd"],
+                relatedCommands: ["cd"],
+                tags: ["cd", "vorherig", "-"],
               },
               {
+                id: "nav-006",
                 question:
                   "Wie kann ich mir mein aktuelles Verzeichnis anzeigen lassen?",
                 answer:
                   "Der Befehl pwd (print working directory) zeigt den vollständigen Pfad des Verzeichnisses, in dem man sich befindet, an. Beispiel: Befindet sich der Benutzer kali im Ordner /home/kali/Desktop, dann zeigt pwd genau diesen Pfad an.",
-                commands: ["pwd"],
+                relatedCommands: ["pwd"],
+                tags: ["pwd", "aktuelles", "verzeichnis"],
               },
               {
+                id: "nav-007",
                 question: "Wie liste ich den Inhalt eines Verzeichnisses auf?",
                 answer:
                   "Mit ls werden Dateien und Unterordner im aktuellen Verzeichnis aufgelistet. Ohne Optionen zeigt ls die Namen der Inhalte. Beispielsweise listet ls /etc den Inhalt des /etc-Verzeichnisses auf.",
-                commands: ["ls"],
+                relatedCommands: ["ls"],
+                tags: ["ls", "auflisten", "verzeichnis"],
               },
               {
+                id: "nav-008",
                 question: "Wie kann ich auch versteckte Dateien anzeigen?",
                 answer:
                   "Versteckte Dateien (deren Namen mit . beginnen) zeigt man mit ls -a an. Oft nutzt man ls -la für eine detaillierte Liste inklusive versteckter Dateien, da -l die lange Liste mit Rechten, Besitzer, Größe und Datum anzeigt.",
-                commands: ["ls"],
+                relatedCommands: ["ls", "ls_a"],
+                tags: ["ls", "-a", "versteckt"],
               },
               {
+                id: "nav-009",
                 question:
                   "Wie erhalte ich detaillierte Infos (Größe, Datum, Rechte) zu Dateien in einem Verzeichnis?",
                 answer:
                   "Mit ls -l erhält man eine ausführliche Auflistung aller Dateien/Ordner mit Details wie Berechtigungen, Besitzer, Dateigröße und Änderungsdatum. Zusätzliche Optionen wie -h (human-readable) stellen Größen in lesbare Form (z. B. KiB/MiB) dar, also z. B. ls -lh.",
-                commands: ["ls"],
+                relatedCommands: ["ls", "ls_la"],
+                tags: ["ls", "-l", "-h", "details"],
               },
               {
+                id: "nav-010",
                 question: "Was bedeuten . und .. in Pfadangaben?",
                 answer:
                   ". steht für das aktuelle Verzeichnis, .. für das übergeordnete Verzeichnis. Beispiel: cd . bleibt im aktuellen Ordner, und cd .. wechselt eine Ebene höher.",
-                commands: ["cd"],
+                relatedCommands: ["cd"],
+                tags: [".", "..", "pfad"],
               },
               {
+                id: "nav-011",
                 question:
                   "Wie navigiere ich in Pfaden mit Leerzeichen im Namen?",
                 answer:
                   'Pfadnamen mit Leerzeichen müssen in Anführungszeichen gesetzt werden oder das Leerzeichen mit \\ maskiert werden. Beispiel: cd "Mein Ordner" oder cd Mein\\ Ordner wechselt in ein Verzeichnis namens "Mein Ordner".',
-                commands: ["cd"],
+                relatedCommands: ["cd"],
+                tags: ["pfad", "leerzeichen", "anführungszeichen"],
               },
               {
+                id: "nav-012",
                 question: "Gibt es eine Autovervollständigung für Dateinamen?",
                 answer:
                   "Ja, durch Drücken der Tab-Taste während der Eingabe vervollständigt die Shell automatisch Dateinamen oder Befehle, sofern eindeutig. Dadurch muss man oft nur den Anfang eines Namens tippen und kann Tippfehler vermeiden (Tab-Autocompletion).",
-                commands: [],
+                relatedCommands: [],
+                tags: ["tab", "autocompletion"],
               },
             ],
           },
           {
-            category: "Dateiverwaltung (Dateien und Ordner)",
+            id: "fileManagement",
+            name: "Dateiverwaltung (Dateien und Ordner)",
+            icon: "📂",
             questions: [
               {
+                id: "file-001",
                 question: "Wie erstelle ich ein neues Verzeichnis?",
                 answer:
                   "Mit mkdir <ordnername> erstellt man ein neues Verzeichnis. Beispiel: mkdir Projekte legt einen Ordner namens Projekte im aktuellen Verzeichnis an. Mit mkdir -p pfad/unterordner können auch verschachtelte Unterordner in einem Schritt erzeugt werden.",
-                commands: ["mkdir"],
+                relatedCommands: ["mkdir", "mkdir_p"],
+                tags: ["mkdir", "verzeichnis", "ordner"],
               },
               {
+                id: "file-002",
                 question: "Wie lösche ich einen Ordner?",
                 answer:
                   "Leere Verzeichnisse können mit rmdir <ordnername> gelöscht werden. Enthält der Ordner Dateien oder Unterordner, verwendet man rm -r <ordnername> für rekursives Löschen. Vorsicht: Mit rm -r werden auch alle enthaltenen Dateien gelöscht. Für unwiederbringliches Löschen ohne Nachfragen kann zusätzlich -f (force) verwendet werden, z. B. rm -rf <ordner>.",
-                commands: ["rm", "rmdir"],
+                relatedCommands: ["rm", "rm_r"],
+                tags: ["rm", "rmdir", "löschen"],
               },
               {
+                id: "file-003",
                 question: "Wie lege ich eine neue (leere) Datei an?",
                 answer:
                   "Der einfachste Weg ist touch <dateiname>. Wenn die angegebene Datei noch nicht existiert, wird durch touch eine leere Datei erstellt. Beispiel: touch notiz.txt erzeugt eine leere Datei notiz.txt.",
-                commands: ["touch"],
+                relatedCommands: ["touch"],
+                tags: ["touch", "datei", "erstellen"],
               },
               {
+                id: "file-004",
                 question: "Wie lösche ich eine Datei?",
                 answer:
                   "Mit dem Befehl rm <datei> löscht man Dateien. Beispiel: rm test.txt löscht die Datei test.txt. Ohne weitere Optionen fragt rm in der Standardeinstellung nicht nach und entfernt die Datei endgültig.",
-                commands: ["rm"],
+                relatedCommands: ["rm"],
+                tags: ["rm", "löschen", "datei"],
               },
               {
+                id: "file-005",
                 question: "Wie kopiere ich eine Datei?",
                 answer:
                   "Mit cp <quelle> <ziel> kopiert man eine Datei. Beispiel: cp original.txt kopie.txt erstellt eine Kopie von original.txt unter dem Namen kopie.txt im gleichen Verzeichnis. Um an einen anderen Ort zu kopieren, gibt man den Pfad zum Ziel an (z. B. cp datei.txt /tmp/).",
-                commands: ["cp"],
+                relatedCommands: ["cp"],
+                tags: ["cp", "kopieren"],
               },
               {
+                id: "file-006",
                 question: "Wie kopiere ich einen ganzen Ordner mit Inhalt?",
                 answer:
                   "Mit dem Parameter -r kopiert cp auch Verzeichnisse rekursiv. Beispiel: cp -r bilder fotos_backup kopiert den gesamten Ordner bilder (mit allen Unterdateien/-ordnern) ins Verzeichnis fotos_backup.",
-                commands: ["cp"],
+                relatedCommands: ["cp_r"],
+                tags: ["cp", "-r", "rekursiv"],
               },
               {
+                id: "file-007",
                 question:
                   "Wie verschiebe oder benenne ich eine Datei/einen Ordner um?",
                 answer:
                   "Das Verschieben erledigt man mit mv <quelle> <ziel>. Zum Umbenennen kann man mv im selben Verzeichnis nutzen: mv altername.txt neuername.txt ändert den Dateinamen. Verschieben in einen anderen Ordner funktioniert analog: mv datei.txt /pfad/zum/zielordner/.",
-                commands: ["mv"],
+                relatedCommands: ["mv"],
+                tags: ["mv", "verschieben", "umbenennen"],
               },
               {
+                id: "file-008",
                 question:
                   "Wie zeige ich den Inhalt einer Textdatei im Terminal an?",
                 answer:
                   "Mit cat <datei> wird der gesamte Dateinhalt auf einmal angezeigt. Beispiel: cat info.txt druckt den Text der Datei info.txt auf die Konsole. Für lange Dateien ist less <datei> praktischer – damit kann man seitenweise blättern.",
-                commands: ["cat"],
+                relatedCommands: ["cat"],
+                tags: ["cat", "anzeigen", "datei"],
               },
               {
+                id: "file-009",
                 question:
                   "Wie bearbeite ich eine Textdatei direkt im Terminal?",
                 answer:
                   "Dazu nutzt man einen Terminal-Texteditor wie nano oder vim. Für Einsteiger empfiehlt sich nano: nano <datei> öffnet die Datei im Nano-Editor. Unten werden die wichtigsten Steuerungstasten angezeigt (z. B. zum Speichern STRG+O, zum Beenden STRG+X). Alternativ kann man vi <datei> bzw. vim <datei> nutzen – Vim ist aber deutlich anspruchsvoller.",
-                commands: ["nano", "vim"],
+                relatedCommands: ["nano_flow"],
+                tags: ["nano", "vim", "editor"],
               },
               {
+                id: "file-010",
                 question: "Wie kann ich nach einer Datei suchen?",
                 answer:
                   'Mit dem Befehl find lässt sich das Dateisystem durchsuchen. Beispiel: find / -name "*.conf" sucht unter / (dem Root-Verzeichnis) nach allen Dateien, die auf *.conf enden. Für eine schnelle Suche kann Kali auch locate <name> nutzen – dieses greift auf eine indexierte Datenbank zurück (vorher mit updatedb aktualisieren).',
-                commands: ["find"],
+                relatedCommands: ["find_name"],
+                tags: ["find", "suchen"],
               },
               {
+                id: "file-011",
                 question: "Wie finde ich einen bestimmten Text in Dateien?",
                 answer:
                   'Mit grep kann man in Dateien nach Textmustern suchen. Beispiel: grep "ERROR" /var/log/syslog sucht im System-Log nach Vorkommen von "ERROR". Standardmäßig gibt grep alle Zeilen aus, die den gesuchten Text enthalten.',
-                commands: ["grep"],
+                relatedCommands: ["grep"],
+                tags: ["grep", "text", "suchen"],
               },
               {
+                id: "file-012",
                 question:
                   "Wie erfahre ich den Dateityp oder Details einer Datei?",
                 answer:
                   "Der Befehl file <datei> zeigt an, um welchen Dateityp es sich handelt (z. B. ASCII-Text, ELF-Binary etc.). Für ausführlichere Informationen, wie Größe, letztes Änderungsdatum, Berechtigungen, nutzt man stat <datei>, was alle Dateieigenschaften auflistet.",
-                commands: ["file", "stat"],
+                relatedCommands: [],
+                tags: ["file", "stat", "dateityp"],
               },
             ],
           },
           {
-            category: "Paketmanagement (Software installieren/aktualisieren)",
+            id: "packageManagement",
+            name: "Paketmanagement (Software installieren/aktualisieren)",
+            icon: "📦",
             questions: [
               {
+                id: "pkg-001",
                 question:
                   "Wie aktualisiere ich die Paketliste (Repository-Index)?",
                 answer:
                   "Mit sudo apt update fragt man alle in /etc/apt/sources.list eingetragenen Paketquellen ab und lädt die neuesten Paketinformationen herunter. Dies sollte man regelmäßig tun, insbesondere bevor man neue Pakete installiert, damit die Paketdatenbank aktuell ist.",
-                commands: ["apt"],
+                relatedCommands: [],
+                tags: ["apt", "update", "paketliste"],
               },
               {
+                id: "pkg-002",
                 question:
                   "Wie aktualisiere ich installierte Pakete auf die neueste Version?",
                 answer:
-                  "Nach apt update kann man mit sudo apt upgrade alle installierten Pakete upgraden. Dieser Befehl spielt verfügbare Updates ein, ohne Pakete zu entfernen. (Hinweis: apt upgrade aktualisiert nur, was ohne Konflikte möglich ist. Mit apt full-upgrade würden auch Paketabhängigkeiten geändert, was bei Kali allerdings mit Vorsicht zu verwenden ist.)",
-                commands: ["apt"],
+                  "Nach apt update kann man mit sudo apt upgrade alle installierten Pakete upgraden. Dieser Befehl spielt verfügbare Updates ein, ohne Pakete zu entfernen.",
+                relatedCommands: [],
+                tags: ["apt", "upgrade"],
               },
               {
+                id: "pkg-003",
                 question: "Wie installiere ich ein neues Programm/Paket?",
                 answer:
                   "Mit sudo apt install <paketname>. Beispiel: sudo apt install nmap installiert das Paket nmap aus den Paketquellen. Man kann auch mehrere Pakete gleichzeitig installieren, indem man die Namen hintereinander angibt (getrennt durch Leerzeichen).",
-                commands: ["apt"],
+                relatedCommands: [],
+                tags: ["apt", "install"],
               },
               {
+                id: "pkg-004",
                 question: "Wie entferne ich ein installiertes Paket?",
                 answer:
                   "Mit sudo apt remove <paketname> deinstalliert man ein Paket. Die Konfigurationsdateien bleiben dabei erhalten. Soll auch diese bereinigt werden, verwendet man sudo apt purge <paketname>, um das Paket komplett (inkl. Konfigurationsresten) zu entfernen.",
-                commands: ["apt"],
+                relatedCommands: [],
+                tags: ["apt", "remove", "purge"],
               },
               {
+                id: "pkg-005",
                 question: "Wie räume ich nicht mehr benötigte Pakete auf?",
                 answer:
                   "Nach vielen Installationen bleiben manchmal ungenutzte Abhängigkeits-Pakete zurück. Mit sudo apt autoremove werden solche automatisch installierten, aber nicht mehr benötigten Pakete entfernt, um Speicherplatz freizugeben.",
-                commands: ["apt"],
+                relatedCommands: [],
+                tags: ["apt", "autoremove"],
               },
               {
+                id: "pkg-006",
                 question: "Wie suche ich nach Paketen?",
                 answer:
-                  'Mit apt search <schlüsselwort> kann man die Paketdatenbank nach Namen und Beschreibungen durchsuchen. Beispiel: apt search editor listet alle Pakete auf, die im Namen oder in der Beschreibung "editor" enthalten. Ähnlich liefert apt-cache search <wort> das Ergebnis über das ältere apt-cache-Werkzeug.',
-                commands: ["apt"],
+                  'Mit apt search <schlüsselwort> kann man die Paketdatenbank nach Namen und Beschreibungen durchsuchen. Beispiel: apt search editor listet alle Pakete auf, die im Namen oder in der Beschreibung "editor" enthalten.',
+                relatedCommands: [],
+                tags: ["apt", "search"],
               },
               {
-                question:
-                  "Wie sehe ich, welche Pakete bereits installiert sind?",
-                answer:
-                  "Mit apt list --installed erhält man eine Liste aller installierten Pakete. Alternativ zeigt dpkg -l ebenfalls alle installierten Pakete als Liste an. Man kann diese Ausgabe mit grep filtern, um ein bestimmtes Paket zu finden (z. B. dpkg -l | grep <name>).",
-                commands: ["apt", "dpkg"],
-              },
-              {
-                question:
-                  "Wie installiere ich eine .deb-Datei (lokales Debian-Paket)?",
-                answer:
-                  "Mit dem Programm dpkg (Debian Package Manager). Verwende sudo dpkg -i <paketdatei.deb>, um ein heruntergeladenes *.deb-Paket zu installieren. Schlägt die Installation wegen fehlender Abhängigkeiten fehl, führt man anschließend sudo apt -f install aus, um diese aufzulösen.",
-                commands: ["dpkg", "apt"],
-              },
-              {
+                id: "pkg-007",
                 question: "Was ist der Unterschied zwischen apt und apt-get?",
                 answer:
-                  "apt ist ein etwas neueres Kommando, das viele häufig genutzte Funktionen von apt-get und apt-cache in einem Tool vereint. So entspricht z. B. apt install dem klassischen apt-get install. Für die meisten Anwendungsfälle kann man apt benutzen – es ist benutzerfreundlicher (z. B. Fortschrittsbalken) – während apt-get und apt-cache aus Kompatibilitätsgründen weiterhin verfügbar sind. Kurz gesagt: apt ist eine komfortablere Weiterentwicklung von apt-get.",
-                commands: ["apt"],
-              },
-              {
-                question:
-                  'Wie behebe ich den Fehler "E: Unable to locate package", wenn ein Paket nicht gefunden wird?',
-                answer:
-                  "Dieser Fehler bedeutet, dass das genannte Paket in den Paketquellen nicht gefunden wurde. Zunächst sollte man prüfen, ob der Paketname korrekt ist und apt update ausgeführt wurde. Wenn der Fehler weiterhin besteht, liegt oft ein Problem mit den Paketquellen vor. In Kali sollten in /etc/apt/sources.list die offiziellen kali-rolling-Quellen eingetragen sein. Man kann die Datei überprüfen und ggf. die Standard-Kali-Repository-URLs eintragen. Anschließend erneut apt update ausführen und die Installation wiederholen.",
-                commands: ["apt"],
+                  "apt ist ein etwas neueres Kommando, das viele häufig genutzte Funktionen von apt-get und apt-cache in einem Tool vereint. So entspricht z. B. apt install dem klassischen apt-get install. Für die meisten Anwendungsfälle kann man apt benutzen – es ist benutzerfreundlicher (z. B. Fortschrittsbalken).",
+                relatedCommands: [],
+                tags: ["apt", "apt-get"],
               },
             ],
           },
           {
-            category: "Netzwerkgrundlagen",
+            id: "networking",
+            name: "Netzwerkgrundlagen",
+            icon: "🌐",
             questions: [
               {
+                id: "net-001",
                 question:
                   "Wie finde ich meine IP-Adresse oder Netzwerk-Schnittstellen heraus?",
                 answer:
-                  "Der Befehl ifconfig (aus dem Paket net-tools) zeigt die konfigurierten Netzwerkinterfaces mit ihren IP-Adressen an. Unter neueren Linux-Systemen verwendet man bevorzugt ip a (oder ip addr), das ähnliche Informationen ausgibt. Beispiel: ip a listet alle Interfaces (eth0, wlan0, lo etc.) mit IP, Netzmaske und Status auf.",
-                commands: ["ifconfig", "ip"],
+                  "Der Befehl ifconfig (aus dem Paket net-tools) zeigt die konfigurierten Netzwerkinterfaces mit ihren IP-Adressen an. Unter neueren Linux-Systemen verwendet man bevorzugt ip a (oder ip addr), das ähnliche Informationen ausgibt.",
+                relatedCommands: [],
+                tags: ["ifconfig", "ip", "netzwerk"],
               },
               {
+                id: "net-002",
                 question:
                   "Wie teste ich die Erreichbarkeit eines anderen Hosts (Ping)?",
                 answer:
-                  "Mit ping <ziel> sendet man ICMP-Pakete an einen Host, um die Verbindung zu prüfen. Beispiel: ping google.com sendet kontinuierlich Pings an google.com. Eine erfolgreiche Antwort zeigt, dass Netzwerkverbindung besteht und gibt die Round-Trip-Zeit aus. Mit Ctrl+C bricht man den Vorgang ab. (Standardmäßig pingt Linux endlos, mit -c 4 kann man z. B. 4 Pakete schicken lassen.)",
-                commands: ["ping"],
+                  "Mit ping <ziel> sendet man ICMP-Pakete an einen Host, um die Verbindung zu prüfen. Beispiel: ping google.com sendet kontinuierlich Pings an google.com. Eine erfolgreiche Antwort zeigt, dass Netzwerkverbindung besteht und gibt die Round-Trip-Zeit aus. Mit Ctrl+C bricht man den Vorgang ab.",
+                relatedCommands: [],
+                tags: ["ping", "netzwerk"],
               },
               {
-                question:
-                  "Wie zeige ich alle offenen Ports bzw. aktuellen Netzwerkverbindungen an?",
-                answer:
-                  "Früher nutzte man dafür netstat -tuln (tcp/udp, listening, numeric). In neueren Systemen ist ss -tuln der empfohlene Befehl (ss = socket statistics), der ähnliche Ausgaben liefert. Beide zeigen z. B. an, welche Dienste auf welchen Ports lauschen (LISTEN). Will man sämtliche bestehenden Verbindungen sehen, kann man netstat -tpna verwenden (zeigt auch die zugehörigen Programme/PIDs).",
-                commands: ["netstat", "ss"],
-              },
-              {
-                question:
-                  "Wie überprüfe ich die Routing-Tabelle oder den Weg eines Pakets?",
-                answer:
-                  "Die Routing-Tabelle (Weg der Pakete ins Netzwerk) sieht man mit route -n oder ip route. Um den Pfad zu einem bestimmten Ziel zu verfolgen, nutzt man traceroute <ziel>. Beispiel: traceroute heise.de listet die einzelnen Zwischenstationen (Router), die ein Paket durchläuft, um heise.de zu erreichen.",
-                commands: ["route", "traceroute"],
-              },
-              {
-                question:
-                  "Wie kann ich DNS-Informationen zu einer Domain abfragen (Nameserver lookup)?",
-                answer:
-                  "Mit nslookup <domain> kann man den DNS-Server nach der IP-Adresse einer Domain fragen. Beispiel: nslookup kali.org gibt die IP-Adresse(s) der Domain kali.org zurück. Für ausführlichere DNS-Abfragen kann man dig <domain> verwenden, das z. B. auch MX-Records, NS-Records etc. abfragen kann.",
-                commands: ["nslookup", "dig"],
-              },
-              {
+                id: "net-003",
                 question:
                   "Wie scanne ich einen Rechner oder ein Netzwerk nach offenen Ports (mit Nmap)?",
                 answer:
-                  "Nmap ist ein Port-Scanner. Ein einfacher Scan erfolgt mit nmap <IP-Adresse>. Beispielsweise führt nmap 192.168.0.5 einen Standard-Portscan der gängigsten 1000 Ports auf dem Host 192.168.0.5 durch und listet offene Ports samt Dienstnamen. Mit Optionen kann man das Scanning anpassen, z. B. -p 1-65535 für alle Ports oder -sV für Service- und Versionserkennung. (Hinweis: Nmap bietet sehr viele Optionen für unterschiedliche Scan-Methoden.)",
-                commands: ["nmap"],
+                  "Nmap ist ein Port-Scanner. Ein einfacher Scan erfolgt mit nmap <IP-Adresse>. Beispielsweise führt nmap 192.168.0.5 einen Standard-Portscan der gängigsten 1000 Ports auf dem Host 192.168.0.5 durch und listet offene Ports samt Dienstnamen.",
+                relatedCommands: [],
+                tags: ["nmap", "portscan"],
               },
               {
-                question:
-                  "Wie ermittle ich den Inhaber einer Domain oder weitere Infos (WHOIS)?",
-                answer:
-                  "Mit dem Kommando whois <domain> kann man einen WHOIS-Lookup durchführen. Die Ausgabe enthält je nach Domain u. a. Registrierungsinformationen, Name des Domain-Inhabers (bei privaten Personen ggf. anonymisiert), Registrar, Erstellungs- und Ablaufdaten usw.",
-                commands: ["whois"],
-              },
-              {
-                question:
-                  "Wie kann ich den Quelltext einer Webseite oder eine HTTP-Anfrage abrufen?",
-                answer:
-                  "Mit curl kann man über URLs Daten abrufen oder senden. Beispiel: curl http://example.com holt den HTML-Code der angegebenen Webseite. Möchte man die Ausgabe in eine Datei speichern, kann man curl -o output.html http://example.com nutzen. Für einfache Downloads bietet sich auch wget an.",
-                commands: ["curl"],
-              },
-              {
+                id: "net-004",
                 question:
                   "Wie lade ich eine Datei per Kommandozeile aus dem Internet herunter?",
                 answer:
-                  "Einfache Methode: wget <URL>. Beispiel: wget https://kali.org/sample.iso lädt die Datei sample.iso aus dem Internet in das aktuelle Verzeichnis herunter. Alternativ kann curl -O <URL> verwendet werden, das den Inhalt unter dem ursprünglichen Dateinamen speichert. Unterschied: wget ist primär zum Download gedacht (und kann z. B. rekursiv Webseiten herunterladen), während curl vielfältiger für Webanfragen/API-Aufrufe eingesetzt wird.",
-                commands: ["wget", "curl"],
+                  "Einfache Methode: wget <URL>. Beispiel: wget https://kali.org/sample.iso lädt die Datei sample.iso aus dem Internet in das aktuelle Verzeichnis herunter. Alternativ kann curl -O <URL> verwendet werden.",
+                relatedCommands: [],
+                tags: ["wget", "curl", "download"],
               },
             ],
           },
           {
-            category: "Rechte und Berechtigungen",
+            id: "permissions",
+            name: "Rechte und Berechtigungen",
+            icon: "🔐",
             questions: [
               {
+                id: "perm-001",
                 question:
                   "Wie ändere ich Dateiberechtigungen (Lese/Schreib/Execute-Rechte)?",
                 answer:
-                  "Mit dem Befehl chmod kann man Unix-Dateirechte ändern. Man kann die Rechte entweder symbolisch (mit Buchstaben) oder numerisch (mit Oktalzahlen) angeben. Beispiel symbolisch: chmod u+rwx,g+rx,o-r file.txt würde dem Besitzer alle Rechte geben (rwx), der Gruppe nur Lese/Execute, und anderen Benutzern die Leserechte entziehen. Häufig nutzt man die numerische Notation: z. B. chmod 755 script.sh setzt die Rechte auf rwxr-xr-x (Besitzer darf lesen/schreiben/ausführen =7, Gruppe und andere nur lesen/ausführen =5 und 5). Eine häufige Aufgabe ist es, Skripte ausführbar zu machen: Dafür kann man auch kurz chmod +x datei.sh verwenden.",
-                commands: ["chmod"],
+                  "Mit dem Befehl chmod kann man Unix-Dateirechte ändern. Man kann die Rechte entweder symbolisch (mit Buchstaben) oder numerisch (mit Oktalzahlen) angeben. Beispiel numerisch: chmod 755 script.sh setzt die Rechte auf rwxr-xr-x (Besitzer darf lesen/schreiben/ausführen =7, Gruppe und andere nur lesen/ausführen =5 und 5).",
+                relatedCommands: ["chmod", "chmod_R"],
+                tags: ["chmod", "rechte"],
               },
               {
+                id: "perm-002",
                 question: "Wie mache ich eine Datei ausführbar?",
                 answer:
-                  "Mit chmod +x <datei> fügt man das Ausführungsrecht (execute) für die Datei hinzu. Danach kann die Datei (z. B. ein Skript) direkt gestartet werden, etwa mit ./script.sh. Beachte: Für Skripte muss in der ersten Zeile häufig ein Shebang (#!/usr/bin/env bash o. Ä.) gesetzt sein, damit das System weiß, welcher Interpreter genutzt werden soll.",
-                commands: ["chmod"],
+                  "Mit chmod +x <datei> fügt man das Ausführungsrecht (execute) für die Datei hinzu. Danach kann die Datei (z. B. ein Skript) direkt gestartet werden, etwa mit ./script.sh.",
+                relatedCommands: ["chmod"],
+                tags: ["chmod", "+x", "ausführbar"],
               },
               {
+                id: "perm-003",
                 question:
                   "Wie ändere ich den Besitzer einer Datei oder eines Ordners?",
                 answer:
-                  "Mit chown <benutzer>:<gruppe> <datei> ändert man den Eigentümer (Besitzer) und optional die Gruppe einer Datei. Beispiel: sudo chown kali:kali datei.txt ändert Besitzer und Gruppe von datei.txt auf den Benutzer kali. Oft reicht sudo chown <user> <datei> – dabei bleibt die Gruppenzugehörigkeit unverändert.",
-                commands: ["chown"],
+                  "Mit chown <benutzer>:<gruppe> <datei> ändert man den Eigentümer (Besitzer) und optional die Gruppe einer Datei. Beispiel: sudo chown kali:kali datei.txt ändert Besitzer und Gruppe von datei.txt auf den Benutzer kali.",
+                relatedCommands: ["chown"],
+                tags: ["chown", "besitzer"],
               },
               {
-                question: "Wie ändere ich die Gruppe einer Datei?",
-                answer:
-                  "Mit chgrp <gruppe> <datei> kann man die Gruppenzugehörigkeit ändern (statt über chown). Beispiel: sudo chgrp sudo config.cfg würde die Datei config.cfg der Gruppe sudo zuordnen. (Hinweis: chown <user>:<gruppe> kann beides in einem Schritt ändern.)",
-                commands: ["chgrp", "chown"],
-              },
-              {
+                id: "perm-004",
                 question: "Wozu dient sudo und wie verwende ich es?",
                 answer:
-                  'sudo ("substitute user do") erlaubt es, Befehle mit administrativen Rechten (als root) auszuführen. In Kali ist der Standarduser häufig schon root; existiert ein normaler Benutzer, muss man sudo voranstellen, um Systembefehle auszuführen, die erhöhte Rechte brauchen. Beispiel: sudo apt update aktualisiert die Paketliste mit Root-Rechten. Beim ersten Einsatz in einer Session fragt sudo nach dem Passwort des Benutzers. Wichtig: Nur Nutzer, die in der Datei /etc/sudoers oder in der sudo-Gruppe eingetragen sind, dürfen sudo benutzen.',
-                commands: ["sudo"],
+                  "sudo (substitute user do) erlaubt es, Befehle mit administrativen Rechten (als root) auszuführen. In Kali ist der Standarduser häufig schon root; existiert ein normaler Benutzer, muss man sudo voranstellen, um Systembefehle auszuführen, die erhöhte Rechte brauchen.",
+                relatedCommands: [],
+                tags: ["sudo", "root"],
               },
               {
+                id: "perm-005",
                 question:
                   'Was bedeutet die Fehlermeldung "Permission denied" und wie behebe ich sie?',
                 answer:
-                  '"Permission denied" heißt, dass die aktuellen Berechtigungen nicht ausreichen, um die gewünschte Aktion durchzuführen. Dies tritt z. B. auf, wenn man auf eine Datei/Ordner ohne ausreichende Rechte zugreifen will, oder einen Befehl ausführt, der Root-Rechte erfordert. Lösung: Entweder als root ausführen (Befehl mit sudo voranstellen) oder die Dateirechte anpassen. Beispiel 1: cat /etc/shadow ergibt Permission denied, weil die Datei nur von root gelesen werden darf – hier würde sudo cat /etc/shadow funktionieren (sofern berechtigt). Beispiel 2: ./script.sh ergibt Permission denied, weil das Skript nicht ausführbar ist – hier hilft chmod +x script.sh, um die Ausführung zu erlauben. Beispiel 3: cd ordner schlägt fehl mit Permission denied, wenn man keine Suchrechte auf den Ordner hat – hier müsste man dem Ordner das x-Recht geben (chmod +x ordner).',
-                commands: ["sudo", "chmod"],
+                  '"Permission denied" heißt, dass die aktuellen Berechtigungen nicht ausreichen, um die gewünschte Aktion durchzuführen. Lösung: Entweder als root ausführen (Befehl mit sudo voranstellen) oder die Dateirechte anpassen. Beispiel: ./script.sh ergibt Permission denied, weil das Skript nicht ausführbar ist – hier hilft chmod +x script.sh.',
+                relatedCommands: ["chmod"],
+                tags: ["permission", "denied", "sudo"],
               },
             ],
           },
           {
-            category: "Grundlagen der Shell (Bash & nützliche Hilfen)",
+            id: "shell",
+            name: "Grundlagen der Shell (Bash & nützliche Hilfen)",
+            icon: "💻",
             questions: [
               {
-                question:
-                  "Welche Shell wird in Kali Linux verwendet und wie finde ich das heraus?",
-                answer:
-                  "Kali Linux nutzt standardmäßig Bash (Bourne Again SHell) als Kommandozeileninterpreter. Man kann die aktuelle Shell herausfinden, indem man echo $SHELL eingibt – das liefert z. B. /bin/bash. Alternativ zeigt echo $0 bei interaktiver Nutzung ebenfalls den Shell-Namen (bei Login-Shells).",
-                commands: [],
-              },
-              {
+                id: "shell-001",
                 question:
                   "Wie kann ich mir meine bisherigen Befehle anzeigen lassen (Befehls-Historie)?",
                 answer:
                   'Mit dem Befehl history werden alle zuletzt eingegebenen Befehle der aktuellen Shell-Sitzung aufgelistet. Jeder Eintrag hat eine Nummer, und mit !<Nummer> kann man einen bestimmten Befehl erneut ausführen. Praktische Kürzel: !! wiederholt den letzten Befehl, !ls würde z. B. den letzten Befehl, der mit "ls" begann, erneut ausführen.',
-                commands: ["history"],
+                relatedCommands: [],
+                tags: ["history", "befehle"],
               },
               {
+                id: "shell-002",
                 question: "Wie definiere ich eigene Kurzbefehle (Aliases)?",
                 answer:
-                  'Mit alias kann man ein Kürzel für einen längeren Befehl definieren. Syntax: alias kurz="langer Befehl mit Optionen". Beispiel: alias ll="ls -l --color=auto" definiert ll als Alias, der farbig und im Langformat listet. Nach Eingabe von ll führt die Shell dann ls -l --color=auto aus. Bestehende Aliase listet man mit alias ohne Argumente auf.',
-                commands: ["alias"],
+                  'Mit alias kann man ein Kürzel für einen längeren Befehl definieren. Syntax: alias kurz="langer Befehl mit Optionen". Beispiel: alias ll="ls -l --color=auto" definiert ll als Alias, der farbig und im Langformat listet. Nach Eingabe von ll führt die Shell dann ls -l --color=auto aus.',
+                relatedCommands: [],
+                tags: ["alias", "kurzbefehle"],
               },
               {
-                question: "Wie entferne ich einen definierten Alias wieder?",
-                answer:
-                  "Mit unalias <name> kann man einen Alias löschen. Beispiel: unalias ll würde den zuvor gesetzten Alias ll entfernen, sodass der Name wieder frei ist bzw. ein eventuell vorhandenes Systemalias aktiv würde.",
-                commands: ["unalias"],
-              },
-              {
-                question:
-                  "Wie kann ich Umgebungsvariablen setzen und anzeigen?",
-                answer:
-                  'Umweltvariablen werden in der Form NAME=Wert gesetzt. Dies gilt zunächst nur für die laufende Shell. Mit export NAME=Wert macht man die Variable auch für Subprozesse verfügbar. Anzeigen kann man einzelne Variablen mit echo $NAME. Alle aktuell definierten Variablen zeigt printenv oder env an. Beispiel: export PATH="$PATH:/opt/meinprogramm/bin" hängt /opt/meinprogramm/bin an die PATH-Variable an (erweitert den Suchpfad für Befehle).',
-                commands: ["export", "env"],
-              },
-              {
-                question: "Wie führe ich ein Shell-Skript aus?",
-                answer:
-                  "Angenommen, man hat ein Skript script.sh erstellt: Zunächst muss es ausführbar sein (chmod +x script.sh). Starten kann man es dann mit ./script.sh (wenn sich das Skript im aktuellen Verzeichnis befindet). Alternativ kann man es einem Interpreter übergeben, z. B. bash script.sh. Wichtig: In der ersten Zeile eines Skripts steht oft ein Shebang (z. B. #!/bin/bash), um festzulegen, welche Shell/Interpreter das Skript ausführen soll.",
-                commands: ["chmod"],
-              },
-              {
+                id: "shell-003",
                 question:
                   "Wie kann ich einen gerade laufenden Befehl abbrechen?",
                 answer:
-                  "Durch Drücken von Strg + C (Control + C) im Terminal wird das aktuelle Vordergrund-Programm sofort beendet. Dies sendet das SIGINT-Signal an den Prozess. Beispiel: Wenn ping endlos läuft, beendet Strg+C den Vorgang und gibt eine Zusammenfassung aus.",
-                commands: [],
-              },
-              {
-                question:
-                  "Wie halte ich einen laufenden Prozess an und lasse ihn im Hintergrund weiterlaufen?",
-                answer:
-                  "Mit Strg + Z kann man einen laufenden Prozess anhalten (pausieren). Die Shell gibt dann eine Job-Nummer aus. Mit dem Befehl bg schickt man diesen angehaltenen Job in den Hintergrund (Background), sodass er weiterläuft, aber die Shell wieder bereit ist. Den Status aller Jobs sieht man mit jobs. Um einen Hintergrundjob wieder in den Vordergrund zu holen, verwendet man fg %Jobnummer (z. B. fg %1).",
-                commands: ["bg", "fg", "jobs"],
-              },
-              {
-                question:
-                  "Wie verlasse ich die Shell bzw. schließe das Terminal?",
-                answer:
-                  "Mit dem Befehl exit beendet man die aktuelle Shell-Sitzung. Falls es die letzte Shell in dem Terminalfenster war, schließt sich dadurch das Terminal. Alternativ kann man auch Strg + D drücken (EOF senden), was ebenfalls die Shell beendet.",
-                commands: ["exit"],
+                  "Durch Drücken von Strg + C (Control + C) im Terminal wird das aktuelle Vordergrund-Programm sofort beendet. Dies sendet das SIGINT-Signal an den Prozess. Beispiel: Wenn ping endlos läuft, beendet Strg+C den Vorgang.",
+                relatedCommands: [],
+                tags: ["ctrl+c", "abbrechen"],
               },
             ],
           },
           {
-            category: "Fehlermeldungen und ihre Behebung",
+            id: "errors",
+            name: "Fehlermeldungen und ihre Behebung",
+            icon: "⚠️",
             questions: [
               {
+                id: "err-001",
                 question:
                   'Fehlermeldung: "command not found" – was bedeutet das und was kann ich tun?',
                 answer:
-                  '"Command not found" bedeutet, dass die Shell den eingegebenen Befehl nicht finden konnte. Häufige Ursachen: Tippfehler im Befehlsnamen oder das Programm ist nicht installiert bzw. nicht im PATH. Zuerst sollte man prüfen, ob man sich nicht vertippt hat. Ist der Name korrekt, überprüft man mit which befehl, ob das Programm im Suchpfad liegt (gibt z. B. /usr/bin/befehl zurück). Falls which nichts ausgibt, muss das Programm ggf. installiert werden (z. B. via sudo apt install <paket>). Bei Shell-internen Befehlen (wie cd) kann die Meldung erscheinen, wenn man sie in falschem Kontext nutzt. In seltenen Fällen ist die PATH-Variable beschädigt oder leer, sodass selbst grundlegende Befehle nicht gefunden werden. Dann sollte man echo $PATH prüfen und gegebenenfalls die Standard-Pfade (/usr/bin, /bin, etc.) wiederherstellen. Zusammengefasst: "command not found" = entweder Tippfehler, Programm fehlt oder PATH-Problem.',
-                commands: ["which"],
+                  '"Command not found" bedeutet, dass die Shell den eingegebenen Befehl nicht finden konnte. Häufige Ursachen: Tippfehler im Befehlsnamen oder das Programm ist nicht installiert bzw. nicht im PATH. Zuerst sollte man prüfen, ob man sich nicht vertippt hat. Ist der Name korrekt, überprüft man mit which befehl, ob das Programm im Suchpfad liegt.',
+                relatedCommands: [],
+                tags: ["command", "not", "found"],
               },
               {
-                question:
-                  'Fehlermeldung: "Permission denied" – warum tritt sie auf und wie löse ich das?',
-                answer:
-                  "Diese Meldung erscheint, wenn die Berechtigungen nicht ausreichen, um eine Aktion durchzuführen. Man löst es, indem man entweder die notwendigen Rechte erlangt oder die Datei-Berechtigungen ändert. Beispiele: Beim Öffnen einer Datei Permission denied – entweder sudo verwenden (wenn Administratorrechte nötig sind) oder chmod nutzen, um die Datei für den eigenen Benutzer zugänglich zu machen. Oder man versucht, in ein Verzeichnis zu wechseln, hat aber keine Ausführungsrechte auf den Ordner – dann muss man chmod +x auf das Verzeichnis anwenden. Generell: Permission denied kann durch sudo umgangen werden, wenn es um Root-Rechte geht (aber vorsicht, nur bei vertrauenswürdigen Befehlen nutzen), oder durch Anpassen der Dateirechte mit chmod bzw. Eigentümerwechsel mit chown, falls man Zugriff benötigt.",
-                commands: ["sudo", "chmod", "chown"],
-              },
-              {
+                id: "err-002",
                 question:
                   'Fehlermeldung: "No such file or directory" – was läuft falsch?',
                 answer:
-                  "Diese Meldung bedeutet, dass eine angegebene Datei oder Pfad nicht existiert. Entweder wurde der Pfad falsch eingegeben (Tippfehler, Groß-/Kleinschreibung beachten, da Linux case-sensitiv ist) oder das Objekt ist tatsächlich nicht vorhanden. Lösung: Pfadangabe überprüfen (ls im betreffenden Verzeichnis ausführen, Tab-Autocomplete nutzen) und ggf. korrigieren. Bei ausführbaren Programmen kann es auch bedeuten, dass das Programm zwar vorhanden ist, aber eine benötigte Bibliothek fehlt oder der Shebang-Pfad im Skript ungültig ist (z. B. Skript beginnt mit #!/bin/python statt /usr/bin/python). Dann muss man den Pfad anpassen oder die fehlende Komponente installieren.",
-                commands: ["ls"],
-              },
-              {
-                question:
-                  "Mein Terminal zeigt sonderbare Zeichen an oder reagiert nicht richtig – was kann ich tun?",
-                answer:
-                  'Manchmal gerät das Terminal durch Binärausgaben oder versehentliche stty-Änderungen durcheinander. Mit dem Befehl reset kann man das Terminal in einen definierten Zustand zurücksetzen. Falls nur Eingaben unsichtbar sind (passiert z. B. nach cat /dev/urandom), hilft oft auch echo -e "\\033c". Ein einfacher Trick ist zudem, einen neuen Prompt zu erzwingen: Drücke Ctrl+J gefolgt von reset und wieder Enter (falls Enter alleine nicht mehr erkannt wird).',
-                commands: ["reset"],
-              },
-              {
-                question:
-                  "Ein Befehl läuft endlos und reagiert nicht – was soll ich machen?",
-                answer:
-                  "Mit Strg + C (Control-C) bricht man den laufenden Prozess ab. Sollte auch das nicht gehen (sehr selten), kann man in einem anderen Terminal sudo killall <prozessname> oder sudo kill <PID> ausführen, um den Prozess zu beenden. In grafischen Desktop-Sitzungen gibt es auch den System Monitor oder htop, um Prozesse abzuschießen. In der Regel reicht jedoch Strg+C, um einen hängenden Prozess zu stoppen.",
-                commands: ["kill", "killall"],
-              },
-              {
-                question:
-                  "Nach der Anmeldung sehe ich nur $ anstelle von kali@...$ und Befehle wie ls funktionieren nicht. Was ist passiert?",
-                answer:
-                  'Ein Prompt, der nur $ anzeigt, deutet darauf hin, dass man möglicherweise in der sh-Shell (oder Dash) statt in Bash gelandet ist, oder dass die Shell-Initialisierung nicht vollständig lief. Wenn dann gängige Befehle wie ls "command not found" ergeben, kann es sein, dass die PATH-Variable nicht gesetzt ist. Lösung: Versuchen, mit exec bash oder bash --login in eine Bash zu wechseln. Prüfen, ob Konfigurationsdateien wie ~/.bashrc oder ~/.profile versehentlich verändert wurden. Ggf. temporär export PATH=/usr/bin:/bin setzen, damit wichtigste Befehle wieder gefunden werden, dann die Shell-Startdateien reparieren.',
-                commands: ["bash"],
+                  "Diese Meldung bedeutet, dass eine angegebene Datei oder Pfad nicht existiert. Entweder wurde der Pfad falsch eingegeben (Tippfehler, Groß-/Kleinschreibung beachten, da Linux case-sensitiv ist) oder das Objekt ist tatsächlich nicht vorhanden. Lösung: Pfadangabe überprüfen (ls im betreffenden Verzeichnis ausführen, Tab-Autocomplete nutzen) und ggf. korrigieren.",
+                relatedCommands: [],
+                tags: ["no", "such", "file"],
               },
             ],
           },
           {
-            category: "Systeminformationen und -überwachung",
+            id: "systemInfo",
+            name: "Systeminformationen und -überwachung",
+            icon: "🖥️",
             questions: [
               {
+                id: "sys-001",
                 question:
                   "Wie finde ich heraus, welche Linux-Version und Kernel-Version ich benutze?",
                 answer:
-                  "Mit uname -a erhält man einen Überblick über Systemname, Kernel-Version, Architektur usw. Beispielausgabe: Linux kali 6.5.0-kali1-amd64 #1 SMP Debian 6.5.5-1kali1 (2023-10-10) x86_64 GNU/Linux. Für die Distribution kann man auch lsb_release -a verwenden, das z. B. Kali-Version und Codename anzeigt.",
-                commands: ["uname", "lsb_release"],
+                  "Mit uname -a erhält man einen Überblick über Systemname, Kernel-Version, Architektur usw. Für die Distribution kann man auch lsb_release -a verwenden, das z. B. Kali-Version und Codename anzeigt.",
+                relatedCommands: [],
+                tags: ["uname", "version"],
               },
               {
-                question:
-                  "Wie kann ich die Hardware-Informationen meines Systems anzeigen?",
-                answer:
-                  "Einige nützliche Befehle: lscpu zeigt CPU-Details (Anzahl Kerne, Modell, Flags), lsusb listet USB-Geräte auf, lspci PCI-Geräte. Für den Arbeitsspeicher grep MemTotal /proc/meminfo. Kali bringt auch neofetch mit, das eine kompakte Systemübersicht mit ASCII-Logo ausgeben kann (inkl. OS, Kernel, CPU, RAM etc.).",
-                commands: ["lscpu", "lsusb", "lspci"],
-              },
-              {
+                id: "sys-002",
                 question:
                   "Wie überwache ich die aktuelle Auslastung der CPU und des RAM?",
                 answer:
-                  "Mit top erhält man eine dynamische Live-Ansicht der laufenden Prozesse und ihrer CPU-/Speicherauslastung. Oben zeigt top außerdem Gesamtwerte für CPU (in %), RAM und Swap an. Ein besser lesbares, alternatives Tool ist htop (falls installiert). Wenn es nur um einen Schnappschuss geht: uptime zeigt die Load Average an (Durchschnittslast) und free -h den aktuellen belegten/freien Speicher.",
-                commands: ["top", "htop", "uptime", "free"],
+                  "Mit top erhält man eine dynamische Live-Ansicht der laufenden Prozesse und ihrer CPU-/Speicherauslastung. Oben zeigt top außerdem Gesamtwerte für CPU (in %), RAM und Swap an. Ein besser lesbares, alternatives Tool ist htop (falls installiert).",
+                relatedCommands: [],
+                tags: ["top", "htop", "cpu", "ram"],
               },
               {
-                question: "Wie sehe ich, wie lange mein System schon läuft?",
-                answer:
-                  "Der Befehl uptime gibt die aktuelle Uhrzeit, die Systemlaufzeit (seit dem letzten Start), die Anzahl eingeloggter Benutzer und die durchschnittliche Last an. Beispiel: 17:30:45 up 2:15, 1 user, load average: 0.05, 0.10, 0.09 bedeutet das System läuft seit 2 Stunden 15 Minuten.",
-                commands: ["uptime"],
-              },
-              {
+                id: "sys-003",
                 question:
                   "Wie prüfe ich, wie viel Festplattenplatz belegt bzw. frei ist?",
                 answer:
-                  "Dafür verwendet man df -h. df (disk free) listet alle eingehängten Dateisysteme mit genutztem und freiem Speicherplatz; die Option -h zeigt die Werte in menschenlesbarer Form (KiB/ MiB/ GiB). Man sieht z. B., wie voll die Root-Partition ist. Möchte man den Speicherverbrauch eines bestimmten Verzeichnisses wissen, benutzt man du -sh <verzeichnis> (disk usage, -s summarisch für das Verzeichnis, -h human-readable).",
-                commands: ["df", "du"],
-              },
-              {
-                question:
-                  "Wie kann ich bestimmte Prozessinformationen abrufen?",
-                answer:
-                  'Mit ps aux lassen sich alle laufenden Prozesse auflisten (mit User, PID, CPU/RAM-Verbrauch etc.). Möchte man nach einem bestimmten Prozess filtern, kann man ps aux | grep name nutzen. Detaillierte Infos zu einem Prozess liefert ps -p <PID> -o alles, wobei man anstelle von "alles" spezifische Felder angeben kann (siehe man ps). Für einen Echtzeit-Überblick siehe top oder htop (vorher genannt).',
-                commands: ["ps"],
-              },
-              {
-                question: "Wie kann ich System-Logs einsehen?",
-                answer:
-                  "Log-Dateien liegen meist unter /var/log/. Wichtige Logs sind z. B. /var/log/syslog (Systemmeldungen), /var/log/auth.log (Anmeldungen und sudo), dmesg (Kernel-Meldungen, auslesbar mit dem Befehl dmesg). Man kann diese Dateien mit tail -f <logdatei> live mitlesen oder mit grep durchsuchen. Kali nutzt systemd, daher ist auch journalctl -xe nützlich, um aktuelle Fehlermeldungen im System-Log zu sehen.",
-                commands: ["tail", "dmesg", "journalctl"],
+                  "Dafür verwendet man df -h. df (disk free) listet alle eingehängten Dateisysteme mit genutztem und freiem Speicherplatz; die Option -h zeigt die Werte in menschenlesbarer Form (KiB/ MiB/ GiB).",
+                relatedCommands: [],
+                tags: ["df", "festplatte"],
               },
             ],
           },
           {
-            category: "Nützliche Tools und Befehle",
+            id: "tools",
+            name: "Nützliche Tools und Befehle",
+            icon: "🛠️",
             questions: [
               {
+                id: "tool-001",
                 question: "Wie verwende ich Nmap, um mein Netzwerk zu scannen?",
                 answer:
-                  "Nmap ist ein Netzwerkscanner. Einige Beispiele: – Ping-Scan: nmap -sn 192.168.1.0/24 pingt ein ganzes Netz (hier 192.168.1.0 bis 192.168.1.255) an und listet aktive Hosts. – Port-Scan: nmap 192.168.1.100 scannt die häufigsten 1000 TCP-Ports auf Host .100. Mit -p 1-65535 kann man alle Ports scannen, mit -sU UDP-Ports. – Service-/OS-Scan: nmap -sV -O 192.168.1.100 versucht, Dienste-Versionen und das Betriebssystem des Ziels zu erkennen. Nmap bietet sehr umfangreiche Möglichkeiten, einschließlich Skripte (-sC) und aggressivere Scans (-A). Für den Einstieg liefert jedoch ein einfacher Portscan schon viel Information über offene Ports und Dienste.",
-                commands: ["nmap"],
+                  "Nmap ist ein Netzwerkscanner. Einige Beispiele: Ping-Scan: nmap -sn 192.168.1.0/24 pingt ein ganzes Netz an und listet aktive Hosts. Port-Scan: nmap 192.168.1.100 scannt die häufigsten 1000 TCP-Ports auf Host .100. Service-/OS-Scan: nmap -sV -O 192.168.1.100 versucht, Dienste-Versionen und das Betriebssystem des Ziels zu erkennen.",
+                relatedCommands: [],
+                tags: ["nmap", "netzwerk"],
               },
               {
-                question:
-                  "Wofür wird Netcat (nc) verwendet und wie funktioniert es?",
-                answer:
-                  'Netcat ist ein vielseitiges Tool für die Netzwerkkommunikation – oft bezeichnet als "Schweizer Taschenmesser" der TCP/UDP-Tools. Beispiele: – Port-Check/Portscan: nc -zv <host> <port> prüft, ob ein bestimmter Port auf einem Host offen ist (z. B. nc -zv 192.168.1.1 80 prüft Port 80). – Listener aufsetzen: nc -l -p 4444 lauscht auf Port 4444 auf eingehende Verbindungen (ein rudimentärer Server). – Client verbinden: nc <ip> 4444 verbindet zu einem solchen Listener. Alles was eine Seite tippt, wird zur anderen übertragen – so kann man z. B. einen einfachen Chat oder Datentransfer realisieren. – Dateitransfer: Auf Empfängerseite: nc -l -p 5555 > received.file und auf Senderseite: nc <ip> 5555 < file.to.send – so wird file.to.send per Netcat übertragen. Netcat kann noch mehr, inkl. Port-Weiterleitungen und Banner-Grabbing. Da Netcat keine Verschlüsselung bietet, sollte es in sicheren Netzwerken oder zu Testzwecken verwendet werden.',
-                commands: ["nc", "netcat"],
-              },
-              {
-                question:
-                  "Wie kann ich Dateien von einem Webserver herunterladen (Wget)?",
-                answer:
-                  "wget ist ein einfaches Download-Tool. Beispiel: wget https://downloads.kali.org/tool.deb lädt die Datei tool.deb herunter. Standardmäßig speichert wget im aktuellen Verzeichnis und zeigt einen Fortschritt an. Es unterstützt viele Parameter, z. B. -c zum Fortsetzen abgebrochener Downloads oder -r für rekursives Herunterladen von Websites.",
-                commands: ["wget"],
-              },
-              {
-                question:
-                  "Wie kann ich HTTP-Anfragen stellen oder APIs testen (cURL)?",
-                answer:
-                  'cURL ist sehr mächtig für Webanfragen: – Eine einfache GET-Anfrage: curl http://api.icndb.com/jokes/1 ruft z. B. eine Joke-API auf und gibt JSON aus. – Datei herunterladen: curl -O http://example.com/file.txt funktioniert ähnlich wie wget (speichert unter gleichem Namen). – POST-Anfrage senden: curl -d "user=test&pass=123" -X POST http://example.com/login sendet Formulardaten via POST. – Header anzeigen: curl -I http://example.com zeigt nur die HTTP-Header an (Kopfzeilen der Antwort). cURL eignet sich somit, um Web-APIs zu testen, Dateien zu laden oder generell mit Webservices zu interagieren. (Tipp: Mit Option -v sieht man detaillierte Request/Response, mit -H kann man Header setzen usw.)',
-                commands: ["curl"],
-              },
-              {
-                question:
-                  "Wie öffne ich eine sichere Shell-Verbindung zu einem anderen Rechner (SSH)?",
-                answer:
-                  "Mit dem ssh-Befehl. Syntax: ssh <benutzer>@<hostname>. Beispiel: ssh root@192.168.0.10 stellt eine SSH-Verbindung zum Host 192.168.0.10 als Benutzer root her (es wird nach dem Passwort gefragt, sofern kein Key genutzt wird). Über SSH kann man Befehle auf dem entfernten System ausführen und hat eine verschlüsselte Terminalsession. Für Key-basierten Login verwendet man die Option -i /Pfad/zum/Schlüssel. Standard läuft SSH auf Port 22; falls der Server einen anderen Port nutzt, kann man mit -p <Port> einen abweichenden Port angeben.",
-                commands: ["ssh"],
-              },
-              {
-                question:
-                  "Welche weiteren nützlichen Hacking-Tools bringt Kali Linux mit?",
-                answer:
-                  "Kali ist vollgepackt mit Security-Tools. Einige Beispiele: – sqlmap: Automatisches SQL-Injection-Tool zum Auffinden und Exploitieren von SQL-Injection-Schwachstellen. – hydra: Passwort-Cracking-Tool für Online-Dienste (Brute-Force auf Login z. B. FTP, HTTP, SSH). – aircrack-ng: Suite zum Knacken von WLAN-Verschlüsselungen (WEP/WPA Handshakes). – burpsuite: Plattform zum Testen von Webanwendungen (Proxy zum Manipulieren von HTTP(S)-Traffic, Scanner etc.). – metasploit-framework: Umfangreiches Exploit-Framework zum Durchführen von Penetrationstests. – Wireshark: Grafischer Netzwerk-Sniffer/Protokoll-Analyzer zum Mitschneiden und Analysieren von Netzwerkverkehr. Diese Tools sind meist für fortgeschrittene Anwender – Anfänger sollten sich zunächst mit den Grundlagen der Linux-CLI vertraut machen, bevor sie diese einsetzen. Dennoch gehört es zum Kali-Einstieg dazu, zumindest zu wissen, dass diese Tools existieren und wofür sie da sind.",
-                commands: ["sqlmap", "hydra", "aircrack-ng"],
-              },
-              {
-                question:
-                  "Wie kann ich herausfinden, wo ein bestimmtes Programm liegt?",
-                answer:
-                  'Mit which <befehl> zeigt die Shell den Pfad zur auszuführenden Datei an, die dem Befehl entspricht. Beispiel: which nmap gibt z. B. /usr/bin/nmap aus. Existiert der Befehl nicht (oder ist kein externer Befehl sondern Shell-intern), gibt which nichts aus. Für Shell-Builtins kann type <name> weiterhelfen (z. B. type cd sagt "cd is a shell builtin").',
-                commands: ["which", "type"],
-              },
-              {
+                id: "tool-002",
                 question: "Wie bekomme ich Hilfe zu Befehlen (Man-Pages)?",
                 answer:
                   "Linux bietet zu den meisten Befehlen Handbuchseiten. Mit man <befehl> öffnet man die Manual-Page zum jeweiligen Befehl. Diese enthalten Beschreibung, Aufrufsyntax, Optionen und oft Beispiele. Beispiel: man ls erklärt alle Optionen von ls. Mit Q verlässt man die man-Page wieder. Alternativ zeigen viele Befehle mit --help eine Kurzinfo an, z. B. ls --help.",
-                commands: ["man"],
+                relatedCommands: [],
+                tags: ["man", "help"],
               },
             ],
           },
         ];
 
-        // Konvertiere in finale Struktur
-        const categories = [];
+        // Erstelle commandToFaqMap automatisch aus relatedCommands
         const commandToFaqMap = {};
-
-        faqRawData.forEach((categoryData) => {
-          const categoryInfo = categoryMap[categoryData.category];
-          if (!categoryInfo) return;
-
-          const questions = categoryData.questions.map((q, index) => {
-            const questionId = `${categoryInfo.id}-${String(index + 1).padStart(
-              3,
-              "0"
-            )}`;
-            const relatedCommands = q.commands || [];
-
-            // Erstelle Tags aus Commands und Frage-Text
-            const tags = [
-              ...relatedCommands,
-              ...q.question
-                .toLowerCase()
-                .split(/\s+/)
-                .filter((word) => word.length > 3),
-            ].slice(0, 5);
-
-            // Füge zu commandToFaqMap hinzu
-            relatedCommands.forEach((cmd) => {
-              const normalizedCmd = cmd.toLowerCase().replace(/\s+/g, "_");
-              if (!commandToFaqMap[normalizedCmd]) {
-                commandToFaqMap[normalizedCmd] = [];
+        categories.forEach((category) => {
+          category.questions.forEach((question) => {
+            question.relatedCommands.forEach((cmd) => {
+              if (!commandToFaqMap[cmd]) {
+                commandToFaqMap[cmd] = [];
               }
-              if (!commandToFaqMap[normalizedCmd].includes(questionId)) {
-                commandToFaqMap[normalizedCmd].push(questionId);
-              }
+              commandToFaqMap[cmd].push(question.id);
             });
-
-            return {
-              id: questionId,
-              question: q.question,
-              answer: q.answer,
-              relatedCommands: relatedCommands,
-              tags: tags,
-            };
-          });
-
-          categories.push({
-            id: categoryInfo.id,
-            name: categoryInfo.name,
-            icon: categoryInfo.icon,
-            questions: questions,
           });
         });
 
         return {
-          categories: categories,
-          commandToFaqMap: commandToFaqMap,
+          categories,
+          commandToFaqMap,
         };
       }
 
@@ -8806,9 +9110,9 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             const itemDiv = document.createElement("div");
             itemDiv.className = "hotkeys-item";
             itemDiv.innerHTML = `
-              <span class="hotkeys-shortcut">${item.shortcut}</span>
-              <span class="hotkeys-description">– ${item.description}</span>
-            `;
+                    <span class="hotkeys-shortcut">${item.shortcut}</span>
+                    <span class="hotkeys-description">– ${item.description}</span>
+                  `;
             sectionDiv.appendChild(itemDiv);
           });
 
@@ -8872,14 +9176,14 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
                     ? "rgba(34, 197, 94, 0.4)"
                     : "rgba(239, 68, 68, 0.4)"
                 }; font-size: 0.8rem;">
-                  <span>${segment.icon}</span>
-                  <span style="color: ${
-                    isUnlocked ? "#86efac" : "#fca5a5"
-                  }; font-weight: 500;">${segment.name}</span>
-                  <span style="color: ${
-                    isUnlocked ? "#86efac" : "#fca5a5"
-                  }; opacity: 0.8; font-size: 0.75rem;">${progress}/${totalQuizzes}</span>
-                </div>`;
+                        <span>${segment.icon}</span>
+                        <span style="color: ${
+                          isUnlocked ? "#86efac" : "#fca5a5"
+                        }; font-weight: 500;">${segment.name}</span>
+                        <span style="color: ${
+                          isUnlocked ? "#86efac" : "#fca5a5"
+                        }; opacity: 0.8; font-size: 0.75rem;">${progress}/${totalQuizzes}</span>
+                      </div>`;
               }
             }
 
@@ -8908,13 +9212,13 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
               // Add unlock button for command section if locked
               if (!isUnlocked && item.badgeRequired) {
                 commandHtml += `<div style="margin-top: 0.5rem;">
-                  <button type="button" class="kali-tools-chicken-btn" data-tool-name="${item.name.replace(
-                    /"/g,
-                    "&quot;"
-                  )}" data-segment-id="${
+                        <button type="button" class="kali-tools-chicken-btn" data-tool-name="${item.name.replace(
+                          /"/g,
+                          "&quot;"
+                        )}" data-segment-id="${
                   item.badgeRequired
                 }" data-unlock-type="command" title="Klicken um Inhalt ohne Quiz freizuschalten">🐔 Freischalten</button>
-                </div>`;
+                      </div>`;
               }
 
               html += commandHtml;
@@ -9015,17 +9319,17 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
                   // Show feedback
                   const feedback = document.createElement("div");
                   feedback.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: rgba(34, 197, 94, 0.9);
-                    color: white;
-                    padding: 1rem 1.5rem;
-                    border-radius: 0.5rem;
-                    z-index: 100;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                    animation: slideIn 0.3s ease-out;
-                  `;
+                          position: fixed;
+                          top: 20px;
+                          right: 20px;
+                          background: rgba(34, 197, 94, 0.9);
+                          color: white;
+                          padding: 1rem 1.5rem;
+                          border-radius: 0.5rem;
+                          z-index: 100;
+                          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                          animation: slideIn 0.3s ease-out;
+                        `;
                   feedback.textContent = `🐔 Inhalt freigeschaltet!`;
                   document.body.appendChild(feedback);
                   setTimeout(() => {
@@ -9172,10 +9476,10 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
           }`;
 
           badge.innerHTML = `
-            <span class="kali-tools-badge-icon">${segment.icon}</span>
-            <span class="kali-tools-badge-name">${segment.name}</span>
-            <span class="kali-tools-badge-progress">${progress}/${totalQuizzes}</span>
-          `;
+                  <span class="kali-tools-badge-icon">${segment.icon}</span>
+                  <span class="kali-tools-badge-name">${segment.name}</span>
+                  <span class="kali-tools-badge-progress">${progress}/${totalQuizzes}</span>
+                `;
 
           badge.title = isUnlocked
             ? `${segment.name} freigeschaltet (${progressPercentage}%)`
@@ -9240,9 +9544,9 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
 
         if (tool.example) {
           contentHTML += `<div class="kali-tools-example" style="margin-top: 1rem;">
-            <div class="kali-tools-example-title">📝 Anwendungsbeispiel</div>
-            <div class="kali-tools-example-content">${tool.example}</div>
-          </div>`;
+                  <div class="kali-tools-example-title">📝 Anwendungsbeispiel</div>
+                  <div class="kali-tools-example-content">${tool.example}</div>
+                </div>`;
         }
 
         overlayContent.innerHTML = contentHTML;
@@ -9948,6 +10252,15 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         ) {
           closeMistakesModal();
         }
+        if (
+          event.key === "Escape" &&
+          document.getElementById("faq-modal-root") &&
+          !document
+            .getElementById("faq-modal-root")
+            .classList.contains("hidden")
+        ) {
+          closeFaqModal();
+        }
       });
 
       // Master Quiz Submit Handler
@@ -10158,6 +10471,298 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         }
       }
 
+      // FAQ Modal Functions - Agent 3
+      let currentFaqCategory = null;
+      let currentFaqSearch = "";
+      let bookmarkedFaqs = JSON.parse(
+        localStorage.getItem("faqBookmarks") || "[]"
+      );
+
+      function getBookmarkedFaqs() {
+        try {
+          return JSON.parse(localStorage.getItem("faqBookmarks") || "[]");
+        } catch {
+          return [];
+        }
+      }
+
+      function saveBookmarkedFaqs(bookmarks) {
+        localStorage.setItem("faqBookmarks", JSON.stringify(bookmarks));
+        bookmarkedFaqs = bookmarks;
+      }
+
+      function toggleBookmark(faqId) {
+        const bookmarks = getBookmarkedFaqs();
+        const index = bookmarks.indexOf(faqId);
+        if (index > -1) {
+          bookmarks.splice(index, 1);
+        } else {
+          bookmarks.push(faqId);
+        }
+        saveBookmarkedFaqs(bookmarks);
+        renderFaqContent(currentFaqCategory, currentFaqSearch);
+      }
+
+      function isBookmarked(faqId) {
+        return bookmarkedFaqs.includes(faqId);
+      }
+
+      function highlightText(text, query) {
+        if (!query || query.trim() === "") return text;
+        const regex = new RegExp(
+          `(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
+          "gi"
+        );
+        return text.replace(regex, "<mark>$1</mark>");
+      }
+
+      function searchFaqs(query) {
+        currentFaqSearch = query;
+        renderFaqContent(currentFaqCategory, query);
+      }
+
+      function renderRelatedCommands(relatedCommands, container) {
+        container.innerHTML = "";
+        if (!relatedCommands || relatedCommands.length === 0) return;
+
+        const label = document.createElement("span");
+        label.className = "faq-related-commands-label";
+        label.textContent = "Verwandte Commands:";
+        container.appendChild(label);
+
+        relatedCommands.forEach((cmdId) => {
+          const badge = document.createElement("a");
+          badge.className = "faq-related-command-badge";
+          badge.href = "#";
+          badge.textContent = cmdId;
+          badge.addEventListener("click", (e) => {
+            e.preventDefault();
+            closeFaqModal();
+            const card = commandCards.find(
+              (c) => c.dataset.command === cmdId || c.dataset.quizId === cmdId
+            );
+            if (card) {
+              card.scrollIntoView({ behavior: "smooth", block: "center" });
+              card.style.boxShadow = "0 0 20px rgba(59, 130, 246, 0.5)";
+              setTimeout(() => {
+                card.style.boxShadow = "";
+              }, 2000);
+            }
+          });
+          container.appendChild(badge);
+        });
+      }
+
+      function renderFaqContent(categoryFilter = null, searchQuery = "") {
+        if (!faqData || !faqData.categories) return;
+
+        const contentEl = document.getElementById("faq-content");
+        const categoryListEl = document.getElementById("faq-category-list");
+        if (!contentEl || !categoryListEl) return;
+
+        currentFaqCategory = categoryFilter;
+        currentFaqSearch = searchQuery;
+
+        // Render Kategorien-Sidebar
+        categoryListEl.innerHTML = "";
+        faqData.categories.forEach((category) => {
+          const categoryItem = document.createElement("div");
+          categoryItem.className = `faq-category-item ${
+            categoryFilter === category.id ? "active" : ""
+          }`;
+          categoryItem.innerHTML = `
+                  <span class="faq-category-icon">${category.icon}</span>
+                  <span class="faq-category-name">${category.name}</span>
+                  <span class="faq-category-count">${category.questions.length}</span>
+                `;
+          categoryItem.addEventListener("click", () => {
+            renderFaqContent(category.id, searchQuery);
+          });
+          categoryListEl.appendChild(categoryItem);
+        });
+
+        // Filter FAQs
+        let filteredQuestions = [];
+        faqData.categories.forEach((category) => {
+          if (categoryFilter && categoryFilter !== category.id) return;
+          category.questions.forEach((question) => {
+            if (
+              searchQuery &&
+              searchQuery.trim() !== "" &&
+              !question.question
+                .toLowerCase()
+                .includes(searchQuery.toLowerCase()) &&
+              !question.answer.toLowerCase().includes(searchQuery.toLowerCase())
+            ) {
+              return;
+            }
+            filteredQuestions.push({ ...question, category });
+          });
+        });
+
+        // Render FAQ Content
+        contentEl.innerHTML = "";
+
+        if (filteredQuestions.length === 0) {
+          const emptyState = document.createElement("div");
+          emptyState.className = "faq-empty-state";
+          emptyState.innerHTML = `
+                  <div class="faq-empty-state-icon">🔍</div>
+                  <div class="faq-empty-state-text">
+                    ${
+                      searchQuery
+                        ? "Keine FAQs gefunden."
+                        : "Wähle eine Kategorie aus der Sidebar."
+                    }
+                  </div>
+                `;
+          contentEl.appendChild(emptyState);
+          return;
+        }
+
+        // Gruppiere nach Kategorie
+        const groupedByCategory = {};
+        filteredQuestions.forEach((item) => {
+          if (!groupedByCategory[item.category.id]) {
+            groupedByCategory[item.category.id] = {
+              category: item.category,
+              questions: [],
+            };
+          }
+          groupedByCategory[item.category.id].questions.push(item);
+        });
+
+        // Render jede Kategorie
+        Object.values(groupedByCategory).forEach((group) => {
+          if (!categoryFilter) {
+            const categoryHeader = document.createElement("div");
+            categoryHeader.className = "faq-category-header";
+            categoryHeader.innerHTML = `
+                    <h2>
+                      <span class="faq-category-icon">${group.category.icon}</span>
+                      ${group.category.name}
+                    </h2>
+                  `;
+            contentEl.appendChild(categoryHeader);
+          }
+
+          group.questions.forEach((item) => {
+            const accordionItem = document.createElement("div");
+            accordionItem.className = "faq-accordion-item";
+            accordionItem.id = `faq-item-${item.id}`;
+
+            const questionDiv = document.createElement("div");
+            questionDiv.className = "faq-question";
+            questionDiv.innerHTML = `
+                    <span class="faq-question-text">${highlightText(
+                      item.question,
+                      searchQuery
+                    )}</span>
+                    <div class="faq-question-actions">
+                      <button
+                        type="button"
+                        class="faq-bookmark-btn ${
+                          isBookmarked(item.id) ? "bookmarked" : ""
+                        }"
+                        data-faq-id="${item.id}"
+                        aria-label="Bookmark"
+                      >
+                        ${isBookmarked(item.id) ? "⭐" : "☆"}
+                      </button>
+                      <span class="faq-expand-icon">▼</span>
+                    </div>
+                  `;
+
+            const answerDiv = document.createElement("div");
+            answerDiv.className = "faq-answer";
+            const answerContent = document.createElement("div");
+            answerContent.className = "faq-answer-content";
+            answerContent.innerHTML = highlightText(item.answer, searchQuery);
+
+            const relatedCommandsDiv = document.createElement("div");
+            relatedCommandsDiv.className = "faq-related-commands";
+            renderRelatedCommands(item.relatedCommands, relatedCommandsDiv);
+
+            answerContent.appendChild(relatedCommandsDiv);
+            answerDiv.appendChild(answerContent);
+
+            questionDiv.addEventListener("click", (e) => {
+              if (e.target.closest(".faq-bookmark-btn")) return;
+              accordionItem.classList.toggle("expanded");
+            });
+
+            questionDiv
+              .querySelector(".faq-bookmark-btn")
+              .addEventListener("click", (e) => {
+                e.stopPropagation();
+                toggleBookmark(item.id);
+              });
+
+            accordionItem.appendChild(questionDiv);
+            accordionItem.appendChild(answerDiv);
+            contentEl.appendChild(accordionItem);
+          });
+        });
+      }
+
+      function scrollToFaq(questionId) {
+        const item = document.getElementById(`faq-item-${questionId}`);
+        if (item) {
+          item.scrollIntoView({ behavior: "smooth", block: "center" });
+          item.classList.add("expanded");
+          setTimeout(() => {
+            item.style.boxShadow = "0 0 20px rgba(59, 130, 246, 0.5)";
+            setTimeout(() => {
+              item.style.boxShadow = "";
+            }, 2000);
+          }, 300);
+        }
+      }
+
+      function openFaqModal(categoryId = null, questionId = null) {
+        const modal = document.getElementById("faq-modal-root");
+        if (!modal) return;
+
+        renderFaqContent(categoryId, currentFaqSearch);
+
+        modal.classList.remove("hidden");
+        modal.setAttribute("aria-hidden", "false");
+
+        if (questionId) {
+          setTimeout(() => scrollToFaq(questionId), 100);
+        }
+      }
+
+      function closeFaqModal() {
+        const modal = document.getElementById("faq-modal-root");
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.setAttribute("aria-hidden", "true");
+        }
+      }
+
+      // FAQ Modal Event Handlers
+      const faqModalCloseBtn = document.getElementById("faq-modal-close-btn");
+      if (faqModalCloseBtn) {
+        faqModalCloseBtn.addEventListener("click", closeFaqModal);
+      }
+
+      const faqModalRoot = document.getElementById("faq-modal-root");
+      if (faqModalRoot) {
+        faqModalRoot.addEventListener("click", (event) => {
+          if (event.target.classList.contains("quiz-backdrop")) {
+            closeFaqModal();
+          }
+        });
+      }
+
+      const faqSearchInput = document.getElementById("faq-search-input");
+      if (faqSearchInput) {
+        faqSearchInput.addEventListener("input", (e) => {
+          searchFaqs(e.target.value);
+        });
+      }
+
       // Kali Tools Modal Event Handlers
       const kaliToolsCloseBtn = document.getElementById("kali-tools-close-btn");
       if (kaliToolsCloseBtn) {
@@ -10183,6 +10788,12 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
       const mistakesCard = document.getElementById("mistakes-card");
       if (mistakesCard) {
         mistakesCard.addEventListener("click", openMistakesModal);
+      }
+
+      // FAQ Card Click Handler
+      const faqCard = document.getElementById("faq-card");
+      if (faqCard) {
+        faqCard.addEventListener("click", () => openFaqModal());
       }
 
       // Beginner Mistakes Modal Event Handlers
