@@ -1370,6 +1370,32 @@
       .quiz-option input {
         margin-top: 0.12rem;
       }
+      .quiz-option.highlight-correct {
+        background: rgba(34, 197, 94, 0.15);
+        border-left: 3px solid #22c55e;
+        padding-left: 0.5rem;
+        border-radius: 0.25rem;
+      }
+      .quiz-chicken-btn {
+        margin-top: 0.5rem;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+        background: rgba(245, 158, 11, 0.15);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        border-radius: 0.4rem;
+        color: #fbbf24;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 500;
+      }
+      .quiz-chicken-btn:hover {
+        background: rgba(245, 158, 11, 0.25);
+        border-color: rgba(245, 158, 11, 0.5);
+        transform: translateY(-1px);
+      }
+      .quiz-chicken-btn:active {
+        transform: translateY(0);
+      }
       .quiz-footer {
         display: flex;
         justify-content: space-between;
@@ -6454,21 +6480,46 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         // Question
         const questionDiv = document.createElement("div");
         questionDiv.className = "quiz-question";
-        questionDiv.innerHTML = `
-          <div class="quiz-question-title">${masterQuiz.question}</div>
-          <div class="quiz-options">
-            ${masterQuiz.options
-              .map(
-                (opt, idx) => `
-              <label class="quiz-option">
+        const optionsHTML = masterQuiz.options
+          .map(
+            (opt, idx) => `
+              <label class="quiz-option" data-option-index="${idx}">
                 <input type="radio" name="master-quiz-option" value="${idx}" />
                 <span><code>${opt}</code></span>
               </label>
             `
-              )
-              .join("")}
+          )
+          .join("");
+        questionDiv.innerHTML = `
+          <div class="quiz-question-title">${masterQuiz.question}</div>
+          <div class="quiz-options">
+            ${optionsHTML}
           </div>
         `;
+        // Chicken-Button für Master-Quiz hinzufügen
+        const chickenBtn = document.createElement("button");
+        chickenBtn.type = "button";
+        chickenBtn.className = "quiz-chicken-btn";
+        chickenBtn.textContent = "🐔 Lösung zeigen";
+        chickenBtn.dataset.correctIndex = masterQuiz.correctIndex;
+        chickenBtn.addEventListener("click", function () {
+          const correctIdx = parseInt(this.dataset.correctIndex);
+          const optionsDiv = questionDiv.querySelector(".quiz-options");
+          const allLabels = optionsDiv.querySelectorAll("label");
+          allLabels.forEach((label, labelIdx) => {
+            if (labelIdx === correctIdx) {
+              label.classList.add("highlight-correct");
+              const radio = label.querySelector("input[type=radio]");
+              if (radio) radio.checked = true;
+            } else {
+              label.classList.remove("highlight-correct");
+            }
+          });
+          this.disabled = true;
+          this.style.opacity = "0.5";
+          this.style.cursor = "not-allowed";
+        });
+        questionDiv.appendChild(chickenBtn);
         bodyEl.appendChild(questionDiv);
 
         modal.classList.remove("hidden");
@@ -7759,6 +7810,7 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
           q.options.forEach((opt, optIdx) => {
             const label = document.createElement("label");
             label.className = "quiz-option";
+            label.dataset.optionIndex = optIdx;
             const radio = document.createElement("input");
             radio.type = "radio";
             radio.name = questionId;
@@ -7769,10 +7821,34 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             label.appendChild(text);
             options.appendChild(label);
           });
+          // Chicken-Button hinzufügen
+          const chickenBtn = document.createElement("button");
+          chickenBtn.type = "button";
+          chickenBtn.className = "quiz-chicken-btn";
+          chickenBtn.textContent = "🐔 Lösung zeigen";
+          chickenBtn.dataset.questionIndex = idx;
+          chickenBtn.dataset.correctIndex = q.correctIndex;
+          chickenBtn.addEventListener("click", function () {
+            const correctIdx = parseInt(this.dataset.correctIndex);
+            const allLabels = options.querySelectorAll("label");
+            allLabels.forEach((label, labelIdx) => {
+              if (labelIdx === correctIdx) {
+                label.classList.add("highlight-correct");
+                const radio = label.querySelector("input[type=radio]");
+                if (radio) radio.checked = true;
+              } else {
+                label.classList.remove("highlight-correct");
+              }
+            });
+            this.disabled = true;
+            this.style.opacity = "0.5";
+            this.style.cursor = "not-allowed";
+          });
           wrapper.dataset.quizQuestionIndex = idx;
           wrapper.appendChild(title);
           wrapper.appendChild(meta);
           wrapper.appendChild(options);
+          wrapper.appendChild(chickenBtn);
           quizBodyEl.appendChild(wrapper);
         });
 

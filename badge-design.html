@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kompetenz-Badges</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="page-header">
+    <p class="badge-bar__lede">Alle fünf Haupt-Badges folgen derselben Linie und teilen sich Abstände, Ausrichtung und Fokus.</p>
+    <div class="badge-bar" aria-label="Kompetenzleiste">
+      <div class="badge badge--foundation">
+        <span class="badge__title">Grundlagen</span>
+        <small class="badge__hint">Basiswissen &amp; Setup</small>
+      </div>
+      <div class="badge badge--security">
+        <span class="badge__title">Sicherheit</span>
+        <small class="badge__hint">Härtung &amp; Auth</small>
+      </div>
+      <div class="badge badge--ops">
+        <span class="badge__title">Ops</span>
+        <small class="badge__hint">Tooling &amp; CLI</small>
+      </div>
+      <div class="badge badge--network">
+        <span class="badge__title">Netzwerk</span>
+        <small class="badge__hint">Scanning &amp; Analyse</small>
+      </div>
+      <div class="badge badge--advanced">
+        <span class="badge__title">Fortgeschritten</span>
+        <small class="badge__hint">Vertiefung &amp; Praxis</small>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="panel">
+      <h2>Systemanalyse</h2>
+      <p>
+        Die Lernoberfläche überzeugt durch klar gegliederte Themenbereiche, kleine Aufgabenpakete
+        und unmittelbares Feedback über Modale, Erfolgsanimationen und Fehlerhinweise.
+        Gleichzeitig bleibt die Struktur flexibel für neue Themen oder Vertiefungen.
+      </p>
+      <div class="strengths">
+        <h3>Stärken</h3>
+        <ul>
+          <li>Klar gegliederte Themenbereiche mit logischem Aufbau.</li>
+          <li>Badges vermitteln Fortschritt und Motivation.</li>
+          <li>Modal-Interaktionen liefern direktes Feedback.</li>
+          <li>Struktur ist flexibel für Erweiterungen.</li>
+        </ul>
+      </div>
+      <div class="weaknesses">
+        <h3>Schwachstellen</h3>
+        <ul>
+          <li>Visuelle Konsistenz fehlte, Unter-Badges wirkten isoliert.</li>
+          <li>Begriffe überlappten und erschwerten die Zuordnung.</li>
+          <li>Aufgabenabfolge könnte flüssiger geführt werden.</li>
+          <li>Visuelle Leitlinien zur Orientierung fehlten stellenweise.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel panel--improvements">
+      <h2>Geplante Verbesserungen</h2>
+      <ol>
+        <li>
+          <strong>Einheitliche visuelle Linie:</strong> Alle fünf Haupt-Badges sitzen nun auf einer klaren Achse mit identischen Abständen.
+        </li>
+        <li>
+          <strong>Farbliche Fokuspunkte:</strong> Jede Kompetenz hat einen eindeutigen Farbton, der sich in Modalen, Segmenten und Hinweisen wiederfindet.
+        </li>
+        <li>
+          <strong>Integration der Unter-Badges:</strong> Unter-Badges reihen sich direkt unter ihre Hauptkategorie ein und übernehmen deren Farb- und Layoutprinzipien.
+        </li>
+        <li>
+          <strong>Sanfte Progressionslinie:</strong> Ein kurzer Einleitungstext beschreibt das Badge, gefolgt von kleinen Schritten, die sichtbar aufeinander aufbauen.
+        </li>
+        <li>
+          <strong>Verbesserte visuelle Führung:</strong> Klare Abschnittsmarkierungen, dezente Hervorhebungen und optionale Beispielskizzen erleichtern das Verständnis.
+        </li>
+      </ol>
+    </section>
+
+    <section class="panel panel--subgrid">
+      <h2>Unter-Badges &amp; Progression</h2>
+      <div class="badge-subgrid">
+        <article class="subcard badge--foundation">
+          <header>
+            <p class="subcard__category">Grundlagen</p>
+            <h3>Setup &amp; Orientierung</h3>
+          </header>
+          <p class="subcard__intro">Einleitung zu Werkzeugen, Terminal-Bedienung und Basis-Kommandos.</p>
+          <ol class="progression">
+            <li>Umgebung einrichten</li>
+            <li>Dateisystem entdecken</li>
+            <li>Erste Automatisierungen</li>
+          </ol>
+        </article>
+        <article class="subcard badge--security">
+          <header>
+            <p class="subcard__category">Sicherheit</p>
+            <h3>Härtung &amp; Auth</h3>
+          </header>
+          <p class="subcard__intro">Wie man Zugriffe schützt und häufige Stolpersteine erkennt.</p>
+          <ol class="progression">
+            <li>Accounts absichern</li>
+            <li>SSH sauber nutzen</li>
+            <li>Checks automatisieren</li>
+          </ol>
+        </article>
+        <article class="subcard badge--ops">
+          <header>
+            <p class="subcard__category">Ops</p>
+            <h3>Tooling &amp; CLI</h3>
+          </header>
+          <p class="subcard__intro">Schnelle Workflows für Paketverwaltung, Logs und Monitoring.</p>
+          <ol class="progression">
+            <li>Pakete verwalten</li>
+            <li>Logs sichten</li>
+            <li>Aufgaben skripten</li>
+          </ol>
+        </article>
+        <article class="subcard badge--network">
+          <header>
+            <p class="subcard__category">Netzwerk</p>
+            <h3>Scanning &amp; Analyse</h3>
+          </header>
+          <p class="subcard__intro">Netzwerke sichtbar machen, Dienste prüfen und Ergebnisse einordnen.</p>
+          <ol class="progression">
+            <li>Netzwerk erfassen</li>
+            <li>Dienste prüfen</li>
+            <li>Funde bewerten</li>
+          </ol>
+        </article>
+        <article class="subcard badge--advanced">
+          <header>
+            <p class="subcard__category">Fortgeschritten</p>
+            <h3>Vertiefung &amp; Praxis</h3>
+          </header>
+          <p class="subcard__intro">Vertiefte Übungen, Playbooks und praxisnahe Szenarien.</p>
+          <ol class="progression">
+            <li>Workflows verfeinern</li>
+            <li>Playbooks wiederverwenden</li>
+            <li>Eigenes Toolkit bauen</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
