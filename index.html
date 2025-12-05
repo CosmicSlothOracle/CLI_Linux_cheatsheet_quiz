@@ -263,25 +263,65 @@
 
       /* Badge-Leiste für Haupt-Badges - Professionelles Layout */
       .badges-header {
-        margin-top: 1.2rem;
-        margin-bottom: 1.2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
-        padding: 0 1rem;
+        padding: 1.2rem 1rem;
+        background: linear-gradient(
+          180deg,
+          rgba(15, 23, 42, 0.4),
+          rgba(15, 23, 42, 0.2)
+        );
+        border-radius: 1rem;
+        border: 1px solid rgba(31, 41, 55, 0.5);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       }
 
-      /* Haupt-Badge Reihe - Professionelle Ausrichtung */
+      /* Haupt-Badge Reihe - Professionelle Ausrichtung mit Grid */
       .main-badges-row {
-        display: flex;
-        gap: 1.2rem;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        justify-items: center;
         align-items: stretch;
         width: 100%;
-        max-width: 1200px;
+        max-width: 1100px;
         margin: 0 auto;
-        flex-wrap: nowrap;
+        padding: 0 0.5rem;
+      }
+
+      /* Sub-Badges Reihe - Direkt unter den Haupt-Badges ausgerichtet */
+      .sub-badges-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        justify-items: center;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 1100px;
+        margin: 1rem auto 0;
+        padding: 0 0.5rem;
+      }
+
+      .badge-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        max-width: 200px;
+      }
+
+      .sub-badge-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        width: 100%;
+        align-items: center;
       }
 
       /* Haupt-Badge Stil - Professionell ausgerichtet */
@@ -290,40 +330,43 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        gap: 0.5rem;
-        padding: 0.9rem 1rem;
-        border-radius: 0.75rem;
+        gap: 0.6rem;
+        padding: 1rem 1.1rem;
+        border-radius: 0.85rem;
         font-size: 0.85rem;
         font-weight: 600;
         border: 2px solid;
         background: linear-gradient(
           135deg,
-          rgba(255, 255, 255, 0.1),
-          rgba(255, 255, 255, 0.05)
+          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0.06)
         );
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(10px);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        flex: 1 1 0;
-        min-width: 170px;
-        max-width: 220px;
-        height: 120px;
+        width: 100%;
+        max-width: 200px;
+        height: 125px;
         box-sizing: border-box;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
       }
 
       .main-badge:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5),
+          0 4px 12px rgba(0, 0, 0, 0.3);
         border-width: 2.5px;
+        z-index: 1;
       }
 
       .main-badge.active {
-        box-shadow: 0 0 28px rgba(59, 130, 246, 0.65),
-          0 6px 16px rgba(0, 0, 0, 0.35);
-        transform: scale(1.02);
+        box-shadow: 0 0 32px rgba(59, 130, 246, 0.7),
+          0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transform: scale(1.03);
         border-width: 2.5px;
+        z-index: 2;
       }
 
       .main-badge-header {
@@ -478,8 +521,9 @@
 
       /* Unter-Badge Stil (nur visuell, nicht anklickbar) */
       .sub-badge {
-        display: inline-flex;
+        display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.4rem;
         padding: 0.4rem 0.7rem;
         border-radius: 999px;
@@ -487,9 +531,37 @@
         font-weight: 500;
         border: 1px solid;
         background: rgba(255, 255, 255, 0.05);
-        opacity: 0.6;
+        opacity: 0.7;
         pointer-events: none;
         cursor: default;
+        width: 100%;
+      }
+
+      /* Sub-Badge Farben für Segmente */
+      .sub-badge.segment-1 {
+        border-color: rgba(167, 139, 250, 0.5);
+        color: #c4b5fd;
+        background: rgba(167, 139, 250, 0.1);
+      }
+      .sub-badge.segment-2 {
+        border-color: rgba(96, 165, 250, 0.5);
+        color: #93c5fd;
+        background: rgba(96, 165, 250, 0.1);
+      }
+      .sub-badge.segment-3 {
+        border-color: rgba(52, 211, 153, 0.5);
+        color: #6ee7b7;
+        background: rgba(52, 211, 153, 0.1);
+      }
+      .sub-badge.segment-4 {
+        border-color: rgba(245, 158, 11, 0.5);
+        color: #fcd34d;
+        background: rgba(245, 158, 11, 0.1);
+      }
+      .sub-badge.segment-5 {
+        border-color: rgba(236, 72, 153, 0.5);
+        color: #f9a8d4;
+        background: rgba(236, 72, 153, 0.1);
       }
 
       /* Legacy Badge-Segmente (für Kompatibilität) */
@@ -749,6 +821,28 @@
         transform: translateY(-2px);
       }
 
+      /* Beginner-Mistakes-Kachel */
+      .mistakes-card {
+        border: 2px solid #38bdf8;
+        background: radial-gradient(
+            circle at top left,
+            rgba(56, 189, 248, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(14, 165, 233, 0.14),
+            transparent 55%
+          ),
+          #020617;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+      }
+      .mistakes-card:hover {
+        border-color: #7dd3fc;
+        box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
+        transform: translateY(-2px);
+      }
+
       /* Masterquiz-Modal */
       .master-quiz-modal {
         position: fixed;
@@ -856,6 +950,76 @@
         animation: errorFlash 0.4s ease-out;
       }
 
+      /* Command Detail Modal (aligned with Masterquiz look) */
+      .command-modal {
+        backdrop-filter: blur(2px);
+      }
+      .command-modal .master-quiz-modal-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .command-modal .command-meta-grid {
+        display: grid;
+        gap: 0.9rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .command-modal .command-section {
+        border: 1px solid #1f2937;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 0.75rem;
+        padding: 0.9rem 1rem;
+      }
+      .command-modal .command-section h3 {
+        margin: 0 0 0.4rem;
+        font-size: 1rem;
+        color: #c7d2fe;
+      }
+      .command-modal .flag-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.12);
+        border: 1px solid rgba(59, 130, 246, 0.35);
+        color: #bfdbfe;
+        font-weight: 600;
+        margin: 0.15rem 0.25rem 0.15rem 0;
+        font-size: 0.85rem;
+      }
+      .command-modal .flag-pill small {
+        display: block;
+        color: #cbd5e1;
+        font-weight: 400;
+      }
+      .command-modal .pitfalls-list {
+        margin: 0;
+        padding-left: 1.2rem;
+        color: #e5e7eb;
+      }
+      .command-modal .example-list {
+        display: grid;
+        gap: 0.6rem;
+      }
+      .command-modal .example-item {
+        padding: 0.75rem;
+        border-radius: 0.6rem;
+        background: rgba(16, 185, 129, 0.06);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+      }
+      .command-modal .example-item code {
+        display: block;
+        font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
+          ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+        color: #6ee7b7;
+        font-size: 0.9rem;
+      }
+      .command-modal .command-summary {
+        margin: 0;
+        color: #e5e7eb;
+      }
+
       @keyframes errorFlash {
         0% {
           box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
@@ -920,6 +1084,83 @@
       .hotkeys-description {
         color: #d1d5db;
         margin-left: 0.5rem;
+      }
+
+      /* Beginner-Mistakes Modal */
+      .mistakes-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .mistake-row {
+        width: 100%;
+        text-align: left;
+        background: rgba(59, 130, 246, 0.06);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 0.7rem;
+        padding: 0.75rem 0.85rem;
+        color: #e5e7eb;
+        cursor: pointer;
+        transition: border-color 0.15s ease, transform 0.1s ease;
+      }
+      .mistake-row:hover {
+        border-color: #93c5fd;
+        transform: translateY(-1px);
+      }
+      .mistake-row-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.35rem;
+        font-weight: 600;
+      }
+      .mistake-index {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 0.5rem;
+        background: rgba(59, 130, 246, 0.2);
+        color: #bfdbfe;
+        font-weight: 700;
+      }
+      .mistake-title {
+        flex: 1;
+        font-size: 0.95rem;
+      }
+      .mistake-description {
+        font-size: 0.9rem;
+        color: #cbd5e1;
+        margin: 0;
+      }
+      .mistake-example {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.35rem;
+        padding: 0.4rem 0.55rem;
+        border-radius: 0.5rem;
+        background: rgba(34, 197, 94, 0.08);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #bbf7d0;
+        font-size: 0.85rem;
+      }
+      .mistake-example code {
+        background: rgba(15, 23, 42, 0.6);
+        padding: 0.2rem 0.45rem;
+        border-radius: 0.45rem;
+        border: 1px solid rgba(34, 197, 94, 0.4);
+        color: #22c55e;
+      }
+      .mistake-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        align-items: center;
+        margin-top: 0.35rem;
+        font-size: 0.8rem;
+        color: #9ca3af;
       }
 
       /* Kali-Tools-Modal */
@@ -1611,19 +1852,35 @@
           max-width: 100%;
         }
 
-        /* Badges auf Mobile - Wrap erlauben */
+        /* Badges auf Mobile - Grid anpassen */
+        .badges-header {
+          padding: 1rem 0.75rem;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+
         .main-badges-row {
-          flex-wrap: wrap;
-          gap: 0.6rem;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
+          padding: 0;
+        }
+
+        .sub-badges-row {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
+          padding: 0;
+          margin-top: 0.75rem;
         }
 
         .main-badge {
-          flex: 1 1 calc(50% - 0.3rem);
-          min-width: 140px;
-          max-width: none;
-          padding: 0.7rem 0.8rem;
+          max-width: 100%;
+          padding: 0.85rem 0.9rem;
           height: auto;
-          min-height: 100px;
+          min-height: 110px;
+        }
+
+        .badge-group {
+          max-width: 100%;
         }
 
         .main-badge-icon {
@@ -1671,6 +1928,29 @@
           padding: 1rem 3rem 2rem;
         }
 
+        .badges-header {
+          padding: 1.5rem 1.2rem;
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .main-badges-row {
+          grid-template-columns: repeat(5, 1fr);
+          max-width: 1100px;
+          gap: 1.2rem;
+        }
+
+        .sub-badges-row {
+          grid-template-columns: repeat(5, 1fr);
+          max-width: 1100px;
+          gap: 1.2rem;
+        }
+
+        .main-badge {
+          max-width: 200px;
+        }
+
         .commands-grid {
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
           gap: 0.7rem;
@@ -1686,6 +1966,32 @@
 
         .command-body {
           font-size: 0.8rem;
+        }
+      }
+
+      /* Tablet Optimierung */
+      @media (min-width: 769px) and (max-width: 1023px) {
+        .main-badges-row {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.9rem;
+        }
+
+        .sub-badges-row {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.9rem;
+        }
+      }
+
+      /* Mittlere Desktop-Größen */
+      @media (min-width: 1024px) and (max-width: 1399px) {
+        .main-badges-row {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1rem;
+        }
+
+        .sub-badges-row {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1rem;
         }
       }
 
@@ -2267,6 +2573,20 @@
             </p>
           </div>
         </article>
+
+        <!-- Beginner Mistakes Kachel -->
+        <article class="command-card mistakes-card" id="mistakes-card">
+          <div class="command-header">
+            <h2 class="command-name">🚧 Top 10 Anfängerfehler</h2>
+            <span class="command-tag">Wissen</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Häufige Stolpersteine mit kurzer Erklärung, korrektem Beispiel und
+              direkter Verlinkung ins Command-Modal.
+            </p>
+          </div>
+        </article>
       </section>
     </main>
 
@@ -2330,6 +2650,63 @@
             id="master-quiz-submit-btn"
           >
             Antwort prüfen
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Command Detail Modal -->
+    <div
+      id="command-modal-root"
+      class="master-quiz-modal command-modal hidden"
+      aria-hidden="true"
+    >
+      <div class="quiz-backdrop"></div>
+      <div class="master-quiz-modal-inner" role="dialog" aria-modal="true">
+        <div class="quiz-header">
+          <div>
+            <div class="quiz-title" id="command-modal-title">
+              Befehlsdetails
+            </div>
+            <div class="quiz-level-pill" id="command-modal-subtitle">
+              Kontext &amp; Best Practices
+            </div>
+          </div>
+          <button
+            class="quiz-close-btn"
+            type="button"
+            id="command-modal-close-btn"
+          >
+            ESC
+          </button>
+        </div>
+
+        <div class="quiz-body" id="command-modal-body">
+          <p class="command-summary" id="command-modal-summary"></p>
+          <div class="command-meta-grid">
+            <div class="command-section">
+              <h3>Wichtige Flags</h3>
+              <div id="command-modal-flags"></div>
+            </div>
+            <div class="command-section">
+              <h3>Typische Fehler</h3>
+              <ul class="pitfalls-list" id="command-modal-pitfalls"></ul>
+            </div>
+          </div>
+          <div class="command-section">
+            <h3>Beispiele</h3>
+            <div class="example-list" id="command-modal-examples"></div>
+          </div>
+        </div>
+
+        <div class="quiz-footer">
+          <div class="quiz-feedback" id="command-modal-feedback"></div>
+          <button
+            class="quiz-submit-btn"
+            type="button"
+            id="command-modal-quiz-btn"
+          >
+            Quiz zum Befehl starten
           </button>
         </div>
       </div>
@@ -2414,6 +2791,27 @@
       </div>
     </div>
 
+    <!-- Beginner-Mistakes-Modal -->
+    <div id="mistakes-root" class="hotkeys-modal hidden" aria-hidden="true">
+      <div class="quiz-backdrop"></div>
+      <div class="hotkeys-modal-inner">
+        <div class="quiz-header">
+          <div>
+            <div class="quiz-title">🚧 Top 10 Anfängerfehler</div>
+            <div class="quiz-level-pill">
+              Verstehe typische Fehltritte und springe direkt zum passenden
+              Quiz.
+            </div>
+          </div>
+          <button class="quiz-close-btn" type="button" id="mistakes-close-btn">
+            ESC
+          </button>
+        </div>
+
+        <div class="quiz-body" id="mistakes-body"></div>
+      </div>
+    </div>
+
     <script>
       // Suppress browser extension message channel errors (harmless but annoying)
       window.addEventListener(
@@ -2421,10 +2819,12 @@
         (event) => {
           if (
             event.message &&
+            typeof event.message === "string" &&
             event.message.includes("message channel closed")
           ) {
             event.preventDefault();
-            return true;
+            event.stopPropagation();
+            return false;
           }
         },
         true
@@ -2436,16 +2836,19 @@
           typeof event.reason === "object" &&
           event.reason.message
         ) {
-          if (event.reason.message.includes("message channel closed")) {
+          if (
+            typeof event.reason.message === "string" &&
+            event.reason.message.includes("message channel closed")
+          ) {
             event.preventDefault();
-            return true;
+            return;
           }
         } else if (
           typeof event.reason === "string" &&
           event.reason.includes("message channel closed")
         ) {
           event.preventDefault();
-          return true;
+          return;
         }
       });
 
@@ -5568,8 +5971,379 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         },
       };
 
+      const commandMeta = {
+        ls: {
+          title: "ls",
+          summary:
+            "Listet Dateien und Verzeichnisse – nutze passende Flags für Details oder versteckte Einträge.",
+          flags: [
+            {
+              flag: "-l",
+              description: "lange Ausgabe mit Rechten und Besitzer",
+            },
+            { flag: "-a", description: "zeigt versteckte Dateien und ./." },
+            { flag: "-h", description: "menschlich lesbare Größen (mit -l)" },
+          ],
+          pitfalls: [
+            "Falscher Pfad (z. B. ls log statt ls logs) führt zu 'No such file or directory'.",
+            "Versteckte Dateien fehlen ohne -a (wichtig bei .env, .git, .ssh).",
+          ],
+          examples: [
+            {
+              command: "ls -lah /var/log",
+              note: "Alle Logfiles mit Rechten und Größen – ideal für Fehlersuche.",
+            },
+            {
+              command: "ls -lt ~/Downloads | head",
+              note: "Neueste Downloads zuerst anzeigen (Zeitstempel).",
+            },
+          ],
+          quizId: "ls",
+        },
+        cd: {
+          title: "cd",
+          summary:
+            "Wechselt das Arbeitsverzeichnis sicher, inkl. Rücksprung mit OLDPWD.",
+          flags: [
+            { flag: "-", description: "springt ins vorherige Verzeichnis" },
+          ],
+          pitfalls: [
+            "Leerzeichen im Pfad ohne Anführungszeichen verursachen 'No such file or directory'.",
+            "Relativer Pfad aus falschem Startverzeichnis führt an unerwartete Orte.",
+          ],
+          examples: [
+            {
+              command: 'cd "/var/www/html" && ls',
+              note: "Sichere Navigation in Webroot mit Anführungszeichen.",
+            },
+            {
+              command: 'OLDPWD=$(pwd); cd /tmp && do-something; cd "$OLDPWD"',
+              note: "Zurückspringen nach temporärer Aktion.",
+            },
+          ],
+          quizId: "cd",
+        },
+        grep: {
+          title: "grep",
+          summary:
+            "Filtert Text nach Mustern – ideal mit Zeilennummern und rekursiver Suche.",
+          flags: [
+            { flag: "-n", description: "zeigt Zeilennummern" },
+            { flag: "-i", description: "Groß-/Kleinschreibung ignorieren" },
+            { flag: "-r", description: "rekursiv in Verzeichnissen suchen" },
+          ],
+          pitfalls: [
+            "Shell interpretiert Sonderzeichen (z. B. *) ohne Anführungszeichen.",
+            "Ohne --include kann rekursive Suche viel Rauschen produzieren.",
+          ],
+          examples: [
+            {
+              command: 'grep -n "ERROR" /var/log/syslog',
+              note: "Zeigt Fehlerzeilen mit Position – schnell für Troubleshooting.",
+            },
+            {
+              command: 'grep -ri --include="*.conf" "Listen" /etc/apache2',
+              note: "Nur relevante Config-Dateien durchsuchen.",
+            },
+          ],
+          quizId: "grep",
+        },
+        find: {
+          title: "find",
+          summary:
+            "Durchsucht Verzeichnisse rekursiv nach Namen, Typen oder Größe.",
+          flags: [
+            {
+              flag: "-name",
+              description: "Pfad-Pattern (mit Anführungszeichen)",
+            },
+            {
+              flag: "-type f",
+              description: "nur Dateien (d für Verzeichnisse)",
+            },
+            {
+              flag: "-maxdepth",
+              description: "Tiefe begrenzen, um Rauschen zu vermeiden",
+            },
+          ],
+          pitfalls: [
+            "-name ohne Anführungszeichen lässt die Shell das Pattern expandieren.",
+            '-exec ohne "{}" oder fehlendes ";" führt zu Fehlern.',
+          ],
+          examples: [
+            {
+              command: 'find . -maxdepth 2 -type f -name "*.log"',
+              note: "Nur Logfiles in den ersten zwei Ebenen finden.",
+            },
+            {
+              command:
+                'find /var/www -type f -name "*.php" -exec ls -lh {} \\;',
+              note: "Gefundene Dateien direkt inspizieren.",
+            },
+          ],
+          quizId: "find_name",
+        },
+        chmod: {
+          title: "chmod",
+          summary:
+            "Setzt Rechte numerisch oder symbolisch – mit Bedacht auf Sicherheit.",
+          flags: [
+            { flag: "-R", description: "rekursiv auf Unterordner anwenden" },
+            { flag: "+x", description: "Ausführungsbit setzen (symbolisch)" },
+          ],
+          pitfalls: [
+            "777 unüberlegt gesetzt macht Dateien weltweit beschreibbar.",
+            "Rechte rekursiv (-R) auf sensible Verzeichnisse kann Services brechen.",
+          ],
+          examples: [
+            {
+              command: "chmod 644 ~/.ssh/config",
+              note: "Lesbare, aber nicht ausführbare Config.",
+            },
+            {
+              command: "chmod -R 755 /var/www/html",
+              note: "Standard-Webrechte für Ordner & Dateien (Owner behält Schreiben).",
+            },
+          ],
+          quizId: "chmod",
+        },
+        chown: {
+          title: "chown",
+          summary: "Ändert Besitzer und Gruppe – oft mit sudo nötig.",
+          flags: [
+            {
+              flag: "user:group",
+              description: "Besitzer und Gruppe in einem Schritt",
+            },
+            { flag: "-R", description: "rekursiv anwenden" },
+          ],
+          pitfalls: [
+            "Ohne sudo: Operation not permitted.",
+            "Rekursive Änderungen auf /etc oder /usr können Systeme unbrauchbar machen.",
+          ],
+          examples: [
+            {
+              command: "sudo chown -R www-data:www-data /var/www/html",
+              note: "Webserver-Besitz sicher auf Inhalte anwenden.",
+            },
+            {
+              command: "sudo chown $USER:$USER ~/Downloads/report.txt",
+              note: "Dateien nach Kopie mit Root-Rechten zurücksetzen.",
+            },
+          ],
+          quizId: "chown",
+        },
+        touch: {
+          title: "touch",
+          summary: "Erstellt leere Dateien oder aktualisiert Zeitstempel.",
+          flags: [
+            { flag: "-t", description: "Zeitstempel manuell setzen" },
+            {
+              flag: "-a/-m",
+              description: "nur Access oder Modified Time ändern",
+            },
+          ],
+          pitfalls: [
+            "Pfadverzeichnisse müssen existieren (vorher mkdir -p).",
+            "Ruft Fehlermeldung auf read-only Filesystemen hervor.",
+          ],
+          examples: [
+            { command: "touch notes.txt", note: "Schnell eine Datei anlegen." },
+            {
+              command: "touch -t 202401011200 backup.tar",
+              note: "Zeitstempel für Dokumentation setzen.",
+            },
+          ],
+          quizId: "touch",
+        },
+        head: {
+          title: "head",
+          summary:
+            "Zeigt die ersten Zeilen einer Datei – ideal für Log-Quickchecks.",
+          flags: [{ flag: "-n", description: "Anzahl Zeilen steuern" }],
+          pitfalls: [
+            "Ohne -n zu wenig/zu viele Zeilen, besonders bei großen Dateien.",
+            "Berechtigungen verhindern Zugriff auf Systemlogs (sudo nutzen).",
+          ],
+          examples: [
+            {
+              command: "head -n 20 /var/log/auth.log",
+              note: "Schneller Blick in Login-Events.",
+            },
+            {
+              command: "grep -n ERROR app.log | head -n 5",
+              note: "Die ersten fünf Fehlerstellen herausfiltern.",
+            },
+          ],
+          quizId: "head",
+        },
+        tail: {
+          title: "tail",
+          summary:
+            "Zeigt das Ende einer Datei, mit -f perfekt fürs Live-Monitoring.",
+          flags: [
+            { flag: "-f", description: "Folgt neuen Zeilen (follow)" },
+            { flag: "-n", description: "Startzeilen vom Ende definieren" },
+          ],
+          pitfalls: [
+            "Ohne sudo bei root-Logs Zugriff verweigert.",
+            "Bei rotierenden Logs (logrotate) springt -f ggf. auf alte Datei, -F nutzen.",
+          ],
+          examples: [
+            {
+              command: "sudo tail -f /var/log/syslog",
+              note: "Live-Ansicht der Systemmeldungen.",
+            },
+            {
+              command: "tail -n 50 application.log | grep -i error",
+              note: "Letzte Fehler in Applogs filtern.",
+            },
+          ],
+          quizId: "tail",
+        },
+        "wc -l": {
+          title: "wc -l",
+          summary: "Zählt Zeilen – ideal kombiniert mit Pipes oder find.",
+          flags: [
+            {
+              flag: "--files0-from",
+              description: "Dateiliste Null-terminiert verarbeiten",
+            },
+          ],
+          pitfalls: [
+            "Leerzeichen in Dateinamen ohne korrekte Quoting führen zu falschen Zählungen.",
+            "Mit cat *.log | wc -l wird auch der Dateiname gezählt, wenn cat Fehler meldet.",
+          ],
+          examples: [
+            {
+              command: "find . -type f -name '*.log' | wc -l",
+              note: "Anzahl der Logdateien ermitteln.",
+            },
+            {
+              command: "grep -r 'ERROR' *.log | wc -l",
+              note: "Fehlerzeilen über mehrere Dateien zählen.",
+            },
+          ],
+          quizId: "wc_l",
+        },
+      };
+
+      const baseCheatSheetCategories = {
+        fileHandling: {
+          id: "fileHandling",
+          name: "Datei-Handling",
+          icon: "📂",
+          colorClass: "badge-operator",
+          matchers: [
+            "ls",
+            "cp",
+            "mv",
+            "rm",
+            "mkdir",
+            "touch",
+            "cat",
+            "grep",
+            "sort",
+            "uniq",
+            "find",
+            "tree",
+            "head",
+            "tail",
+            "wc",
+            "redirect",
+            "nano",
+          ],
+          quizIds: [],
+        },
+        processManagement: {
+          id: "processManagement",
+          name: "Prozess-Management",
+          icon: "🧠",
+          colorClass: "badge-connoisseur",
+          matchers: [
+            "ps",
+            "top",
+            "kill",
+            "jobs",
+            "fg",
+            "bg",
+            "chmod",
+            "chown",
+            "chgrp",
+            "whoami",
+          ],
+          quizIds: [],
+        },
+        networking: {
+          id: "networking",
+          name: "Netzwerk",
+          icon: "🌐",
+          colorClass: "badge-navigator",
+          matchers: ["ssh", "wget", "curl", "netcat", "nc", "ping", "hydra"],
+          quizIds: [],
+        },
+        systemInfo: {
+          id: "systemInfo",
+          name: "System & Monitoring",
+          icon: "🖥️",
+          colorClass: "badge-voyer",
+          matchers: ["pwd", "cd", "history", "whoami", "df", "du", "pipe"],
+          quizIds: [],
+        },
+        misc: {
+          id: "misc",
+          name: "Allgemein",
+          icon: "✨",
+          colorClass: "badge-morelinux",
+          matchers: [],
+          quizIds: [],
+        },
+      };
+
       // Haupt-Badge-Konfiguration (5 zentrale Kompetenz-Badges)
       const mainBadges = [
+        {
+          id: "badge-file",
+          categoryKey: "fileHandling",
+          segmentFilters: ["segment2", "segment3", "segment5"],
+        },
+        {
+          id: "badge-process",
+          categoryKey: "processManagement",
+          segmentFilters: ["segment4"],
+        },
+        {
+          id: "badge-network",
+          categoryKey: "networking",
+          segmentFilters: [],
+        },
+        {
+          id: "badge-system",
+          categoryKey: "systemInfo",
+          segmentFilters: ["segment1"],
+        },
+        {
+          id: "badge-misc",
+          categoryKey: "misc",
+          segmentFilters: [],
+        },
+      ].map((badge, index) => ({
+        ...badge,
+        name: baseCheatSheetCategories[badge.categoryKey].name,
+        icon: baseCheatSheetCategories[badge.categoryKey].icon,
+        colorClass:
+          baseCheatSheetCategories[badge.categoryKey].colorClass ||
+          [
+            "badge-voyer",
+            "badge-operator",
+            "badge-connoisseur",
+            "badge-navigator",
+            "badge-morelinux",
+          ][index],
+      }));
+
+      // Legacy mainBadges mit segments für Kompatibilität
+      const legacyMainBadges = [
         {
           id: "linux_voyer",
           name: "Linux Voyer",
@@ -5887,7 +6661,33 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
       const quizSubmitBtn = document.getElementById("quiz-submit-btn");
       const quizCloseBtn = document.getElementById("quiz-close-btn");
 
+      const commandModalRoot = document.getElementById("command-modal-root");
+      const commandModalTitle = document.getElementById("command-modal-title");
+      const commandModalSubtitle = document.getElementById(
+        "command-modal-subtitle"
+      );
+      const commandModalSummary = document.getElementById(
+        "command-modal-summary"
+      );
+      const commandModalFlags = document.getElementById("command-modal-flags");
+      const commandModalPitfalls = document.getElementById(
+        "command-modal-pitfalls"
+      );
+      const commandModalExamples = document.getElementById(
+        "command-modal-examples"
+      );
+      const commandModalCloseBtn = document.getElementById(
+        "command-modal-close-btn"
+      );
+      const commandModalFeedback = document.getElementById(
+        "command-modal-feedback"
+      );
+      const commandModalQuizBtn = document.getElementById(
+        "command-modal-quiz-btn"
+      );
+
       let currentQuizId = null;
+      let activeFocusTrap = null;
       let activeFilterSegment = null; // Aktives Filter-Segment (null = kein Filter)
       let activeFilterAchievement = null; // Aktives Achievement-Filter (null = kein Filter)
 
@@ -5930,6 +6730,64 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         } catch {
           return 0;
         }
+      }
+
+      function isQuizCompleted(quizId) {
+        const stored = localStorage.getItem("quizResults");
+        if (!stored) return false;
+
+        try {
+          const results = JSON.parse(stored);
+          return results[quizId] === 3;
+        } catch {
+          return false;
+        }
+      }
+
+      function activateFocusTrap(modal) {
+        const focusableSelectors =
+          'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
+        const focusables = Array.from(
+          modal.querySelectorAll(focusableSelectors)
+        ).filter((el) => !el.hasAttribute("disabled"));
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const previous = document.activeElement;
+
+        function handleKeydown(event) {
+          if (event.key === "Tab") {
+            if (focusables.length === 1) {
+              event.preventDefault();
+              first.focus();
+              return;
+            }
+            if (event.shiftKey && document.activeElement === first) {
+              event.preventDefault();
+              last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+              event.preventDefault();
+              first.focus();
+            }
+          } else if (event.key === "Escape" && commandModalRoot) {
+            closeCommandModal();
+          }
+        }
+
+        modal.addEventListener("keydown", handleKeydown);
+        first.focus();
+        activeFocusTrap = { modal, handleKeydown, previous };
+      }
+
+      function releaseFocusTrap() {
+        if (!activeFocusTrap) return;
+        const { modal, handleKeydown, previous } = activeFocusTrap;
+        modal.removeEventListener("keydown", handleKeydown);
+        if (previous && typeof previous.focus === "function") {
+          previous.focus();
+        }
+        activeFocusTrap = null;
       }
 
       function saveQuizResult(quizId, correctCount) {
@@ -6268,25 +7126,106 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         progressEl.textContent = `Fortschritt: ${totalCorrect}/60 Fragen richtig beantwortet`;
       }
 
-      // Berechne Fortschritt für ein Haupt-Badge (10 Segmente = 10% pro Segment)
+      let cheatSheetMap = null;
+
+      function findCategoryKeyForQuiz(quizId) {
+        const normalized = quizId.toLowerCase();
+        const matchKey = Object.keys(baseCheatSheetCategories).find((key) => {
+          const category = baseCheatSheetCategories[key];
+          return (category.matchers || []).some((token) =>
+            normalized.includes(token.toLowerCase())
+          );
+        });
+
+        return matchKey || "misc";
+      }
+
+      function buildCheatSheetMap() {
+        const categories = JSON.parse(JSON.stringify(baseCheatSheetCategories));
+        Object.values(categories).forEach((category) => {
+          category.quizIds = [];
+        });
+
+        const quizIds = new Set([
+          ...Object.keys(quizData),
+          ...commandCards.map((card) => card.dataset.quizId).filter(Boolean),
+        ]);
+
+        const quizToCategory = {};
+
+        quizIds.forEach((quizId) => {
+          const categoryKey = findCategoryKeyForQuiz(quizId);
+          quizToCategory[quizId] = categoryKey;
+          categories[categoryKey].quizIds.push(quizId);
+        });
+
+        commandCards.forEach((card) => {
+          const quizId = card.dataset.quizId;
+          if (!quizId) return;
+          const categoryKey = quizToCategory[quizId] || "misc";
+          card.dataset.cheatCategory = categoryKey;
+        });
+
+        cheatSheetMap = { categories, quizToCategory };
+      }
+
+      function getCategoryProgress(categoryKey) {
+        if (!cheatSheetMap) buildCheatSheetMap();
+        const category = cheatSheetMap.categories[categoryKey];
+        if (!category) {
+          return { completed: 0, total: 0, percentage: 0 };
+        }
+
+        const quizResults = localStorage.getItem("quizResults");
+        let completed = 0;
+        if (quizResults) {
+          try {
+            const results = JSON.parse(quizResults);
+            category.quizIds.forEach((quizId) => {
+              if (results[quizId] === 3) {
+                completed++;
+              }
+            });
+          } catch (e) {
+            console.error(
+              "Kategorie-Fortschritt konnte nicht berechnet werden:",
+              e
+            );
+          }
+        }
+
+        const total = category.quizIds.length;
+        const percentage =
+          total > 0 ? Math.round((completed / total) * 100) : 0;
+
+        return { completed, total, percentage };
+      }
+
+      // Berechne Fortschritt für ein Haupt-Badge basierend auf Cheat-Sheet-Kategorien
       function getMainBadgeProgress(mainBadge) {
-        // Sammle alle Quiz-IDs aus allen Segmenten
+        const categoryProgress = getCategoryProgress(mainBadge.categoryKey);
+        if (categoryProgress.total > 0) {
+          return {
+            completed: categoryProgress.completed,
+            total: categoryProgress.total,
+            percentage: categoryProgress.percentage,
+          };
+        }
+
+        // Legacy-Fallback über Segment-Definitionen
         const allQuizIds = [];
-        mainBadge.segments.forEach((segment) => {
+        (mainBadge.segments || []).forEach((segment) => {
           allQuizIds.push(...segment.quizIds);
         });
 
         if (allQuizIds.length === 0) {
           return {
-            completedSegments: 0,
-            totalSegments: 10,
+            completed: 0,
+            total: 0,
             percentage: 0,
-            totalCompleted: 0,
-            totalQuizzes: 0,
           };
         }
 
-        // Zähle abgeschlossene Quiz direkt aus quizResults
         const quizResults = localStorage.getItem("quizResults");
         let totalCompleted = 0;
         if (quizResults) {
@@ -6298,23 +7237,17 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
               }
             });
           } catch (e) {
-            // Ignore
+            console.error("Fallback-Badge-Fortschritt fehlgeschlagen:", e);
           }
         }
 
-        // Berechne Anzahl der abgeschlossenen Segmente (max 10)
-        // Jedes Segment entspricht 10% des Fortschritts
-        const completedSegments = Math.min(
-          10,
-          Math.floor((totalCompleted / allQuizIds.length) * 10)
-        );
-
         return {
-          completedSegments,
-          totalSegments: 10,
-          percentage: Math.round((completedSegments / 10) * 100),
-          totalCompleted,
-          totalQuizzes: allQuizIds.length,
+          completed: totalCompleted,
+          total: allQuizIds.length,
+          percentage:
+            allQuizIds.length > 0
+              ? Math.round((totalCompleted / allQuizIds.length) * 100)
+              : 0,
         };
       }
 
@@ -6332,6 +7265,10 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         const mainRow = document.createElement("div");
         mainRow.className = "main-badges-row";
 
+        // Sub-Badges Reihe
+        const subRow = document.createElement("div");
+        subRow.className = "sub-badges-row";
+
         mainBadges.forEach((mainBadge) => {
           const progress = getMainBadgeProgress(mainBadge);
 
@@ -6341,7 +7278,7 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
           // Markiere aktives Badge
           if (
             activeFilterSegment &&
-            mainBadge.subSegments.includes(activeFilterSegment)
+            mainBadge.segmentFilters.includes(activeFilterSegment)
           ) {
             badge.classList.add("active");
           }
@@ -6351,13 +7288,13 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             // Wenn bereits aktiv, Filter entfernen
             if (
               activeFilterSegment &&
-              mainBadge.subSegments.includes(activeFilterSegment)
+              mainBadge.segmentFilters.includes(activeFilterSegment)
             ) {
               activeFilterSegment = null;
             } else {
               // Filter auf erstes Sub-Segment setzen
-              if (mainBadge.subSegments.length > 0) {
-                activeFilterSegment = mainBadge.subSegments[0];
+              if (mainBadge.segmentFilters.length > 0) {
+                activeFilterSegment = mainBadge.segmentFilters[0];
               }
               activeFilterAchievement = null;
             }
@@ -6365,19 +7302,25 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             updateBadgeDisplay();
           });
 
-          // Doppelklick-Handler für Master-Quiz (wenn alle Segmente abgeschlossen)
-          if (progress.completedSegments >= 10) {
+          // Doppelklick-Handler für Master-Quiz (wenn alle Quiz abgeschlossen)
+          if (
+            progress.total > 0 &&
+            progress.percentage === 100 &&
+            mainBadge.segmentFilters.length > 0
+          ) {
             badge.style.cursor = "pointer";
             badge.title = "Doppelklick für Master-Quiz";
             badge.addEventListener("dblclick", (e) => {
               e.stopPropagation();
               // Öffne Master-Quiz für erstes Sub-Segment
-              if (mainBadge.subSegments.length > 0) {
-                openMasterQuiz(mainBadge.subSegments[0]);
+              if (mainBadge.segmentFilters.length > 0) {
+                openMasterQuiz(mainBadge.segmentFilters[0]);
               }
             });
           } else {
-            badge.title = `${mainBadge.name}: ${progress.completedSegments}/10 Segmente`;
+            badge.title = `${mainBadge.name}: ${progress.completed}/${
+              progress.total || "0"
+            } Quiz abgeschlossen (${progress.percentage}%)`;
           }
 
           badge.innerHTML = `
@@ -6387,16 +7330,46 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
             </div>
             <div class="main-badge-progress-container">
               <div class="main-badge-progress-bar">
-                <div class="main-badge-progress-fill" style="width: ${progress.percentage}%"></div>
+                <div class="main-badge-progress-fill" style="width: ${
+                  progress.percentage
+                }%"></div>
               </div>
-              <div class="main-badge-progress-text">${progress.completedSegments}/10</div>
+              <div class="main-badge-progress-text">${progress.completed}/${
+            progress.total || 0
+          }</div>
             </div>
           `;
 
           mainRow.appendChild(badge);
+
+          // Sub-Badge Container für dieses Haupt-Badge
+          const subBadgeGroup = document.createElement("div");
+          subBadgeGroup.className = "badge-group";
+          const subBadgeContainer = document.createElement("div");
+          subBadgeContainer.className = "sub-badge-container";
+
+          // Füge Sub-Badges basierend auf segmentFilters hinzu
+          if (mainBadge.segmentFilters && mainBadge.segmentFilters.length > 0) {
+            mainBadge.segmentFilters.forEach((segmentId) => {
+              const segment = badgeSegments.find((s) => s.id === segmentId);
+              if (segment) {
+                const subBadge = document.createElement("div");
+                subBadge.className = `sub-badge ${segment.colorClass}`;
+                subBadge.innerHTML = `
+                  <span>${segment.icon}</span>
+                  <span>${segment.name}</span>
+                `;
+                subBadgeContainer.appendChild(subBadge);
+              }
+            });
+          }
+
+          subBadgeGroup.appendChild(subBadgeContainer);
+          subRow.appendChild(subBadgeGroup);
         });
 
         container.appendChild(mainRow);
+        container.appendChild(subRow);
       }
 
       // Filtere Kacheln nach Segment
@@ -6677,6 +7650,781 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
           },
         ];
       }
+
+      const beginnerMistakes = [
+        {
+          quizId: "rm_r",
+          title: "Unbedachtes Löschen mit rm -r",
+          description:
+            "Ohne Pfad-Check oder Backup gelöschte Verzeichnisse sind weg. Nutze interaktive Abfragen in kritischen Pfaden.",
+          example: "rm -r --interactive=once ~/Downloads/tmp",
+          tip: "Vorher pwd && ls; bei produktiven Pfaden lieber Trash-CLI nutzen.",
+          segmentClass: "segment-4",
+        },
+        {
+          quizId: "mkdir_p",
+          title: "Verzeichnistiefe ohne -p anlegen",
+          description:
+            "Ohne -p bricht mkdir bei fehlenden Elternverzeichnissen ab oder überschreibt nichts sichtbar.",
+          example: "mkdir -p projects/demo/src",
+          tip: "-p erstellt fehlende Ebenen sicher und ist idempotent.",
+          segmentClass: "segment-1",
+        },
+        {
+          quizId: "cp_r",
+          title: "cp für Ordner ohne -r",
+          description:
+            "cp bricht bei Verzeichnissen ab, wenn -r fehlt – Ergebnis ist ein halbfertiger Kopiervorgang.",
+          example: "cp -r site/ backup/site",
+          tip: "Immer -r (oder -a für Rechte/Links) bei Ordnern setzen.",
+          segmentClass: "segment-2",
+        },
+        {
+          quizId: "mv",
+          title: "mv mit falschem Zielpfad",
+          description:
+            "Ohne eindeutigen Zielpfad landen Dateien schnell im Arbeitsverzeichnis oder überschreiben Namen.",
+          example: "mv notes.txt docs/notes.txt",
+          tip: "Mit Tab-Completion prüfen, ob das Ziel existiert, und -i für Rückfragen nutzen.",
+          segmentClass: "segment-3",
+        },
+        {
+          quizId: "redirect_append",
+          title: "Logs versehentlich überschrieben",
+          description:
+            "Ein einzelnes > leert Dateien sofort. Für Log- oder Messdaten immer >> verwenden.",
+          example: 'echo "INFO: Start" >> logs/app.log',
+          tip: "Vor dem Redirect Datei-Rechte prüfen und lieber append als overwrite.",
+          segmentClass: "segment-5",
+        },
+        {
+          quizId: "find_name",
+          title: "find ohne Maskierung",
+          description:
+            "Ungequotete Patterns wie *.log expandieren durch die Shell und liefern falsche Treffer.",
+          example: 'find . -name "*.log"',
+          tip: "Muster immer in Anführungszeichen setzen und maxdepth nutzen, wenn nötig.",
+          segmentClass: "segment-2",
+        },
+        {
+          quizId: "grep",
+          title: "grep nur auf einer Datei",
+          description:
+            "Ohne -R oder -n übersiehst du kontext und verschachtelte Treffer in Projekten.",
+          example: 'grep -R "error" .',
+          tip: "Mit -n Zeilennummern anzeigen und --color=auto für schnelle Sichtbarkeit.",
+          segmentClass: "segment-1",
+        },
+        {
+          quizId: "chmod_R",
+          title: "chmod 777 als Allzwecklösung",
+          description:
+            "Zu breite Rechte öffnen Angriffsflächen. Setze nur benötigte Bits rekursiv und gezielt.",
+          example: "chmod -R 640 secrets/",
+          tip: "Vorher Besitzer prüfen und Rechte minimal halten (Principle of Least Privilege).",
+          segmentClass: "segment-4",
+        },
+        {
+          quizId: "chown",
+          title: "Falscher Besitzer nach Deploy",
+          description:
+            "Dateien im falschen Account führen zu Permission-Denied oder Sicherheitslücken.",
+          example: "sudo chown deploy:www-data /var/www/html -R",
+          tip: "User:Gruppe immer explizit setzen und mit ls -l verifizieren.",
+          segmentClass: "segment-3",
+        },
+        {
+          quizId: "sort_n",
+          title: "Lexikografisch statt numerisch sortiert",
+          description:
+            "Standard-sort ordnet Zahlen wie Strings (2 > 10). Für Metriken brauchst du -n/-k.",
+          example: "sort -n -k2 metrics.txt",
+          tip: "Mit -r für absteigend kombinieren und Spalten mit -k angeben.",
+          segmentClass: "segment-6",
+        },
+      ];
+
+      // Parse FAQ Data (Agent 1)
+      function parseFaqData() {
+        // Kategorien-Mapping
+        const categoryMap = {
+          "Navigieren im Dateisystem": {
+            id: "navigation",
+            name: "Navigieren im Dateisystem",
+            icon: "🧭",
+          },
+          "Dateiverwaltung (Dateien und Ordner)": {
+            id: "fileManagement",
+            name: "Dateiverwaltung",
+            icon: "📂",
+          },
+          "Paketmanagement (Software installieren/aktualisieren)": {
+            id: "packageManagement",
+            name: "Paketmanagement",
+            icon: "📦",
+          },
+          Netzwerkgrundlagen: {
+            id: "networking",
+            name: "Netzwerkgrundlagen",
+            icon: "🌐",
+          },
+          "Rechte und Berechtigungen": {
+            id: "permissions",
+            name: "Rechte & Berechtigungen",
+            icon: "🔐",
+          },
+          "Grundlagen der Shell (Bash & nützliche Hilfen)": {
+            id: "shell",
+            name: "Shell-Grundlagen",
+            icon: "💻",
+          },
+          "Fehlermeldungen und ihre Behebung": {
+            id: "troubleshooting",
+            name: "Fehlermeldungen",
+            icon: "🔧",
+          },
+          "Systeminformationen und -überwachung": {
+            id: "systemInfo",
+            name: "Systeminformationen",
+            icon: "🖥️",
+          },
+          "Nützliche Tools und Befehle": {
+            id: "tools",
+            name: "Tools & Befehle",
+            icon: "🛠️",
+          },
+        };
+
+        // FAQ-Rohdaten (manuell strukturiert aus der TXT-Datei)
+        const faqRawData = [
+          {
+            category: "Navigieren im Dateisystem",
+            questions: [
+              {
+                question: "Wie wechsle ich in ein anderes Verzeichnis?",
+                answer:
+                  'Mit dem Befehl cd ("change directory") kann man in ein gewünschtes Verzeichnis wechseln. Beispiel: cd Videos wechselt in den Unterordner Videos. Alternativ kann man auch den absoluten Pfad angeben, z. B. cd /home/kali/Documents/Videos.',
+                commands: ["cd"],
+              },
+              {
+                question: "Wie gelange ich in mein Home-Verzeichnis?",
+                answer:
+                  "Gibt man cd ohne Pfad an, wechselt man automatisch ins eigene Home-Verzeichnis. Dasselbe erreicht man mit cd ~ (Tilde steht für das Home-Verzeichnis).",
+                commands: ["cd"],
+              },
+              {
+                question: "Wie wechsle ich ins Root-Verzeichnis (/)?",
+                answer:
+                  "Verwende cd /, um ins Wurzelverzeichnis des Dateisystems zu gelangen. Der Schrägstrich / steht in Linux für das Root-Verzeichnis (oberste Ebene des Dateisystems).",
+                commands: ["cd"],
+              },
+              {
+                question: "Wie gehe ich eine Verzeichnisebene nach oben?",
+                answer:
+                  "Mit cd .. wechselt man in das übergeordnete Verzeichnis (ein Ordner nach oben). Die zwei Punkte .. stehen in Pfadangaben immer für das Parent-Verzeichnis.",
+                commands: ["cd"],
+              },
+              {
+                question: "Wie komme ich in das vorherige Verzeichnis zurück?",
+                answer:
+                  "Mit cd - wechselt man in das zuletzt besuchte Verzeichnis zurück. Dies ist praktisch, um schnell zwischen zwei Verzeichnissen hin- und herzuspringen.",
+                commands: ["cd"],
+              },
+              {
+                question:
+                  "Wie kann ich mir mein aktuelles Verzeichnis anzeigen lassen?",
+                answer:
+                  "Der Befehl pwd (print working directory) zeigt den vollständigen Pfad des Verzeichnisses, in dem man sich befindet, an. Beispiel: Befindet sich der Benutzer kali im Ordner /home/kali/Desktop, dann zeigt pwd genau diesen Pfad an.",
+                commands: ["pwd"],
+              },
+              {
+                question: "Wie liste ich den Inhalt eines Verzeichnisses auf?",
+                answer:
+                  "Mit ls werden Dateien und Unterordner im aktuellen Verzeichnis aufgelistet. Ohne Optionen zeigt ls die Namen der Inhalte. Beispielsweise listet ls /etc den Inhalt des /etc-Verzeichnisses auf.",
+                commands: ["ls"],
+              },
+              {
+                question: "Wie kann ich auch versteckte Dateien anzeigen?",
+                answer:
+                  "Versteckte Dateien (deren Namen mit . beginnen) zeigt man mit ls -a an. Oft nutzt man ls -la für eine detaillierte Liste inklusive versteckter Dateien, da -l die lange Liste mit Rechten, Besitzer, Größe und Datum anzeigt.",
+                commands: ["ls"],
+              },
+              {
+                question:
+                  "Wie erhalte ich detaillierte Infos (Größe, Datum, Rechte) zu Dateien in einem Verzeichnis?",
+                answer:
+                  "Mit ls -l erhält man eine ausführliche Auflistung aller Dateien/Ordner mit Details wie Berechtigungen, Besitzer, Dateigröße und Änderungsdatum. Zusätzliche Optionen wie -h (human-readable) stellen Größen in lesbare Form (z. B. KiB/MiB) dar, also z. B. ls -lh.",
+                commands: ["ls"],
+              },
+              {
+                question: "Was bedeuten . und .. in Pfadangaben?",
+                answer:
+                  ". steht für das aktuelle Verzeichnis, .. für das übergeordnete Verzeichnis. Beispiel: cd . bleibt im aktuellen Ordner, und cd .. wechselt eine Ebene höher.",
+                commands: ["cd"],
+              },
+              {
+                question:
+                  "Wie navigiere ich in Pfaden mit Leerzeichen im Namen?",
+                answer:
+                  'Pfadnamen mit Leerzeichen müssen in Anführungszeichen gesetzt werden oder das Leerzeichen mit \\ maskiert werden. Beispiel: cd "Mein Ordner" oder cd Mein\\ Ordner wechselt in ein Verzeichnis namens "Mein Ordner".',
+                commands: ["cd"],
+              },
+              {
+                question: "Gibt es eine Autovervollständigung für Dateinamen?",
+                answer:
+                  "Ja, durch Drücken der Tab-Taste während der Eingabe vervollständigt die Shell automatisch Dateinamen oder Befehle, sofern eindeutig. Dadurch muss man oft nur den Anfang eines Namens tippen und kann Tippfehler vermeiden (Tab-Autocompletion).",
+                commands: [],
+              },
+            ],
+          },
+          {
+            category: "Dateiverwaltung (Dateien und Ordner)",
+            questions: [
+              {
+                question: "Wie erstelle ich ein neues Verzeichnis?",
+                answer:
+                  "Mit mkdir <ordnername> erstellt man ein neues Verzeichnis. Beispiel: mkdir Projekte legt einen Ordner namens Projekte im aktuellen Verzeichnis an. Mit mkdir -p pfad/unterordner können auch verschachtelte Unterordner in einem Schritt erzeugt werden.",
+                commands: ["mkdir"],
+              },
+              {
+                question: "Wie lösche ich einen Ordner?",
+                answer:
+                  "Leere Verzeichnisse können mit rmdir <ordnername> gelöscht werden. Enthält der Ordner Dateien oder Unterordner, verwendet man rm -r <ordnername> für rekursives Löschen. Vorsicht: Mit rm -r werden auch alle enthaltenen Dateien gelöscht. Für unwiederbringliches Löschen ohne Nachfragen kann zusätzlich -f (force) verwendet werden, z. B. rm -rf <ordner>.",
+                commands: ["rm", "rmdir"],
+              },
+              {
+                question: "Wie lege ich eine neue (leere) Datei an?",
+                answer:
+                  "Der einfachste Weg ist touch <dateiname>. Wenn die angegebene Datei noch nicht existiert, wird durch touch eine leere Datei erstellt. Beispiel: touch notiz.txt erzeugt eine leere Datei notiz.txt.",
+                commands: ["touch"],
+              },
+              {
+                question: "Wie lösche ich eine Datei?",
+                answer:
+                  "Mit dem Befehl rm <datei> löscht man Dateien. Beispiel: rm test.txt löscht die Datei test.txt. Ohne weitere Optionen fragt rm in der Standardeinstellung nicht nach und entfernt die Datei endgültig.",
+                commands: ["rm"],
+              },
+              {
+                question: "Wie kopiere ich eine Datei?",
+                answer:
+                  "Mit cp <quelle> <ziel> kopiert man eine Datei. Beispiel: cp original.txt kopie.txt erstellt eine Kopie von original.txt unter dem Namen kopie.txt im gleichen Verzeichnis. Um an einen anderen Ort zu kopieren, gibt man den Pfad zum Ziel an (z. B. cp datei.txt /tmp/).",
+                commands: ["cp"],
+              },
+              {
+                question: "Wie kopiere ich einen ganzen Ordner mit Inhalt?",
+                answer:
+                  "Mit dem Parameter -r kopiert cp auch Verzeichnisse rekursiv. Beispiel: cp -r bilder fotos_backup kopiert den gesamten Ordner bilder (mit allen Unterdateien/-ordnern) ins Verzeichnis fotos_backup.",
+                commands: ["cp"],
+              },
+              {
+                question:
+                  "Wie verschiebe oder benenne ich eine Datei/einen Ordner um?",
+                answer:
+                  "Das Verschieben erledigt man mit mv <quelle> <ziel>. Zum Umbenennen kann man mv im selben Verzeichnis nutzen: mv altername.txt neuername.txt ändert den Dateinamen. Verschieben in einen anderen Ordner funktioniert analog: mv datei.txt /pfad/zum/zielordner/.",
+                commands: ["mv"],
+              },
+              {
+                question:
+                  "Wie zeige ich den Inhalt einer Textdatei im Terminal an?",
+                answer:
+                  "Mit cat <datei> wird der gesamte Dateinhalt auf einmal angezeigt. Beispiel: cat info.txt druckt den Text der Datei info.txt auf die Konsole. Für lange Dateien ist less <datei> praktischer – damit kann man seitenweise blättern.",
+                commands: ["cat"],
+              },
+              {
+                question:
+                  "Wie bearbeite ich eine Textdatei direkt im Terminal?",
+                answer:
+                  "Dazu nutzt man einen Terminal-Texteditor wie nano oder vim. Für Einsteiger empfiehlt sich nano: nano <datei> öffnet die Datei im Nano-Editor. Unten werden die wichtigsten Steuerungstasten angezeigt (z. B. zum Speichern STRG+O, zum Beenden STRG+X). Alternativ kann man vi <datei> bzw. vim <datei> nutzen – Vim ist aber deutlich anspruchsvoller.",
+                commands: ["nano", "vim"],
+              },
+              {
+                question: "Wie kann ich nach einer Datei suchen?",
+                answer:
+                  'Mit dem Befehl find lässt sich das Dateisystem durchsuchen. Beispiel: find / -name "*.conf" sucht unter / (dem Root-Verzeichnis) nach allen Dateien, die auf *.conf enden. Für eine schnelle Suche kann Kali auch locate <name> nutzen – dieses greift auf eine indexierte Datenbank zurück (vorher mit updatedb aktualisieren).',
+                commands: ["find"],
+              },
+              {
+                question: "Wie finde ich einen bestimmten Text in Dateien?",
+                answer:
+                  'Mit grep kann man in Dateien nach Textmustern suchen. Beispiel: grep "ERROR" /var/log/syslog sucht im System-Log nach Vorkommen von "ERROR". Standardmäßig gibt grep alle Zeilen aus, die den gesuchten Text enthalten.',
+                commands: ["grep"],
+              },
+              {
+                question:
+                  "Wie erfahre ich den Dateityp oder Details einer Datei?",
+                answer:
+                  "Der Befehl file <datei> zeigt an, um welchen Dateityp es sich handelt (z. B. ASCII-Text, ELF-Binary etc.). Für ausführlichere Informationen, wie Größe, letztes Änderungsdatum, Berechtigungen, nutzt man stat <datei>, was alle Dateieigenschaften auflistet.",
+                commands: ["file", "stat"],
+              },
+            ],
+          },
+          {
+            category: "Paketmanagement (Software installieren/aktualisieren)",
+            questions: [
+              {
+                question:
+                  "Wie aktualisiere ich die Paketliste (Repository-Index)?",
+                answer:
+                  "Mit sudo apt update fragt man alle in /etc/apt/sources.list eingetragenen Paketquellen ab und lädt die neuesten Paketinformationen herunter. Dies sollte man regelmäßig tun, insbesondere bevor man neue Pakete installiert, damit die Paketdatenbank aktuell ist.",
+                commands: ["apt"],
+              },
+              {
+                question:
+                  "Wie aktualisiere ich installierte Pakete auf die neueste Version?",
+                answer:
+                  "Nach apt update kann man mit sudo apt upgrade alle installierten Pakete upgraden. Dieser Befehl spielt verfügbare Updates ein, ohne Pakete zu entfernen. (Hinweis: apt upgrade aktualisiert nur, was ohne Konflikte möglich ist. Mit apt full-upgrade würden auch Paketabhängigkeiten geändert, was bei Kali allerdings mit Vorsicht zu verwenden ist.)",
+                commands: ["apt"],
+              },
+              {
+                question: "Wie installiere ich ein neues Programm/Paket?",
+                answer:
+                  "Mit sudo apt install <paketname>. Beispiel: sudo apt install nmap installiert das Paket nmap aus den Paketquellen. Man kann auch mehrere Pakete gleichzeitig installieren, indem man die Namen hintereinander angibt (getrennt durch Leerzeichen).",
+                commands: ["apt"],
+              },
+              {
+                question: "Wie entferne ich ein installiertes Paket?",
+                answer:
+                  "Mit sudo apt remove <paketname> deinstalliert man ein Paket. Die Konfigurationsdateien bleiben dabei erhalten. Soll auch diese bereinigt werden, verwendet man sudo apt purge <paketname>, um das Paket komplett (inkl. Konfigurationsresten) zu entfernen.",
+                commands: ["apt"],
+              },
+              {
+                question: "Wie räume ich nicht mehr benötigte Pakete auf?",
+                answer:
+                  "Nach vielen Installationen bleiben manchmal ungenutzte Abhängigkeits-Pakete zurück. Mit sudo apt autoremove werden solche automatisch installierten, aber nicht mehr benötigten Pakete entfernt, um Speicherplatz freizugeben.",
+                commands: ["apt"],
+              },
+              {
+                question: "Wie suche ich nach Paketen?",
+                answer:
+                  'Mit apt search <schlüsselwort> kann man die Paketdatenbank nach Namen und Beschreibungen durchsuchen. Beispiel: apt search editor listet alle Pakete auf, die im Namen oder in der Beschreibung "editor" enthalten. Ähnlich liefert apt-cache search <wort> das Ergebnis über das ältere apt-cache-Werkzeug.',
+                commands: ["apt"],
+              },
+              {
+                question:
+                  "Wie sehe ich, welche Pakete bereits installiert sind?",
+                answer:
+                  "Mit apt list --installed erhält man eine Liste aller installierten Pakete. Alternativ zeigt dpkg -l ebenfalls alle installierten Pakete als Liste an. Man kann diese Ausgabe mit grep filtern, um ein bestimmtes Paket zu finden (z. B. dpkg -l | grep <name>).",
+                commands: ["apt", "dpkg"],
+              },
+              {
+                question:
+                  "Wie installiere ich eine .deb-Datei (lokales Debian-Paket)?",
+                answer:
+                  "Mit dem Programm dpkg (Debian Package Manager). Verwende sudo dpkg -i <paketdatei.deb>, um ein heruntergeladenes *.deb-Paket zu installieren. Schlägt die Installation wegen fehlender Abhängigkeiten fehl, führt man anschließend sudo apt -f install aus, um diese aufzulösen.",
+                commands: ["dpkg", "apt"],
+              },
+              {
+                question: "Was ist der Unterschied zwischen apt und apt-get?",
+                answer:
+                  "apt ist ein etwas neueres Kommando, das viele häufig genutzte Funktionen von apt-get und apt-cache in einem Tool vereint. So entspricht z. B. apt install dem klassischen apt-get install. Für die meisten Anwendungsfälle kann man apt benutzen – es ist benutzerfreundlicher (z. B. Fortschrittsbalken) – während apt-get und apt-cache aus Kompatibilitätsgründen weiterhin verfügbar sind. Kurz gesagt: apt ist eine komfortablere Weiterentwicklung von apt-get.",
+                commands: ["apt"],
+              },
+              {
+                question:
+                  'Wie behebe ich den Fehler "E: Unable to locate package", wenn ein Paket nicht gefunden wird?',
+                answer:
+                  "Dieser Fehler bedeutet, dass das genannte Paket in den Paketquellen nicht gefunden wurde. Zunächst sollte man prüfen, ob der Paketname korrekt ist und apt update ausgeführt wurde. Wenn der Fehler weiterhin besteht, liegt oft ein Problem mit den Paketquellen vor. In Kali sollten in /etc/apt/sources.list die offiziellen kali-rolling-Quellen eingetragen sein. Man kann die Datei überprüfen und ggf. die Standard-Kali-Repository-URLs eintragen. Anschließend erneut apt update ausführen und die Installation wiederholen.",
+                commands: ["apt"],
+              },
+            ],
+          },
+          {
+            category: "Netzwerkgrundlagen",
+            questions: [
+              {
+                question:
+                  "Wie finde ich meine IP-Adresse oder Netzwerk-Schnittstellen heraus?",
+                answer:
+                  "Der Befehl ifconfig (aus dem Paket net-tools) zeigt die konfigurierten Netzwerkinterfaces mit ihren IP-Adressen an. Unter neueren Linux-Systemen verwendet man bevorzugt ip a (oder ip addr), das ähnliche Informationen ausgibt. Beispiel: ip a listet alle Interfaces (eth0, wlan0, lo etc.) mit IP, Netzmaske und Status auf.",
+                commands: ["ifconfig", "ip"],
+              },
+              {
+                question:
+                  "Wie teste ich die Erreichbarkeit eines anderen Hosts (Ping)?",
+                answer:
+                  "Mit ping <ziel> sendet man ICMP-Pakete an einen Host, um die Verbindung zu prüfen. Beispiel: ping google.com sendet kontinuierlich Pings an google.com. Eine erfolgreiche Antwort zeigt, dass Netzwerkverbindung besteht und gibt die Round-Trip-Zeit aus. Mit Ctrl+C bricht man den Vorgang ab. (Standardmäßig pingt Linux endlos, mit -c 4 kann man z. B. 4 Pakete schicken lassen.)",
+                commands: ["ping"],
+              },
+              {
+                question:
+                  "Wie zeige ich alle offenen Ports bzw. aktuellen Netzwerkverbindungen an?",
+                answer:
+                  "Früher nutzte man dafür netstat -tuln (tcp/udp, listening, numeric). In neueren Systemen ist ss -tuln der empfohlene Befehl (ss = socket statistics), der ähnliche Ausgaben liefert. Beide zeigen z. B. an, welche Dienste auf welchen Ports lauschen (LISTEN). Will man sämtliche bestehenden Verbindungen sehen, kann man netstat -tpna verwenden (zeigt auch die zugehörigen Programme/PIDs).",
+                commands: ["netstat", "ss"],
+              },
+              {
+                question:
+                  "Wie überprüfe ich die Routing-Tabelle oder den Weg eines Pakets?",
+                answer:
+                  "Die Routing-Tabelle (Weg der Pakete ins Netzwerk) sieht man mit route -n oder ip route. Um den Pfad zu einem bestimmten Ziel zu verfolgen, nutzt man traceroute <ziel>. Beispiel: traceroute heise.de listet die einzelnen Zwischenstationen (Router), die ein Paket durchläuft, um heise.de zu erreichen.",
+                commands: ["route", "traceroute"],
+              },
+              {
+                question:
+                  "Wie kann ich DNS-Informationen zu einer Domain abfragen (Nameserver lookup)?",
+                answer:
+                  "Mit nslookup <domain> kann man den DNS-Server nach der IP-Adresse einer Domain fragen. Beispiel: nslookup kali.org gibt die IP-Adresse(s) der Domain kali.org zurück. Für ausführlichere DNS-Abfragen kann man dig <domain> verwenden, das z. B. auch MX-Records, NS-Records etc. abfragen kann.",
+                commands: ["nslookup", "dig"],
+              },
+              {
+                question:
+                  "Wie scanne ich einen Rechner oder ein Netzwerk nach offenen Ports (mit Nmap)?",
+                answer:
+                  "Nmap ist ein Port-Scanner. Ein einfacher Scan erfolgt mit nmap <IP-Adresse>. Beispielsweise führt nmap 192.168.0.5 einen Standard-Portscan der gängigsten 1000 Ports auf dem Host 192.168.0.5 durch und listet offene Ports samt Dienstnamen. Mit Optionen kann man das Scanning anpassen, z. B. -p 1-65535 für alle Ports oder -sV für Service- und Versionserkennung. (Hinweis: Nmap bietet sehr viele Optionen für unterschiedliche Scan-Methoden.)",
+                commands: ["nmap"],
+              },
+              {
+                question:
+                  "Wie ermittle ich den Inhaber einer Domain oder weitere Infos (WHOIS)?",
+                answer:
+                  "Mit dem Kommando whois <domain> kann man einen WHOIS-Lookup durchführen. Die Ausgabe enthält je nach Domain u. a. Registrierungsinformationen, Name des Domain-Inhabers (bei privaten Personen ggf. anonymisiert), Registrar, Erstellungs- und Ablaufdaten usw.",
+                commands: ["whois"],
+              },
+              {
+                question:
+                  "Wie kann ich den Quelltext einer Webseite oder eine HTTP-Anfrage abrufen?",
+                answer:
+                  "Mit curl kann man über URLs Daten abrufen oder senden. Beispiel: curl http://example.com holt den HTML-Code der angegebenen Webseite. Möchte man die Ausgabe in eine Datei speichern, kann man curl -o output.html http://example.com nutzen. Für einfache Downloads bietet sich auch wget an.",
+                commands: ["curl"],
+              },
+              {
+                question:
+                  "Wie lade ich eine Datei per Kommandozeile aus dem Internet herunter?",
+                answer:
+                  "Einfache Methode: wget <URL>. Beispiel: wget https://kali.org/sample.iso lädt die Datei sample.iso aus dem Internet in das aktuelle Verzeichnis herunter. Alternativ kann curl -O <URL> verwendet werden, das den Inhalt unter dem ursprünglichen Dateinamen speichert. Unterschied: wget ist primär zum Download gedacht (und kann z. B. rekursiv Webseiten herunterladen), während curl vielfältiger für Webanfragen/API-Aufrufe eingesetzt wird.",
+                commands: ["wget", "curl"],
+              },
+            ],
+          },
+          {
+            category: "Rechte und Berechtigungen",
+            questions: [
+              {
+                question:
+                  "Wie ändere ich Dateiberechtigungen (Lese/Schreib/Execute-Rechte)?",
+                answer:
+                  "Mit dem Befehl chmod kann man Unix-Dateirechte ändern. Man kann die Rechte entweder symbolisch (mit Buchstaben) oder numerisch (mit Oktalzahlen) angeben. Beispiel symbolisch: chmod u+rwx,g+rx,o-r file.txt würde dem Besitzer alle Rechte geben (rwx), der Gruppe nur Lese/Execute, und anderen Benutzern die Leserechte entziehen. Häufig nutzt man die numerische Notation: z. B. chmod 755 script.sh setzt die Rechte auf rwxr-xr-x (Besitzer darf lesen/schreiben/ausführen =7, Gruppe und andere nur lesen/ausführen =5 und 5). Eine häufige Aufgabe ist es, Skripte ausführbar zu machen: Dafür kann man auch kurz chmod +x datei.sh verwenden.",
+                commands: ["chmod"],
+              },
+              {
+                question: "Wie mache ich eine Datei ausführbar?",
+                answer:
+                  "Mit chmod +x <datei> fügt man das Ausführungsrecht (execute) für die Datei hinzu. Danach kann die Datei (z. B. ein Skript) direkt gestartet werden, etwa mit ./script.sh. Beachte: Für Skripte muss in der ersten Zeile häufig ein Shebang (#!/usr/bin/env bash o. Ä.) gesetzt sein, damit das System weiß, welcher Interpreter genutzt werden soll.",
+                commands: ["chmod"],
+              },
+              {
+                question:
+                  "Wie ändere ich den Besitzer einer Datei oder eines Ordners?",
+                answer:
+                  "Mit chown <benutzer>:<gruppe> <datei> ändert man den Eigentümer (Besitzer) und optional die Gruppe einer Datei. Beispiel: sudo chown kali:kali datei.txt ändert Besitzer und Gruppe von datei.txt auf den Benutzer kali. Oft reicht sudo chown <user> <datei> – dabei bleibt die Gruppenzugehörigkeit unverändert.",
+                commands: ["chown"],
+              },
+              {
+                question: "Wie ändere ich die Gruppe einer Datei?",
+                answer:
+                  "Mit chgrp <gruppe> <datei> kann man die Gruppenzugehörigkeit ändern (statt über chown). Beispiel: sudo chgrp sudo config.cfg würde die Datei config.cfg der Gruppe sudo zuordnen. (Hinweis: chown <user>:<gruppe> kann beides in einem Schritt ändern.)",
+                commands: ["chgrp", "chown"],
+              },
+              {
+                question: "Wozu dient sudo und wie verwende ich es?",
+                answer:
+                  'sudo ("substitute user do") erlaubt es, Befehle mit administrativen Rechten (als root) auszuführen. In Kali ist der Standarduser häufig schon root; existiert ein normaler Benutzer, muss man sudo voranstellen, um Systembefehle auszuführen, die erhöhte Rechte brauchen. Beispiel: sudo apt update aktualisiert die Paketliste mit Root-Rechten. Beim ersten Einsatz in einer Session fragt sudo nach dem Passwort des Benutzers. Wichtig: Nur Nutzer, die in der Datei /etc/sudoers oder in der sudo-Gruppe eingetragen sind, dürfen sudo benutzen.',
+                commands: ["sudo"],
+              },
+              {
+                question:
+                  'Was bedeutet die Fehlermeldung "Permission denied" und wie behebe ich sie?',
+                answer:
+                  '"Permission denied" heißt, dass die aktuellen Berechtigungen nicht ausreichen, um die gewünschte Aktion durchzuführen. Dies tritt z. B. auf, wenn man auf eine Datei/Ordner ohne ausreichende Rechte zugreifen will, oder einen Befehl ausführt, der Root-Rechte erfordert. Lösung: Entweder als root ausführen (Befehl mit sudo voranstellen) oder die Dateirechte anpassen. Beispiel 1: cat /etc/shadow ergibt Permission denied, weil die Datei nur von root gelesen werden darf – hier würde sudo cat /etc/shadow funktionieren (sofern berechtigt). Beispiel 2: ./script.sh ergibt Permission denied, weil das Skript nicht ausführbar ist – hier hilft chmod +x script.sh, um die Ausführung zu erlauben. Beispiel 3: cd ordner schlägt fehl mit Permission denied, wenn man keine Suchrechte auf den Ordner hat – hier müsste man dem Ordner das x-Recht geben (chmod +x ordner).',
+                commands: ["sudo", "chmod"],
+              },
+            ],
+          },
+          {
+            category: "Grundlagen der Shell (Bash & nützliche Hilfen)",
+            questions: [
+              {
+                question:
+                  "Welche Shell wird in Kali Linux verwendet und wie finde ich das heraus?",
+                answer:
+                  "Kali Linux nutzt standardmäßig Bash (Bourne Again SHell) als Kommandozeileninterpreter. Man kann die aktuelle Shell herausfinden, indem man echo $SHELL eingibt – das liefert z. B. /bin/bash. Alternativ zeigt echo $0 bei interaktiver Nutzung ebenfalls den Shell-Namen (bei Login-Shells).",
+                commands: [],
+              },
+              {
+                question:
+                  "Wie kann ich mir meine bisherigen Befehle anzeigen lassen (Befehls-Historie)?",
+                answer:
+                  'Mit dem Befehl history werden alle zuletzt eingegebenen Befehle der aktuellen Shell-Sitzung aufgelistet. Jeder Eintrag hat eine Nummer, und mit !<Nummer> kann man einen bestimmten Befehl erneut ausführen. Praktische Kürzel: !! wiederholt den letzten Befehl, !ls würde z. B. den letzten Befehl, der mit "ls" begann, erneut ausführen.',
+                commands: ["history"],
+              },
+              {
+                question: "Wie definiere ich eigene Kurzbefehle (Aliases)?",
+                answer:
+                  'Mit alias kann man ein Kürzel für einen längeren Befehl definieren. Syntax: alias kurz="langer Befehl mit Optionen". Beispiel: alias ll="ls -l --color=auto" definiert ll als Alias, der farbig und im Langformat listet. Nach Eingabe von ll führt die Shell dann ls -l --color=auto aus. Bestehende Aliase listet man mit alias ohne Argumente auf.',
+                commands: ["alias"],
+              },
+              {
+                question: "Wie entferne ich einen definierten Alias wieder?",
+                answer:
+                  "Mit unalias <name> kann man einen Alias löschen. Beispiel: unalias ll würde den zuvor gesetzten Alias ll entfernen, sodass der Name wieder frei ist bzw. ein eventuell vorhandenes Systemalias aktiv würde.",
+                commands: ["unalias"],
+              },
+              {
+                question:
+                  "Wie kann ich Umgebungsvariablen setzen und anzeigen?",
+                answer:
+                  'Umweltvariablen werden in der Form NAME=Wert gesetzt. Dies gilt zunächst nur für die laufende Shell. Mit export NAME=Wert macht man die Variable auch für Subprozesse verfügbar. Anzeigen kann man einzelne Variablen mit echo $NAME. Alle aktuell definierten Variablen zeigt printenv oder env an. Beispiel: export PATH="$PATH:/opt/meinprogramm/bin" hängt /opt/meinprogramm/bin an die PATH-Variable an (erweitert den Suchpfad für Befehle).',
+                commands: ["export", "env"],
+              },
+              {
+                question: "Wie führe ich ein Shell-Skript aus?",
+                answer:
+                  "Angenommen, man hat ein Skript script.sh erstellt: Zunächst muss es ausführbar sein (chmod +x script.sh). Starten kann man es dann mit ./script.sh (wenn sich das Skript im aktuellen Verzeichnis befindet). Alternativ kann man es einem Interpreter übergeben, z. B. bash script.sh. Wichtig: In der ersten Zeile eines Skripts steht oft ein Shebang (z. B. #!/bin/bash), um festzulegen, welche Shell/Interpreter das Skript ausführen soll.",
+                commands: ["chmod"],
+              },
+              {
+                question:
+                  "Wie kann ich einen gerade laufenden Befehl abbrechen?",
+                answer:
+                  "Durch Drücken von Strg + C (Control + C) im Terminal wird das aktuelle Vordergrund-Programm sofort beendet. Dies sendet das SIGINT-Signal an den Prozess. Beispiel: Wenn ping endlos läuft, beendet Strg+C den Vorgang und gibt eine Zusammenfassung aus.",
+                commands: [],
+              },
+              {
+                question:
+                  "Wie halte ich einen laufenden Prozess an und lasse ihn im Hintergrund weiterlaufen?",
+                answer:
+                  "Mit Strg + Z kann man einen laufenden Prozess anhalten (pausieren). Die Shell gibt dann eine Job-Nummer aus. Mit dem Befehl bg schickt man diesen angehaltenen Job in den Hintergrund (Background), sodass er weiterläuft, aber die Shell wieder bereit ist. Den Status aller Jobs sieht man mit jobs. Um einen Hintergrundjob wieder in den Vordergrund zu holen, verwendet man fg %Jobnummer (z. B. fg %1).",
+                commands: ["bg", "fg", "jobs"],
+              },
+              {
+                question:
+                  "Wie verlasse ich die Shell bzw. schließe das Terminal?",
+                answer:
+                  "Mit dem Befehl exit beendet man die aktuelle Shell-Sitzung. Falls es die letzte Shell in dem Terminalfenster war, schließt sich dadurch das Terminal. Alternativ kann man auch Strg + D drücken (EOF senden), was ebenfalls die Shell beendet.",
+                commands: ["exit"],
+              },
+            ],
+          },
+          {
+            category: "Fehlermeldungen und ihre Behebung",
+            questions: [
+              {
+                question:
+                  'Fehlermeldung: "command not found" – was bedeutet das und was kann ich tun?',
+                answer:
+                  '"Command not found" bedeutet, dass die Shell den eingegebenen Befehl nicht finden konnte. Häufige Ursachen: Tippfehler im Befehlsnamen oder das Programm ist nicht installiert bzw. nicht im PATH. Zuerst sollte man prüfen, ob man sich nicht vertippt hat. Ist der Name korrekt, überprüft man mit which befehl, ob das Programm im Suchpfad liegt (gibt z. B. /usr/bin/befehl zurück). Falls which nichts ausgibt, muss das Programm ggf. installiert werden (z. B. via sudo apt install <paket>). Bei Shell-internen Befehlen (wie cd) kann die Meldung erscheinen, wenn man sie in falschem Kontext nutzt. In seltenen Fällen ist die PATH-Variable beschädigt oder leer, sodass selbst grundlegende Befehle nicht gefunden werden. Dann sollte man echo $PATH prüfen und gegebenenfalls die Standard-Pfade (/usr/bin, /bin, etc.) wiederherstellen. Zusammengefasst: "command not found" = entweder Tippfehler, Programm fehlt oder PATH-Problem.',
+                commands: ["which"],
+              },
+              {
+                question:
+                  'Fehlermeldung: "Permission denied" – warum tritt sie auf und wie löse ich das?',
+                answer:
+                  "Diese Meldung erscheint, wenn die Berechtigungen nicht ausreichen, um eine Aktion durchzuführen. Man löst es, indem man entweder die notwendigen Rechte erlangt oder die Datei-Berechtigungen ändert. Beispiele: Beim Öffnen einer Datei Permission denied – entweder sudo verwenden (wenn Administratorrechte nötig sind) oder chmod nutzen, um die Datei für den eigenen Benutzer zugänglich zu machen. Oder man versucht, in ein Verzeichnis zu wechseln, hat aber keine Ausführungsrechte auf den Ordner – dann muss man chmod +x auf das Verzeichnis anwenden. Generell: Permission denied kann durch sudo umgangen werden, wenn es um Root-Rechte geht (aber vorsicht, nur bei vertrauenswürdigen Befehlen nutzen), oder durch Anpassen der Dateirechte mit chmod bzw. Eigentümerwechsel mit chown, falls man Zugriff benötigt.",
+                commands: ["sudo", "chmod", "chown"],
+              },
+              {
+                question:
+                  'Fehlermeldung: "No such file or directory" – was läuft falsch?',
+                answer:
+                  "Diese Meldung bedeutet, dass eine angegebene Datei oder Pfad nicht existiert. Entweder wurde der Pfad falsch eingegeben (Tippfehler, Groß-/Kleinschreibung beachten, da Linux case-sensitiv ist) oder das Objekt ist tatsächlich nicht vorhanden. Lösung: Pfadangabe überprüfen (ls im betreffenden Verzeichnis ausführen, Tab-Autocomplete nutzen) und ggf. korrigieren. Bei ausführbaren Programmen kann es auch bedeuten, dass das Programm zwar vorhanden ist, aber eine benötigte Bibliothek fehlt oder der Shebang-Pfad im Skript ungültig ist (z. B. Skript beginnt mit #!/bin/python statt /usr/bin/python). Dann muss man den Pfad anpassen oder die fehlende Komponente installieren.",
+                commands: ["ls"],
+              },
+              {
+                question:
+                  "Mein Terminal zeigt sonderbare Zeichen an oder reagiert nicht richtig – was kann ich tun?",
+                answer:
+                  'Manchmal gerät das Terminal durch Binärausgaben oder versehentliche stty-Änderungen durcheinander. Mit dem Befehl reset kann man das Terminal in einen definierten Zustand zurücksetzen. Falls nur Eingaben unsichtbar sind (passiert z. B. nach cat /dev/urandom), hilft oft auch echo -e "\\033c". Ein einfacher Trick ist zudem, einen neuen Prompt zu erzwingen: Drücke Ctrl+J gefolgt von reset und wieder Enter (falls Enter alleine nicht mehr erkannt wird).',
+                commands: ["reset"],
+              },
+              {
+                question:
+                  "Ein Befehl läuft endlos und reagiert nicht – was soll ich machen?",
+                answer:
+                  "Mit Strg + C (Control-C) bricht man den laufenden Prozess ab. Sollte auch das nicht gehen (sehr selten), kann man in einem anderen Terminal sudo killall <prozessname> oder sudo kill <PID> ausführen, um den Prozess zu beenden. In grafischen Desktop-Sitzungen gibt es auch den System Monitor oder htop, um Prozesse abzuschießen. In der Regel reicht jedoch Strg+C, um einen hängenden Prozess zu stoppen.",
+                commands: ["kill", "killall"],
+              },
+              {
+                question:
+                  "Nach der Anmeldung sehe ich nur $ anstelle von kali@...$ und Befehle wie ls funktionieren nicht. Was ist passiert?",
+                answer:
+                  'Ein Prompt, der nur $ anzeigt, deutet darauf hin, dass man möglicherweise in der sh-Shell (oder Dash) statt in Bash gelandet ist, oder dass die Shell-Initialisierung nicht vollständig lief. Wenn dann gängige Befehle wie ls "command not found" ergeben, kann es sein, dass die PATH-Variable nicht gesetzt ist. Lösung: Versuchen, mit exec bash oder bash --login in eine Bash zu wechseln. Prüfen, ob Konfigurationsdateien wie ~/.bashrc oder ~/.profile versehentlich verändert wurden. Ggf. temporär export PATH=/usr/bin:/bin setzen, damit wichtigste Befehle wieder gefunden werden, dann die Shell-Startdateien reparieren.',
+                commands: ["bash"],
+              },
+            ],
+          },
+          {
+            category: "Systeminformationen und -überwachung",
+            questions: [
+              {
+                question:
+                  "Wie finde ich heraus, welche Linux-Version und Kernel-Version ich benutze?",
+                answer:
+                  "Mit uname -a erhält man einen Überblick über Systemname, Kernel-Version, Architektur usw. Beispielausgabe: Linux kali 6.5.0-kali1-amd64 #1 SMP Debian 6.5.5-1kali1 (2023-10-10) x86_64 GNU/Linux. Für die Distribution kann man auch lsb_release -a verwenden, das z. B. Kali-Version und Codename anzeigt.",
+                commands: ["uname", "lsb_release"],
+              },
+              {
+                question:
+                  "Wie kann ich die Hardware-Informationen meines Systems anzeigen?",
+                answer:
+                  "Einige nützliche Befehle: lscpu zeigt CPU-Details (Anzahl Kerne, Modell, Flags), lsusb listet USB-Geräte auf, lspci PCI-Geräte. Für den Arbeitsspeicher grep MemTotal /proc/meminfo. Kali bringt auch neofetch mit, das eine kompakte Systemübersicht mit ASCII-Logo ausgeben kann (inkl. OS, Kernel, CPU, RAM etc.).",
+                commands: ["lscpu", "lsusb", "lspci"],
+              },
+              {
+                question:
+                  "Wie überwache ich die aktuelle Auslastung der CPU und des RAM?",
+                answer:
+                  "Mit top erhält man eine dynamische Live-Ansicht der laufenden Prozesse und ihrer CPU-/Speicherauslastung. Oben zeigt top außerdem Gesamtwerte für CPU (in %), RAM und Swap an. Ein besser lesbares, alternatives Tool ist htop (falls installiert). Wenn es nur um einen Schnappschuss geht: uptime zeigt die Load Average an (Durchschnittslast) und free -h den aktuellen belegten/freien Speicher.",
+                commands: ["top", "htop", "uptime", "free"],
+              },
+              {
+                question: "Wie sehe ich, wie lange mein System schon läuft?",
+                answer:
+                  "Der Befehl uptime gibt die aktuelle Uhrzeit, die Systemlaufzeit (seit dem letzten Start), die Anzahl eingeloggter Benutzer und die durchschnittliche Last an. Beispiel: 17:30:45 up 2:15, 1 user, load average: 0.05, 0.10, 0.09 bedeutet das System läuft seit 2 Stunden 15 Minuten.",
+                commands: ["uptime"],
+              },
+              {
+                question:
+                  "Wie prüfe ich, wie viel Festplattenplatz belegt bzw. frei ist?",
+                answer:
+                  "Dafür verwendet man df -h. df (disk free) listet alle eingehängten Dateisysteme mit genutztem und freiem Speicherplatz; die Option -h zeigt die Werte in menschenlesbarer Form (KiB/ MiB/ GiB). Man sieht z. B., wie voll die Root-Partition ist. Möchte man den Speicherverbrauch eines bestimmten Verzeichnisses wissen, benutzt man du -sh <verzeichnis> (disk usage, -s summarisch für das Verzeichnis, -h human-readable).",
+                commands: ["df", "du"],
+              },
+              {
+                question:
+                  "Wie kann ich bestimmte Prozessinformationen abrufen?",
+                answer:
+                  'Mit ps aux lassen sich alle laufenden Prozesse auflisten (mit User, PID, CPU/RAM-Verbrauch etc.). Möchte man nach einem bestimmten Prozess filtern, kann man ps aux | grep name nutzen. Detaillierte Infos zu einem Prozess liefert ps -p <PID> -o alles, wobei man anstelle von "alles" spezifische Felder angeben kann (siehe man ps). Für einen Echtzeit-Überblick siehe top oder htop (vorher genannt).',
+                commands: ["ps"],
+              },
+              {
+                question: "Wie kann ich System-Logs einsehen?",
+                answer:
+                  "Log-Dateien liegen meist unter /var/log/. Wichtige Logs sind z. B. /var/log/syslog (Systemmeldungen), /var/log/auth.log (Anmeldungen und sudo), dmesg (Kernel-Meldungen, auslesbar mit dem Befehl dmesg). Man kann diese Dateien mit tail -f <logdatei> live mitlesen oder mit grep durchsuchen. Kali nutzt systemd, daher ist auch journalctl -xe nützlich, um aktuelle Fehlermeldungen im System-Log zu sehen.",
+                commands: ["tail", "dmesg", "journalctl"],
+              },
+            ],
+          },
+          {
+            category: "Nützliche Tools und Befehle",
+            questions: [
+              {
+                question: "Wie verwende ich Nmap, um mein Netzwerk zu scannen?",
+                answer:
+                  "Nmap ist ein Netzwerkscanner. Einige Beispiele: – Ping-Scan: nmap -sn 192.168.1.0/24 pingt ein ganzes Netz (hier 192.168.1.0 bis 192.168.1.255) an und listet aktive Hosts. – Port-Scan: nmap 192.168.1.100 scannt die häufigsten 1000 TCP-Ports auf Host .100. Mit -p 1-65535 kann man alle Ports scannen, mit -sU UDP-Ports. – Service-/OS-Scan: nmap -sV -O 192.168.1.100 versucht, Dienste-Versionen und das Betriebssystem des Ziels zu erkennen. Nmap bietet sehr umfangreiche Möglichkeiten, einschließlich Skripte (-sC) und aggressivere Scans (-A). Für den Einstieg liefert jedoch ein einfacher Portscan schon viel Information über offene Ports und Dienste.",
+                commands: ["nmap"],
+              },
+              {
+                question:
+                  "Wofür wird Netcat (nc) verwendet und wie funktioniert es?",
+                answer:
+                  'Netcat ist ein vielseitiges Tool für die Netzwerkkommunikation – oft bezeichnet als "Schweizer Taschenmesser" der TCP/UDP-Tools. Beispiele: – Port-Check/Portscan: nc -zv <host> <port> prüft, ob ein bestimmter Port auf einem Host offen ist (z. B. nc -zv 192.168.1.1 80 prüft Port 80). – Listener aufsetzen: nc -l -p 4444 lauscht auf Port 4444 auf eingehende Verbindungen (ein rudimentärer Server). – Client verbinden: nc <ip> 4444 verbindet zu einem solchen Listener. Alles was eine Seite tippt, wird zur anderen übertragen – so kann man z. B. einen einfachen Chat oder Datentransfer realisieren. – Dateitransfer: Auf Empfängerseite: nc -l -p 5555 > received.file und auf Senderseite: nc <ip> 5555 < file.to.send – so wird file.to.send per Netcat übertragen. Netcat kann noch mehr, inkl. Port-Weiterleitungen und Banner-Grabbing. Da Netcat keine Verschlüsselung bietet, sollte es in sicheren Netzwerken oder zu Testzwecken verwendet werden.',
+                commands: ["nc", "netcat"],
+              },
+              {
+                question:
+                  "Wie kann ich Dateien von einem Webserver herunterladen (Wget)?",
+                answer:
+                  "wget ist ein einfaches Download-Tool. Beispiel: wget https://downloads.kali.org/tool.deb lädt die Datei tool.deb herunter. Standardmäßig speichert wget im aktuellen Verzeichnis und zeigt einen Fortschritt an. Es unterstützt viele Parameter, z. B. -c zum Fortsetzen abgebrochener Downloads oder -r für rekursives Herunterladen von Websites.",
+                commands: ["wget"],
+              },
+              {
+                question:
+                  "Wie kann ich HTTP-Anfragen stellen oder APIs testen (cURL)?",
+                answer:
+                  'cURL ist sehr mächtig für Webanfragen: – Eine einfache GET-Anfrage: curl http://api.icndb.com/jokes/1 ruft z. B. eine Joke-API auf und gibt JSON aus. – Datei herunterladen: curl -O http://example.com/file.txt funktioniert ähnlich wie wget (speichert unter gleichem Namen). – POST-Anfrage senden: curl -d "user=test&pass=123" -X POST http://example.com/login sendet Formulardaten via POST. – Header anzeigen: curl -I http://example.com zeigt nur die HTTP-Header an (Kopfzeilen der Antwort). cURL eignet sich somit, um Web-APIs zu testen, Dateien zu laden oder generell mit Webservices zu interagieren. (Tipp: Mit Option -v sieht man detaillierte Request/Response, mit -H kann man Header setzen usw.)',
+                commands: ["curl"],
+              },
+              {
+                question:
+                  "Wie öffne ich eine sichere Shell-Verbindung zu einem anderen Rechner (SSH)?",
+                answer:
+                  "Mit dem ssh-Befehl. Syntax: ssh <benutzer>@<hostname>. Beispiel: ssh root@192.168.0.10 stellt eine SSH-Verbindung zum Host 192.168.0.10 als Benutzer root her (es wird nach dem Passwort gefragt, sofern kein Key genutzt wird). Über SSH kann man Befehle auf dem entfernten System ausführen und hat eine verschlüsselte Terminalsession. Für Key-basierten Login verwendet man die Option -i /Pfad/zum/Schlüssel. Standard läuft SSH auf Port 22; falls der Server einen anderen Port nutzt, kann man mit -p <Port> einen abweichenden Port angeben.",
+                commands: ["ssh"],
+              },
+              {
+                question:
+                  "Welche weiteren nützlichen Hacking-Tools bringt Kali Linux mit?",
+                answer:
+                  "Kali ist vollgepackt mit Security-Tools. Einige Beispiele: – sqlmap: Automatisches SQL-Injection-Tool zum Auffinden und Exploitieren von SQL-Injection-Schwachstellen. – hydra: Passwort-Cracking-Tool für Online-Dienste (Brute-Force auf Login z. B. FTP, HTTP, SSH). – aircrack-ng: Suite zum Knacken von WLAN-Verschlüsselungen (WEP/WPA Handshakes). – burpsuite: Plattform zum Testen von Webanwendungen (Proxy zum Manipulieren von HTTP(S)-Traffic, Scanner etc.). – metasploit-framework: Umfangreiches Exploit-Framework zum Durchführen von Penetrationstests. – Wireshark: Grafischer Netzwerk-Sniffer/Protokoll-Analyzer zum Mitschneiden und Analysieren von Netzwerkverkehr. Diese Tools sind meist für fortgeschrittene Anwender – Anfänger sollten sich zunächst mit den Grundlagen der Linux-CLI vertraut machen, bevor sie diese einsetzen. Dennoch gehört es zum Kali-Einstieg dazu, zumindest zu wissen, dass diese Tools existieren und wofür sie da sind.",
+                commands: ["sqlmap", "hydra", "aircrack-ng"],
+              },
+              {
+                question:
+                  "Wie kann ich herausfinden, wo ein bestimmtes Programm liegt?",
+                answer:
+                  'Mit which <befehl> zeigt die Shell den Pfad zur auszuführenden Datei an, die dem Befehl entspricht. Beispiel: which nmap gibt z. B. /usr/bin/nmap aus. Existiert der Befehl nicht (oder ist kein externer Befehl sondern Shell-intern), gibt which nichts aus. Für Shell-Builtins kann type <name> weiterhelfen (z. B. type cd sagt "cd is a shell builtin").',
+                commands: ["which", "type"],
+              },
+              {
+                question: "Wie bekomme ich Hilfe zu Befehlen (Man-Pages)?",
+                answer:
+                  "Linux bietet zu den meisten Befehlen Handbuchseiten. Mit man <befehl> öffnet man die Manual-Page zum jeweiligen Befehl. Diese enthalten Beschreibung, Aufrufsyntax, Optionen und oft Beispiele. Beispiel: man ls erklärt alle Optionen von ls. Mit Q verlässt man die man-Page wieder. Alternativ zeigen viele Befehle mit --help eine Kurzinfo an, z. B. ls --help.",
+                commands: ["man"],
+              },
+            ],
+          },
+        ];
+
+        // Konvertiere in finale Struktur
+        const categories = [];
+        const commandToFaqMap = {};
+
+        faqRawData.forEach((categoryData) => {
+          const categoryInfo = categoryMap[categoryData.category];
+          if (!categoryInfo) return;
+
+          const questions = categoryData.questions.map((q, index) => {
+            const questionId = `${categoryInfo.id}-${String(index + 1).padStart(
+              3,
+              "0"
+            )}`;
+            const relatedCommands = q.commands || [];
+
+            // Erstelle Tags aus Commands und Frage-Text
+            const tags = [
+              ...relatedCommands,
+              ...q.question
+                .toLowerCase()
+                .split(/\s+/)
+                .filter((word) => word.length > 3),
+            ].slice(0, 5);
+
+            // Füge zu commandToFaqMap hinzu
+            relatedCommands.forEach((cmd) => {
+              const normalizedCmd = cmd.toLowerCase().replace(/\s+/g, "_");
+              if (!commandToFaqMap[normalizedCmd]) {
+                commandToFaqMap[normalizedCmd] = [];
+              }
+              if (!commandToFaqMap[normalizedCmd].includes(questionId)) {
+                commandToFaqMap[normalizedCmd].push(questionId);
+              }
+            });
+
+            return {
+              id: questionId,
+              question: q.question,
+              answer: q.answer,
+              relatedCommands: relatedCommands,
+              tags: tags,
+            };
+          });
+
+          categories.push({
+            id: categoryInfo.id,
+            name: categoryInfo.name,
+            icon: categoryInfo.icon,
+            questions: questions,
+          });
+        });
+
+        return {
+          categories: categories,
+          commandToFaqMap: commandToFaqMap,
+        };
+      }
+
+      // Initialisiere FAQ-Daten
+      const faqData = parseFaqData();
 
       // Parse Kali Tools Content
       function parseKaliToolsContent() {
@@ -7515,15 +9263,122 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
 
       // Initial load achievements and badges
       migrateToBadgeProgress();
+      buildCheatSheetMap(); // Initialisiere Cheat-Sheet-Map für Badge-System
       updateAchievements();
       updateBadgeDisplay();
       assignBadgeToCards();
+
+      function renderCommandModalContent(meta) {
+        if (commandModalTitle) {
+          commandModalTitle.textContent = meta.title || "Befehl";
+        }
+        if (commandModalSubtitle) {
+          commandModalSubtitle.textContent =
+            meta.subtitle || "Kompaktüberblick";
+        }
+        if (commandModalSummary) {
+          commandModalSummary.textContent = meta.summary || "";
+        }
+
+        if (commandModalFlags) {
+          commandModalFlags.innerHTML = "";
+          if (meta.flags && meta.flags.length) {
+            meta.flags.forEach((flag) => {
+              const pill = document.createElement("div");
+              pill.className = "flag-pill";
+              pill.innerHTML = `<span>${flag.flag}</span><small>${flag.description}</small>`;
+              commandModalFlags.appendChild(pill);
+            });
+          } else {
+            commandModalFlags.textContent = "Keine besonderen Flags";
+          }
+        }
+
+        if (commandModalPitfalls) {
+          commandModalPitfalls.innerHTML = "";
+          if (meta.pitfalls && meta.pitfalls.length) {
+            meta.pitfalls.forEach((pit) => {
+              const li = document.createElement("li");
+              li.textContent = pit;
+              commandModalPitfalls.appendChild(li);
+            });
+          } else {
+            const li = document.createElement("li");
+            li.textContent = "Keine bekannten Stolpersteine";
+            commandModalPitfalls.appendChild(li);
+          }
+        }
+
+        if (commandModalExamples) {
+          commandModalExamples.innerHTML = "";
+          if (meta.examples && meta.examples.length) {
+            meta.examples.forEach((example) => {
+              const item = document.createElement("div");
+              item.className = "example-item";
+              const cmd = document.createElement("code");
+              cmd.textContent = example.command;
+              const note = document.createElement("div");
+              note.style.marginTop = "0.35rem";
+              note.textContent = example.note || "";
+              item.appendChild(cmd);
+              item.appendChild(note);
+              commandModalExamples.appendChild(item);
+            });
+          } else {
+            const item = document.createElement("div");
+            item.textContent = "Noch keine Beispiele hinterlegt.";
+            commandModalExamples.appendChild(item);
+          }
+        }
+      }
+
+      function openCommandModal(commandKey, quizId) {
+        if (!commandModalRoot) return;
+        const meta = commandMeta[commandKey] || commandMeta[quizId];
+        if (!meta) {
+          console.warn("Keine Metadaten für", commandKey || quizId);
+          if (typeof openQuiz === "function" && quizId) {
+            openQuiz(quizId);
+          }
+          return;
+        }
+
+        renderCommandModalContent(meta);
+
+        if (commandModalFeedback) {
+          commandModalFeedback.textContent =
+            "ESC oder Klick auf den Hintergrund schließen das Modal.";
+        }
+
+        if (commandModalQuizBtn) {
+          if (quizId) {
+            commandModalQuizBtn.disabled = false;
+            commandModalQuizBtn.onclick = () => {
+              closeCommandModal();
+              openQuiz(quizId);
+            };
+          } else {
+            commandModalQuizBtn.disabled = true;
+          }
+        }
+
+        commandModalRoot.classList.remove("hidden");
+        commandModalRoot.setAttribute("aria-hidden", "false");
+        activateFocusTrap(commandModalRoot);
+      }
+
+      function closeCommandModal() {
+        if (!commandModalRoot) return;
+        commandModalRoot.classList.add("hidden");
+        commandModalRoot.setAttribute("aria-hidden", "true");
+        releaseFocusTrap();
+      }
 
       commandCards.forEach((card) => {
         const quizId = card.dataset.quizId;
         if (!quizId) return;
         card.addEventListener("click", () => {
-          openQuiz(quizId);
+          openCommandModal(card.dataset.command || quizId, quizId);
         });
       });
 
@@ -8086,6 +9941,13 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         ) {
           closeExampleOverlay();
         }
+        if (
+          event.key === "Escape" &&
+          document.getElementById("mistakes-root") &&
+          !document.getElementById("mistakes-root").classList.contains("hidden")
+        ) {
+          closeMistakesModal();
+        }
       });
 
       // Master Quiz Submit Handler
@@ -8172,6 +10034,28 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         });
       }
 
+      if (commandModalCloseBtn) {
+        commandModalCloseBtn.addEventListener("click", closeCommandModal);
+      }
+
+      if (commandModalRoot) {
+        commandModalRoot.addEventListener("click", (event) => {
+          if (event.target.classList.contains("quiz-backdrop")) {
+            closeCommandModal();
+          }
+        });
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "Escape" &&
+          commandModalRoot &&
+          !commandModalRoot.classList.contains("hidden")
+        ) {
+          closeCommandModal();
+        }
+      });
+
       // Hotkeys Modal Event Handlers
       const hotkeysCloseBtn = document.getElementById("hotkeys-close-btn");
       if (hotkeysCloseBtn) {
@@ -8193,6 +10077,87 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
         hotkeysCard.addEventListener("click", openHotkeysModal);
       }
 
+      function openMistakesModal() {
+        const modal = document.getElementById("mistakes-root");
+        const bodyEl = document.getElementById("mistakes-body");
+
+        if (!modal || !bodyEl) return;
+
+        bodyEl.innerHTML = "";
+
+        const list = document.createElement("div");
+        list.className = "mistakes-list";
+
+        beginnerMistakes.forEach((item, index) => {
+          const row = document.createElement("button");
+          row.type = "button";
+          row.className = "mistake-row";
+          row.setAttribute("data-quiz-id", item.quizId);
+
+          const header = document.createElement("div");
+          header.className = "mistake-row-header";
+
+          const idxEl = document.createElement("span");
+          idxEl.className = "mistake-index";
+          idxEl.textContent = String(index + 1).padStart(2, "0");
+          header.appendChild(idxEl);
+
+          const titleEl = document.createElement("span");
+          titleEl.className = "mistake-title";
+          titleEl.textContent = item.title;
+          header.appendChild(titleEl);
+
+          if (isQuizCompleted(item.quizId)) {
+            const badge = document.createElement("span");
+            badge.className = `badge-mini ${item.segmentClass || "segment-1"}`;
+            badge.textContent = "✔";
+            badge.title = "Thema abgeschlossen (3/3 Fragen)";
+            header.appendChild(badge);
+          }
+
+          row.appendChild(header);
+
+          const desc = document.createElement("p");
+          desc.className = "mistake-description";
+          desc.textContent = item.description;
+          row.appendChild(desc);
+
+          if (item.example) {
+            const example = document.createElement("div");
+            example.className = "mistake-example";
+            example.innerHTML = `✅ Korrekt: <code>${item.example}</code>`;
+            row.appendChild(example);
+          }
+
+          if (item.tip) {
+            const meta = document.createElement("div");
+            meta.className = "mistake-meta";
+            meta.innerHTML = `💡 ${item.tip} · 🔗 Quiz-ID: <code>${item.quizId}</code>`;
+            row.appendChild(meta);
+          }
+
+          row.addEventListener("click", () => {
+            closeMistakesModal();
+            openQuiz(item.quizId);
+          });
+
+          list.appendChild(row);
+        });
+
+        bodyEl.appendChild(list);
+
+        modal.classList.remove("hidden");
+        modal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeMistakesModal() {
+        const modal = document.getElementById("mistakes-root");
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.setAttribute("aria-hidden", "true");
+        }
+      }
+
       // Kali Tools Modal Event Handlers
       const kaliToolsCloseBtn = document.getElementById("kali-tools-close-btn");
       if (kaliToolsCloseBtn) {
@@ -8212,6 +10177,27 @@ Wenn du einfach alle .config-Dateien finden möchtest:<br>
       const kaliToolsCard = document.getElementById("kali-tools-card");
       if (kaliToolsCard) {
         kaliToolsCard.addEventListener("click", openKaliToolsModal);
+      }
+
+      // Beginner Mistakes Card Click Handler
+      const mistakesCard = document.getElementById("mistakes-card");
+      if (mistakesCard) {
+        mistakesCard.addEventListener("click", openMistakesModal);
+      }
+
+      // Beginner Mistakes Modal Event Handlers
+      const mistakesCloseBtn = document.getElementById("mistakes-close-btn");
+      if (mistakesCloseBtn) {
+        mistakesCloseBtn.addEventListener("click", closeMistakesModal);
+      }
+
+      const mistakesRoot = document.getElementById("mistakes-root");
+      if (mistakesRoot) {
+        mistakesRoot.addEventListener("click", (event) => {
+          if (event.target.classList.contains("quiz-backdrop")) {
+            closeMistakesModal();
+          }
+        });
       }
 
       // Kali Tools Example Overlay Event Handlers
