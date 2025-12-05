@@ -11288,6 +11288,9 @@
         // Modal anzeigen
         const quizRoot = document.getElementById("quiz-root");
         if (quizRoot) {
+          // Setup Submit Handler für dieses Quiz
+          setupQuizSubmitHandler();
+
           quizRoot.classList.remove("hidden");
           quizRoot.setAttribute("aria-hidden", "false");
 
