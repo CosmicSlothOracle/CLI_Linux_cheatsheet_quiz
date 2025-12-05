@@ -1,0 +1,22 @@
+# Cursor IDE workspace storage files
+**/c__Users_*_AppData_Roaming_Cursor_*
+**/AppData/Roaming/Cursor/**
+
+# Development tool artifacts
+**/.cursor/**
+**/.vscode/**
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Editor backup files
+*.swp
+*.swo
+*~

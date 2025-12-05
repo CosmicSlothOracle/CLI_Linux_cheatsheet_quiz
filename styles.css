@@ -194,9 +194,15 @@ body {
   border-radius: calc(var(--radius) - 4px);
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid currentColor;
-  color: var(--text);
   position: relative;
 }
+
+/* Spezifische Badge-Farben für Subcards - muss nach .subcard kommen, um die Farbe zu überschreiben */
+.subcard.badge--foundation { color: var(--foundation); }
+.subcard.badge--security { color: var(--security); }
+.subcard.badge--ops { color: var(--ops); }
+.subcard.badge--network { color: var(--network); }
+.subcard.badge--advanced { color: var(--advanced); }
 
 .subcard::before {
   content: "";

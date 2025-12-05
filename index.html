@@ -42,6 +42,138 @@
         margin-top: 1rem;
         margin-bottom: 0.5rem;
       }
+      /* Schmale Badge-Leiste im Header */
+      .header-badge-filter {
+        margin-top: 0.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .header-badge-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1.5px solid;
+        background: rgba(255, 255, 255, 0.05);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+      .header-badge-item:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+      .header-badge-item.active {
+        border-width: 2px;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+      }
+      .header-badge-item.segment-1 {
+        border-color: #34d399;
+        color: #6ee7b7;
+        background: linear-gradient(
+          135deg,
+          rgba(52, 211, 153, 0.15),
+          rgba(16, 185, 129, 0.1)
+        );
+      }
+      .header-badge-item.segment-2 {
+        border-color: #60a5fa;
+        color: #93c5fd;
+        background: linear-gradient(
+          135deg,
+          rgba(96, 165, 250, 0.15),
+          rgba(59, 130, 246, 0.1)
+        );
+      }
+      .header-badge-item.segment-3 {
+        border-color: #a78bfa;
+        color: #c4b5fd;
+        background: linear-gradient(
+          135deg,
+          rgba(167, 139, 250, 0.15),
+          rgba(124, 58, 237, 0.1)
+        );
+      }
+      .header-badge-item.segment-4 {
+        border-color: #f59e0b;
+        color: #fcd34d;
+        background: linear-gradient(
+          135deg,
+          rgba(245, 158, 11, 0.15),
+          rgba(217, 119, 6, 0.1)
+        );
+      }
+      .header-badge-item.segment-5 {
+        border-color: #f97316;
+        color: #fdba74;
+        background: linear-gradient(
+          135deg,
+          rgba(249, 115, 22, 0.15),
+          rgba(234, 88, 12, 0.1)
+        );
+      }
+      .header-badge-item.segment-6 {
+        border-color: #ec4899;
+        color: #f9a8d4;
+        background: linear-gradient(
+          135deg,
+          rgba(236, 72, 153, 0.15),
+          rgba(219, 39, 119, 0.1)
+        );
+      }
+      .header-badge-item.active.segment-1 {
+        background: linear-gradient(
+          135deg,
+          rgba(52, 211, 153, 0.25),
+          rgba(16, 185, 129, 0.2)
+        );
+        box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.3);
+      }
+      .header-badge-item.active.segment-2 {
+        background: linear-gradient(
+          135deg,
+          rgba(96, 165, 250, 0.25),
+          rgba(59, 130, 246, 0.2)
+        );
+        box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3);
+      }
+      .header-badge-item.active.segment-3 {
+        background: linear-gradient(
+          135deg,
+          rgba(167, 139, 250, 0.25),
+          rgba(124, 58, 237, 0.2)
+        );
+        box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.3);
+      }
+      .header-badge-item.active.segment-4 {
+        background: linear-gradient(
+          135deg,
+          rgba(245, 158, 11, 0.25),
+          rgba(217, 119, 6, 0.2)
+        );
+        box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.3);
+      }
+      .header-badge-item.active.segment-5 {
+        background: linear-gradient(
+          135deg,
+          rgba(249, 115, 22, 0.25),
+          rgba(234, 88, 12, 0.2)
+        );
+        box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.3);
+      }
+      .header-badge-item.active.segment-6 {
+        background: linear-gradient(
+          135deg,
+          rgba(236, 72, 153, 0.25),
+          rgba(219, 39, 119, 0.2)
+        );
+        box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.3);
+      }
       .search-input {
         width: 100%;
         padding: 0.6rem 0.9rem;
@@ -259,26 +391,6 @@
         font-size: 0.7rem;
         color: #9ca3af;
         margin-top: 0.3rem;
-      }
-
-      /* Badge-Leiste für Haupt-Badges - Professionelles Layout */
-      .badges-header {
-        margin-top: 1.5rem;
-        margin-bottom: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        padding: 1.2rem 1rem;
-        background: linear-gradient(
-          180deg,
-          rgba(15, 23, 42, 0.4),
-          rgba(15, 23, 42, 0.2)
-        );
-        border-radius: 1rem;
-        border: 1px solid rgba(31, 41, 55, 0.5);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       }
 
       /* Haupt-Badge Reihe - Professionelle Ausrichtung mit Grid */
@@ -1030,6 +1142,14 @@
         background: rgba(16, 185, 129, 0.06);
         border: 1px solid rgba(16, 185, 129, 0.35);
       }
+      .command-modal .command-summary {
+        color: #cbd5e1;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      .command-modal #command-modal-detail {
+        margin-bottom: 1rem;
+      }
       .command-modal .example-item code {
         display: block;
         font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
@@ -1313,6 +1433,7 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        max-height: calc(90vh - 120px);
       }
       .faq-category-header {
         margin-bottom: 1rem;
@@ -1421,15 +1542,44 @@
         padding-top: 1rem;
         color: #d1d5db;
         font-size: 0.9rem;
-        line-height: 1.6;
+        line-height: 1.7;
       }
       .faq-answer-content code {
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(59, 130, 246, 0.15);
         padding: 0.2rem 0.4rem;
         border-radius: 0.3rem;
-        font-family: "JetBrains Mono", ui-monospace, monospace;
-        font-size: 0.85em;
+        font-family: "JetBrains Mono", "Fira Code", monospace;
+        font-size: 0.9em;
         color: #93c5fd;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+      }
+      .faq-answer-content pre {
+        background: rgba(15, 23, 42, 0.8);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid #1f2937;
+        overflow-x: auto;
+        margin: 0.75rem 0;
+      }
+      .faq-answer-content pre code {
+        background: transparent;
+        padding: 0;
+        border: none;
+        color: #e5e7eb;
+      }
+      .faq-example-block {
+        background: rgba(59, 130, 246, 0.08);
+        border-left: 3px solid #3b82f6;
+        padding: 0.75rem 1rem;
+        margin: 0.75rem 0;
+        border-radius: 0.4rem;
+      }
+      .faq-example-label {
+        font-weight: 600;
+        color: #93c5fd;
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+        display: block;
       }
       .faq-answer-content mark {
         background: rgba(251, 191, 36, 0.3);
@@ -1891,13 +2041,36 @@
         position: relative;
         z-index: 51;
         width: min(520px, 100% - 2rem);
+        max-height: 90vh;
         background: #020617;
         border-radius: 1rem;
         border: 1px solid #1f2937;
         box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+        perspective: 1000px;
+      }
+      .quiz-modal-inner.flipped {
+        transform: rotateY(180deg);
+      }
+      .quiz-modal-front,
+      .quiz-modal-back {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        width: 100%;
         padding: 1rem 1.2rem 1.1rem;
-        transform: translateZ(0);
-        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+      }
+      .quiz-modal-back {
+        transform: rotateY(180deg);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: auto;
+        max-height: 100%;
       }
       .quiz-header {
         display: flex;
@@ -1937,6 +2110,11 @@
         overflow-y: auto;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           sans-serif;
+        flex: 1;
+        min-height: 0;
+      }
+      .quiz-modal-back .quiz-body {
+        max-height: calc(90vh - 120px);
       }
 
       /* Verbesserte Schriftart für Erklärungen mit besserer Unterscheidung */
@@ -2007,6 +2185,105 @@
       }
       .quiz-chicken-btn:active {
         transform: translateY(0);
+      }
+      .quiz-chicken-btn-command {
+        margin-top: 0.5rem;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+        background: rgba(245, 158, 11, 0.15);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        border-radius: 0.4rem;
+        color: #fbbf24;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 500;
+        display: none;
+      }
+      .quiz-chicken-btn-command.visible {
+        display: inline-block;
+      }
+      .quiz-chicken-btn-command:hover {
+        background: rgba(245, 158, 11, 0.25);
+        border-color: rgba(245, 158, 11, 0.5);
+        transform: translateY(-1px);
+      }
+      .quiz-command-input {
+        width: 100%;
+        padding: 0.75rem;
+        font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
+          ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+        font-size: 0.9rem;
+        background: rgba(15, 23, 42, 0.8);
+        border: 2px solid rgba(59, 130, 246, 0.3);
+        border-radius: 0.5rem;
+        color: #e2e8f0;
+        margin-top: 0.75rem;
+        transition: border-color 0.2s ease;
+      }
+      .quiz-command-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      .quiz-command-input::placeholder {
+        color: #64748b;
+        font-style: italic;
+      }
+      .quiz-solution-preview {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(15, 23, 42, 0.95);
+        border: 2px solid #3b82f6;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        z-index: 1000;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        max-width: 90%;
+        text-align: center;
+        animation: solutionFadeIn 0.3s ease;
+      }
+      .quiz-solution-preview code {
+        display: block;
+        font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
+          ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+        font-size: 1rem;
+        color: #22c55e;
+        background: rgba(34, 197, 94, 0.1);
+        padding: 0.75rem;
+        border-radius: 0.4rem;
+        margin-top: 0.5rem;
+        word-break: break-all;
+      }
+      .quiz-solution-preview .countdown {
+        font-size: 0.85rem;
+        color: #fbbf24;
+        margin-top: 0.5rem;
+      }
+      @keyframes solutionFadeIn {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+      @keyframes solutionFadeOut {
+        from {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.9);
+        }
+      }
+      .quiz-command-wrapper {
+        position: relative;
+        margin-top: 0.75rem;
       }
       .quiz-footer {
         display: flex;
@@ -2223,12 +2500,7 @@
           max-width: 100%;
         }
 
-        /* Badges auf Mobile - Grid anpassen */
-        .badges-header {
-          padding: 1rem 0.75rem;
-          margin-top: 1rem;
-          margin-bottom: 1rem;
-        }
+        /* Badges wurden entfernt */
 
         .main-badges-row {
           grid-template-columns: repeat(2, 1fr);
@@ -2382,29 +2654,17 @@
   <body>
     <header>
       <div class="header-inner">
-        <h1>Linux CLI Quiz</h1>
-        <p class="subtitle">
-          Kernbefehle aus dem Cyber-Security-Kurs – jeweils ein
-          3‑Fragen‑Mini‑Quiz.
-        </p>
-        <div class="badges-header" id="badges-header">
-          <!-- Badge-Segmente werden hier dynamisch eingefügt -->
-        </div>
-        <div class="achievements-container" id="achievements-container">
-          <!-- Legacy Achievements - wird beibehalten für Kompatibilität -->
-        </div>
-        <div class="achievement-progress" id="achievement-progress">
-          Fortschritt: 0/60 Fragen richtig beantwortet
-        </div>
+        <h1>Linux IQ Challenge & persönliches CLI-Cheat-Sheet</h1>
         <div class="search-container">
           <input
             type="text"
             id="search-input"
             class="search-input"
-            placeholder="Befehle durchsuchen (z.B. 'ls', 'grep', 'find'...)"
+            placeholder="Befehle und FAQ durchsuchen (z.B. 'ls', 'grep', 'chmod'...)"
             autocomplete="off"
           />
         </div>
+        <div class="header-badge-filter" id="header-badge-filter"></div>
       </div>
     </header>
     <main>
@@ -2659,7 +2919,9 @@
           data-quiz-id="find_name"
         >
           <div class="command-header">
-            <h2 class="command-name"><code>find . -name "Muster"</code></h2>
+            <h2 class="command-name">
+              <code>find . -name "Muster"</code>
+            </h2>
             <span class="command-tag">Suche</span>
           </div>
           <div class="command-body">
@@ -2978,25 +3240,60 @@
     <div id="quiz-root" class="quiz-modal hidden" aria-hidden="true">
       <div class="quiz-backdrop"></div>
       <div class="quiz-modal-inner">
-        <div class="quiz-header">
-          <div>
-            <div class="quiz-title" id="quiz-title">Quiz</div>
-            <div class="quiz-level-pill" id="quiz-subtitle">
-              3 Fragen: leicht · mittel · schwer
+        <!-- Front Side: Details immer sichtbar -->
+        <div class="quiz-modal-front">
+          <div class="quiz-header">
+            <div>
+              <div class="quiz-title" id="quiz-title">Quiz</div>
+              <div class="quiz-level-pill" id="quiz-subtitle">
+                3 Fragen: leicht · mittel · schwer
+              </div>
             </div>
+            <button class="quiz-close-btn" type="button" id="quiz-close-btn">
+              ESC
+            </button>
           </div>
-          <button class="quiz-close-btn" type="button" id="quiz-close-btn">
-            ESC
-          </button>
+
+          <div class="quiz-body" id="quiz-body"></div>
+
+          <div class="quiz-footer">
+            <div class="quiz-feedback" id="quiz-feedback"></div>
+            <button class="quiz-submit-btn" type="button" id="quiz-submit-btn">
+              Quiz starten
+            </button>
+          </div>
         </div>
 
-        <div class="quiz-body" id="quiz-body"></div>
+        <!-- Back Side: Quiz-Fragen -->
+        <div class="quiz-modal-back">
+          <div class="quiz-header">
+            <div>
+              <div class="quiz-title" id="quiz-title-back">Quiz</div>
+              <div class="quiz-level-pill" id="quiz-subtitle-back">
+                3 Fragen: leicht · mittel · schwer
+              </div>
+            </div>
+            <button
+              class="quiz-close-btn"
+              type="button"
+              id="quiz-close-btn-back"
+            >
+              ESC
+            </button>
+          </div>
 
-        <div class="quiz-footer">
-          <div class="quiz-feedback" id="quiz-feedback"></div>
-          <button class="quiz-submit-btn" type="button" id="quiz-submit-btn">
-            Quiz auswerten
-          </button>
+          <div class="quiz-body" id="quiz-body-back"></div>
+
+          <div class="quiz-footer">
+            <div class="quiz-feedback" id="quiz-feedback-back"></div>
+            <button
+              class="quiz-submit-btn"
+              type="button"
+              id="quiz-submit-btn-back"
+            >
+              Quiz auswerten
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -3068,6 +3365,11 @@
 
         <div class="quiz-body" id="command-modal-body">
           <p class="command-summary" id="command-modal-summary"></p>
+          <div
+            id="command-modal-detail"
+            class="command-section"
+            style="display: none"
+          ></div>
           <div class="command-meta-grid">
             <div class="command-section">
               <h3>Wichtige Flags</h3>
@@ -3077,6 +3379,30 @@
               <h3>Typische Fehler</h3>
               <ul class="pitfalls-list" id="command-modal-pitfalls"></ul>
             </div>
+          </div>
+          <div
+            class="command-section"
+            id="command-modal-simple-example-section"
+            style="display: none"
+          >
+            <h3>Einfaches Beispiel</h3>
+            <div id="command-modal-simple-example"></div>
+          </div>
+          <div
+            class="command-section"
+            id="command-modal-complex-example-section"
+            style="display: none"
+          >
+            <h3>Komplexes Beispiel</h3>
+            <div id="command-modal-complex-example"></div>
+          </div>
+          <div
+            class="command-section"
+            id="command-modal-additional-examples-section"
+            style="display: none"
+          >
+            <h3>Weitere Beispiele</h3>
+            <div id="command-modal-additional-examples"></div>
           </div>
           <div class="command-section">
             <h3>Beispiele</h3>
@@ -3238,43 +3564,60 @@
 
     <script>
       // Suppress browser extension message channel errors (harmless but annoying)
+      // These errors occur when browser extensions (ad blockers, password managers, etc.)
+      // try to communicate with the page but the message channel closes before they can respond
+      const isMessageChannelError = (error) => {
+        if (!error) return false;
+        const errorStr =
+          typeof error === "string"
+            ? error
+            : error.message || error.toString() || "";
+        const patterns = [
+          "message channel closed",
+          "asynchronous response",
+          "listener indicated an asynchronous response",
+          "channel closed before a response",
+        ];
+        return patterns.some((pattern) =>
+          errorStr.toLowerCase().includes(pattern.toLowerCase())
+        );
+      };
+
+      // Catch synchronous errors
       window.addEventListener(
         "error",
         (event) => {
           if (
-            event.message &&
-            typeof event.message === "string" &&
-            event.message.includes("message channel closed")
+            isMessageChannelError(event.message) ||
+            isMessageChannelError(event.error)
           ) {
             event.preventDefault();
             event.stopPropagation();
+            event.stopImmediatePropagation();
             return false;
           }
         },
         true
       );
 
+      // Catch unhandled promise rejections
       window.addEventListener("unhandledrejection", (event) => {
-        if (
-          event.reason &&
-          typeof event.reason === "object" &&
-          event.reason.message
-        ) {
-          if (
-            typeof event.reason.message === "string" &&
-            event.reason.message.includes("message channel closed")
-          ) {
-            event.preventDefault();
-            return;
-          }
-        } else if (
-          typeof event.reason === "string" &&
-          event.reason.includes("message channel closed")
-        ) {
+        if (isMessageChannelError(event.reason)) {
           event.preventDefault();
+          event.stopPropagation();
           return;
         }
       });
+
+      // Also suppress console errors for this specific issue (optional, but helps with debugging)
+      const originalConsoleError = console.error;
+      console.error = function (...args) {
+        const errorMessage = args.join(" ");
+        if (isMessageChannelError(errorMessage)) {
+          return; // Suppress this specific error
+        }
+        originalConsoleError.apply(console, args);
+      };
 
       // Quiz-Daten – geprüfte & polierte Version
       const quizData = {
@@ -3304,39 +3647,44 @@
           questions: [
             {
               level: "leicht",
-              prompt: "Was macht der Befehl `pwd`?",
+              prompt:
+                "Du arbeitest in einem Script und musst das aktuelle Verzeichnis in eine Variable speichern. Welcher Befehl gibt dir den absoluten Pfad zurück, den du in einer Variable speichern kannst?",
               options: [
-                "Er zeigt das aktuelle Verzeichnis (den absoluten Pfad) an.",
-                "Er listet alle Dateien im aktuellen Verzeichnis auf.",
-                "Er wechselt ins Home-Verzeichnis.",
-                "Er zeigt die Berechtigungen einer Datei an.",
+                "`pwd` - gibt den absoluten Pfad zurück",
+                "`ls` - listet das Verzeichnis auf",
+                "`cd` - wechselt das Verzeichnis",
+                "`echo $PWD` - zeigt nur relative Pfade",
               ],
               correctIndex: 0,
               explanation:
-                "`pwd` = print working directory – zeigt den vollständigen Pfad deines aktuellen Verzeichnisses.",
+                "`pwd` gibt den absoluten Pfad zurück, den du mit `CURRENT_DIR=$(pwd)` in einer Variable speichern kannst.",
             },
             {
               level: "mittel",
               prompt:
-                "Du befindest dich in `/home/user/Documents` und führst `cd /tmp && pwd` aus. Was wird angezeigt?",
-              options: ["/home/user/Documents", "/tmp", "/home/user", "/"],
+                "Du hast ein Symbolic Link-Verzeichnis `/home/user/link` das auf `/var/data` zeigt. Du bist in `/home/user/link` und führst `pwd` aus. Was passiert, wenn du stattdessen `/bin/pwd -P` verwendest?",
+              options: [
+                "Beide zeigen `/home/user/link` (identisch)",
+                "`pwd` zeigt `/home/user/link`, `/bin/pwd -P` zeigt `/var/data` (physikalischer Pfad)",
+                "Beide zeigen `/var/data` (folgen dem Link)",
+                "`pwd` funktioniert nicht, nur `/bin/pwd -P`",
+              ],
               correctIndex: 1,
               explanation:
-                "Nach `cd /tmp` ist dein Arbeitsverzeichnis `/tmp`, also zeigt `pwd` genau diesen Pfad.",
+                "Das Shell-Builtin `pwd` zeigt den logischen Pfad (`/home/user/link`), während `/bin/pwd -P` den physikalischen Pfad (`/var/data`) ohne Symbolic Links zeigt.",
             },
             {
               level: "schwer",
+              type: "command",
               prompt:
-                "Was ist der Unterschied zwischen der Builtin-Version von `pwd` (in der Shell) und dem externen `pwd`-Befehl (`/bin/pwd`)?",
-              options: [
-                "Das Builtin folgt Symbolic Links, `/bin/pwd` zeigt den physikalischen Pfad (mit `-P`).",
-                "Das Builtin funktioniert nur mit Root-Rechten, `/bin/pwd` nicht.",
-                "Das Builtin zeigt relative Pfade, `/bin/pwd` absolute Pfade.",
-                "Es gibt keinen Unterschied, beide sind identisch.",
+                "Du musst in einem Script das aktuelle Verzeichnis in eine Log-Datei schreiben. Schreibe einen Befehl, der den absoluten Pfad (ohne Symbolic Links) in die Datei `current_path.log` schreibt.",
+              correctCommand: "/bin/pwd -P > current_path.log",
+              acceptedVariants: [
+                "/bin/pwd -P > current_path.log",
+                "pwd -P > current_path.log",
               ],
-              correctIndex: 0,
               explanation:
-                "Das Shell-Builtin `pwd` kann Symbolic Links folgen, während `/bin/pwd -P` den physikalischen Pfad (ohne Links) zeigt. Standardmäßig geben beide absolute Pfade aus.",
+                "`/bin/pwd -P` gibt den physikalischen Pfad zurück (ohne Symbolic Links), `>` leitet die Ausgabe in die Datei um.",
             },
           ],
         },
@@ -3402,39 +3750,40 @@
             {
               level: "leicht",
               prompt:
-                "Welcher Befehl wechselt in das Verzeichnis `/home/user/Documents`?",
+                "Du musst in ein Verzeichnis wechseln, dessen Pfad Leerzeichen enthält (z.B. `/home/user/My Documents`). Welche Variante funktioniert korrekt?",
               options: [
-                "open /home/user/Documents",
-                "ls /home/user/Documents",
-                "cd /home/user/Documents",
-                "pwd /home/user/Documents",
+                "`cd /home/user/My Documents` (ohne Anführungszeichen)",
+                "`cd '/home/user/My Documents'` oder `cd \"/home/user/My Documents\"` (mit Anführungszeichen)",
+                "`cd /home/user/My\\ Documents` (nur mit Backslash)",
+                "Alle Varianten funktionieren gleich",
               ],
-              correctIndex: 2,
+              correctIndex: 1,
               explanation:
-                "`cd` steht für change directory und wechselt das Verzeichnis.",
+                "Pfade mit Leerzeichen müssen in Anführungszeichen gesetzt werden, sonst interpretiert die Shell sie als separate Argumente.",
             },
             {
               level: "mittel",
               prompt:
-                "Du bist in `/home/user` und führst `cd Documents/Projects` aus. Wo landest du?",
+                "Du bist in `/home/user` und willst in `/var/log` wechseln, dann zurück zu `/home/user`, dann wieder nach `/var/log`. Welche Befehlssequenz ist am effizientesten?",
               options: [
-                "/Documents/Projects",
-                "/home/Documents/Projects",
-                "/home/user/Documents/Projects",
-                "/home/user/Projects",
+                "`cd /var/log` dann `cd /home/user` dann `cd /var/log`",
+                "`cd /var/log` dann `cd -` dann `cd -` (Toggle)",
+                "`cd /var/log` dann `cd $OLDPWD` dann `cd -`",
+                "Alle sind gleich effizient",
               ],
-              correctIndex: 2,
+              correctIndex: 1,
               explanation:
-                "Ohne `/` am Anfang ist es ein relativer Pfad, ausgehend vom aktuellen Verzeichnis.",
+                "`cd -` wechselt zwischen dem aktuellen und dem vorherigen Verzeichnis (Toggle), was bei wiederholtem Wechseln am effizientesten ist.",
             },
             {
               level: "schwer",
+              type: "command",
               prompt:
-                "Welche Variante wechselt in das vorherige Verzeichnis (Toggle zwischen zwei Verzeichnissen)?",
-              options: ["`cd ..`", "`cd -`", "`cd ~`", "`cd /`"],
-              correctIndex: 1,
+                "Du musst in ein Verzeichnis wechseln, dessen Name in der Variable `$TARGET_DIR` gespeichert ist. Der Pfad könnte Leerzeichen enthalten. Schreibe einen sicheren Befehl, der in dieses Verzeichnis wechselt.",
+              correctCommand: 'cd "$TARGET_DIR"',
+              acceptedVariants: ['cd "$TARGET_DIR"', "cd '$TARGET_DIR'"],
               explanation:
-                "`cd -` wechselt zum vorherigen Verzeichnis (OLDPWD) und ist praktisch wie ein Zurück-Button.",
+                '`cd "$TARGET_DIR"` verwendet Anführungszeichen um Leerzeichen im Pfad zu handhaben und expandiert die Variable korrekt.',
             },
           ],
         },
@@ -3490,38 +3839,41 @@
           questions: [
             {
               level: "leicht",
-              prompt: "Was macht `cd ..`?",
+              prompt:
+                "Du bist in `/home/user/projects/backend` und musst ins übergeordnete Verzeichnis `projects`. Welcher Befehl bringt dich dorthin?",
               options: [
-                "Wechselt ins Home-Verzeichnis.",
-                "Wechselt ins übergeordnete Verzeichnis.",
-                "Wechselt ins Wurzelverzeichnis `/`.",
-                "Wechselt in ein verstecktes Verzeichnis.",
+                "`cd .` (bleibt im aktuellen Verzeichnis)",
+                "`cd ..` (eine Ebene nach oben)",
+                "`cd ../..` (zwei Ebenen nach oben)",
+                "`cd ~` (ins Home-Verzeichnis)",
               ],
               correctIndex: 1,
               explanation:
-                "`..` ist immer das Parent-Verzeichnis (eine Ebene höher).",
+                "`cd ..` wechselt eine Ebene nach oben, von `/home/user/projects/backend` nach `/home/user/projects`.",
             },
             {
               level: "mittel",
               prompt:
-                "Du bist in `/home/user/Documents` und führst zweimal `cd ..` aus. Wo bist du?",
-              options: ["/home/user/Documents/..", "/home/user", "/home", "/"],
-              correctIndex: 2,
-              explanation: "Einmal `cd ..` → `/home/user`, zweimal → `/home`.",
+                "Du bist in `/var/log/apache2` und willst in `/var/log` wechseln, dann in `/var`, dann zurück zu `/var/log/apache2`. Welche Sequenz ist korrekt?",
+              options: [
+                "`cd ..` dann `cd ..` dann `cd apache2`",
+                "`cd ../..` dann `cd log` dann `cd apache2`",
+                "`cd ..` dann `cd ..` dann `cd log/apache2`",
+                "Alle funktionieren gleich",
+              ],
+              correctIndex: 0,
+              explanation:
+                "Von `/var/log/apache2` aus: `cd ..` → `/var/log`, `cd ..` → `/var`, `cd apache2` funktioniert nicht (apache2 ist nicht in `/var`). Richtig: `cd log/apache2` von `/var` aus.",
             },
             {
               level: "schwer",
+              type: "command",
               prompt:
-                "Von welchem Startpfad aus bringt dich `cd ../..` direkt nach `/home`?",
-              options: [
-                "Aus `/home/user/Documents`",
-                "Aus `/home/user`",
-                "Aus `/home/user/Docs`",
-                "Aus `/home`",
-              ],
-              correctIndex: 2,
+                "Du bist in `/home/user/projects/backend/src` und musst ins Verzeichnis `/home/user/scripts` wechseln. Schreibe den effizientesten Befehl, der dies in einem Schritt macht (ohne absoluten Pfad).",
+              correctCommand: "cd ../../scripts",
+              acceptedVariants: ["cd ../../scripts"],
               explanation:
-                "Von `/home/user/Docs` aus geht `../..` zwei Ebenen hoch: `/home/user/Docs` → `/home/user` → `/home`.",
+                "Von `/home/user/projects/backend/src` aus: `../..` geht zwei Ebenen hoch nach `/home/user`, dann `scripts` führt ins Zielverzeichnis.",
             },
           ],
         },
@@ -3562,12 +3914,16 @@
             },
             {
               level: "schwer",
+              type: "command",
               prompt:
-                "Du möchtest eine detaillierte, rekursive Liste aller Dateien (inkl. versteckter) und dabei Dateitypen unterscheiden können. Welche Kombination erfüllt alle Anforderungen?",
-              options: ["`ls -lRa`", "`ls -R`", "`ls -al`", "`ls -aR`"],
-              correctIndex: 0,
+                "Du musst alle `.log`-Dateien im aktuellen Verzeichnis auflisten, aber Fehlermeldungen verstecken falls keine .log-Dateien existieren. Schreibe den Befehl.",
+              correctCommand: "ls *.log 2>/dev/null",
+              acceptedVariants: [
+                "ls *.log 2>/dev/null",
+                "ls *.log 2> /dev/null",
+              ],
               explanation:
-                "`-l` = Details (zeigt Dateityp mit erstem Zeichen), `-a` = versteckte Dateien, `-R` = rekursiv. Die Reihenfolge der Optionen ist egal, aber alle drei müssen vorhanden sein.",
+                "`ls *.log` listet alle .log-Dateien, `2>/dev/null` leitet Fehler (stderr) ins Nichts um, sodass Fehlermeldungen nicht angezeigt werden.",
             },
           ],
         },
@@ -3616,44 +3972,44 @@
           questions: [
             {
               level: "leicht",
-              prompt: 'Was macht `grep "Error" logfile.txt`?',
+              prompt:
+                'Du hast einen Log-File mit 1000 Zeilen. Du willst nur Zeilen sehen, die "ERROR" enthalten, aber auch die Zeilennummern brauchst. Welche Option fehlt?',
               options: [
-                'Es löscht alle Zeilen mit "Error".',
-                'Es zeigt alle Zeilen mit "Error" in `logfile.txt`.',
-                "Es sortiert `logfile.txt` alphabetisch.",
-                "Es kopiert `logfile.txt` in eine andere Datei.",
+                '`grep -n "ERROR" logfile.txt` (zeigt Zeilennummern)',
+                '`grep -c "ERROR" logfile.txt` (zählt nur)',
+                '`grep -v "ERROR" logfile.txt` (invertiert)',
+                '`grep "ERROR" logfile.txt` (ohne Optionen)',
               ],
-              correctIndex: 1,
+              correctIndex: 0,
               explanation:
-                "`grep` filtert und zeigt nur Zeilen, die zum Suchmuster passen.",
+                "`grep -n` zeigt die Zeilennummern zusammen mit den gefundenen Zeilen, was beim Debuggen sehr hilfreich ist.",
             },
             {
               level: "mittel",
               prompt:
-                'Du musst rekursiv in allen `.log`-Dateien nach "failed" suchen, aber andere Dateitypen ignorieren. Welcher Befehl ist korrekt?',
+                'Du musst in allen `.log`-Dateien rekursiv nach "failed" suchen, aber nur in Dateien die "2024" im Namen haben. Welche Kombination ist korrekt?',
               options: [
-                '`grep -r "failed" *.log`',
-                '`grep -r "failed" --include="*.log" .`',
-                "`grep -R \"failed\" . -name '*.log'`",
-                "`grep \"failed\" $(find . -name '*.log')`",
-              ],
-              correctIndex: 1,
-              explanation:
-                "`grep -r` sucht rekursiv, `--include='*.log'` beschränkt die Suche auf `.log`-Dateien, `.` gibt das Startverzeichnis an. Die Reihenfolge ist wichtig: Optionen vor Suchmuster.",
-            },
-            {
-              level: "schwer",
-              prompt:
-                "Welche Variante hebt Treffer farbig hervor (falls unterstützt)?",
-              options: [
-                '`grep --color=auto "pattern" file`',
-                '`grep -c "pattern" file`',
-                '`grep -v "pattern" file`',
-                '`grep -n "pattern" file`',
+                '`grep -r "failed" --include="*2024*.log" .`',
+                '`grep -r "failed" *.log | grep 2024`',
+                "`grep -r \"failed\" . -name '*2024*.log'`",
+                "`grep \"failed\" $(find . -name '*2024*.log')`",
               ],
               correctIndex: 0,
               explanation:
-                "`--color=auto` markiert gefundene Muster farbig – ideal zum schnellen Scannen.",
+                "`grep -r` sucht rekursiv, `--include='*2024*.log'` filtert Dateien mit '2024' im Namen, `.` ist das Startverzeichnis.",
+            },
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Finde alle Zeilen in `.log`-Dateien die 'error' enthalten (case-insensitive) und zeige Zeilennummern. Suche rekursiv ab dem aktuellen Verzeichnis.",
+              correctCommand: 'grep -ri "error" . --include="*.log" -n',
+              acceptedVariants: [
+                'grep -ri "error" . --include="*.log" -n',
+                "grep -ri 'error' . --include='*.log' -n",
+              ],
+              explanation:
+                "`grep -ri` sucht rekursiv und case-insensitive, `--include='*.log'` beschränkt auf .log-Dateien, `-n` zeigt Zeilennummern.",
             },
           ],
         },
@@ -3703,43 +4059,44 @@
           questions: [
             {
               level: "leicht",
-              prompt: "Was macht das Pipe-Symbol `|`?",
-              options: [
-                "Es kommentiert eine Zeile aus.",
-                "Es startet einen neuen Terminal-Tab.",
-                "Es leitet die Ausgabe eines Befehls als Eingabe an den nächsten weiter.",
-                "Es löscht die Ausgabe eines Befehls.",
-              ],
-              correctIndex: 2,
-              explanation:
-                "Mit `Befehl1 | Befehl2` geht `stdout` von Befehl1 als `stdin` an Befehl2.",
-            },
-            {
-              level: "mittel",
-              prompt: "Was macht `ls | sort`?",
-              options: [
-                "Listet Dateien und sortiert sie alphabetisch.",
-                "Sortiert Dateien nach Größe.",
-                "Zeigt nur versteckte Dateien.",
-                "Löscht doppelte Dateinamen.",
-              ],
-              correctIndex: 0,
-              explanation:
-                "`ls` liefert die Liste, `sort` sortiert diese Liste alphabetisch.",
-            },
-            {
-              level: "schwer",
               prompt:
-                "Wie würdest du alle eindeutigen Fehlertypen aus `errors.log` extrahieren (alphabetisch, ohne Duplikate)?",
+                "Du willst die Ausgabe von `ls` sortieren. Welches Symbol verbindet die Befehle korrekt?",
               options: [
-                "`cat errors.log | uniq | sort`",
-                "`cat errors.log | sort | uniq`",
-                "`uniq errors.log | sort`",
-                "`sort -n errors.log | uniq`",
+                "`ls && sort` (logisches UND)",
+                "`ls | sort` (Pipe)",
+                "`ls > sort` (Umleitung)",
+                "`ls ; sort` (Semikolon)",
               ],
               correctIndex: 1,
               explanation:
-                "Erst sortieren, dann `uniq`, damit doppelte Zeilen direkt hintereinander liegen und zusammengefasst werden.",
+                "Das Pipe-Symbol `|` leitet die Ausgabe von `ls` als Eingabe an `sort` weiter, sodass die Dateiliste sortiert wird.",
+            },
+            {
+              level: "mittel",
+              prompt:
+                "Du musst aus einer Log-Datei alle eindeutigen IP-Adressen extrahieren (sortiert, ohne Duplikate). Welche Pipe-Kette ist korrekt?",
+              options: [
+                "`grep -oE '[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+' log.txt | sort | uniq`",
+                "`grep IP log.txt | uniq | sort`",
+                "`cat log.txt | uniq | sort`",
+                "`sort log.txt | uniq`",
+              ],
+              correctIndex: 0,
+              explanation:
+                "`grep -oE` extrahiert IP-Adressen mit Regex, `sort` sortiert sie, `uniq` entfernt Duplikate. Wichtig: erst sortieren, dann uniq.",
+            },
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Extrahiere alle eindeutigen Fehlertypen aus `errors.log` (alphabetisch sortiert, ohne Duplikate) und speichere das Ergebnis in `unique_errors.txt`.",
+              correctCommand:
+                "cat errors.log | sort | uniq > unique_errors.txt",
+              acceptedVariants: [
+                "cat errors.log | sort | uniq > unique_errors.txt",
+              ],
+              explanation:
+                "`cat` liest die Datei, `sort` sortiert alphabetisch, `uniq` entfernt Duplikate (muss nach sort kommen), `>` speichert in die Datei.",
             },
           ],
         },
@@ -3789,17 +4146,13 @@
             },
             {
               level: "schwer",
+              type: "command",
               prompt:
-                "Wie leitest du sowohl stdout als auch stderr in dieselbe Datei `all.log` um?",
-              options: [
-                "`command > all.log 2> all.log`",
-                "`command 2> all.log`",
-                "`command > all.log 2>&1`",
-                "`command &> all.log && 2>`",
-              ],
-              correctIndex: 2,
+                "Du führst einen Befehl aus und musst sowohl stdout als auch stderr in dieselbe Datei `all.log` umleiten. Schreibe den Befehl (ersetze 'command' durch einen Beispielbefehl wie 'ls').",
+              correctCommand: "ls > all.log 2>&1",
+              acceptedVariants: ["ls > all.log 2>&1", "command > all.log 2>&1"],
               explanation:
-                "`> all.log 2>&1` lenkt stderr (2) auf den gleichen Stream wie stdout (1), der in `all.log` landet.",
+                "`> all.log` leitet stdout um, `2>&1` lenkt stderr (2) auf den gleichen Stream wie stdout (1), sodass beide in `all.log` landen.",
             },
           ],
         },
@@ -3857,17 +4210,13 @@
             },
             {
               level: "schwer",
+              type: "command",
               prompt:
-                "Warum schlägt `./script.sh` typischerweise fehl, obwohl die Datei existiert? Was ist die wahrscheinlichste Ursache?",
-              options: [
-                "Die Datei liegt nicht im PATH.",
-                "Die Datei hat keine Ausführungsrechte.",
-                "Das Terminal unterstützt keine Shell.",
-                "Das Script heißt eigentlich `script.bash`.",
-              ],
-              correctIndex: 1,
+                "Du hast ein Script `backup.sh` erstellt und musst es ausführbar machen und dann starten. Schreibe die beiden Befehle in einem (getrennt durch &&).",
+              correctCommand: "chmod +x backup.sh && ./backup.sh",
+              acceptedVariants: ["chmod +x backup.sh && ./backup.sh"],
               explanation:
-                "Bei `./script.sh` wird der PATH nicht benötigt – häufig fehlt einfach das Execute-Bit (`chmod +x script.sh`).",
+                "`chmod +x` setzt das Ausführungsbit, `&&` führt den zweiten Befehl nur aus wenn der erste erfolgreich war, `./backup.sh` startet das Script.",
             },
           ],
         },
@@ -3947,17 +4296,16 @@
             },
             {
               level: "schwer",
+              type: "command",
               prompt:
-                "Wie listest du nur die versteckten Dateien im Home-Verzeichnis auf?",
-              options: [
-                "ls -a ~",
+                "Du musst nur die versteckten Dateien im Home-Verzeichnis auflisten (Dateien die mit einem Punkt beginnen). Schreibe den Befehl mit Pipe und grep.",
+              correctCommand: "ls -a ~ | grep '^\\.'",
+              acceptedVariants: [
+                "ls -a ~ | grep '^\\.'",
                 "cd ~ && ls -a | grep '^\\.'",
-                "ls ~ -h",
-                "find ~ -name '.*'",
               ],
-              correctIndex: 1,
               explanation:
-                "Mit `ls -a | grep '^\\.'` filterst du nur Einträge, die mit einem Punkt beginnen.",
+                "`ls -a ~` zeigt alle Dateien im Home, `| grep '^\\.'` filtert nur Zeilen die mit einem Punkt beginnen (versteckte Dateien).",
             },
           ],
         },
@@ -4034,17 +4382,16 @@
             },
             {
               level: "schwer",
+              type: "command",
               prompt:
-                "Wie zeigst du nur Rechte und Dateinamen aus `ls -la` an?",
-              options: [
-                "ls -la | cut -d' ' -f1,9",
+                "Du musst aus der detaillierten Liste (`ls -la`) nur die Rechte (Spalte 1) und Dateinamen (Spalte 9) extrahieren. Schreibe den Befehl mit awk.",
+              correctCommand: "ls -la | awk '{print $1, $9}'",
+              acceptedVariants: [
                 "ls -la | awk '{print $1, $9}'",
-                "ls -la | grep -o '^[^ ]* [^ ]*$'",
-                "Alle oben genannten funktionieren",
+                'ls -la | awk "{print \\$1, \\$9}"',
               ],
-              correctIndex: 3,
               explanation:
-                "Es gibt mehrere Wege, aber `awk '{print $1, $9}'` ist am einfachsten: Spalte 1 = Rechte, Spalte 9 = Dateiname.",
+                "`ls -la` zeigt Details, `| awk '{print $1, $9}'` extrahiert Spalte 1 (Rechte) und Spalte 9 (Dateiname) und gibt sie aus.",
             },
           ],
         },
@@ -4122,14 +4469,11 @@
             },
             {
               level: "schwer",
-              prompt: "Wie erstellst du mehrere Ordner auf einmal?",
-              options: [
-                "mkdir Ordner1 Ordner2 Ordner3",
-                "mkdir -m Ordner1,Ordner2,Ordner3",
-                "mkdir --multiple Ordner1 Ordner2",
-                "Das geht nicht mit mkdir",
-              ],
-              correctIndex: 0,
+              type: "command",
+              prompt:
+                "Du musst drei Ordner gleichzeitig erstellen: `backup`, `archive` und `temp`. Schreibe den Befehl.",
+              correctCommand: "mkdir backup archive temp",
+              acceptedVariants: ["mkdir backup archive temp"],
               explanation:
                 "`mkdir` kann mehrere Ordner auf einmal erstellen, wenn du sie als separate Argumente angibst.",
             },
@@ -4187,16 +4531,13 @@
             },
             {
               level: "schwer",
-              prompt: "Warum ist `mkdir -p` in Scripts besonders nützlich?",
-              options: [
-                "Es ist schneller",
-                "Es verhindert Fehler, wenn Ordner bereits existieren",
-                "Es löscht alte Ordner",
-                "Es zeigt mehr Informationen",
-              ],
-              correctIndex: 1,
+              type: "command",
+              prompt:
+                "Du musst in einem Script die Verzeichnisstruktur `logs/2025/january` erstellen, auch wenn einige Ordner bereits existieren. Schreibe den Befehl.",
+              correctCommand: "mkdir -p logs/2025/january",
+              acceptedVariants: ["mkdir -p logs/2025/january"],
               explanation:
-                "`mkdir -p` ist idempotent – es kann mehrfach ausgeführt werden ohne Fehler, perfekt für Scripts.",
+                "`mkdir -p` erstellt alle fehlenden Zwischenordner und gibt keinen Fehler, wenn Ordner bereits existieren – ideal für Scripts.",
             },
           ],
         },
@@ -4305,17 +4646,13 @@
             },
             {
               level: "schwer",
+              type: "command",
               prompt:
-                "Wie verhinderst du, dass `mv` eine existierende Datei überschreibt?",
-              options: [
-                "mv -n datei.txt ziel.txt",
-                "mv -i datei.txt ziel.txt",
-                "mv --safe datei.txt ziel.txt",
-                "Das geht nicht",
-              ],
-              correctIndex: 1,
+                "Du musst alle `.txt`-Dateien in den Ordner `archive` verschieben. Schreibe den Befehl mit Wildcard.",
+              correctCommand: "mv *.txt archive/",
+              acceptedVariants: ["mv *.txt archive/", "mv *.txt archive"],
               explanation:
-                "`mv -i` (interactive) fragt vor dem Überschreiben nach – sicherer für wichtige Dateien.",
+                "`mv *.txt archive/` verschiebt alle .txt-Dateien (*.txt ist ein Wildcard-Muster) in den archive-Ordner.",
             },
           ],
         },
@@ -4392,16 +4729,16 @@
             },
             {
               level: "schwer",
-              prompt: "Wie erstellst du ein Backup mit Datum im Dateinamen?",
-              options: [
-                "cp datei.txt datei.txt.backup",
-                "cp datei.txt datei.txt.backup_$(date +%F)",
-                "cp datei.txt datei_backup",
-                "cp -d datei.txt backup/",
+              type: "command",
+              prompt:
+                "Du musst eine Datei `config.conf` mit dem aktuellen Datum im Format YYYY-MM-DD als Backup kopieren. Schreibe den Befehl.",
+              correctCommand: "cp config.conf config.conf.backup_$(date +%F)",
+              acceptedVariants: [
+                "cp config.conf config.conf.backup_$(date +%F)",
+                "cp config.conf config.conf.backup_$(date +%Y-%m-%d)",
               ],
-              correctIndex: 1,
               explanation:
-                "Mit `$(date +%F)` wird das aktuelle Datum im Format YYYY-MM-DD eingefügt.",
+                "`cp` kopiert die Datei, `$(date +%F)` wird durch das aktuelle Datum im Format YYYY-MM-DD ersetzt.",
             },
           ],
         },
@@ -4451,16 +4788,16 @@
             },
             {
               level: "schwer",
-              prompt: "Was ist der Unterschied zwischen `cp -r` und `cp -R`?",
-              options: [
-                "Kein Unterschied",
-                "-R ist besser für Links",
-                "-r funktioniert nicht",
-                "-R ist schneller",
+              type: "command",
+              prompt:
+                "Du musst den gesamten Ordner `project` rekursiv inklusive aller Unterordner und Dateien nach `project_backup` kopieren. Schreibe den Befehl.",
+              correctCommand: "cp -r project project_backup",
+              acceptedVariants: [
+                "cp -r project project_backup",
+                "cp -R project project_backup",
               ],
-              correctIndex: 0,
               explanation:
-                "In den meisten Systemen sind `-r` und `-R` gleichwertig, beide kopieren rekursiv.",
+                "`cp -r` (recursive) kopiert den gesamten Ordner inklusive aller Unterordner und Dateien rekursiv.",
             },
           ],
         },
@@ -4536,16 +4873,13 @@
             },
             {
               level: "schwer",
-              prompt: "Was ist der Unterschied zwischen `rm -f` und `rm -i`?",
-              options: [
-                "Beide fragen nach",
-                "-f erzwingt Löschen ohne Nachfrage, -i fragt nach",
-                "-f fragt nach, -i nicht",
-                "Kein Unterschied",
-              ],
-              correctIndex: 1,
+              type: "command",
+              prompt:
+                "Du musst alle `.tmp`-Dateien im aktuellen Verzeichnis löschen, aber vor jedem Löschen nachfragen. Schreibe den Befehl.",
+              correctCommand: "rm -i *.tmp",
+              acceptedVariants: ["rm -i *.tmp"],
               explanation:
-                "`-f` (force) erzwingt das Löschen ohne Nachfrage, `-i` (interactive) fragt nach – genau das Gegenteil.",
+                "`rm -i` (interactive) fragt vor jedem Löschen nach Bestätigung, `*.tmp` ist ein Wildcard-Muster für alle .tmp-Dateien.",
             },
           ],
         },
@@ -4594,16 +4928,16 @@
             },
             {
               level: "schwer",
-              prompt: "Was macht `rm -r build/ dist/ .cache/ 2>/dev/null`?",
-              options: [
-                "Löscht die Ordner und zeigt Fehler",
-                "Löscht die Ordner und versteckt Fehler (wenn Ordner nicht existieren)",
-                "Kopiert die Ordner",
-                "Zeigt die Ordner an",
+              type: "command",
+              prompt:
+                "Du musst drei Ordner rekursiv löschen (`build`, `dist`, `.cache`) und Fehlermeldungen verstecken falls Ordner nicht existieren. Schreibe den Befehl.",
+              correctCommand: "rm -r build/ dist/ .cache/ 2>/dev/null",
+              acceptedVariants: [
+                "rm -r build/ dist/ .cache/ 2>/dev/null",
+                "rm -r build dist .cache 2>/dev/null",
               ],
-              correctIndex: 1,
               explanation:
-                "`2>/dev/null` leitet Fehler (stderr) um, sodass Fehlermeldungen nicht angezeigt werden, wenn Ordner nicht existieren.",
+                "`rm -r` löscht rekursiv, `2>/dev/null` leitet Fehler (stderr) ins Nichts um, sodass Fehlermeldungen nicht angezeigt werden.",
             },
           ],
         },
@@ -4652,16 +4986,16 @@
             },
             {
               level: "schwer",
-              prompt: "Wie fügst du mehrere Config-Dateien zu einer zusammen?",
-              options: [
+              type: "command",
+              prompt:
+                "Du musst drei Config-Dateien (`header.conf`, `main.conf`, `footer.conf`) zu einer Datei `full.conf` zusammenfügen. Schreibe den Befehl.",
+              correctCommand:
                 "cat header.conf main.conf footer.conf > full.conf",
-                "cat header.conf main.conf footer.conf < full.conf",
-                "cat header.conf | main.conf | footer.conf",
-                "cat header.conf && main.conf && footer.conf",
+              acceptedVariants: [
+                "cat header.conf main.conf footer.conf > full.conf",
               ],
-              correctIndex: 0,
               explanation:
-                "Mit `>` wird die Ausgabe in eine Datei umgeleitet – alle drei Dateien werden zu `full.conf` zusammengefügt.",
+                "`cat` liest drei Dateien nacheinander und gibt sie hintereinander aus, `>` leitet die kombinierte Ausgabe in `full.conf` um.",
             },
           ],
         },
@@ -4734,16 +5068,13 @@
             },
             {
               level: "schwer",
-              prompt: "Was macht `sort namen.txt | uniq > namen_uniq.txt`?",
-              options: [
-                "Sortiert und zeigt Duplikate",
-                "Sortiert, entfernt Duplikate und speichert in namen_uniq.txt",
-                "Löscht namen.txt",
-                "Kopiert namen.txt",
-              ],
-              correctIndex: 1,
+              type: "command",
+              prompt:
+                "Du musst eine Datei `namen.txt` sortieren, Duplikate entfernen und das Ergebnis in `namen_uniq.txt` speichern. Schreibe den Befehl mit Pipe und Redirection.",
+              correctCommand: "sort namen.txt | uniq > namen_uniq.txt",
+              acceptedVariants: ["sort namen.txt | uniq > namen_uniq.txt"],
               explanation:
-                "Zuerst sortieren (damit Duplikate zusammen sind), dann `uniq` entfernt Duplikate, `>` speichert das Ergebnis.",
+                "`sort` sortiert alphabetisch, `| uniq` entfernt aufeinanderfolgende Duplikate, `>` speichert das Ergebnis in `namen_uniq.txt`.",
             },
           ],
         },
@@ -4818,16 +5149,13 @@
             },
             {
               level: "schwer",
-              prompt: "Was macht `sort -n zahlen.txt | tail -n 5`?",
-              options: [
-                "Zeigt die ersten 5 Zahlen",
-                "Zeigt die 5 größten Zahlen",
-                "Löscht die letzten 5 Zeilen",
-                "Kopiert die Datei",
-              ],
-              correctIndex: 1,
+              type: "command",
+              prompt:
+                "Du musst eine Datei `zahlen.txt` numerisch sortieren und dann die 5 größten Zahlen anzeigen. Schreibe den Befehl mit Pipe.",
+              correctCommand: "sort -n zahlen.txt | tail -n 5",
+              acceptedVariants: ["sort -n zahlen.txt | tail -n 5"],
               explanation:
-                "Sortiert numerisch (kleinste zuerst), dann `tail -n 5` zeigt die letzten 5 Zeilen = die 5 größten Zahlen.",
+                "`sort -n` sortiert numerisch (nicht alphabetisch, damit 2 vor 10 kommt), `| tail -n 5` zeigt die letzten 5 Zeilen (die 5 größten Zahlen).",
             },
           ],
         },
@@ -6629,6 +6957,9 @@
           title: "wc -l",
           summary: "Zählt Zeilen – ideal kombiniert mit Pipes oder find.",
           flags: [
+            { flag: "-l", description: "zählt Zeilen" },
+            { flag: "-w", description: "zählt Wörter" },
+            { flag: "-c", description: "zählt Bytes" },
             {
               flag: "--files0-from",
               description: "Dateiliste Null-terminiert verarbeiten",
@@ -6649,6 +6980,797 @@
             },
           ],
           quizId: "wc_l",
+        },
+        pwd: {
+          title: "pwd",
+          summary: "Zeigt das aktuelle Arbeitsverzeichnis (absoluter Pfad).",
+          flags: [
+            {
+              flag: "-P",
+              description: "zeigt den physischen Pfad ohne Symlinks",
+            },
+          ],
+          pitfalls: [
+            "Verwechslung mit relativen Pfaden – pwd zeigt immer den absoluten Pfad.",
+          ],
+          examples: [
+            {
+              command: "pwd",
+              note: "Zeigt den aktuellen Pfad, z.B. /home/user/Documents",
+            },
+            {
+              command: 'echo "Aktuelles Verzeichnis: $(pwd)"',
+              note: "Verwendung in Scripts zur Pfadausgabe",
+            },
+          ],
+          quizId: "pwd",
+        },
+        "cd ..": {
+          title: "cd ..",
+          summary:
+            "Wechselt eine Verzeichnisebene nach oben (Parent-Verzeichnis).",
+          flags: [
+            { flag: "../..", description: "zwei Ebenen nach oben" },
+            { flag: "../../..", description: "drei Ebenen nach oben" },
+          ],
+          pitfalls: [
+            "Zu viele .. können über das Root-Verzeichnis hinausgehen (bleibt bei /).",
+          ],
+          examples: [
+            {
+              command: "cd ..",
+              note: "Eine Ebene nach oben wechseln",
+            },
+            {
+              command: "cd ../..",
+              note: "Zwei Ebenen nach oben wechseln",
+            },
+          ],
+          quizId: "cd_parent",
+        },
+        "ls -a": {
+          title: "ls -a",
+          summary:
+            "Listet alle Dateien inklusive versteckter Dateien (beginnend mit .).",
+          flags: [
+            {
+              flag: "-a",
+              description: "zeigt versteckte Dateien (beginnt mit .)",
+            },
+            { flag: "-la", description: "lange Liste mit versteckten Dateien" },
+          ],
+          pitfalls: [
+            "Versteckte Dateien werden oft übersehen (wichtig bei .env, .git, .ssh).",
+          ],
+          examples: [
+            {
+              command: "ls -a",
+              note: "Alle Dateien inklusive versteckter anzeigen",
+            },
+            {
+              command: "ls -la",
+              note: "Detaillierte Liste mit versteckten Dateien",
+            },
+          ],
+          quizId: "ls_a",
+        },
+        "ls -la": {
+          title: "ls -la",
+          summary:
+            "Detaillierte Liste aller Dateien mit Rechten, Besitzer, Größe und versteckten Dateien.",
+          flags: [
+            { flag: "-l", description: "lange Ausgabe mit Details" },
+            { flag: "-a", description: "inklusive versteckter Dateien" },
+            { flag: "-h", description: "menschlich lesbare Größen (mit -l)" },
+          ],
+          pitfalls: [
+            "Ohne -h sind Dateigrößen schwer lesbar (Bytes statt KiB/MiB).",
+          ],
+          examples: [
+            {
+              command: "ls -lah",
+              note: "Alle Details inklusive versteckter Dateien, Größen lesbar",
+            },
+            {
+              command: "ls -la ~/.ssh",
+              note: "SSH-Keys mit Rechten prüfen",
+            },
+          ],
+          quizId: "ls_la",
+        },
+        mkdir: {
+          title: "mkdir",
+          summary: "Erstellt ein neues Verzeichnis.",
+          flags: [
+            {
+              flag: "-p",
+              description: "erstellt fehlende Elternverzeichnisse rekursiv",
+            },
+            { flag: "-v", description: "zeigt erstellte Verzeichnisse an" },
+          ],
+          pitfalls: [
+            "Ohne -p bricht mkdir ab, wenn Elternverzeichnisse fehlen.",
+            "Verzeichnis existiert bereits → Fehler ohne -p.",
+          ],
+          examples: [
+            {
+              command: "mkdir projects",
+              note: "Erstellt ein Verzeichnis namens projects",
+            },
+            {
+              command: "mkdir -p projects/demo/src",
+              note: "Erstellt verschachtelte Verzeichnisse in einem Schritt",
+            },
+          ],
+          quizId: "mkdir",
+        },
+        "mkdir -p": {
+          title: "mkdir -p",
+          summary:
+            "Erstellt Verzeichnisse rekursiv, auch wenn Elternverzeichnisse fehlen.",
+          flags: [
+            {
+              flag: "-p",
+              description: "erstellt fehlende Elternverzeichnisse",
+            },
+            {
+              flag: "-v",
+              description: "verbose: zeigt erstellte Verzeichnisse",
+            },
+          ],
+          pitfalls: [
+            "Idempotent: erstellt nur, was fehlt – sicher für Scripts.",
+          ],
+          examples: [
+            {
+              command: "mkdir -p logs/app/2024",
+              note: "Erstellt komplette Verzeichnisstruktur in einem Schritt",
+            },
+            {
+              command: "mkdir -p backup/$(date +%Y-%m-%d)",
+              note: "Erstellt Backup-Verzeichnis mit Datum",
+            },
+          ],
+          quizId: "mkdir_p",
+        },
+        mv: {
+          title: "mv",
+          summary: "Verschiebt oder benennt Dateien/Ordner um.",
+          flags: [
+            { flag: "-i", description: "interaktiv: fragt vor Überschreibung" },
+            { flag: "-v", description: "verbose: zeigt verschobene Dateien" },
+            {
+              flag: "-n",
+              description: "keine Überschreibung existierender Dateien",
+            },
+          ],
+          pitfalls: [
+            "Ohne -i werden existierende Dateien ohne Warnung überschrieben.",
+            "Falscher Zielpfad kann Dateien an unerwartete Orte verschieben.",
+          ],
+          examples: [
+            {
+              command: "mv file.txt backup/",
+              note: "Verschiebt Datei ins backup-Verzeichnis",
+            },
+            {
+              command: "mv oldname.txt newname.txt",
+              note: "Benennt Datei um",
+            },
+          ],
+          quizId: "mv",
+        },
+        cp: {
+          title: "cp",
+          summary: "Kopiert Dateien.",
+          flags: [
+            { flag: "-r", description: "rekursiv: kopiert Verzeichnisse" },
+            { flag: "-i", description: "interaktiv: fragt vor Überschreibung" },
+            { flag: "-v", description: "verbose: zeigt kopierte Dateien" },
+            {
+              flag: "-a",
+              description: "archiv: behält Rechte, Links, Zeitstempel",
+            },
+          ],
+          pitfalls: [
+            "Ohne -r schlägt cp bei Verzeichnissen fehl.",
+            "Rechte werden standardmäßig nicht übernommen (nutze -a).",
+          ],
+          examples: [
+            {
+              command: "cp file.txt backup/",
+              note: "Kopiert Datei ins backup-Verzeichnis",
+            },
+            {
+              command: "cp -a source/ dest/",
+              note: "Kopiert mit allen Metadaten (Rechte, Zeitstempel)",
+            },
+          ],
+          quizId: "cp",
+        },
+        "cp -r": {
+          title: "cp -r",
+          summary: "Kopiert Verzeichnisse rekursiv mit allen Inhalten.",
+          flags: [
+            { flag: "-r", description: "rekursiv: kopiert Verzeichnisse" },
+            {
+              flag: "-a",
+              description: "archiv: behält Rechte, Links, Zeitstempel",
+            },
+            { flag: "-v", description: "verbose: zeigt kopierte Dateien" },
+          ],
+          pitfalls: [
+            "Ohne -r kopiert cp Verzeichnisse nicht.",
+            "Große Verzeichnisse können lange dauern.",
+          ],
+          examples: [
+            {
+              command: "cp -r site/ backup/site",
+              note: "Kopiert gesamtes Verzeichnis rekursiv",
+            },
+            {
+              command: "cp -ra /var/www/html /backup/",
+              note: "Kopiert mit allen Metadaten",
+            },
+          ],
+          quizId: "cp_r",
+        },
+        rm: {
+          title: "rm",
+          summary: "Löscht Dateien (endgültig, keine Wiederherstellung).",
+          flags: [
+            { flag: "-i", description: "interaktiv: fragt vor jedem Löschen" },
+            {
+              flag: "-f",
+              description: "force: ignoriert Fehler und fragt nicht",
+            },
+            { flag: "-v", description: "verbose: zeigt gelöschte Dateien" },
+          ],
+          pitfalls: [
+            "Löschung ist endgültig – keine Wiederherstellung möglich.",
+            "Ohne -i werden Dateien ohne Warnung gelöscht.",
+          ],
+          examples: [
+            {
+              command: "rm file.txt",
+              note: "Löscht eine Datei",
+            },
+            {
+              command: "rm -i *.tmp",
+              note: "Löscht alle .tmp-Dateien mit Bestätigung",
+            },
+          ],
+          quizId: "rm",
+        },
+        "rm -r": {
+          title: "rm -r",
+          summary: "Löscht Verzeichnisse rekursiv mit allen Inhalten.",
+          flags: [
+            { flag: "-r", description: "rekursiv: löscht Verzeichnisse" },
+            { flag: "-f", description: "force: ignoriert Fehler" },
+            { flag: "-i", description: "interaktiv: fragt vor jedem Löschen" },
+          ],
+          pitfalls: [
+            "rm -rf ist sehr gefährlich – löscht alles ohne Warnung.",
+            "Falscher Pfad kann große Datenmengen unwiederbringlich löschen.",
+          ],
+          examples: [
+            {
+              command: "rm -r old_directory/",
+              note: "Löscht Verzeichnis mit Inhalt",
+            },
+            {
+              command: "rm -rf /tmp/cleanup/*",
+              note: "Löscht alles in cleanup (Vorsicht!)",
+            },
+          ],
+          quizId: "rm_r",
+        },
+        cat: {
+          title: "cat",
+          summary: "Gibt den Inhalt von Dateien aus (concatenate).",
+          flags: [
+            { flag: "-n", description: "zeigt Zeilennummern" },
+            { flag: "-b", description: "nummeriert nur nicht-leere Zeilen" },
+            { flag: "-s", description: "unterdrückt mehrfache Leerzeilen" },
+          ],
+          pitfalls: [
+            "Bei sehr großen Dateien kann cat den Terminal überfluten.",
+            "Nutze head oder less für große Dateien.",
+          ],
+          examples: [
+            {
+              command: "cat file.txt",
+              note: "Zeigt Inhalt einer Datei",
+            },
+            {
+              command: "cat file1.txt file2.txt > combined.txt",
+              note: "Verkettet mehrere Dateien",
+            },
+          ],
+          quizId: "cat",
+        },
+        sort: {
+          title: "sort",
+          summary: "Sortiert Zeilen alphabetisch oder numerisch.",
+          flags: [
+            { flag: "-n", description: "numerisch statt alphabetisch" },
+            { flag: "-r", description: "umgekehrte Reihenfolge" },
+            { flag: "-u", description: "entfernt Duplikate" },
+            { flag: "-k", description: "sortiert nach Spalte" },
+          ],
+          pitfalls: [
+            "Ohne -n werden Zahlen alphabetisch sortiert (2 > 10).",
+            "Große Dateien können langsam sortiert werden.",
+          ],
+          examples: [
+            {
+              command: "sort file.txt",
+              note: "Sortiert alphabetisch",
+            },
+            {
+              command: "sort -n -r numbers.txt",
+              note: "Sortiert numerisch absteigend",
+            },
+          ],
+          quizId: "sort",
+        },
+        "sort -n": {
+          title: "sort -n",
+          summary: "Sortiert Zeilen numerisch (nicht alphabetisch).",
+          flags: [
+            { flag: "-n", description: "numerische Sortierung" },
+            { flag: "-r", description: "umgekehrte Reihenfolge" },
+            { flag: "-k", description: "sortiert nach Spalte" },
+          ],
+          pitfalls: [
+            "Ohne -n wird 10 vor 2 sortiert (alphabetisch).",
+            "Kombiniere mit -k für Spalten-Sortierung.",
+          ],
+          examples: [
+            {
+              command: "sort -n numbers.txt",
+              note: "Sortiert Zahlen korrekt (1, 2, 10 statt 1, 10, 2)",
+            },
+            {
+              command: "sort -n -k2 data.txt",
+              note: "Sortiert nach zweiter Spalte numerisch",
+            },
+          ],
+          quizId: "sort_n",
+        },
+        uniq: {
+          title: "uniq",
+          summary: "Entfernt aufeinanderfolgende doppelte Zeilen.",
+          flags: [
+            { flag: "-c", description: "zählt Vorkommen jeder Zeile" },
+            { flag: "-d", description: "zeigt nur Duplikate" },
+            { flag: "-u", description: "zeigt nur eindeutige Zeilen" },
+          ],
+          pitfalls: [
+            "uniq entfernt nur aufeinanderfolgende Duplikate – vorher sortieren.",
+            "Ohne vorheriges sort bleiben Duplikate erhalten.",
+          ],
+          examples: [
+            {
+              command: "sort file.txt | uniq",
+              note: "Entfernt alle Duplikate (nach Sortierung)",
+            },
+            {
+              command: "sort file.txt | uniq -c",
+              note: "Zeigt Häufigkeit jeder Zeile",
+            },
+          ],
+          quizId: "uniq",
+        },
+        "find . -name": {
+          title: "find . -name",
+          summary: "Sucht Dateien nach Namen (Pattern-Matching).",
+          flags: [
+            { flag: "-name", description: "sucht nach Dateinamen (Pattern)" },
+            { flag: "-iname", description: "case-insensitive Suche" },
+            {
+              flag: "-type f",
+              description: "nur Dateien (d für Verzeichnisse)",
+            },
+          ],
+          pitfalls: [
+            "Pattern muss in Anführungszeichen, sonst expandiert die Shell.",
+            "Ohne -type kann auch Verzeichnisse finden.",
+          ],
+          examples: [
+            {
+              command: 'find . -name "*.log"',
+              note: "Findet alle .log-Dateien im aktuellen Verzeichnis",
+            },
+            {
+              command: 'find /var -name "*.conf" -type f',
+              note: "Findet Config-Dateien in /var",
+            },
+          ],
+          quizId: "find_name",
+        },
+        "find . -maxdepth 1 -type d": {
+          title: "find . -maxdepth 1 -type d",
+          summary: "Findet Verzeichnisse mit begrenzter Tiefe.",
+          flags: [
+            { flag: "-maxdepth", description: "begrenzt Suchtiefe" },
+            { flag: "-type d", description: "nur Verzeichnisse" },
+            { flag: "-mindepth", description: "minimale Suchtiefe" },
+          ],
+          pitfalls: [
+            "Ohne -maxdepth sucht find rekursiv in allen Unterverzeichnissen.",
+            "Große Verzeichnisbäume können sehr lange dauern.",
+          ],
+          examples: [
+            {
+              command: "find . -maxdepth 1 -type d",
+              note: "Zeigt nur direkte Unterverzeichnisse",
+            },
+            {
+              command: "find /var -maxdepth 2 -type d",
+              note: "Verzeichnisse bis 2 Ebenen tief",
+            },
+          ],
+          quizId: "find_maxdepth",
+        },
+        "ls -R": {
+          title: "ls -R",
+          summary: "Listet Verzeichnisse rekursiv (alle Unterverzeichnisse).",
+          flags: [
+            {
+              flag: "-R",
+              description: "rekursiv: zeigt alle Unterverzeichnisse",
+            },
+            { flag: "-l", description: "lange Ausgabe mit Details" },
+            { flag: "-h", description: "menschlich lesbare Größen" },
+          ],
+          pitfalls: [
+            "Bei großen Verzeichnisbäumen kann die Ausgabe sehr lang werden.",
+            "Nutze tree für übersichtlichere Darstellung.",
+          ],
+          examples: [
+            {
+              command: "ls -R",
+              note: "Listet alle Verzeichnisse rekursiv",
+            },
+            {
+              command: "ls -Rl project/",
+              note: "Detaillierte rekursive Liste",
+            },
+          ],
+          quizId: "ls_R",
+        },
+        "ls -aR": {
+          title: "ls -aR",
+          summary:
+            "Listet alle Dateien rekursiv inklusive versteckter Dateien.",
+          flags: [
+            { flag: "-a", description: "inklusive versteckter Dateien" },
+            {
+              flag: "-R",
+              description: "rekursiv in allen Unterverzeichnissen",
+            },
+            { flag: "-l", description: "lange Ausgabe mit Details" },
+          ],
+          pitfalls: [
+            "Kann sehr viele Dateien ausgeben – nutze | less oder | head.",
+          ],
+          examples: [
+            {
+              command: "ls -aR",
+              note: "Alle Dateien rekursiv inklusive versteckter",
+            },
+            {
+              command: "ls -aRl | head -n 50",
+              note: "Erste 50 Zeilen der rekursiven Liste",
+            },
+          ],
+          quizId: "ls_aR",
+        },
+        tree: {
+          title: "tree",
+          summary:
+            "Zeigt Verzeichnisstruktur als Baum (muss installiert sein).",
+          flags: [
+            { flag: "-d", description: "nur Verzeichnisse, keine Dateien" },
+            { flag: "-L", description: "begrenzt Tiefe" },
+            { flag: "-a", description: "inklusive versteckter Dateien" },
+          ],
+          pitfalls: [
+            "tree ist nicht standardmäßig installiert (apt install tree).",
+            "Ohne -L kann bei großen Bäumen die Ausgabe sehr lang werden.",
+          ],
+          examples: [
+            {
+              command: "tree",
+              note: "Zeigt Verzeichnisstruktur als Baum",
+            },
+            {
+              command: "tree -L 2",
+              note: "Zeigt nur 2 Ebenen tief",
+            },
+          ],
+          quizId: "tree",
+        },
+        "tree -d": {
+          title: "tree -d",
+          summary: "Zeigt nur Verzeichnisse (keine Dateien) als Baum.",
+          flags: [
+            { flag: "-d", description: "nur Verzeichnisse" },
+            { flag: "-L", description: "begrenzt Tiefe" },
+          ],
+          pitfalls: [
+            "Nützlich für Übersicht über Verzeichnisstruktur ohne Dateien.",
+          ],
+          examples: [
+            {
+              command: "tree -d",
+              note: "Zeigt nur Verzeichnisstruktur",
+            },
+            {
+              command: "tree -d -L 3",
+              note: "Verzeichnisse bis 3 Ebenen tief",
+            },
+          ],
+          quizId: "tree_d",
+        },
+        "tree -L": {
+          title: "tree -L",
+          summary: "Begrenzt die Tiefe der Baumdarstellung.",
+          flags: [
+            { flag: "-L N", description: "zeigt nur N Ebenen tief" },
+            { flag: "-d", description: "nur Verzeichnisse" },
+            { flag: "-a", description: "inklusive versteckter Dateien" },
+          ],
+          pitfalls: ["Ohne -L zeigt tree alle Ebenen (kann sehr lang werden)."],
+          examples: [
+            {
+              command: "tree -L 2",
+              note: "Zeigt nur 2 Ebenen tief",
+            },
+            {
+              command: "sudo tree -L 3 /",
+              note: "Oberste 3 Ebenen des Systems (benötigt sudo)",
+            },
+          ],
+          quizId: "tree_L",
+        },
+        echo: {
+          title: "echo",
+          summary: "Gibt Text im Terminal aus.",
+          flags: [
+            { flag: "-n", description: "kein Zeilenumbruch am Ende" },
+            {
+              flag: "-e",
+              description: "interpretiert Escape-Sequenzen (\\n, \\t)",
+            },
+          ],
+          pitfalls: [
+            "Ohne Anführungszeichen werden Variablen expandiert.",
+            "Sonderzeichen müssen escaped werden.",
+          ],
+          examples: [
+            {
+              command: 'echo "Hello World"',
+              note: "Gibt Text aus",
+            },
+            {
+              command: 'echo -e "Line 1\\nLine 2"',
+              note: "Gibt mehrere Zeilen aus",
+            },
+          ],
+          quizId: "echo",
+        },
+        redirect: {
+          title: "Umleitung",
+          summary: "Leitet Ausgaben in Dateien um oder kombiniert Befehle.",
+          flags: [
+            { flag: ">", description: "überschreibt Datei" },
+            { flag: ">>", description: "hängt an Datei an" },
+            { flag: "2>", description: "leitet Fehlerausgabe um" },
+            { flag: "|", description: "Pipe: Ausgabe → Eingabe" },
+          ],
+          pitfalls: [
+            "Einzelnes > überschreibt Dateien ohne Warnung.",
+            "Nutze >> für Logs, um Daten nicht zu verlieren.",
+          ],
+          examples: [
+            {
+              command: "ls > files.txt",
+              note: "Speichert Ausgabe in Datei (überschreibt)",
+            },
+            {
+              command: 'echo "New line" >> log.txt',
+              note: "Hängt Text an Datei an",
+            },
+          ],
+          quizId: "redirect",
+        },
+        whoami: {
+          title: "whoami",
+          summary: "Zeigt den aktuellen Benutzernamen.",
+          flags: [],
+          pitfalls: [
+            "Unterschied zu who: whoami zeigt nur den aktuellen Benutzer.",
+          ],
+          examples: [
+            {
+              command: "whoami",
+              note: "Zeigt aktuellen Benutzer, z.B. kali oder root",
+            },
+            {
+              command: "whoami && pwd",
+              note: "Kombiniert mit pwd für Kontext",
+            },
+          ],
+          quizId: "whoami",
+        },
+        "chmod -R": {
+          title: "chmod -R",
+          summary:
+            "Ändert Dateirechte rekursiv für Verzeichnisse und Unterverzeichnisse.",
+          flags: [
+            { flag: "-R", description: "rekursiv auf alle Unterverzeichnisse" },
+            {
+              flag: "+x",
+              description: "Ausführungsrechte hinzufügen (symbolisch)",
+            },
+            { flag: "755", description: "Standard-Webrechte (numerisch)" },
+          ],
+          pitfalls: [
+            "chmod -R 777 ist sehr gefährlich – macht alles beschreibbar.",
+            "Rekursive Änderungen können Services brechen.",
+          ],
+          examples: [
+            {
+              command: "chmod -R 755 /var/www/html",
+              note: "Setzt Standard-Webrechte rekursiv",
+            },
+            {
+              command: "chmod -R +x scripts/",
+              note: "Macht alle Scripts ausführbar",
+            },
+          ],
+          quizId: "chmod_R",
+        },
+        chgrp: {
+          title: "chgrp",
+          summary: "Ändert nur die Gruppenzugehörigkeit einer Datei.",
+          flags: [
+            { flag: "-R", description: "rekursiv auf Unterverzeichnisse" },
+            { flag: "groupname", description: "Name der neuen Gruppe" },
+          ],
+          pitfalls: [
+            "Unterschied zu chown: chgrp ändert nur die Gruppe, nicht den Besitzer.",
+          ],
+          examples: [
+            {
+              command: "chgrp developers project/",
+              note: "Ändert Gruppe auf developers",
+            },
+            {
+              command: "sudo chgrp -R www-data /var/www/html",
+              note: "Setzt Gruppe rekursiv für Webroot",
+            },
+          ],
+          quizId: "chgrp",
+        },
+        "wc -w": {
+          title: "wc -w",
+          summary: "Zählt Wörter in einer Datei oder Eingabe.",
+          flags: [
+            { flag: "-w", description: "zählt Wörter" },
+            { flag: "-l", description: "zählt Zeilen" },
+            { flag: "-c", description: "zählt Bytes" },
+          ],
+          pitfalls: ["Wörter werden durch Whitespace getrennt gezählt."],
+          examples: [
+            {
+              command: "wc -w file.txt",
+              note: "Zählt Wörter in Datei",
+            },
+            {
+              command: "echo 'Hello World' | wc -w",
+              note: "Zählt Wörter in Eingabe",
+            },
+          ],
+          quizId: "wc_w",
+        },
+        ">": {
+          title: ">",
+          summary:
+            "Leitet Ausgabe in Datei um (überschreibt existierende Datei).",
+          flags: [
+            { flag: ">", description: "überschreibt Datei oder erstellt sie" },
+            {
+              flag: ">>",
+              description: "hängt an Datei an (keine Überschreibung)",
+            },
+          ],
+          pitfalls: [
+            "Überschreibt ohne Warnung – alle bisherigen Inhalte gehen verloren.",
+            "Nutze >> für Logs, um Daten nicht zu verlieren.",
+          ],
+          examples: [
+            {
+              command: 'echo "Hallo" > info.txt',
+              note: "Speichert Text in Datei (überschreibt)",
+            },
+            {
+              command: "ls > files.txt",
+              note: "Speichert Dateiliste in Datei",
+            },
+          ],
+          quizId: "redirect_overwrite",
+        },
+        ">>": {
+          title: ">>",
+          summary: "Hängt Ausgabe an Datei an (ohne Überschreibung).",
+          flags: [
+            { flag: ">>", description: "hängt an Datei an" },
+            { flag: ">", description: "überschreibt Datei" },
+          ],
+          pitfalls: ["Ideal für Logs, um alle Einträge zu behalten."],
+          examples: [
+            {
+              command: 'echo "Neue Zeile" >> log.txt',
+              note: "Hängt Text an Datei an",
+            },
+            {
+              command: 'echo "$(date): Start" >> system.log',
+              note: "Hängt Zeitstempel an Log an",
+            },
+          ],
+          quizId: "redirect_append",
+        },
+        "2>": {
+          title: "2>",
+          summary: "Leitet Fehlerausgabe (stderr) in Datei um.",
+          flags: [
+            { flag: "2>", description: "leitet stderr (Fehler) um" },
+            { flag: "2>&1", description: "leitet stderr auf stdout um" },
+            { flag: "> file 2>&1", description: "beide Streams in eine Datei" },
+          ],
+          pitfalls: [
+            "Fehler werden standardmäßig im Terminal angezeigt – 2> isoliert sie.",
+          ],
+          examples: [
+            {
+              command: "command 2> errors.txt",
+              note: "Speichert nur Fehler in Datei",
+            },
+            {
+              command: "find / -name '*.conf' 2> /dev/null",
+              note: "Versteckt Fehler (z.B. Permission denied)",
+            },
+          ],
+          quizId: "redirect_stderr",
+        },
+        nano_flow: {
+          title: "Nano + Script-Workflow",
+          summary: "Script erstellen, ausführbar machen und starten.",
+          flags: [
+            { flag: "STRG+O", description: "speichert Datei in nano" },
+            { flag: "STRG+X", description: "beendet nano" },
+            { flag: "chmod +x", description: "macht Script ausführbar" },
+            { flag: "./script.sh", description: "führt Script aus" },
+          ],
+          pitfalls: [
+            "Ohne chmod +x kann Script nicht direkt ausgeführt werden.",
+            "Vergiss nicht STRG+O zum Speichern in nano.",
+          ],
+          examples: [
+            {
+              command: "nano script.sh && chmod +x script.sh && ./script.sh",
+              note: "Kompletter Workflow: erstellen, ausführbar machen, starten",
+            },
+            {
+              command: "chmod +x script.sh && ./script.sh",
+              note: "Script ausführbar machen und starten",
+            },
+          ],
+          quizId: "nano_flow",
         },
       };
 
@@ -7445,6 +8567,7 @@
           // Segment-Filter auch zurücksetzen
           activeFilterSegment = null;
           updateBadgeDisplay();
+          updateHeaderBadgeFilter();
           return;
         }
 
@@ -7453,6 +8576,7 @@
         // Segment-Filter zurücksetzen wenn Achievement-Filter aktiv
         activeFilterSegment = null;
         updateBadgeDisplay();
+        updateHeaderBadgeFilter();
 
         // Alle Karten durchgehen und entsprechend filtern
         commandCards.forEach((card) => {
@@ -7541,6 +8665,7 @@
             if (activeFilterAchievement) {
               activeFilterSegment = null;
               updateBadgeDisplay();
+              updateHeaderBadgeFilter();
             }
           });
 
@@ -7677,8 +8802,8 @@
 
       // Update Badge Display für neue Struktur
       function updateBadgeDisplay() {
-        const container = document.getElementById("badges-header");
-        if (!container) return;
+        // Badges wurden entfernt - Funktion macht nichts mehr
+        return;
 
         container.innerHTML = "";
 
@@ -7724,6 +8849,7 @@
             }
             filterCardsBySegment();
             updateBadgeDisplay();
+            updateHeaderBadgeFilter();
           });
 
           // Doppelklick-Handler für Master-Quiz (wenn alle Quiz abgeschlossen)
@@ -7828,6 +8954,51 @@
           const belongsToSegment = segment.quizIds.includes(quizId);
           card.classList.toggle("hidden", !belongsToSegment);
         });
+      }
+
+      // Erstelle und aktualisiere die Badge-Leiste im Header
+      function updateHeaderBadgeFilter() {
+        const container = document.getElementById("header-badge-filter");
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        // Zeige nur Segmente mit Quiz-IDs (segment6 hat keine)
+        badgeSegments
+          .filter((segment) => segment.quizIds && segment.quizIds.length > 0)
+          .forEach((segment) => {
+            const badgeItem = document.createElement("div");
+            badgeItem.className = `header-badge-item ${segment.colorClass}`;
+            if (activeFilterSegment === segment.id) {
+              badgeItem.classList.add("active");
+            }
+
+            badgeItem.innerHTML = `
+              <span>${segment.icon}</span>
+              <span>${segment.name}</span>
+            `;
+
+            badgeItem.title = `Klicken um Kacheln nach "${segment.name}" zu filtern`;
+
+            badgeItem.addEventListener("click", () => {
+              // Toggle Filter
+              if (activeFilterSegment === segment.id) {
+                // Filter entfernen
+                activeFilterSegment = null;
+                activeFilterAchievement = null;
+              } else {
+                // Filter setzen
+                activeFilterSegment = segment.id;
+                activeFilterAchievement = null;
+              }
+
+              // Aktualisiere Anzeige
+              updateHeaderBadgeFilter();
+              filterCardsBySegment();
+            });
+
+            container.appendChild(badgeItem);
+          });
       }
 
       // Assign badges to cards
@@ -9571,8 +10742,31 @@
       updateAchievements();
       updateBadgeDisplay();
       assignBadgeToCards();
+      updateHeaderBadgeFilter();
 
       function renderCommandModalContent(meta) {
+        const commandModalDetail = document.getElementById(
+          "command-modal-detail"
+        );
+        const commandModalSimpleExample = document.getElementById(
+          "command-modal-simple-example"
+        );
+        const commandModalSimpleExampleSection = document.getElementById(
+          "command-modal-simple-example-section"
+        );
+        const commandModalComplexExample = document.getElementById(
+          "command-modal-complex-example"
+        );
+        const commandModalComplexExampleSection = document.getElementById(
+          "command-modal-complex-example-section"
+        );
+        const commandModalAdditionalExamples = document.getElementById(
+          "command-modal-additional-examples"
+        );
+        const commandModalAdditionalExamplesSection = document.getElementById(
+          "command-modal-additional-examples-section"
+        );
+
         if (commandModalTitle) {
           commandModalTitle.textContent = meta.title || "Befehl";
         }
@@ -9581,16 +10775,35 @@
             meta.subtitle || "Kompaktüberblick";
         }
         if (commandModalSummary) {
-          commandModalSummary.textContent = meta.summary || "";
+          commandModalSummary.textContent =
+            meta.summary || meta.explanation || meta.description || "";
         }
 
+        // Detail (zusätzliche Informationen)
+        if (commandModalDetail) {
+          if (meta.detail) {
+            commandModalDetail.style.display = "block";
+            commandModalDetail.innerHTML = `<p style="margin: 0; color: #cbd5e1; line-height: 1.6;">${meta.detail}</p>`;
+          } else {
+            commandModalDetail.style.display = "none";
+          }
+        }
+
+        // Flags
         if (commandModalFlags) {
           commandModalFlags.innerHTML = "";
           if (meta.flags && meta.flags.length) {
             meta.flags.forEach((flag) => {
               const pill = document.createElement("div");
               pill.className = "flag-pill";
-              pill.innerHTML = `<span>${flag.flag}</span><small>${flag.description}</small>`;
+              let flagText = `<span>${flag.flag}</span><small>${flag.description}</small>`;
+              if (flag.utility) {
+                flagText += `<small style="display: block; margin-top: 0.2rem; color: #94a3b8;">Nützlichkeit: ${flag.utility}</small>`;
+              }
+              if (flag.risk) {
+                flagText += `<small style="display: block; color: #94a3b8;">Risiko: ${flag.risk}</small>`;
+              }
+              pill.innerHTML = flagText;
               commandModalFlags.appendChild(pill);
             });
           } else {
@@ -9598,6 +10811,7 @@
           }
         }
 
+        // Pitfalls
         if (commandModalPitfalls) {
           commandModalPitfalls.innerHTML = "";
           if (meta.pitfalls && meta.pitfalls.length) {
@@ -9613,6 +10827,130 @@
           }
         }
 
+        // Einfaches Beispiel
+        if (commandModalSimpleExample && commandModalSimpleExampleSection) {
+          if (meta.simpleExample) {
+            commandModalSimpleExampleSection.style.display = "block";
+            const codeEl = document.createElement("code");
+            codeEl.textContent = meta.simpleExample;
+            codeEl.style.display = "block";
+            codeEl.style.padding = "0.75rem";
+            codeEl.style.background = "rgba(59, 130, 246, 0.1)";
+            codeEl.style.borderRadius = "0.5rem";
+            codeEl.style.marginTop = "0.5rem";
+            commandModalSimpleExample.innerHTML = "";
+            commandModalSimpleExample.appendChild(codeEl);
+          } else {
+            commandModalSimpleExampleSection.style.display = "none";
+          }
+        }
+
+        // Komplexes Beispiel mit Erklärungen
+        if (commandModalComplexExample && commandModalComplexExampleSection) {
+          if (meta.complexExample) {
+            commandModalComplexExampleSection.style.display = "block";
+            commandModalComplexExample.innerHTML = "";
+
+            const codeEl = document.createElement("code");
+            codeEl.textContent = meta.complexExample;
+            codeEl.style.display = "block";
+            codeEl.style.padding = "0.75rem";
+            codeEl.style.background = "rgba(59, 130, 246, 0.1)";
+            codeEl.style.borderRadius = "0.5rem";
+            codeEl.style.marginTop = "0.5rem";
+            codeEl.style.whiteSpace = "pre-wrap";
+            commandModalComplexExample.appendChild(codeEl);
+
+            if (
+              meta.complexExampleExplanation &&
+              meta.complexExampleExplanation.length > 0
+            ) {
+              const explanationDiv = document.createElement("div");
+              explanationDiv.style.marginTop = "1rem";
+              explanationDiv.style.padding = "0.75rem";
+              explanationDiv.style.background = "rgba(255, 255, 255, 0.02)";
+              explanationDiv.style.borderRadius = "0.5rem";
+              explanationDiv.style.border =
+                "1px solid rgba(255, 255, 255, 0.1)";
+
+              const explanationTitle = document.createElement("div");
+              explanationTitle.textContent = "Erklärung:";
+              explanationTitle.style.fontWeight = "600";
+              explanationTitle.style.marginBottom = "0.5rem";
+              explanationTitle.style.color = "#c7d2fe";
+              explanationDiv.appendChild(explanationTitle);
+
+              meta.complexExampleExplanation.forEach((exp) => {
+                const expItem = document.createElement("div");
+                expItem.style.marginBottom = "0.75rem";
+
+                if (exp.line) {
+                  const lineCode = document.createElement("code");
+                  lineCode.textContent = exp.line;
+                  lineCode.style.display = "block";
+                  lineCode.style.padding = "0.4rem 0.6rem";
+                  lineCode.style.background = "rgba(59, 130, 246, 0.15)";
+                  lineCode.style.borderRadius = "0.4rem";
+                  lineCode.style.marginBottom = "0.3rem";
+                  lineCode.style.fontSize = "0.9rem";
+                  expItem.appendChild(lineCode);
+                }
+
+                if (exp.explanation) {
+                  const expText = document.createElement("div");
+                  expText.textContent = exp.explanation;
+                  expText.style.color = "#cbd5e1";
+                  expText.style.fontSize = "0.9rem";
+                  expText.style.lineHeight = "1.5";
+                  expItem.appendChild(expText);
+                }
+
+                explanationDiv.appendChild(expItem);
+              });
+
+              commandModalComplexExample.appendChild(explanationDiv);
+            }
+          } else {
+            commandModalComplexExampleSection.style.display = "none";
+          }
+        }
+
+        // Zusätzliche Beispiele (HTML)
+        if (
+          commandModalAdditionalExamples &&
+          commandModalAdditionalExamplesSection
+        ) {
+          if (meta.additionalExamples) {
+            commandModalAdditionalExamplesSection.style.display = "block";
+            commandModalAdditionalExamples.innerHTML = meta.additionalExamples;
+            // Style für die zusätzlichen Beispiele
+            const style = document.createElement("style");
+            style.textContent = `
+              #command-modal-additional-examples code {
+                display: block;
+                padding: 0.5rem;
+                background: rgba(59, 130, 246, 0.1);
+                border-radius: 0.4rem;
+                margin: 0.5rem 0;
+                font-size: 0.9rem;
+              }
+              #command-modal-additional-examples strong {
+                color: #c7d2fe;
+                display: block;
+                margin-top: 0.75rem;
+                margin-bottom: 0.25rem;
+              }
+            `;
+            if (!document.getElementById("additional-examples-style")) {
+              style.id = "additional-examples-style";
+              document.head.appendChild(style);
+            }
+          } else {
+            commandModalAdditionalExamplesSection.style.display = "none";
+          }
+        }
+
+        // Legacy Examples (aus commandMeta)
         if (commandModalExamples) {
           commandModalExamples.innerHTML = "";
           if (meta.examples && meta.examples.length) {
@@ -9629,16 +10967,68 @@
               commandModalExamples.appendChild(item);
             });
           } else {
-            const item = document.createElement("div");
-            item.textContent = "Noch keine Beispiele hinterlegt.";
-            commandModalExamples.appendChild(item);
+            // Nur anzeigen wenn keine anderen Beispiele vorhanden
+            if (
+              !meta.simpleExample &&
+              !meta.complexExample &&
+              !meta.additionalExamples
+            ) {
+              const item = document.createElement("div");
+              item.textContent = "Noch keine Beispiele hinterlegt.";
+              commandModalExamples.appendChild(item);
+            } else {
+              // Verstecke Legacy Examples Section wenn andere Beispiele vorhanden
+              const examplesSection =
+                commandModalExamples.closest(".command-section");
+              if (examplesSection) {
+                examplesSection.style.display = "none";
+              }
+            }
           }
         }
       }
 
       function openCommandModal(commandKey, quizId) {
         if (!commandModalRoot) return;
-        const meta = commandMeta[commandKey] || commandMeta[quizId];
+
+        // PRIORITÄT: IMMER quizData verwenden wenn verfügbar (enthält ALLE Informationen)
+        let meta = null;
+
+        if (quizId && quizData[quizId]) {
+          const quiz = quizData[quizId];
+          // Kombiniere quizData mit commandMeta falls vorhanden (für pitfalls/examples)
+          const commandMetaData =
+            commandMeta[commandKey] || commandMeta[quizId];
+
+          meta = {
+            title: quiz.title,
+            subtitle: "Vollständige Informationen",
+            summary: quiz.explanation || quiz.description || "",
+            description: quiz.description,
+            explanation: quiz.explanation,
+            detail: quiz.detail,
+            simpleExample: quiz.simpleExample,
+            complexExample: quiz.complexExample,
+            complexExampleExplanation: quiz.complexExampleExplanation,
+            additionalExamples: quiz.additionalExamples,
+            flags: quiz.flags || [],
+            pitfalls: commandMetaData?.pitfalls || [],
+            examples: commandMetaData?.examples || [],
+            quizId: quizId,
+          };
+        } else {
+          // Fallback: Versuche commandMeta zu verwenden
+          meta = commandMeta[commandKey] || commandMeta[quizId];
+
+          // Fallback: Versuche auch mit Leerzeichen/ohne Leerzeichen
+          if (!meta && commandKey) {
+            const normalizedKey = commandKey.replace(/\s+/g, "_").toLowerCase();
+            meta =
+              commandMeta[normalizedKey] ||
+              commandMeta[commandKey.toLowerCase()];
+          }
+        }
+
         if (!meta) {
           console.warn("Keine Metadaten für", commandKey || quizId);
           if (typeof openQuiz === "function" && quizId) {
@@ -9740,6 +11130,39 @@
         });
       }
 
+      // Erweiterte Suchfunktion - durchsucht auch FAQ
+      function searchInFaqData(query) {
+        if (!faqData || !faqData.categories) return [];
+
+        const queryLower = query.toLowerCase();
+        const results = [];
+
+        faqData.categories.forEach((category) => {
+          category.questions.forEach((question) => {
+            const searchText = [
+              question.question,
+              question.answer,
+              ...(question.tags || []),
+              ...(question.relatedCommands || []),
+            ]
+              .join(" ")
+              .toLowerCase();
+
+            if (searchText.includes(queryLower)) {
+              results.push({
+                id: question.id,
+                question: question.question,
+                answer: question.answer,
+                category: category.name,
+                categoryId: category.id,
+              });
+            }
+          });
+        });
+
+        return results;
+      }
+
       // Search functionality
       const searchInput = document.getElementById("search-input");
       if (searchInput) {
@@ -9756,6 +11179,7 @@
             ? getQuizIdsForAchievement(activeFilterAchievement)
             : null;
 
+          // Suche in Command-Cards
           commandCards.forEach((card) => {
             const quizId = card.dataset.quizId;
 
@@ -9815,7 +11239,128 @@
               card.classList.remove("hidden");
             }
           });
+
+          // Suche auch in FAQ - die FAQ-Suchfunktion wird automatisch verwendet, wenn das FAQ-Modal geöffnet wird
+          // Die FAQ-Suchfunktion im Modal durchsucht bereits alle FAQ-Inhalte inklusive Tags und Commands
         });
+      }
+
+      // Command-Validierung (flexibel)
+      function validateCommand(input, correctCommand, acceptedVariants = []) {
+        if (!input || !correctCommand) return false;
+
+        // Normalisiere Input: trim und mehrere Leerzeichen zu einem
+        const normalized = input.trim().replace(/\s+/g, " ");
+
+        // Normalisiere korrekten Command
+        const normalizedCorrect = correctCommand.replace(/\s+/g, " ");
+
+        // Prüfe exakte Übereinstimmung (normalisiert)
+        if (normalized === normalizedCorrect) return true;
+
+        // Prüfe Varianten
+        for (const variant of acceptedVariants) {
+          const normalizedVariant = variant.replace(/\s+/g, " ");
+          if (normalized === normalizedVariant) return true;
+        }
+
+        // Flexibler Check: Ignoriere Anführungszeichen-Unterschiede
+        const inputNoQuotes = normalized.replace(/['"]/g, "");
+        const correctNoQuotes = normalizedCorrect.replace(/['"]/g, "");
+        if (inputNoQuotes === correctNoQuotes) return true;
+
+        // Prüfe Varianten ohne Anführungszeichen
+        for (const variant of acceptedVariants) {
+          const normalizedVariant = variant.replace(/\s+/g, " ");
+          const variantNoQuotes = normalizedVariant.replace(/['"]/g, "");
+          if (inputNoQuotes === variantNoQuotes) return true;
+        }
+
+        return false;
+      }
+
+      // Validiere Command-Input und zeige Chicken-Button bei Fehler
+      function validateCommandInput(inputElement, question) {
+        const userInput = inputElement.value;
+        const correctCommand = question.correctCommand;
+        const acceptedVariants = question.acceptedVariants || [];
+
+        const isValid = validateCommand(
+          userInput,
+          correctCommand,
+          acceptedVariants
+        );
+
+        if (isValid) {
+          inputElement.style.borderColor = "#22c55e";
+          inputElement.style.boxShadow = "0 0 0 3px rgba(34, 197, 94, 0.1)";
+          inputElement.dataset.isValid = "true";
+        } else {
+          inputElement.style.borderColor = "#ef4444";
+          inputElement.style.boxShadow = "0 0 0 3px rgba(239, 68, 68, 0.1)";
+          inputElement.dataset.isValid = "false";
+
+          // Zeige Chicken-Button nach falscher Eingabe
+          const chickenBtn = inputElement.parentElement.querySelector(
+            ".quiz-chicken-btn-command"
+          );
+          if (chickenBtn) {
+            chickenBtn.classList.add("visible");
+          }
+        }
+      }
+
+      // Zeige Command-Lösung kurz an (2-3 Sekunden)
+      function showCommandSolution(button, correctCommand) {
+        // Erstelle Overlay
+        const overlay = document.createElement("div");
+        overlay.className = "quiz-solution-preview";
+
+        const title = document.createElement("div");
+        title.textContent = "Korrekte Lösung:";
+        title.style.color = "#93c5fd";
+        title.style.fontWeight = "600";
+        title.style.marginBottom = "0.5rem";
+
+        const code = document.createElement("code");
+        code.textContent = correctCommand;
+
+        const countdown = document.createElement("div");
+        countdown.className = "countdown";
+
+        overlay.appendChild(title);
+        overlay.appendChild(code);
+        overlay.appendChild(countdown);
+
+        // Füge Overlay zum Body hinzu
+        document.body.appendChild(overlay);
+
+        // Countdown: 3 Sekunden
+        let seconds = 3;
+        countdown.textContent = `Lösung verschwindet in ${seconds}...`;
+
+        const countdownInterval = setInterval(() => {
+          seconds--;
+          if (seconds > 0) {
+            countdown.textContent = `Lösung verschwindet in ${seconds}...`;
+          } else {
+            countdown.textContent = "Lösung verschwindet...";
+          }
+        }, 1000);
+
+        // Entferne Overlay nach 3 Sekunden
+        setTimeout(() => {
+          overlay.style.animation = "solutionFadeOut 0.3s ease";
+          setTimeout(() => {
+            overlay.remove();
+            clearInterval(countdownInterval);
+          }, 300);
+        }, 3000);
+
+        // Button deaktivieren
+        button.disabled = true;
+        button.style.opacity = "0.5";
+        button.style.cursor = "not-allowed";
       }
 
       function openQuiz(quizId) {
@@ -9824,13 +11369,42 @@
           console.warn("Kein Quiz definiert für:", quizId);
           return;
         }
-        currentQuizId = quizId;
-        quizTitleEl.textContent = "Quiz zu " + quiz.title;
-        quizSubtitleEl.textContent = "3 Fragen: leicht · mittel · schwer";
-        quizFeedbackEl.textContent = "";
 
-        quizBodyEl.innerHTML = "";
-        // Render command info (explanation + simple example) and a collapsible details block
+        // WICHTIG: Vollständiger Reset vor dem Öffnen
+        closeQuiz(); // Stelle sicher dass alles zurückgesetzt ist
+
+        currentQuizId = quizId;
+
+        // Reset flip state
+        const modalInner = document.querySelector(".quiz-modal-inner");
+        if (modalInner) {
+          modalInner.classList.remove("flipped");
+        }
+
+        // Reaktiviere Submit-Button falls deaktiviert
+        const quizSubmitBtnBack = document.getElementById(
+          "quiz-submit-btn-back"
+        );
+        if (quizSubmitBtnBack) {
+          quizSubmitBtnBack.disabled = false;
+        }
+
+        // Setup Event Handler neu (falls nötig)
+        setupQuizSubmitHandler();
+
+        // Front side: Details immer sichtbar
+        const quizTitleEl = document.getElementById("quiz-title");
+        const quizSubtitleEl = document.getElementById("quiz-subtitle");
+        const quizFeedbackEl = document.getElementById("quiz-feedback");
+        const quizBodyEl = document.getElementById("quiz-body");
+
+        if (quizTitleEl) quizTitleEl.textContent = "Quiz zu " + quiz.title;
+        if (quizSubtitleEl)
+          quizSubtitleEl.textContent = "3 Fragen: leicht · mittel · schwer";
+        if (quizFeedbackEl) quizFeedbackEl.textContent = "";
+        if (quizBodyEl) quizBodyEl.innerHTML = "";
+
+        // Render command info (explanation + simple example) - Details immer sichtbar
         const infoWrapper = document.createElement("div");
         infoWrapper.className = "quiz-command-info";
         const titleRow = document.createElement("div");
@@ -9852,40 +11426,83 @@
           infoWrapper.appendChild(ex);
         }
 
-        // details toggle + content
-        const detailsToggle = document.createElement("button");
-        detailsToggle.className = "quiz-details-toggle";
-        detailsToggle.type = "button";
-        detailsToggle.textContent = "Weitere Details anzeigen";
+        // Flags hinzufügen (wenn vorhanden)
+        if (quiz.flags && quiz.flags.length > 0) {
+          const flagsSection = document.createElement("div");
+          flagsSection.style.marginTop = "0.75rem";
+          flagsSection.style.padding = "0.75rem";
+          flagsSection.style.background = "rgba(59, 130, 246, 0.08)";
+          flagsSection.style.borderRadius = "0.5rem";
+          flagsSection.style.border = "1px solid rgba(59, 130, 246, 0.2)";
+
+          const flagsTitle = document.createElement("div");
+          flagsTitle.style.fontWeight = "600";
+          flagsTitle.style.color = "#93c5fd";
+          flagsTitle.style.marginBottom = "0.5rem";
+          flagsTitle.textContent = "Wichtige Flags:";
+          flagsSection.appendChild(flagsTitle);
+
+          const flagsList = document.createElement("div");
+          flagsList.style.display = "flex";
+          flagsList.style.flexWrap = "wrap";
+          flagsList.style.gap = "0.5rem";
+
+          quiz.flags.forEach((flag) => {
+            const flagPill = document.createElement("div");
+            flagPill.style.display = "inline-flex";
+            flagPill.style.alignItems = "center";
+            flagPill.style.gap = "0.4rem";
+            flagPill.style.padding = "0.3rem 0.6rem";
+            flagPill.style.background = "rgba(59, 130, 246, 0.15)";
+            flagPill.style.border = "1px solid rgba(59, 130, 246, 0.3)";
+            flagPill.style.borderRadius = "0.4rem";
+            flagPill.style.fontSize = "0.85rem";
+
+            const flagCode = document.createElement("code");
+            flagCode.style.color = "#93c5fd";
+            flagCode.style.fontWeight = "600";
+            flagCode.textContent = flag.flag;
+
+            const flagDesc = document.createElement("span");
+            flagDesc.style.color = "#cbd5e1";
+            flagDesc.textContent = flag.description;
+
+            flagPill.appendChild(flagCode);
+            flagPill.appendChild(flagDesc);
+            flagsList.appendChild(flagPill);
+          });
+
+          flagsSection.appendChild(flagsList);
+          infoWrapper.appendChild(flagsSection);
+        }
+
+        // Details immer sichtbar (kein Toggle mehr)
         const details = document.createElement("div");
         details.className = "quiz-details";
         if (quiz.detail) {
           const det = document.createElement("div");
-          det.innerHTML = "<strong>Detail:</strong>\n" + quiz.detail;
+          det.innerHTML = "<strong>Detail:</strong><br>" + quiz.detail;
           details.appendChild(det);
         }
         if (quiz.complexExample) {
           const comp = document.createElement("div");
           comp.style.marginTop = "0.5rem";
           comp.innerHTML =
-            "<strong>Komplexeres Beispiel:</strong>\n" + quiz.complexExample;
+            "<strong>Komplexeres Beispiel:</strong><br>" + quiz.complexExample;
           details.appendChild(comp);
 
-          // Zeile-für-Zeile Erklärung hinzufügen
+          // Zeile-für-Zeile Erklärung immer sichtbar
           if (
             quiz.complexExampleExplanation &&
             quiz.complexExampleExplanation.length > 0
           ) {
-            const explanationToggle = document.createElement("button");
-            explanationToggle.className = "quiz-details-toggle";
-            explanationToggle.type = "button";
-            explanationToggle.style.marginTop = "0.5rem";
-            explanationToggle.textContent =
-              "Zeile-für-Zeile Erklärung anzeigen";
-
             const explanationDiv = document.createElement("div");
             explanationDiv.className = "quiz-details complex-explanation";
-            explanationDiv.style.display = "none";
+            explanationDiv.style.marginTop = "0.75rem";
+            explanationDiv.style.padding = "0.75rem";
+            explanationDiv.style.background = "rgba(59, 130, 246, 0.05)";
+            explanationDiv.style.borderRadius = "0.5rem";
+            explanationDiv.style.border = "1px solid rgba(59, 130, 246, 0.2)";
 
             quiz.complexExampleExplanation.forEach((item, idx) => {
               const lineWrapper = document.createElement("div");
@@ -9917,20 +11534,11 @@
               explanationDiv.appendChild(lineWrapper);
             });
 
-            explanationToggle.addEventListener("click", () => {
-              const isShown = explanationDiv.style.display === "block";
-              explanationDiv.style.display = isShown ? "none" : "block";
-              explanationToggle.textContent = isShown
-                ? "Zeile-für-Zeile Erklärung anzeigen"
-                : "Erklärung verbergen";
-            });
-
-            details.appendChild(explanationToggle);
             details.appendChild(explanationDiv);
           }
         }
 
-        // Additional examples (e.g., for find command)
+        // Additional examples
         if (quiz.additionalExamples) {
           const addEx = document.createElement("div");
           addEx.style.marginTop = "1rem";
@@ -9944,168 +11552,299 @@
           details.appendChild(addEx);
         }
 
-        detailsToggle.addEventListener("click", () => {
-          const isShown = details.style.display === "block";
-          details.style.display = isShown ? "none" : "block";
-          detailsToggle.textContent = isShown
-            ? "Weitere Details anzeigen"
-            : "Details verbergen";
-        });
-        infoWrapper.appendChild(detailsToggle);
         infoWrapper.appendChild(details);
-        quizBodyEl.appendChild(infoWrapper);
-        quiz.questions.forEach((q, idx) => {
-          const questionId = "q_" + idx;
-          const wrapper = document.createElement("div");
-          wrapper.className = "quiz-question";
-          const title = document.createElement("div");
-          title.className = "quiz-question-title";
-          title.textContent = q.prompt;
-          const meta = document.createElement("div");
-          meta.className = "quiz-question-meta";
-          meta.textContent = "Frage " + (idx + 1) + " · Level: " + q.level;
-          const options = document.createElement("div");
-          options.className = "quiz-options";
-          q.options.forEach((opt, optIdx) => {
-            const label = document.createElement("label");
-            label.className = "quiz-option";
-            label.dataset.optionIndex = optIdx;
-            const radio = document.createElement("input");
-            radio.type = "radio";
-            radio.name = questionId;
-            radio.value = optIdx;
-            const text = document.createElement("span");
-            text.textContent = opt;
-            label.appendChild(radio);
-            label.appendChild(text);
-            options.appendChild(label);
+        if (quizBodyEl) quizBodyEl.appendChild(infoWrapper);
+
+        // Back side: Quiz-Fragen (werden beim Flip angezeigt)
+        const quizBodyBack = document.getElementById("quiz-body-back");
+        const quizTitleBack = document.getElementById("quiz-title-back");
+        const quizSubtitleBack = document.getElementById("quiz-subtitle-back");
+        const quizFeedbackBack = document.getElementById("quiz-feedback-back");
+
+        if (quizTitleBack) quizTitleBack.textContent = "Quiz zu " + quiz.title;
+        if (quizSubtitleBack)
+          quizSubtitleBack.textContent = "3 Fragen: leicht · mittel · schwer";
+        if (quizFeedbackBack) quizFeedbackBack.textContent = "";
+        if (quizBodyBack) quizBodyBack.innerHTML = "";
+
+        if (quizBodyBack && quiz.questions) {
+          quiz.questions.forEach((q, idx) => {
+            const questionId = "q_back_" + idx;
+            const wrapper = document.createElement("div");
+            wrapper.className = "quiz-question";
+            const title = document.createElement("div");
+            title.className = "quiz-question-title";
+            title.textContent = q.prompt;
+            const meta = document.createElement("div");
+            meta.className = "quiz-question-meta";
+            meta.textContent = "Frage " + (idx + 1) + " · Level: " + q.level;
+
+            // Prüfe ob es eine Command-Typing-Frage ist (Frage 3, type: "command")
+            if (q.type === "command" && idx === 2) {
+              // Command-Typing für Frage 3
+              const commandWrapper = document.createElement("div");
+              commandWrapper.className = "quiz-command-wrapper";
+
+              const commandInput = document.createElement("input");
+              commandInput.type = "text";
+              commandInput.className = "quiz-command-input";
+              commandInput.placeholder = "Tippe den Befehl hier ein...";
+              commandInput.dataset.questionIndex = idx;
+              commandInput.dataset.correctCommand = q.correctCommand;
+              commandInput.dataset.acceptedVariants = JSON.stringify(
+                q.acceptedVariants || []
+              );
+
+              // Enter-Taste zum Absenden und Validierung bei Änderung
+              commandInput.addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                  validateCommandInput(this, q);
+                }
+              });
+
+              // Validierung auch bei Blur (wenn Input-Feld verlassen wird)
+              commandInput.addEventListener("blur", function () {
+                if (this.value.trim()) {
+                  validateCommandInput(this, q);
+                }
+              });
+
+              // Chicken-Button für Command-Fragen (initial versteckt)
+              const chickenBtn = document.createElement("button");
+              chickenBtn.type = "button";
+              chickenBtn.className = "quiz-chicken-btn-command";
+              chickenBtn.textContent = "🐔 Lösung zeigen";
+              chickenBtn.dataset.questionIndex = idx;
+              chickenBtn.dataset.correctCommand = q.correctCommand;
+              chickenBtn.addEventListener("click", function () {
+                showCommandSolution(this, q.correctCommand);
+              });
+
+              commandWrapper.appendChild(commandInput);
+              commandWrapper.appendChild(chickenBtn);
+
+              wrapper.dataset.quizQuestionIndex = idx;
+              wrapper.dataset.questionType = "command";
+              wrapper.appendChild(title);
+              wrapper.appendChild(meta);
+              wrapper.appendChild(commandWrapper);
+              quizBodyBack.appendChild(wrapper);
+            } else {
+              // Normale Multiple-Choice-Frage
+              const options = document.createElement("div");
+              options.className = "quiz-options";
+              q.options.forEach((opt, optIdx) => {
+                const label = document.createElement("label");
+                label.className = "quiz-option";
+                label.dataset.optionIndex = optIdx;
+                const radio = document.createElement("input");
+                radio.type = "radio";
+                radio.name = questionId;
+                radio.value = optIdx;
+                const text = document.createElement("span");
+                text.textContent = opt;
+                label.appendChild(radio);
+                label.appendChild(text);
+                options.appendChild(label);
+              });
+              // Chicken-Button hinzufügen
+              const chickenBtn = document.createElement("button");
+              chickenBtn.type = "button";
+              chickenBtn.className = "quiz-chicken-btn";
+              chickenBtn.textContent = "🐔 Lösung zeigen";
+              chickenBtn.dataset.questionIndex = idx;
+              chickenBtn.dataset.correctIndex = q.correctIndex;
+              chickenBtn.addEventListener("click", function () {
+                const correctIdx = parseInt(this.dataset.correctIndex);
+                const allLabels = options.querySelectorAll("label");
+                allLabels.forEach((label, labelIdx) => {
+                  if (labelIdx === correctIdx) {
+                    label.classList.add("highlight-correct");
+                    const radio = label.querySelector("input[type=radio]");
+                    if (radio) radio.checked = true;
+                  } else {
+                    label.classList.remove("highlight-correct");
+                  }
+                });
+                this.disabled = true;
+                this.style.opacity = "0.5";
+                this.style.cursor = "not-allowed";
+              });
+              wrapper.dataset.quizQuestionIndex = idx;
+              wrapper.appendChild(title);
+              wrapper.appendChild(meta);
+              wrapper.appendChild(options);
+              wrapper.appendChild(chickenBtn);
+              quizBodyBack.appendChild(wrapper);
+            }
           });
-          // Chicken-Button hinzufügen
-          const chickenBtn = document.createElement("button");
-          chickenBtn.type = "button";
-          chickenBtn.className = "quiz-chicken-btn";
-          chickenBtn.textContent = "🐔 Lösung zeigen";
-          chickenBtn.dataset.questionIndex = idx;
-          chickenBtn.dataset.correctIndex = q.correctIndex;
-          chickenBtn.addEventListener("click", function () {
-            const correctIdx = parseInt(this.dataset.correctIndex);
-            const allLabels = options.querySelectorAll("label");
-            allLabels.forEach((label, labelIdx) => {
-              if (labelIdx === correctIdx) {
-                label.classList.add("highlight-correct");
-                const radio = label.querySelector("input[type=radio]");
-                if (radio) radio.checked = true;
-              } else {
-                label.classList.remove("highlight-correct");
-              }
-            });
-            this.disabled = true;
-            this.style.opacity = "0.5";
-            this.style.cursor = "not-allowed";
-          });
-          wrapper.dataset.quizQuestionIndex = idx;
-          wrapper.appendChild(title);
-          wrapper.appendChild(meta);
-          wrapper.appendChild(options);
-          wrapper.appendChild(chickenBtn);
-          quizBodyEl.appendChild(wrapper);
-        });
+        }
 
         quizRoot.classList.remove("hidden");
         quizRoot.setAttribute("aria-hidden", "false");
       }
 
+      // Flip-Effekt: Quiz starten
       quizSubmitBtn.addEventListener("click", () => {
         if (!currentQuizId) return;
-        const quiz = quizData[currentQuizId];
-        const questionEls = Array.from(
-          quizBodyEl.querySelectorAll(".quiz-question")
-        );
-        let correct = 0;
-        let answered = 0;
-
-        questionEls.forEach((qEl, idx) => {
-          const radios = qEl.querySelectorAll("input[type=radio]");
-          let selectedIndex = null;
-          radios.forEach((r, rIdx) => {
-            if (r.checked) selectedIndex = rIdx;
-          });
-          if (selectedIndex !== null) {
-            answered++;
-            if (selectedIndex === quiz.questions[idx].correctIndex) correct++;
-          }
-        });
-
-        if (answered < quiz.questions.length) {
-          quizFeedbackEl.textContent = "Bitte alle 3 Fragen beantworten.";
-          quizFeedbackEl.style.color = "#facc15";
-          return;
-        }
-        if (correct === quiz.questions.length) {
-          // Get total before saving
-          const previousTotal = getTotalCorrectAnswers();
-
-          // Save result (only if all correct and not already completed)
-          const isNewCompletion = saveQuizResult(currentQuizId, correct);
-
-          quizFeedbackEl.textContent = "Stark! Alle Fragen korrekt. 🎉";
-          quizFeedbackEl.style.color = "#22c55e";
-          markCardAsCompleted(currentQuizId);
-
-          // Celebration Animation
-          triggerCelebrationAnimation(quizRoot);
-
-          // Check for new achievements only if this was a new completion
-          if (isNewCompletion) {
-            const newTotal = getTotalCorrectAnswers();
-            const newAchievement = achievements.find(
-              (a) => newTotal >= a.threshold && previousTotal < a.threshold
-            );
-
-            if (newAchievement) {
-              setTimeout(() => {
-                alert(
-                  `🎉 Achievement freigeschaltet: ${newAchievement.icon} ${newAchievement.name}!`
-                );
-              }, 500);
-            }
-
-            // Update achievements display
-            updateAchievements();
-            updateBadgeDisplay();
-
-            // Check if segment is complete and trigger master quiz
-            badgeSegments.forEach((segment) => {
-              if (segment.quizIds.includes(currentQuizId)) {
-                const progress = getSegmentProgress(segment.id);
-                if (
-                  progress >= segment.quizIds.length &&
-                  !isMasterQuizCompleted(segment.id)
-                ) {
-                  // Segment complete, badge should be ready
-                  updateBadgeDisplay();
-                }
-              }
-            });
-          }
-
-          // Schließe Modal nach Animation
-          setTimeout(() => {
-            closeQuiz();
-          }, 1200);
-        } else {
-          quizFeedbackEl.textContent =
-            "Du hast " +
-            correct +
-            "/" +
-            quiz.questions.length +
-            " richtig. Schau dir die Erklärungen noch einmal an.";
-          quizFeedbackEl.style.color = "#f97316";
-
-          // Fehler-Feedback: Roter Flash + Shake
-          triggerErrorFeedback(quizRoot);
+        const modalInner = document.querySelector(".quiz-modal-inner");
+        if (modalInner) {
+          modalInner.classList.add("flipped");
         }
       });
+
+      // Quiz auswerten (auf der Rückseite) - Event Handler Funktion
+      let quizSubmitHandler = null;
+
+      function setupQuizSubmitHandler() {
+        const quizSubmitBtnBack = document.getElementById(
+          "quiz-submit-btn-back"
+        );
+        if (!quizSubmitBtnBack) return;
+
+        // Entferne alten Handler falls vorhanden
+        if (quizSubmitHandler) {
+          quizSubmitBtnBack.removeEventListener("click", quizSubmitHandler);
+        }
+
+        // Erstelle neuen Handler
+        quizSubmitHandler = () => {
+          if (!currentQuizId) return;
+          const quiz = quizData[currentQuizId];
+          const quizBodyBack = document.getElementById("quiz-body-back");
+          const quizFeedbackBack =
+            document.getElementById("quiz-feedback-back");
+
+          if (!quizBodyBack || !quizFeedbackBack) return;
+
+          const questionEls = Array.from(
+            quizBodyBack.querySelectorAll(".quiz-question")
+          );
+          let correct = 0;
+          let answered = 0;
+
+          questionEls.forEach((qEl, idx) => {
+            const question = quiz.questions[idx];
+
+            // Prüfe ob es eine Command-Typing-Frage ist
+            if (question.type === "command" && idx === 2) {
+              const commandInput = qEl.querySelector(".quiz-command-input");
+              if (commandInput && commandInput.value.trim()) {
+                answered++;
+                const userInput = commandInput.value;
+                const isValid = validateCommand(
+                  userInput,
+                  question.correctCommand,
+                  question.acceptedVariants || []
+                );
+                if (isValid) {
+                  correct++;
+                  commandInput.style.borderColor = "#22c55e";
+                } else {
+                  commandInput.style.borderColor = "#ef4444";
+                }
+              }
+            } else {
+              // Normale Multiple-Choice-Frage
+              const radios = qEl.querySelectorAll("input[type=radio]");
+              let selectedIndex = null;
+              radios.forEach((r, rIdx) => {
+                if (r.checked) selectedIndex = rIdx;
+              });
+              if (selectedIndex !== null) {
+                answered++;
+                if (selectedIndex === question.correctIndex) correct++;
+              }
+            }
+          });
+
+          if (answered < quiz.questions.length) {
+            quizFeedbackBack.textContent = "Bitte alle 3 Fragen beantworten.";
+            quizFeedbackBack.style.color = "#facc15";
+            return;
+          }
+
+          // Verhindere mehrfache Auswertung
+          quizSubmitBtnBack.disabled = true;
+
+          if (correct === quiz.questions.length) {
+            // Get total before saving
+            const previousTotal = getTotalCorrectAnswers();
+
+            // Save result (only if all correct and not already completed)
+            const isNewCompletion = saveQuizResult(currentQuizId, correct);
+
+            quizFeedbackBack.textContent = "Stark! Alle Fragen korrekt. 🎉";
+            quizFeedbackBack.style.color = "#22c55e";
+            markCardAsCompleted(currentQuizId);
+
+            // Celebration Animation
+            triggerCelebrationAnimation(quizRoot);
+
+            // Check for new achievements only if this was a new completion
+            if (isNewCompletion) {
+              const newTotal = getTotalCorrectAnswers();
+              const newAchievement = achievements.find(
+                (a) => newTotal >= a.threshold && previousTotal < a.threshold
+              );
+
+              if (newAchievement) {
+                setTimeout(() => {
+                  alert(
+                    `🎉 Achievement freigeschaltet: ${newAchievement.icon} ${newAchievement.name}!`
+                  );
+                }, 500);
+              }
+
+              // Update achievements display
+              updateAchievements();
+              updateBadgeDisplay();
+              updateHeaderBadgeFilter();
+
+              // Check if segment is complete and trigger master quiz
+              badgeSegments.forEach((segment) => {
+                if (segment.quizIds.includes(currentQuizId)) {
+                  const progress = getSegmentProgress(segment.id);
+                  if (
+                    progress >= segment.quizIds.length &&
+                    !isMasterQuizCompleted(segment.id)
+                  ) {
+                    // Segment complete, badge should be ready
+                    updateBadgeDisplay();
+                  }
+                }
+              });
+            }
+
+            // Schließe Modal nach Animation
+            setTimeout(() => {
+              closeQuiz();
+            }, 1200);
+          } else {
+            quizFeedbackBack.textContent =
+              "Du hast " +
+              correct +
+              "/" +
+              quiz.questions.length +
+              " richtig. Schau dir die Erklärungen noch einmal an.";
+            quizFeedbackBack.style.color = "#f97316";
+
+            // Fehler-Feedback: Roter Flash + Shake
+            triggerErrorFeedback(quizRoot);
+
+            // Reaktiviere Button nach Fehler-Feedback
+            setTimeout(() => {
+              quizSubmitBtnBack.disabled = false;
+            }, 500);
+          }
+        };
+
+        // Füge neuen Handler hinzu
+        quizSubmitBtnBack.addEventListener("click", quizSubmitHandler);
+      }
+
+      // Initial setup
+      setupQuizSubmitHandler();
 
       function markCardAsCompleted(quizId) {
         const card = commandCards.find((c) => c.dataset.quizId === quizId);
@@ -10195,13 +11934,74 @@
       }
 
       function closeQuiz() {
+        // Reset flip state IMMER
+        const modalInner = document.querySelector(".quiz-modal-inner");
+        if (modalInner) {
+          modalInner.classList.remove("flipped");
+        }
+
+        // Verstecke Modal
         quizRoot.classList.add("hidden");
         quizRoot.setAttribute("aria-hidden", "true");
-        quizFeedbackEl.textContent = "";
+
+        // Reset Feedback
+        const quizFeedbackEl = document.getElementById("quiz-feedback");
+        if (quizFeedbackEl) quizFeedbackEl.textContent = "";
+        const quizFeedbackBack = document.getElementById("quiz-feedback-back");
+        if (quizFeedbackBack) {
+          quizFeedbackBack.textContent = "";
+          quizFeedbackBack.style.color = "";
+        }
+
+        // Reaktiviere Submit-Button
+        const quizSubmitBtnBack = document.getElementById(
+          "quiz-submit-btn-back"
+        );
+        if (quizSubmitBtnBack) {
+          quizSubmitBtnBack.disabled = false;
+        }
+
+        // Reset alle Input-Felder im Quiz
+        const quizBodyBack = document.getElementById("quiz-body-back");
+        if (quizBodyBack) {
+          // Reset Radio-Buttons
+          const radios = quizBodyBack.querySelectorAll("input[type=radio]");
+          radios.forEach((radio) => (radio.checked = false));
+
+          // Reset Command-Inputs
+          const commandInputs = quizBodyBack.querySelectorAll(
+            ".quiz-command-input"
+          );
+          commandInputs.forEach((input) => {
+            input.value = "";
+            input.style.borderColor = "";
+            input.style.boxShadow = "";
+            input.dataset.isValid = "";
+          });
+
+          // Reset Chicken-Buttons
+          const chickenBtns = quizBodyBack.querySelectorAll(
+            ".quiz-chicken-btn-command"
+          );
+          chickenBtns.forEach((btn) => {
+            btn.classList.remove("visible");
+            btn.disabled = false;
+            btn.style.opacity = "";
+            btn.style.cursor = "";
+          });
+        }
+
+        // Reset currentQuizId
         currentQuizId = null;
       }
 
       quizCloseBtn.addEventListener("click", closeQuiz);
+
+      // Close-Button für Back-Seite
+      const quizCloseBtnBack = document.getElementById("quiz-close-btn-back");
+      if (quizCloseBtnBack) {
+        quizCloseBtnBack.addEventListener("click", closeQuiz);
+      }
       quizRoot.addEventListener("click", (event) => {
         if (event.target.classList.contains("quiz-backdrop")) {
           closeQuiz();
@@ -10318,6 +12118,7 @@
             // Update badge display
             updateBadgeDisplay();
             updateAchievements();
+            updateHeaderBadgeFilter();
 
             setTimeout(() => {
               closeMasterQuiz();
@@ -10581,20 +12382,25 @@
           categoryListEl.appendChild(categoryItem);
         });
 
-        // Filter FAQs
+        // Filter FAQs - erweiterte Suche in Tags und relatedCommands
         let filteredQuestions = [];
         faqData.categories.forEach((category) => {
           if (categoryFilter && categoryFilter !== category.id) return;
           category.questions.forEach((question) => {
-            if (
-              searchQuery &&
-              searchQuery.trim() !== "" &&
-              !question.question
-                .toLowerCase()
-                .includes(searchQuery.toLowerCase()) &&
-              !question.answer.toLowerCase().includes(searchQuery.toLowerCase())
-            ) {
-              return;
+            if (searchQuery && searchQuery.trim() !== "") {
+              const queryLower = searchQuery.toLowerCase();
+              const searchText = [
+                question.question,
+                question.answer,
+                ...(question.tags || []),
+                ...(question.relatedCommands || []),
+              ]
+                .join(" ")
+                .toLowerCase();
+
+              if (!searchText.includes(queryLower)) {
+                return;
+              }
             }
             filteredQuestions.push({ ...question, category });
           });
@@ -10677,7 +12483,23 @@
             answerDiv.className = "faq-answer";
             const answerContent = document.createElement("div");
             answerContent.className = "faq-answer-content";
-            answerContent.innerHTML = highlightText(item.answer, searchQuery);
+
+            // Formatierte Antwort mit hervorgehobenen Commands
+            let formattedAnswer = highlightText(item.answer, searchQuery);
+
+            // Erkenne Commands in der Antwort und formatiere sie
+            formattedAnswer = formattedAnswer.replace(
+              /`([^`]+)`/g,
+              "<code>$1</code>"
+            );
+
+            // Erkenne Beispiel-Blöcke (Zeilen die mit "Beispiel:" beginnen oder Commands enthalten)
+            formattedAnswer = formattedAnswer.replace(
+              /(Beispiel:?\s*)([^\n]+)/gi,
+              '<div class="faq-example-block"><span class="faq-example-label">$1</span><code>$2</code></div>'
+            );
+
+            answerContent.innerHTML = formattedAnswer;
 
             const relatedCommandsDiv = document.createElement("div");
             relatedCommandsDiv.className = "faq-related-commands";
@@ -10722,6 +12544,16 @@
       function openFaqModal(categoryId = null, questionId = null) {
         const modal = document.getElementById("faq-modal-root");
         if (!modal) return;
+
+        // Übernehme Suchanfrage aus Hauptsuche, falls vorhanden
+        const mainSearchInput = document.getElementById("search-input");
+        if (mainSearchInput && mainSearchInput.value.trim()) {
+          currentFaqSearch = mainSearchInput.value.trim();
+          const faqSearchInput = document.getElementById("faq-search-input");
+          if (faqSearchInput) {
+            faqSearchInput.value = currentFaqSearch;
+          }
+        }
 
         renderFaqContent(categoryId, currentFaqSearch);
 
