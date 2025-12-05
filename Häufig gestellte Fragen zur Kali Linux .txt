@@ -1,0 +1,419 @@
+Häufig gestellte Fragen zur Kali Linux Kommandozeilennutzung (CLI)
+Navigieren im Dateisystem
+Wie wechsle ich in ein anderes Verzeichnis?
+Antwort: Mit dem Befehl cd („change directory“) kann man in ein gewünschtes Verzeichnis wechseln
+kinsta.com
+. Beispiel: cd Videos wechselt in den Unterordner Videos. Alternativ kann man auch den absoluten Pfad angeben, z. B. cd /home/kali/Documents/Videos
+kinsta.com
+.
+Wie gelange ich in mein Home-Verzeichnis?
+Antwort: Gibt man cd ohne Pfad an, wechselt man automatisch ins eigene Home-Verzeichnis
+kinsta.com
+achik.us
+. Dasselbe erreicht man mit cd ~ (Tilde steht für das Home-Verzeichnis)
+achik.us
+.
+Wie wechsle ich ins Root-Verzeichnis (/)?
+Antwort: Verwende cd /, um ins Wurzelverzeichnis des Dateisystems zu gelangen. Der Schrägstrich / steht in Linux für das Root-Verzeichnis (oberste Ebene des Dateisystems).
+Wie gehe ich eine Verzeichnisebene nach oben?
+Antwort: Mit cd .. wechselt man in das übergeordnete Verzeichnis (ein Ordner nach oben)
+kinsta.com
+achik.us
+. Die zwei Punkte .. stehen in Pfadangaben immer für das Parent-Verzeichnis.
+Wie komme ich in das vorherige Verzeichnis zurück?
+Antwort: Mit cd - wechselt man in das zuletzt besuchte Verzeichnis zurück
+kinsta.com
+. Dies ist praktisch, um schnell zwischen zwei Verzeichnissen hin- und herzuspringen.
+Wie kann ich mir mein aktuelles Verzeichnis anzeigen lassen?
+Antwort: Der Befehl pwd (print working directory) zeigt den vollständigen Pfad des Verzeichnisses, in dem man sich befindet, an
+kinsta.com
+. Beispiel: Befindet sich der Benutzer kali im Ordner /home/kali/Desktop, dann zeigt pwd genau diesen Pfad an.
+Wie liste ich den Inhalt eines Verzeichnisses auf?
+Antwort: Mit ls werden Dateien und Unterordner im aktuellen Verzeichnis aufgelistet
+kinsta.com
+. Ohne Optionen zeigt ls die Namen der Inhalte. Beispielsweise listet ls /etc den Inhalt des /etc-Verzeichnisses auf.
+Wie kann ich auch versteckte Dateien anzeigen?
+Antwort: Versteckte Dateien (deren Namen mit . beginnen) zeigt man mit ls -a an
+kinsta.com
+. Oft nutzt man ls -la für eine detaillierte Liste inklusive versteckter Dateien, da -l die lange Liste mit Rechten, Besitzer, Größe und Datum anzeigt.
+Wie erhalte ich detaillierte Infos (Größe, Datum, Rechte) zu Dateien in einem Verzeichnis?
+Antwort: Mit ls -l erhält man eine ausführliche Auflistung aller Dateien/Ordner mit Details wie Berechtigungen, Besitzer, Dateigröße und Änderungsdatum
+achik.us
+. Zusätzliche Optionen wie -h (human-readable) stellen Größen in lesbare Form (z. B. KiB/MiB) dar, also z. B. ls -lh
+achik.us
+.
+Was bedeuten . und .. in Pfadangaben?
+Antwort: . steht für das aktuelle Verzeichnis, .. für das übergeordnete Verzeichnis
+kinsta.com
+kinsta.com
+. Beispiel: cd . bleibt im aktuellen Ordner, und cd .. wechselt eine Ebene höher.
+Wie navigiere ich in Pfaden mit Leerzeichen im Namen?
+Antwort: Pfadnamen mit Leerzeichen müssen in Anführungszeichen gesetzt werden oder das Leerzeichen mit \ maskiert werden. Beispiel: cd "Mein Ordner" oder cd Mein\ Ordner wechselt in ein Verzeichnis namens "Mein Ordner".
+Gibt es eine Autovervollständigung für Dateinamen?
+Antwort: Ja, durch Drücken der Tab-Taste während der Eingabe vervollständigt die Shell automatisch Dateinamen oder Befehle, sofern eindeutig. Dadurch muss man oft nur den Anfang eines Namens tippen und kann Tippfehler vermeiden (Tab-Autocompletion).
+Dateiverwaltung (Dateien und Ordner)
+Wie erstelle ich ein neues Verzeichnis?
+Antwort: Mit mkdir <ordnername> erstellt man ein neues Verzeichnis
+kinsta.com
+. Beispiel: mkdir Projekte legt einen Ordner namens Projekte im aktuellen Verzeichnis an. Mit mkdir -p pfad/unterordner können auch verschachtelte Unterordner in einem Schritt erzeugt werden
+kinsta.com
+.
+Wie lösche ich einen Ordner?
+Antwort: Leere Verzeichnisse können mit rmdir <ordnername> gelöscht werden. Enthält der Ordner Dateien oder Unterordner, verwendet man rm -r <ordnername> für rekursives Löschen
+kinsta.com
+. Vorsicht: Mit rm -r werden auch alle enthaltenen Dateien gelöscht. Für unwiederbringliches Löschen ohne Nachfragen kann zusätzlich -f (force) verwendet werden, z. B. rm -rf <ordner>
+kinsta.com
+.
+Wie lege ich eine neue (leere) Datei an?
+Antwort: Der einfachste Weg ist touch <dateiname>
+kinsta.com
+. Wenn die angegebene Datei noch nicht existiert, wird durch touch eine leere Datei erstellt. Beispiel: touch notiz.txt erzeugt eine leere Datei notiz.txt
+kinsta.com
+.
+Wie lösche ich eine Datei?
+Antwort: Mit dem Befehl rm <datei> löscht man Dateien
+kinsta.com
+. Beispiel: rm test.txt löscht die Datei test.txt. Ohne weitere Optionen fragt rm in der Standardeinstellung nicht nach und entfernt die Datei endgültig
+kinsta.com
+.
+Wie kopiere ich eine Datei?
+Antwort: Mit cp <quelle> <ziel> kopiert man eine Datei
+kinsta.com
+. Beispiel: cp original.txt kopie.txt erstellt eine Kopie von original.txt unter dem Namen kopie.txt im gleichen Verzeichnis
+kinsta.com
+. Um an einen anderen Ort zu kopieren, gibt man den Pfad zum Ziel an (z. B. cp datei.txt /tmp/).
+Wie kopiere ich einen ganzen Ordner mit Inhalt?
+Antwort: Mit dem Parameter -r kopiert cp auch Verzeichnisse rekursiv
+kinsta.com
+. Beispiel: cp -r bilder fotos_backup kopiert den gesamten Ordner bilder (mit allen Unterdateien/-ordnern) ins Verzeichnis fotos_backup
+kinsta.com
+.
+Wie verschiebe oder benenne ich eine Datei/einen Ordner um?
+Antwort: Das Verschieben erledigt man mit mv <quelle> <ziel>
+kinsta.com
+. Zum Umbenennen kann man mv im selben Verzeichnis nutzen: mv altername.txt neuername.txt ändert den Dateinamen
+kinsta.com
+. Verschieben in einen anderen Ordner funktioniert analog: mv datei.txt /pfad/zum/zielordner/
+kinsta.com
+.
+Wie zeige ich den Inhalt einer Textdatei im Terminal an?
+Antwort: Mit cat <datei> wird der gesamte Dateinhalt auf einmal angezeigt
+kinsta.com
+. Beispiel: cat info.txt druckt den Text der Datei info.txt auf die Konsole. Für lange Dateien ist less <datei> praktischer – damit kann man seitenweise blättern.
+Wie bearbeite ich eine Textdatei direkt im Terminal?
+Antwort: Dazu nutzt man einen Terminal-Texteditor wie nano oder vim. Für Einsteiger empfiehlt sich nano: nano <datei> öffnet die Datei im Nano-Editor
+achik.us
+. Unten werden die wichtigsten Steuerungstasten angezeigt (z. B. zum Speichern STRG+O, zum Beenden STRG+X). Alternativ kann man vi <datei> bzw. vim <datei> nutzen
+achik.us
+ – Vim ist aber deutlich anspruchsvoller (bekanntlich ist „Vim beenden“ eine der häufigsten Fragen
+kinsta.com
+).
+Wie kann ich nach einer Datei suchen?
+Antwort: Mit dem Befehl find lässt sich das Dateisystem durchsuchen. Beispiel: find / -name "*.conf" sucht unter / (dem Root-Verzeichnis) nach allen Dateien, die auf *.conf enden. Für eine schnelle Suche kann Kali auch locate <name> nutzen
+achik.us
+ – dieses greift auf eine indexierte Datenbank zurück (vorher mit updatedb aktualisieren).
+Wie finde ich einen bestimmten Text in Dateien?
+Antwort: Mit grep kann man in Dateien nach Textmustern suchen. Beispiel: grep "ERROR" /var/log/syslog sucht im System-Log nach Vorkommen von "ERROR". Standardmäßig gibt grep alle Zeilen aus, die den gesuchten Text enthalten.
+Wie erfahre ich den Dateityp oder Details einer Datei?
+Antwort: Der Befehl file <datei> zeigt an, um welchen Dateityp es sich handelt (z. B. ASCII-Text, ELF-Binary etc.)
+achik.us
+. Für ausführlichere Informationen, wie Größe, letztes Änderungsdatum, Berechtigungen, nutzt man stat <datei>
+achik.us
+, was alle Dateieigenschaften auflistet.
+Paketmanagement (Software installieren/aktualisieren)
+Wie aktualisiere ich die Paketliste (Repository-Index)?
+Antwort: Mit sudo apt update fragt man alle in /etc/apt/sources.list eingetragenen Paketquellen ab und lädt die neuesten Paketinformationen herunter
+itsfoss.com
+itsfoss.com
+. Dies sollte man regelmäßig tun, insbesondere bevor man neue Pakete installiert, damit die Paketdatenbank aktuell ist.
+Wie aktualisiere ich installierte Pakete auf die neueste Version?
+Antwort: Nach apt update kann man mit sudo apt upgrade alle installierten Pakete upgraden
+itsfoss.com
+. Dieser Befehl spielt verfügbare Updates ein, ohne Pakete zu entfernen. (Hinweis: apt upgrade aktualisiert nur, was ohne Konflikte möglich ist. Mit apt full-upgrade bzw. dem älteren apt-get dist-upgrade würden auch Paketabhängigkeiten geändert, was bei Kali allerdings mit Vorsicht zu verwenden ist.)
+Wie installiere ich ein neues Programm/Paket?
+Antwort: Mit sudo apt install <paketname>
+kinsta.com
+. Beispiel: sudo apt install nmap installiert das Paket nmap aus den Paketquellen. Man kann auch mehrere Pakete gleichzeitig installieren, indem man die Namen hintereinander angibt (getrennt durch Leerzeichen).
+Wie entferne ich ein installiertes Paket?
+Antwort: Mit sudo apt remove <paketname> deinstalliert man ein Paket
+achik.us
+. Die Konfigurationsdateien bleiben dabei erhalten. Soll auch diese bereinigt werden, verwendet man sudo apt purge <paketname>
+achik.us
+, um das Paket komplett (inkl. Konfigurationsresten) zu entfernen.
+Wie räume ich nicht mehr benötigte Pakete auf?
+Antwort: Nach vielen Installationen bleiben manchmal ungenutzte Abhängigkeits-Pakete zurück. Mit sudo apt autoremove werden solche automatisch installierten, aber nicht mehr benötigten Pakete entfernt
+achik.us
+, um Speicherplatz freizugeben.
+Wie suche ich nach Paketen?
+Antwort: Mit apt search <schlüsselwort> kann man die Paketdatenbank nach Namen und Beschreibungen durchsuchen
+achik.us
+. Beispiel: apt search editor listet alle Pakete auf, die im Namen oder in der Beschreibung "editor" enthalten. Ähnlich liefert apt-cache search <wort> das Ergebnis über das ältere apt-cache-Werkzeug.
+Wie sehe ich, welche Pakete bereits installiert sind?
+Antwort: Mit apt list --installed erhält man eine Liste aller installierten Pakete. Alternativ zeigt dpkg -l ebenfalls alle installierten Pakete als Liste an
+achik.us
+. Man kann diese Ausgabe mit grep filtern, um ein bestimmtes Paket zu finden (z. B. dpkg -l | grep <name>).
+Wie installiere ich eine .deb-Datei (lokales Debian-Paket)?
+Antwort: Mit dem Programm dpkg (Debian Package Manager). Verwende sudo dpkg -i <paketdatei.deb>
+achik.us
+, um ein heruntergeladenes *.deb-Paket zu installieren. Schlägt die Installation wegen fehlender Abhängigkeiten fehl, führt man anschließend sudo apt -f install aus, um diese aufzulösen.
+Was ist der Unterschied zwischen apt und apt-get?
+Antwort: apt ist ein etwas neueres Kommando, das viele häufig genutzte Funktionen von apt-get und apt-cache in einem Tool vereint
+itsfoss.com
+. So entspricht z. B. apt install dem klassischen apt-get install. Für die meisten Anwendungsfälle kann man apt benutzen – es ist benutzerfreundlicher (z. B. Fortschrittsbalken) – während apt-get und apt-cache aus Kompatibilitätsgründen weiterhin verfügbar sind. Kurz gesagt: apt ist eine komfortablere Weiterentwicklung von apt-get
+itsfoss.com
+.
+Wie behebe ich den Fehler “E: Unable to locate package”, wenn ein Paket nicht gefunden wird?
+Antwort: Dieser Fehler bedeutet, dass das genannte Paket in den Paketquellen nicht gefunden wurde. Zunächst sollte man prüfen, ob der Paketname korrekt ist und apt update ausgeführt wurde
+superuser.com
+. Wenn der Fehler weiterhin besteht, liegt oft ein Problem mit den Paketquellen vor. In Kali sollten in /etc/apt/sources.list die offiziellen kali-rolling-Quellen eingetragen sein
+superuser.com
+. Man kann die Datei überprüfen und ggf. die Standard-Kali-Repository-URLs eintragen
+superuser.com
+. Anschließend erneut apt update ausführen und die Installation wiederholen
+superuser.com
+. (Tipp: Auf der offiziellen Kali-Dokumentation finden sich die aktuellen Quellen-Einträge.)
+Netzwerkgrundlagen
+Wie finde ich meine IP-Adresse oder Netzwerk-Schnittstellen heraus?
+Antwort: Der Befehl ifconfig (aus dem Paket net-tools) zeigt die konfigurierten Netzwerkinterfaces mit ihren IP-Adressen an
+digitalocean.com
+. Unter neueren Linux-Systemen verwendet man bevorzugt ip a (oder ip addr), das ähnliche Informationen ausgibt
+achik.us
+. Beispiel: ip a listet alle Interfaces (eth0, wlan0, lo etc.) mit IP, Netzmaske und Status auf.
+Wie teste ich die Erreichbarkeit eines anderen Hosts (Ping)?
+Antwort: Mit ping <ziel> sendet man ICMP-Pakete an einen Host, um die Verbindung zu prüfen. Beispiel: ping google.com sendet kontinuierlich Pings an google.com
+digitalocean.com
+. Eine erfolgreiche Antwort zeigt, dass Netzwerkverbindung besteht und gibt die Round-Trip-Zeit aus. Mit Ctrl+C bricht man den Vorgang ab. (Standardmäßig pingt Linux endlos, mit -c 4 kann man z. B. 4 Pakete schicken lassen.)
+Wie zeige ich alle offenen Ports bzw. aktuellen Netzwerkverbindungen an?
+Antwort: Früher nutzte man dafür netstat -tuln (tcp/udp, listening, numeric)
+achik.us
+. In neueren Systemen ist ss -tuln der empfohlene Befehl (ss = socket statistics), der ähnliche Ausgaben liefert. Beide zeigen z. B. an, welche Dienste auf welchen Ports lauschen (LISTEN)
+digitalocean.com
+. Will man sämtliche bestehenden Verbindungen sehen, kann man netstat -tpna verwenden (zeigt auch die zugehörigen Programme/PIDs).
+Wie überprüfe ich die Routing-Tabelle oder den Weg eines Pakets?
+Antwort: Die Routing-Tabelle (Weg der Pakete ins Netzwerk) sieht man mit route -n oder ip route. Um den Pfad zu einem bestimmten Ziel zu verfolgen, nutzt man traceroute <ziel>
+achik.us
+. Beispiel: traceroute heise.de listet die einzelnen Zwischenstationen (Router), die ein Paket durchläuft, um heise.de zu erreichen.
+Wie kann ich DNS-Informationen zu einer Domain abfragen (Nameserver lookup)?
+Antwort: Mit nslookup <domain> kann man den DNS-Server nach der IP-Adresse einer Domain fragen
+achik.us
+. Beispiel: nslookup kali.org gibt die IP-Adresse(s) der Domain kali.org zurück
+achik.us
+. Für ausführlichere DNS-Abfragen kann man dig <domain> verwenden, das z. B. auch MX-Records, NS-Records etc. abfragen kann.
+Wie scanne ich einen Rechner oder ein Netzwerk nach offenen Ports (mit Nmap)?
+Antwort: Nmap ist ein Port-Scanner. Ein einfacher Scan erfolgt mit nmap <IP-Adresse>
+achik.us
+. Beispielsweise führt nmap 192.168.0.5 einen Standard-Portscan der gängigsten 1000 Ports auf dem Host 192.168.0.5 durch und listet offene Ports samt Dienstnamen. Mit Optionen kann man das Scanning anpassen, z. B. -p 1-65535 für alle Ports oder -sV für Service- und Versionserkennung. (Hinweis: Nmap bietet sehr viele Optionen für unterschiedliche Scan-Methoden.)
+Wie ermittle ich den Inhaber einer Domain oder weitere Infos (WHOIS)?
+Antwort: Mit dem Kommando whois <domain> kann man einen WHOIS-Lookup durchführen
+achik.us
+. Die Ausgabe enthält je nach Domain u. a. Registrierungsinformationen, Name des Domain-Inhabers (bei privaten Personen ggf. anonymisiert), Registrar, Erstellungs- und Ablaufdaten usw.
+Wie kann ich den Quelltext einer Webseite oder eine HTTP-Anfrage abrufen?
+Antwort: Mit curl kann man über URLs Daten abrufen oder senden. Beispiel: curl http://example.com holt den HTML-Code der angegebenen Webseite
+achik.us
+. Möchte man die Ausgabe in eine Datei speichern, kann man curl -o output.html http://example.com nutzen. Für einfache Downloads bietet sich auch wget an.
+Wie lade ich eine Datei per Kommandozeile aus dem Internet herunter?
+Antwort: Einfache Methode: wget <URL>
+digitalocean.com
+. Beispiel: wget https://kali.org/sample.iso lädt die Datei sample.iso aus dem Internet in das aktuelle Verzeichnis herunter. Alternativ kann curl -O <URL> verwendet werden, das den Inhalt unter dem ursprünglichen Dateinamen speichert
+digitalocean.com
+. Unterschied: wget ist primär zum Download gedacht (und kann z. B. rekursiv Webseiten herunterladen), während curl vielfältiger für Webanfragen/API-Aufrufe eingesetzt wird.
+Rechte und Berechtigungen
+Wie ändere ich Dateiberechtigungen (Lese/Schreib/Execute-Rechte)?
+Antwort: Mit dem Befehl chmod kann man Unix-Dateirechte ändern
+kinsta.com
+. Man kann die Rechte entweder symbolisch (mit Buchstaben) oder numerisch (mit Oktalzahlen) angeben. Beispiel symbolisch: chmod u+rwx,g+rx,o-r file.txt würde dem Besitzer alle Rechte geben (rwx), der Gruppe nur Lese/Execute, und anderen Benutzern die Leserechte entziehen. Häufig nutzt man die numerische Notation: z. B. chmod 755 script.sh setzt die Rechte auf rwxr-xr-x (Besitzer darf lesen/schreiben/ausführen =7, Gruppe und andere nur lesen/ausführen =5 und 5)
+digitalocean.com
+. Eine häufige Aufgabe ist es, Skripte ausführbar zu machen: Dafür kann man auch kurz chmod +x datei.sh verwenden
+kinsta.com
+.
+Wie mache ich eine Datei ausführbar?
+Antwort: Mit chmod +x <datei> fügt man das Ausführungsrecht (execute) für die Datei hinzu
+kinsta.com
+. Danach kann die Datei (z. B. ein Skript) direkt gestartet werden, etwa mit ./script.sh. Beachte: Für Skripte muss in der ersten Zeile häufig ein Shebang (#!/usr/bin/env bash o. Ä.) gesetzt sein, damit das System weiß, welcher Interpreter genutzt werden soll.
+Wie ändere ich den Besitzer einer Datei oder eines Ordners?
+Antwort: Mit chown <benutzer>:<gruppe> <datei> ändert man den Eigentümer (Besitzer) und optional die Gruppe einer Datei. Beispiel: sudo chown kali:kali datei.txt ändert Besitzer und Gruppe von datei.txt auf den Benutzer kali
+achik.us
+. Oft reicht sudo chown <user> <datei> – dabei bleibt die Gruppenzugehörigkeit unverändert.
+Wie ändere ich die Gruppe einer Datei?
+Antwort: Mit chgrp <gruppe> <datei> kann man die Gruppenzugehörigkeit ändern (statt über chown). Beispiel: sudo chgrp sudo config.cfg würde die Datei config.cfg der Gruppe sudo zuordnen
+achik.us
+. (Hinweis: chown <user>:<gruppe> kann beides in einem Schritt ändern.)
+Wozu dient sudo und wie verwende ich es?
+Antwort: sudo („substitute user do“) erlaubt es, Befehle mit administrativen Rechten (als root) auszuführen
+achik.us
+. In Kali ist der Standarduser häufig schon root; existiert ein normaler Benutzer, muss man sudo voranstellen, um Systembefehle auszuführen, die erhöhte Rechte brauchen. Beispiel: sudo apt update aktualisiert die Paketliste mit Root-Rechten. Beim ersten Einsatz in einer Session fragt sudo nach dem Passwort des Benutzers. Wichtig: Nur Nutzer, die in der Datei /etc/sudoers oder in der sudo-Gruppe eingetragen sind, dürfen sudo benutzen.
+Was bedeutet die Fehlermeldung “Permission denied” und wie behebe ich sie?
+Antwort: “Permission denied” heißt, dass die aktuellen Berechtigungen nicht ausreichen, um die gewünschte Aktion durchzuführen. Dies tritt z. B. auf, wenn man auf eine Datei/Ordner ohne ausreichende Rechte zugreifen will, oder einen Befehl ausführt, der Root-Rechte erfordert. Lösung: Entweder als root ausführen (Befehl mit sudo voranstellen) oder die Dateirechte anpassen. Beispiel 1: cat /etc/shadow ergibt Permission denied, weil die Datei nur von root gelesen werden darf – hier würde sudo cat /etc/shadow funktionieren (sofern berechtigt). Beispiel 2: ./script.sh ergibt Permission denied, weil das Skript nicht ausführbar ist – hier hilft chmod +x script.sh, um die Ausführung zu erlauben
+kinsta.com
+. Beispiel 3: cd ordner schlägt fehl mit Permission denied, wenn man keine Suchrechte auf den Ordner hat – hier müsste man dem Ordner das x-Recht geben (chmod +x ordner)
+serverfault.com
+.
+Grundlagen der Shell (Bash & nützliche Hilfen)
+Welche Shell wird in Kali Linux verwendet und wie finde ich das heraus?
+Antwort: Kali Linux nutzt standardmäßig Bash (Bourne Again SHell) als Kommandozeileninterpreter. Man kann die aktuelle Shell herausfinden, indem man echo $SHELL eingibt – das liefert z. B. /bin/bash. Alternativ zeigt echo $0 bei interaktiver Nutzung ebenfalls den Shell-Namen (bei Login-Shells).
+Wie kann ich mir meine bisherigen Befehle anzeigen lassen (Befehls-Historie)?
+Antwort: Mit dem Befehl history werden alle zuletzt eingegebenen Befehle der aktuellen Shell-Sitzung aufgelistet
+kinsta.com
+. Jeder Eintrag hat eine Nummer, und mit !<Nummer> kann man einen bestimmten Befehl erneut ausführen. Praktische Kürzel: !! wiederholt den letzten Befehl
+achik.us
+, !ls würde z. B. den letzten Befehl, der mit "ls" begann, erneut ausführen
+achik.us
+.
+Wie definiere ich eigene Kurzbefehle (Aliases)?
+Antwort: Mit alias kann man ein Kürzel für einen längeren Befehl definieren
+kinsta.com
+. Syntax: alias kurz="langer Befehl mit Optionen". Beispiel: alias ll="ls -l --color=auto" definiert ll als Alias, der farbig und im Langformat listet
+kinsta.com
+. Nach Eingabe von ll führt die Shell dann ls -l --color=auto aus. Bestehende Aliase listet man mit alias ohne Argumente auf
+kinsta.com
+.
+Wie entferne ich einen definierten Alias wieder?
+Antwort: Mit unalias <name> kann man einen Alias löschen
+kinsta.com
+. Beispiel: unalias ll würde den zuvor gesetzten Alias ll entfernen, sodass der Name wieder frei ist bzw. ein eventuell vorhandenes Systemalias aktiv würde.
+Wie kann ich Umgebungsvariablen setzen und anzeigen?
+Antwort: Umweltvariablen werden in der Form NAME=Wert gesetzt. Dies gilt zunächst nur für die laufende Shell. Mit export NAME=Wert macht man die Variable auch für Subprozesse verfügbar. Anzeigen kann man einzelne Variablen mit echo $NAME. Alle aktuell definierten Variablen zeigt printenv oder env an. Beispiel: export PATH="$PATH:/opt/meinprogramm/bin" hängt /opt/meinprogramm/bin an die PATH-Variable an (erweitert den Suchpfad für Befehle).
+Wie führe ich ein Shell-Skript aus?
+Antwort: Angenommen, man hat ein Skript script.sh erstellt: Zunächst muss es ausführbar sein (chmod +x script.sh). Starten kann man es dann mit ./script.sh (wenn sich das Skript im aktuellen Verzeichnis befindet). Alternativ kann man es einem Interpreter übergeben, z. B. bash script.sh. Wichtig: In der ersten Zeile eines Skripts steht oft ein Shebang (z. B. #!/bin/bash), um festzulegen, welche Shell/Interpreter das Skript ausführen soll.
+Wie kann ich einen gerade laufenden Befehl abbrechen?
+Antwort: Durch Drücken von Strg + C (Control + C) im Terminal wird das aktuelle Vordergrund-Programm sofort beendet
+achik.us
+. Dies sendet das SIGINT-Signal an den Prozess. Beispiel: Wenn ping endlos läuft, beendet Strg+C den Vorgang und gibt eine Zusammenfassung aus.
+Wie halte ich einen laufenden Prozess an und lasse ihn im Hintergrund weiterlaufen?
+Antwort: Mit Strg + Z kann man einen laufenden Prozess anhalten (pausieren)
+achik.us
+. Die Shell gibt dann eine Job-Nummer aus. Mit dem Befehl bg schickt man diesen angehaltenen Job in den Hintergrund (Background)
+achik.us
+, sodass er weiterläuft, aber die Shell wieder bereit ist. Den Status aller Jobs sieht man mit jobs. Um einen Hintergrundjob wieder in den Vordergrund zu holen, verwendet man fg %Jobnummer (z. B. fg %1).
+Wie verlasse ich die Shell bzw. schließe das Terminal?
+Antwort: Mit dem Befehl exit beendet man die aktuelle Shell-Sitzung
+achik.us
+. Falls es die letzte Shell in dem Terminalfenster war, schließt sich dadurch das Terminal. Alternativ kann man auch Strg + D drücken (EOF senden), was ebenfalls die Shell beendet
+achik.us
+.
+Fehlermeldungen und ihre Behebung
+Fehlermeldung: “command not found” – was bedeutet das und was kann ich tun?
+Antwort: “Command not found” bedeutet, dass die Shell den eingegebenen Befehl nicht finden konnte. Häufige Ursachen: Tippfehler im Befehlsnamen oder das Programm ist nicht installiert bzw. nicht im PATH. Zuerst sollte man prüfen, ob man sich nicht vertippt hat. Ist der Name korrekt, überprüft man mit which befehl, ob das Programm im Suchpfad liegt (gibt z. B. /usr/bin/befehl zurück)
+kinsta.com
+. Falls which nichts ausgibt, muss das Programm ggf. installiert werden (z. B. via sudo apt install <paket>). Bei Shell-internen Befehlen (wie cd) kann die Meldung erscheinen, wenn man sie in falschem Kontext nutzt (z. B. in einer sh-Shell, die cd aber doch kennt – dieses Szenario ist selten). In seltenen Fällen ist die PATH-Variable beschädigt oder leer, sodass selbst grundlegende Befehle nicht gefunden werden
+superuser.com
+. Dann sollte man echo $PATH prüfen und gegebenenfalls die Standard-Pfade (/usr/bin, /bin, etc.) wiederherstellen. Zusammengefasst: "command not found" = entweder Tippfehler, Programm fehlt oder PATH-Problem
+superuser.com
+.
+Fehlermeldung: “Permission denied” – warum tritt sie auf und wie löse ich das?
+Antwort: Diese Meldung erscheint, wenn die Berechtigungen nicht ausreichen, um eine Aktion durchzuführen (siehe auch oben Rechte und Berechtigungen). Man löst es, indem man entweder die notwendigen Rechte erlangt oder die Datei-Berechtigungen ändert. Beispiele: Beim Öffnen einer Datei Permission denied – entweder sudo verwenden (wenn Administratorrechte nötig sind) oder chmod nutzen, um die Datei für den eigenen Benutzer zugänglich zu machen. Oder man versucht, in ein Verzeichnis zu wechseln, hat aber keine Ausführungsrechte auf den Ordner – dann muss man chmod +x auf das Verzeichnis anwenden
+serverfault.com
+. Generell: Permission denied kann durch sudo umgangen werden, wenn es um Root-Rechte geht (aber vorsicht, nur bei vertrauenswürdigen Befehlen nutzen), oder durch Anpassen der Dateirechte mit chmod bzw. Eigentümerwechsel mit chown, falls man Zugriff benötigt.
+Fehlermeldung: “No such file or directory” – was läuft falsch?
+Antwort: Diese Meldung bedeutet, dass eine angegebene Datei oder Pfad nicht existiert. Entweder wurde der Pfad falsch eingegeben (Tippfehler, Groß-/Kleinschreibung beachten, da Linux case-sensitiv ist) oder das Objekt ist tatsächlich nicht vorhanden. Lösung: Pfadangabe überprüfen (ls im betreffenden Verzeichnis ausführen, Tab-Autocomplete nutzen) und ggf. korrigieren. Bei ausführbaren Programmen kann es auch bedeuten, dass das Programm zwar vorhanden ist, aber eine benötigte Bibliothek fehlt oder der Shebang-Pfad im Skript ungültig ist (z. B. Skript beginnt mit #!/bin/python statt /usr/bin/python). Dann muss man den Pfad anpassen oder die fehlende Komponente installieren.
+Mein Terminal zeigt sonderbare Zeichen an oder reagiert nicht richtig – was kann ich tun?
+Antwort: Manchmal gerät das Terminal durch Binärausgaben oder versehentliche stty-Änderungen durcheinander. Mit dem Befehl reset kann man das Terminal in einen definierten Zustand zurücksetzen. Falls nur Eingaben unsichtbar sind (passiert z. B. nach cat /dev/urandom), hilft oft auch echo -e "\033c". Ein einfacher Trick ist zudem, einen neuen Prompt zu erzwingen: Drücke Ctrl+J gefolgt von reset und wieder Enter (falls Enter alleine nicht mehr erkannt wird).
+Ein Befehl läuft endlos und reagiert nicht – was soll ich machen?
+Antwort: Mit Strg + C (Control-C) bricht man den laufenden Prozess ab (siehe oben)
+achik.us
+. Sollte auch das nicht gehen (sehr selten), kann man in einem anderen Terminal sudo killall <prozessname> oder sudo kill <PID> ausführen, um den Prozess zu beenden. In grafischen Desktop-Sitzungen gibt es auch den System Monitor oder htop, um Prozesse abzuschießen. In der Regel reicht jedoch Strg+C, um einen hängenden Prozess zu stoppen.
+Nach der Anmeldung sehe ich nur $ anstelle von kali@...$ und Befehle wie ls funktionieren nicht. Was ist passiert?
+Antwort: Ein Prompt, der nur $ anzeigt, deutet darauf hin, dass man möglicherweise in der sh-Shell (oder Dash) statt in Bash gelandet ist, oder dass die Shell-Initialisierung nicht vollständig lief. Wenn dann gängige Befehle wie ls "command not found" ergeben, kann es sein, dass die PATH-Variable nicht gesetzt ist
+superuser.com
+. Lösung: Versuchen, mit exec bash oder bash --login in eine Bash zu wechseln. Prüfen, ob Konfigurationsdateien wie ~/.bashrc oder ~/.profile versehentlich verändert wurden. Ggf. temporär export PATH=/usr/bin:/bin setzen, damit wichtigste Befehle wieder gefunden werden, dann die Shell-Startdateien reparieren.
+Systeminformationen und -überwachung
+Wie finde ich heraus, welche Linux-Version und Kernel-Version ich benutze?
+Antwort: Mit uname -a erhält man einen Überblick über Systemname, Kernel-Version, Architektur usw.
+achik.us
+. Beispielausgabe: Linux kali 6.5.0-kali1-amd64 #1 SMP Debian 6.5.5-1kali1 (2023-10-10) x86_64 GNU/Linux. Für die Distribution kann man auch lsb_release -a verwenden, das z. B. Kali-Version und Codename anzeigt
+achik.us
+.
+Wie kann ich die Hardware-Informationen meines Systems anzeigen?
+Antwort: Einige nützliche Befehle: lscpu zeigt CPU-Details (Anzahl Kerne, Modell, Flags), lsusb listet USB-Geräte auf, lspci PCI-Geräte. Für den Arbeitsspeicher grep MemTotal /proc/meminfo. Kali bringt auch neofetch mit, das eine kompakte Systemübersicht mit ASCII-Logo ausgeben kann (inkl. OS, Kernel, CPU, RAM etc.).
+Wie überwache ich die aktuelle Auslastung der CPU und des RAM?
+Antwort: Mit top erhält man eine dynamische Live-Ansicht der laufenden Prozesse und ihrer CPU-/Speicherauslastung
+digitalocean.com
+. Oben zeigt top außerdem Gesamtwerte für CPU (in %), RAM und Swap an. Ein besser lesbares, alternatives Tool ist htop (falls installiert)
+kinsta.com
+. Wenn es nur um einen Schnappschuss geht: uptime zeigt die Load Average an (Durchschnittslast) und free -h den aktuellen belegten/freien Speicher
+achik.us
+.
+Wie sehe ich, wie lange mein System schon läuft?
+Antwort: Der Befehl uptime gibt die aktuelle Uhrzeit, die Systemlaufzeit (seit dem letzten Start), die Anzahl eingeloggter Benutzer und die durchschnittliche Last an
+achik.us
+. Beispiel: 17:30:45 up 2:15, 1 user, load average: 0.05, 0.10, 0.09 bedeutet das System läuft seit 2 Stunden 15 Minuten.
+Wie prüfe ich, wie viel Festplattenplatz belegt bzw. frei ist?
+Antwort: Dafür verwendet man df -h. df (disk free) listet alle eingehängten Dateisysteme mit genutztem und freiem Speicherplatz; die Option -h zeigt die Werte in menschenlesbarer Form (KiB/ MiB/ GiB)
+digitalocean.com
+. Man sieht z. B., wie voll die Root-Partition ist. Möchte man den Speicherverbrauch eines bestimmten Verzeichnisses wissen, benutzt man du -sh <verzeichnis> (disk usage, -s summarisch für das Verzeichnis, -h human-readable).
+Wie kann ich bestimmte Prozessinformationen abrufen?
+Antwort: Mit ps aux lassen sich alle laufenden Prozesse auflisten (mit User, PID, CPU/RAM-Verbrauch etc.)
+digitalocean.com
+. Möchte man nach einem bestimmten Prozess filtern, kann man ps aux | grep name nutzen. Detaillierte Infos zu einem Prozess liefert ps -p <PID> -o alles, wobei man anstelle von "alles" spezifische Felder angeben kann (siehe man ps). Für einen Echtzeit-Überblick siehe top oder htop (vorher genannt).
+Wie kann ich System-Logs einsehen?
+Antwort: Log-Dateien liegen meist unter /var/log/. Wichtige Logs sind z. B. /var/log/syslog (Systemmeldungen), /var/log/auth.log (Anmeldungen und sudo), dmesg (Kernel-Meldungen, auslesbar mit dem Befehl dmesg). Man kann diese Dateien mit tail -f <logdatei> live mitlesen oder mit grep durchsuchen. Kali nutzt systemd, daher ist auch journalctl -xe nützlich, um aktuelle Fehlermeldungen im System-Log zu sehen
+digitalocean.com
+.
+Nützliche Tools und Befehle
+Wie verwende ich Nmap, um mein Netzwerk zu scannen?
+Antwort: Nmap ist ein Netzwerkscanner. Einige Beispiele:
+– Ping-Scan: nmap -sn 192.168.1.0/24 pingt ein ganzes Netz (hier 192.168.1.0 bis 192.168.1.255) an und listet aktive Hosts
+varonis.com
+varonis.com
+.
+– Port-Scan: nmap 192.168.1.100 scannt die häufigsten 1000 TCP-Ports auf Host .100. Mit -p 1-65535 kann man alle Ports scannen, mit -sU UDP-Ports.
+– Service-/OS-Scan: nmap -sV -O 192.168.1.100 versucht, Dienste-Versionen und das Betriebssystem des Ziels zu erkennen.
+Nmap bietet sehr umfangreiche Möglichkeiten, einschließlich Skripte (-sC) und aggressivere Scans (-A). Für den Einstieg liefert jedoch ein einfacher Portscan schon viel Information über offene Ports und Dienste
+varonis.com
+varonis.com
+.
+Wofür wird Netcat (nc) verwendet und wie funktioniert es?
+Antwort: Netcat ist ein vielseitiges Tool für die Netzwerkkommunikation – oft bezeichnet als "Schweizer Taschenmesser” der TCP/UDP-Tools. Beispiele:
+– Port-Check/Portscan: nc -zv <host> <port> prüft, ob ein bestimmter Port auf einem Host offen ist (z. B. nc -zv 192.168.1.1 80 prüft Port 80)
+digitalocean.com
+.
+– Listener aufsetzen: nc -l -p 4444 lauscht auf Port 4444 auf eingehende Verbindungen (ein rudimentärer Server).
+– Client verbinden: nc <ip> 4444 verbindet zu einem solchen Listener. Alles was eine Seite tippt, wird zur anderen übertragen – so kann man z. B. einen einfachen Chat oder Datentransfer realisieren.
+– Dateitransfer: Auf Empfängerseite: nc -l -p 5555 > received.file und auf Senderseite: nc <ip> 5555 < file.to.send – so wird file.to.send per Netcat übertragen.
+Netcat kann noch mehr, inkl. Port-Weiterleitungen und Banner-Grabbing. Da Netcat keine Verschlüsselung bietet, sollte es in sicheren Netzwerken oder zu Testzwecken verwendet werden.
+Wie kann ich Dateien von einem Webserver herunterladen (Wget)?
+Antwort: wget ist ein einfaches Download-Tool. Beispiel: wget https://downloads.kali.org/tool.deb lädt die Datei tool.deb herunter
+digitalocean.com
+. Standardmäßig speichert wget im aktuellen Verzeichnis und zeigt einen Fortschritt an. Es unterstützt viele Parameter, z. B. -c zum Fortsetzen abgebrochener Downloads oder -r für rekursives Herunterladen von Websites.
+Wie kann ich HTTP-Anfragen stellen oder APIs testen (cURL)?
+Antwort: cURL ist sehr mächtig für Webanfragen:
+– Eine einfache GET-Anfrage: curl http://api.icndb.com/jokes/1 ruft z. B. eine Joke-API auf und gibt JSON aus.
+– Datei herunterladen: curl -O http://example.com/file.txt funktioniert ähnlich wie wget (speichert unter gleichem Namen)
+digitalocean.com
+.
+– POST-Anfrage senden: curl -d "user=test&pass=123" -X POST http://example.com/login sendet Formulardaten via POST.
+– Header anzeigen: curl -I http://example.com zeigt nur die HTTP-Header an (Kopfzeilen der Antwort).
+cURL eignet sich somit, um Web-APIs zu testen, Dateien zu laden oder generell mit Webservices zu interagieren. (Tipp: Mit Option -v sieht man detaillierte Request/Response, mit -H kann man Header setzen usw.)
+Wie öffne ich eine sichere Shell-Verbindung zu einem anderen Rechner (SSH)?
+Antwort: Mit dem ssh-Befehl. Syntax: ssh <benutzer>@<hostname>
+digitalocean.com
+. Beispiel: ssh root@192.168.0.10 stellt eine SSH-Verbindung zum Host 192.168.0.10 als Benutzer root her (es wird nach dem Passwort gefragt, sofern kein Key genutzt wird). Über SSH kann man Befehle auf dem entfernten System ausführen und hat eine verschlüsselte Terminalsession. Für Key-basierten Login verwendet man die Option -i /Pfad/zum/Schlüssel. Standard läuft SSH auf Port 22; falls der Server einen anderen Port nutzt, kann man mit -p <Port> einen abweichenden Port angeben.
+Welche weiteren nützlichen Hacking-Tools bringt Kali Linux mit?
+Antwort: Kali ist vollgepackt mit Security-Tools. Einige Beispiele:
+– sqlmap: Automatisches SQL-Injection-Tool zum Auffinden und Exploitieren von SQL-Injection-Schwachstellen
+achik.us
+.
+– hydra: Passwort-Cracking-Tool für Online-Dienste (Brute-Force auf Login z. B. FTP, HTTP, SSH)
+achik.us
+.
+– aircrack-ng: Suite zum Knacken von WLAN-Verschlüsselungen (WEP/WPA Handshakes)
+achik.us
+.
+– burpsuite: Plattform zum Testen von Webanwendungen (Proxy zum Manipulieren von HTTP(S)-Traffic, Scanner etc.)
+achik.us
+.
+– metasploit-framework: Umfangreiches Exploit-Framework zum Durchführen von Penetrationstests.
+– Wireshark: Grafischer Netzwerk-Sniffer/Protokoll-Analyzer zum Mitschneiden und Analysieren von Netzwerkverkehr.
+Diese Tools sind meist für fortgeschrittene Anwender – Anfänger sollten sich zunächst mit den Grundlagen der Linux-CLI vertraut machen, bevor sie diese einsetzen. Dennoch gehört es zum Kali-Einstieg dazu, zumindest zu wissen, dass diese Tools existieren und wofür sie da sind. (Weitere Tools siehe Kali Doku oder Menüs, z. B. John, Nikto, Recon-ng, etc.
+achik.us
+.)
+Wie kann ich herausfinden, wo ein bestimmtes Programm liegt?
+Antwort: Mit which <befehl> zeigt die Shell den Pfad zur auszuführenden Datei an, die dem Befehl entspricht
+kinsta.com
+. Beispiel: which nmap gibt z. B. /usr/bin/nmap aus
+kinsta.com
+. Existiert der Befehl nicht (oder ist kein externer Befehl sondern Shell-intern), gibt which nichts aus. Für Shell-Builtins kann type <name> weiterhelfen (z. B. type cd sagt "cd is a shell builtin").
+Wie bekomme ich Hilfe zu Befehlen (Man-Pages)?
+Antwort: Linux bietet zu den meisten Befehlen Handbuchseiten. Mit man <befehl> öffnet man die Manual-Page zum jeweiligen Befehl
+kinsta.com
+. Diese enthalten Beschreibung, Aufrufsyntax, Optionen und oft Beispiele. Beispiel: man ls erklärt alle Optionen von ls. Mit Q verlässt man die man-Page wieder. Alternativ zeigen viele Befehle mit --help eine Kurzinfo an, z. B. ls --help.
