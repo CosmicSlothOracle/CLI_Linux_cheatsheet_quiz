@@ -977,6 +977,28 @@
         transform: translateY(-2px);
       }
 
+      /* Modern-Tools-Kachel */
+      .modern-tools-card {
+        border: 2px solid #a855f7;
+        background: radial-gradient(
+            circle at top left,
+            rgba(168, 85, 247, 0.2),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(139, 92, 246, 0.15),
+            transparent 55%
+          ),
+          #020617;
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+      }
+      .modern-tools-card:hover {
+        border-color: #c084fc;
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+        transform: translateY(-2px);
+      }
+
       /* Masterquiz-Modal */
       .master-quiz-modal {
         position: fixed;
@@ -998,8 +1020,10 @@
         border: 1px solid #1f2937;
         box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
         padding: 1.2rem 1.5rem 1.3rem;
-        max-height: 85vh;
+        max-height: 90vh;
         overflow-y: auto;
+        display: flex;
+        flex-direction: column;
       }
       .master-quiz-scenario {
         padding: 0.8rem;
@@ -1096,6 +1120,9 @@
         border: 1px solid rgba(59, 130, 246, 0.3);
         box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
           inset 0 1px 0 rgba(59, 130, 246, 0.1);
+        max-height: 90vh;
+        width: min(900px, 100% - 2rem);
+        overflow: hidden;
       }
       .command-modal .quiz-header {
         background: linear-gradient(
@@ -1129,6 +1156,9 @@
         gap: 1.2rem;
         padding: 1.5rem;
         padding-top: 1.5rem;
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0;
       }
       .command-modal .command-summary {
         font-size: 1rem;
@@ -1306,7 +1336,8 @@
         border: 1px solid #1f2937;
         box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
         padding: 1.2rem 1.5rem 1.3rem;
-        max-height: 85vh;
+        max-height: 90vh;
+        overflow-y: auto;
         overflow-y: auto;
       }
       .hotkeys-section {
@@ -1335,6 +1366,168 @@
       .hotkeys-description {
         color: #d1d5db;
         margin-left: 0.5rem;
+      }
+
+      /* Modern Tools Modal */
+      .modern-tools-section {
+        margin-bottom: 2rem;
+      }
+      .modern-tools-section-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #a855f7;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(168, 85, 247, 0.3);
+      }
+      .modern-tools-command-box {
+        background: rgba(168, 85, 247, 0.1);
+        border: 1px solid rgba(168, 85, 247, 0.3);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+      .modern-tools-command-box code {
+        color: #c084fc;
+        font-size: 0.95rem;
+        word-break: break-all;
+      }
+      .modern-tools-tool {
+        background: rgba(168, 85, 247, 0.05);
+        border: 1px solid rgba(168, 85, 247, 0.2);
+        border-radius: 0.7rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .modern-tools-tool-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+      .modern-tools-tool-icon {
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+      .modern-tools-tool-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #c084fc;
+        margin-bottom: 0.3rem;
+      }
+      .modern-tools-tool-desc {
+        color: #cbd5e1;
+        font-size: 0.95rem;
+      }
+      .modern-tools-example {
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 3px solid #a855f7;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      .modern-tools-example-level {
+        color: #a855f7;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+      }
+      .modern-tools-example-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      @media (max-width: 768px) {
+        .modern-tools-example-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .modern-tools-example-new,
+      .modern-tools-example-old {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 0.4rem;
+        padding: 0.6rem;
+      }
+      .modern-tools-example-label {
+        color: #94a3b8;
+        font-size: 0.85rem;
+        margin-bottom: 0.3rem;
+      }
+      .modern-tools-example-new code {
+        color: #34d399;
+      }
+      .modern-tools-example-old code {
+        color: #f87171;
+      }
+      .modern-tools-example-note {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        white-space: pre-line;
+      }
+      .modern-tools-syntax-item {
+        background: rgba(168, 85, 247, 0.05);
+        border: 1px solid rgba(168, 85, 247, 0.2);
+        border-radius: 0.7rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
+      .modern-tools-syntax-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #c084fc;
+        margin-bottom: 0.75rem;
+      }
+      .modern-tools-syntax-content {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 0.4rem;
+        padding: 0.6rem;
+        margin-bottom: 0.75rem;
+      }
+      .modern-tools-syntax-content code {
+        color: #c084fc;
+      }
+      .modern-tools-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0.75rem 0;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 0.4rem;
+        overflow: hidden;
+      }
+      .modern-tools-table thead {
+        background: rgba(168, 85, 247, 0.2);
+      }
+      .modern-tools-table th {
+        padding: 0.6rem;
+        text-align: left;
+        color: #c084fc;
+        font-weight: 600;
+        border-bottom: 2px solid rgba(168, 85, 247, 0.3);
+      }
+      .modern-tools-table td {
+        padding: 0.6rem;
+        color: #cbd5e1;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .modern-tools-table td code {
+        color: #93c5fd;
+      }
+      .modern-tools-examples {
+        margin-top: 0.75rem;
+      }
+      .modern-tools-example-code {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 0.4rem;
+        padding: 0.5rem 0.6rem;
+        margin-bottom: 0.4rem;
+      }
+      .modern-tools-example-code code {
+        color: #c084fc;
+        font-size: 0.9rem;
       }
 
       /* Beginner-Mistakes Modal */
@@ -1791,7 +1984,7 @@
         border: 1px solid #1f2937;
         box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
         padding: 1.2rem 1.5rem 1.3rem;
-        max-height: 85vh;
+        max-height: 90vh;
         overflow-y: auto;
       }
       .kali-tools-section {
@@ -2152,40 +2345,39 @@
         width: min(520px, 100% - 2rem);
         max-height: 95vh;
         height: auto;
-        background: #020617;
-        border-radius: 1rem;
-        border: 1px solid #1f2937;
-        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
-        transform-style: preserve-3d;
-        transition: transform 0.6s;
-        perspective: 1000px;
+        background: transparent;
+        transition: opacity 0.25s ease;
         display: flex;
         flex-direction: column;
       }
-      .quiz-modal-inner.flipped {
-        transform: rotateY(180deg);
-      }
       .quiz-modal-front,
       .quiz-modal-back {
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
         width: 100%;
         padding: 1rem 1.2rem 1.1rem;
         display: flex;
         flex-direction: column;
         height: auto;
         overflow: visible;
+        background: #020617;
+        border-radius: 1rem;
+        border: 1px solid #1f2937;
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+      }
+      .quiz-modal-front {
+        position: relative;
       }
       .quiz-modal-back {
-        transform: rotateY(180deg);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        position: relative;
+        display: none;
         overflow-y: visible;
         max-height: none;
         height: auto;
+      }
+      .quiz-modal-inner.flipped .quiz-modal-front {
+        display: none;
+      }
+      .quiz-modal-inner.flipped .quiz-modal-back {
+        display: flex;
       }
       .quiz-header {
         display: flex;
@@ -2429,10 +2621,57 @@
         color: #022c22;
         font-weight: 600;
         cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .quiz-submit-btn:hover:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
       }
       .quiz-submit-btn:disabled {
         opacity: 0.5;
         cursor: default;
+      }
+      /* Quiz-Button im Command-Modal mit höchstem z-index und Glow */
+      #command-modal-quiz-btn {
+        position: relative;
+        z-index: 100;
+        border: none;
+        border-radius: 999px;
+        padding: 0.6rem 1.2rem;
+        background: linear-gradient(135deg, #3b82f6, #60a5fa);
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
+          0 4px 12px rgba(59, 130, 246, 0.3);
+        animation: quizButtonGlow 2s ease-in-out infinite;
+      }
+      #command-modal-quiz-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.7),
+          0 6px 20px rgba(59, 130, 246, 0.4);
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+      }
+      #command-modal-quiz-btn:active:not(:disabled) {
+        transform: translateY(0);
+      }
+      #command-modal-quiz-btn:disabled {
+        opacity: 0.5;
+        cursor: default;
+        animation: none;
+      }
+      @keyframes quizButtonGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
+            0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(59, 130, 246, 0.7),
+            0 4px 16px rgba(59, 130, 246, 0.4);
+        }
       }
       .quiz-feedback {
         font-size: 0.8rem;
@@ -3363,6 +3602,20 @@
             </p>
           </div>
         </article>
+
+        <!-- Modern Tools Kachel -->
+        <article class="command-card modern-tools-card" id="modern-tools-card">
+          <div class="command-header">
+            <h2 class="command-name">🚀 Modern Tools</h2>
+            <span class="command-tag">Wissen</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Moderne Alternativen zu Standard-Commands: Installation auf Kali
+              Linux und Vergleich zwischen neuen und alten Tools.
+            </p>
+          </div>
+        </article>
       </section>
     </main>
 
@@ -3691,6 +3944,30 @@
       </div>
     </div>
 
+    <!-- Modern Tools Modal -->
+    <div id="modern-tools-root" class="hotkeys-modal hidden" aria-hidden="true">
+      <div class="quiz-backdrop"></div>
+      <div class="hotkeys-modal-inner">
+        <div class="quiz-header">
+          <div>
+            <div class="quiz-title">🚀 Modern Tools</div>
+            <div class="quiz-level-pill">
+              Moderne Alternativen zu Standard-Commands
+            </div>
+          </div>
+          <button
+            class="quiz-close-btn"
+            type="button"
+            id="modern-tools-close-btn"
+          >
+            ESC
+          </button>
+        </div>
+
+        <div class="quiz-body" id="modern-tools-body"></div>
+      </div>
+    </div>
+
     <script>
       // Suppress browser extension message channel errors (harmless but annoying)
       // These errors occur when browser extensions (ad blockers, password managers, etc.)
@@ -3939,32 +4216,32 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Eine Ebene hoch gehen und dann prüfen wo du bist</strong><br>
-      <code>cd ..</code><br>
-      <code>pwd</code><br>
-      → Geht eine Ebene nach oben, pwd zeigt den neuen Pfad<br><br>
+            ✅ <strong>1. Eine Ebene hoch gehen und dann prüfen wo du bist</strong><br>
+            <code>cd ..</code><br>
+            <code>pwd</code><br>
+            → Geht eine Ebene nach oben, pwd zeigt den neuen Pfad<br><br>
 
-      ✅ <strong>2. Nach oben gehen und dann den Inhalt auflisten</strong><br>
-      <code>cd ..</code><br>
-      <code>ls</code><br>
-      → Wechselt ins Parent-Verzeichnis, ls zeigt was dort ist<br><br>
+            ✅ <strong>2. Nach oben gehen und dann den Inhalt auflisten</strong><br>
+            <code>cd ..</code><br>
+            <code>ls</code><br>
+            → Wechselt ins Parent-Verzeichnis, ls zeigt was dort ist<br><br>
 
-      ✅ <strong>3. Zwei Ebenen hoch gehen</strong><br>
-      <code>cd ../..</code><br>
-      <code>pwd</code><br>
-      → Geht zwei Ebenen nach oben, pwd zeigt den neuen Pfad<br><br>
+            ✅ <strong>3. Zwei Ebenen hoch gehen</strong><br>
+            <code>cd ../..</code><br>
+            <code>pwd</code><br>
+            → Geht zwei Ebenen nach oben, pwd zeigt den neuen Pfad<br><br>
 
-      ✅ <strong>4. In einen Ordner wechseln, dann zurück nach oben</strong><br>
-      <code>cd Documents</code><br>
-      <code>cd ..</code><br>
-      <code>ls</code><br>
-      → Wechselt ins Documents-Verzeichnis, geht zurück nach oben, ls zeigt den Inhalt<br><br>
+            ✅ <strong>4. In einen Ordner wechseln, dann zurück nach oben</strong><br>
+            <code>cd Documents</code><br>
+            <code>cd ..</code><br>
+            <code>ls</code><br>
+            → Wechselt ins Documents-Verzeichnis, geht zurück nach oben, ls zeigt den Inhalt<br><br>
 
-      ✅ <strong>5. Nach oben gehen und dann Dateien kopieren</strong><br>
-      <code>cd ..</code><br>
-      <code>cp file.txt backup/</code><br>
-      → Geht eine Ebene hoch, kopiert dann eine Datei ins backup-Verzeichnis
-                `,
+            ✅ <strong>5. Nach oben gehen und dann Dateien kopieren</strong><br>
+            <code>cd ..</code><br>
+            <code>cp file.txt backup/</code><br>
+            → Geht eine Ebene hoch, kopiert dann eine Datei ins backup-Verzeichnis
+                      `,
           questions: [
             {
               level: "leicht",
@@ -4066,31 +4343,31 @@
             "Mit -n Zeilennummern anzeigen, mit -i Groß-/Kleinschreibung ignorieren.",
           complexExample: 'grep -n "TODO" *.sh',
           additionalExamples: `
-      ✅ <strong>1. In einer Datei suchen (die du mit cat anzeigen könntest)</strong><br>
-      <code>cat log.txt</code><br>
-      <code>grep "Error" log.txt</code><br>
-      → cat zeigt den ganzen Inhalt, grep filtert nur Zeilen mit "Error"<br><br>
+            ✅ <strong>1. In einer Datei suchen (die du mit cat anzeigen könntest)</strong><br>
+            <code>cat log.txt</code><br>
+            <code>grep "Error" log.txt</code><br>
+            → cat zeigt den ganzen Inhalt, grep filtert nur Zeilen mit "Error"<br><br>
 
-      ✅ <strong>2. Suche und dann sortiere die Ergebnisse</strong><br>
-      <code>grep "user" names.txt</code><br>
-      <code>grep "user" names.txt | sort</code><br>
-      → Findet alle Zeilen mit "user", sort sortiert sie alphabetisch<br><br>
+            ✅ <strong>2. Suche und dann sortiere die Ergebnisse</strong><br>
+            <code>grep "user" names.txt</code><br>
+            <code>grep "user" names.txt | sort</code><br>
+            → Findet alle Zeilen mit "user", sort sortiert sie alphabetisch<br><br>
 
-      ✅ <strong>3. Suche in mehreren Dateien (die du mit find finden könntest)</strong><br>
-      <code>find . -name "*.log"</code><br>
-      <code>grep "Error" *.log</code><br>
-      → find zeigt alle .log-Dateien, grep sucht "Error" in allen .log-Dateien<br><br>
+            ✅ <strong>3. Suche in mehreren Dateien (die du mit find finden könntest)</strong><br>
+            <code>find . -name "*.log"</code><br>
+            <code>grep "Error" *.log</code><br>
+            → find zeigt alle .log-Dateien, grep sucht "Error" in allen .log-Dateien<br><br>
 
-      ✅ <strong>4. Suche und zeige nur die ersten 5 Treffer</strong><br>
-      <code>grep "TODO" *.txt</code><br>
-      <code>grep "TODO" *.txt | head -n 5</code><br>
-      → Findet alle "TODO" Einträge, head zeigt nur die ersten 5 Zeilen<br><br>
+            ✅ <strong>4. Suche und zeige nur die ersten 5 Treffer</strong><br>
+            <code>grep "TODO" *.txt</code><br>
+            <code>grep "TODO" *.txt | head -n 5</code><br>
+            → Findet alle "TODO" Einträge, head zeigt nur die ersten 5 Zeilen<br><br>
 
-      ✅ <strong>5. Suche, sortiere und entferne Duplikate</strong><br>
-      <code>grep "admin" users.txt</code><br>
-      <code>grep "admin" users.txt | sort | uniq</code><br>
-      → Findet "admin", sort sortiert, uniq entfernt doppelte Zeilen
-                `,
+            ✅ <strong>5. Suche, sortiere und entferne Duplikate</strong><br>
+            <code>grep "admin" users.txt</code><br>
+            <code>grep "admin" users.txt | sort | uniq</code><br>
+            → Findet "admin", sort sortiert, uniq entfernt doppelte Zeilen
+                      `,
           complexExampleExplanation: [
             {
               line: 'grep -n "TODO" *.sh',
@@ -4160,31 +4437,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Dateien auflisten und sortieren</strong><br>
-      <code>ls</code><br>
-      <code>ls | sort</code><br>
-      → ls zeigt Dateien, sort sortiert sie alphabetisch<br><br>
+            ✅ <strong>1. Dateien auflisten und sortieren</strong><br>
+            <code>ls</code><br>
+            <code>ls | sort</code><br>
+            → ls zeigt Dateien, sort sortiert sie alphabetisch<br><br>
 
-      ✅ <strong>2. Datei anzeigen, dann nach etwas suchen</strong><br>
-      <code>cat log.txt</code><br>
-      <code>cat log.txt | grep "Error"</code><br>
-      → cat zeigt den Inhalt, grep filtert nur Zeilen mit "Error"<br><br>
+            ✅ <strong>2. Datei anzeigen, dann nach etwas suchen</strong><br>
+            <code>cat log.txt</code><br>
+            <code>cat log.txt | grep "Error"</code><br>
+            → cat zeigt den Inhalt, grep filtert nur Zeilen mit "Error"<br><br>
 
-      ✅ <strong>3. Suche, sortiere und entferne Duplikate</strong><br>
-      <code>grep "user" names.txt</code><br>
-      <code>grep "user" names.txt | sort | uniq</code><br>
-      → Findet "user", sort sortiert, uniq entfernt doppelte Zeilen<br><br>
+            ✅ <strong>3. Suche, sortiere und entferne Duplikate</strong><br>
+            <code>grep "user" names.txt</code><br>
+            <code>grep "user" names.txt | sort | uniq</code><br>
+            → Findet "user", sort sortiert, uniq entfernt doppelte Zeilen<br><br>
 
-      ✅ <strong>4. Dateien auflisten und zählen</strong><br>
-      <code>ls</code><br>
-      <code>ls | wc -l</code><br>
-      → ls zeigt Dateien, wc -l zählt wie viele es sind<br><br>
+            ✅ <strong>4. Dateien auflisten und zählen</strong><br>
+            <code>ls</code><br>
+            <code>ls | wc -l</code><br>
+            → ls zeigt Dateien, wc -l zählt wie viele es sind<br><br>
 
-      ✅ <strong>5. Suche, zeige nur die ersten Treffer</strong><br>
-      <code>grep "TODO" *.txt</code><br>
-      <code>grep "TODO" *.txt | head -n 10</code><br>
-      → Findet alle "TODO" Einträge, head zeigt nur die ersten 10
-                `,
+            ✅ <strong>5. Suche, zeige nur die ersten Treffer</strong><br>
+            <code>grep "TODO" *.txt</code><br>
+            <code>grep "TODO" *.txt | head -n 10</code><br>
+            → Findet alle "TODO" Einträge, head zeigt nur die ersten 10
+                      `,
           questions: [
             {
               level: "leicht",
@@ -4371,31 +4648,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Normale Liste vs. alle Dateien</strong><br>
-      <code>ls</code><br>
-      <code>ls -a</code><br>
-      → ls zeigt nur normale Dateien, ls -a zeigt auch versteckte (mit .)<br><br>
+            ✅ <strong>1. Normale Liste vs. alle Dateien</strong><br>
+            <code>ls</code><br>
+            <code>ls -a</code><br>
+            → ls zeigt nur normale Dateien, ls -a zeigt auch versteckte (mit .)<br><br>
 
-      ✅ <strong>2. In ein Verzeichnis wechseln und dann alles anzeigen</strong><br>
-      <code>cd Documents</code><br>
-      <code>ls -a</code><br>
-      → Wechselt ins Documents-Verzeichnis, ls -a zeigt alle Dateien dort<br><br>
+            ✅ <strong>2. In ein Verzeichnis wechseln und dann alles anzeigen</strong><br>
+            <code>cd Documents</code><br>
+            <code>ls -a</code><br>
+            → Wechselt ins Documents-Verzeichnis, ls -a zeigt alle Dateien dort<br><br>
 
-      ✅ <strong>3. Prüfen wo du bist, dann alles auflisten</strong><br>
-      <code>pwd</code><br>
-      <code>ls -a</code><br>
-      → pwd zeigt deinen Pfad, ls -a zeigt alle Dateien im aktuellen Verzeichnis<br><br>
+            ✅ <strong>3. Prüfen wo du bist, dann alles auflisten</strong><br>
+            <code>pwd</code><br>
+            <code>ls -a</code><br>
+            → pwd zeigt deinen Pfad, ls -a zeigt alle Dateien im aktuellen Verzeichnis<br><br>
 
-      ✅ <strong>4. Liste speichern und dann anzeigen</strong><br>
-      <code>ls -a > alle_dateien.txt</code><br>
-      <code>cat alle_dateien.txt</code><br>
-      → Speichert die Liste in eine Datei, cat zeigt den Inhalt<br><br>
+            ✅ <strong>4. Liste speichern und dann anzeigen</strong><br>
+            <code>ls -a > alle_dateien.txt</code><br>
+            <code>cat alle_dateien.txt</code><br>
+            → Speichert die Liste in eine Datei, cat zeigt den Inhalt<br><br>
 
-      ✅ <strong>5. Versteckte Dateien finden und dann auflisten</strong><br>
-      <code>ls -a</code><br>
-      <code>ls -a | grep "^\\.bash"</code><br>
-      → Zeigt alle Dateien, grep filtert nur .bash-Dateien (versteckte Config-Dateien)
-                `,
+            ✅ <strong>5. Versteckte Dateien finden und dann auflisten</strong><br>
+            <code>ls -a</code><br>
+            <code>ls -a | grep "^\\.bash"</code><br>
+            → Zeigt alle Dateien, grep filtert nur .bash-Dateien (versteckte Config-Dateien)
+                      `,
           questions: [
             {
               level: "leicht",
@@ -4456,31 +4733,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Normale Liste vs. detaillierte Liste</strong><br>
-      <code>ls</code><br>
-      <code>ls -la</code><br>
-      → ls zeigt nur Namen, ls -la zeigt Details (Rechte, Besitzer, Größe, Datum)<br><br>
+            ✅ <strong>1. Normale Liste vs. detaillierte Liste</strong><br>
+            <code>ls</code><br>
+            <code>ls -la</code><br>
+            → ls zeigt nur Namen, ls -la zeigt Details (Rechte, Besitzer, Größe, Datum)<br><br>
 
-      ✅ <strong>2. Prüfen wo du bist, dann Details anzeigen</strong><br>
-      <code>pwd</code><br>
-      <code>ls -la</code><br>
-      → pwd zeigt deinen Pfad, ls -la zeigt alle Dateien mit Details<br><br>
+            ✅ <strong>2. Prüfen wo du bist, dann Details anzeigen</strong><br>
+            <code>pwd</code><br>
+            <code>ls -la</code><br>
+            → pwd zeigt deinen Pfad, ls -la zeigt alle Dateien mit Details<br><br>
 
-      ✅ <strong>3. In einen Ordner wechseln und Details anzeigen</strong><br>
-      <code>cd Documents</code><br>
-      <code>ls -la</code><br>
-      → Wechselt ins Documents-Verzeichnis, zeigt alle Dateien mit Details<br><br>
+            ✅ <strong>3. In einen Ordner wechseln und Details anzeigen</strong><br>
+            <code>cd Documents</code><br>
+            <code>ls -la</code><br>
+            → Wechselt ins Documents-Verzeichnis, zeigt alle Dateien mit Details<br><br>
 
-      ✅ <strong>4. Details speichern und dann anzeigen</strong><br>
-      <code>ls -la > dateien_details.txt</code><br>
-      <code>cat dateien_details.txt</code><br>
-      → Speichert die detaillierte Liste in eine Datei, cat zeigt den Inhalt<br><br>
+            ✅ <strong>4. Details speichern und dann anzeigen</strong><br>
+            <code>ls -la > dateien_details.txt</code><br>
+            <code>cat dateien_details.txt</code><br>
+            → Speichert die detaillierte Liste in eine Datei, cat zeigt den Inhalt<br><br>
 
-      ✅ <strong>5. Details anzeigen und dann nach etwas suchen</strong><br>
-      <code>ls -la</code><br>
-      <code>ls -la | grep ".txt"</code><br>
-      → Zeigt alle Details, grep filtert nur .txt-Dateien
-                `,
+            ✅ <strong>5. Details anzeigen und dann nach etwas suchen</strong><br>
+            <code>ls -la</code><br>
+            <code>ls -la | grep ".txt"</code><br>
+            → Zeigt alle Details, grep filtert nur .txt-Dateien
+                      `,
           questions: [
             {
               level: "leicht",
@@ -4541,33 +4818,33 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Ordner erstellen und dann prüfen wo du bist</strong><br>
-      <code>mkdir my_folder</code><br>
-      <code>pwd</code><br>
-      → Erstellt den Ordner, pwd zeigt deinen aktuellen Pfad<br><br>
+            ✅ <strong>1. Ordner erstellen und dann prüfen wo du bist</strong><br>
+            <code>mkdir my_folder</code><br>
+            <code>pwd</code><br>
+            → Erstellt den Ordner, pwd zeigt deinen aktuellen Pfad<br><br>
 
-      ✅ <strong>2. Ordner erstellen und dann den Inhalt anzeigen</strong><br>
-      <code>mkdir backup</code><br>
-      <code>ls</code><br>
-      → Erstellt backup, ls zeigt dass der neue Ordner existiert<br><br>
+            ✅ <strong>2. Ordner erstellen und dann den Inhalt anzeigen</strong><br>
+            <code>mkdir backup</code><br>
+            <code>ls</code><br>
+            → Erstellt backup, ls zeigt dass der neue Ordner existiert<br><br>
 
-      ✅ <strong>3. Ordner erstellen, hinein wechseln, prüfen</strong><br>
-      <code>mkdir projects</code><br>
-      <code>cd projects</code><br>
-      <code>pwd</code><br>
-      → Erstellt projects, wechselt hinein, zeigt den neuen Pfad<br><br>
+            ✅ <strong>3. Ordner erstellen, hinein wechseln, prüfen</strong><br>
+            <code>mkdir projects</code><br>
+            <code>cd projects</code><br>
+            <code>pwd</code><br>
+            → Erstellt projects, wechselt hinein, zeigt den neuen Pfad<br><br>
 
-      ✅ <strong>4. Mehrere Ordner erstellen und dann auflisten</strong><br>
-      <code>mkdir folder1 folder2 folder3</code><br>
-      <code>ls</code><br>
-      → Erstellt drei Ordner auf einmal, ls zeigt alle<br><br>
+            ✅ <strong>4. Mehrere Ordner erstellen und dann auflisten</strong><br>
+            <code>mkdir folder1 folder2 folder3</code><br>
+            <code>ls</code><br>
+            → Erstellt drei Ordner auf einmal, ls zeigt alle<br><br>
 
-      ✅ <strong>5. Ordner erstellen, Dateien kopieren, dann Inhalt prüfen</strong><br>
-      <code>mkdir archive</code><br>
-      <code>cp *.txt archive/</code><br>
-      <code>ls archive/</code><br>
-      → Erstellt archive, kopiert Dateien hinein, ls zeigt den Inhalt
-                `,
+            ✅ <strong>5. Ordner erstellen, Dateien kopieren, dann Inhalt prüfen</strong><br>
+            <code>mkdir archive</code><br>
+            <code>cp *.txt archive/</code><br>
+            <code>ls archive/</code><br>
+            → Erstellt archive, kopiert Dateien hinein, ls zeigt den Inhalt
+                      `,
           questions: [
             {
               level: "leicht",
@@ -4692,61 +4969,61 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Datei verschieben und dann prüfen wo du bist</strong><br>
-      <code>mv file.txt backup/</code><br>
-      <code>pwd</code><br>
-      → Verschiebt die Datei, pwd zeigt deinen aktuellen Pfad<br><br>
+            ✅ <strong>1. Datei verschieben und dann prüfen wo du bist</strong><br>
+            <code>mv file.txt backup/</code><br>
+            <code>pwd</code><br>
+            → Verschiebt die Datei, pwd zeigt deinen aktuellen Pfad<br><br>
 
-      ✅ <strong>2. Datei umbenennen und dann den Ordner auflisten</strong><br>
-      <code>mv old.txt new.txt</code><br>
-      <code>ls</code><br>
-      → Benennt die Datei um, ls zeigt dass nur new.txt existiert<br><br>
+            ✅ <strong>2. Datei umbenennen und dann den Ordner auflisten</strong><br>
+            <code>mv old.txt new.txt</code><br>
+            <code>ls</code><br>
+            → Benennt die Datei um, ls zeigt dass nur new.txt existiert<br><br>
 
-      ✅ <strong>3. In einen Ordner wechseln, verschieben, zurückkehren</strong><br>
-      <code>cd Documents</code><br>
-      <code>mv report.txt ../archive/</code><br>
-      <code>cd ..</code><br>
-      → Wechselt ins Documents-Verzeichnis, verschiebt eine Datei eine Ebene nach oben, kehrt zurück<br><br>
+            ✅ <strong>3. In einen Ordner wechseln, verschieben, zurückkehren</strong><br>
+            <code>cd Documents</code><br>
+            <code>mv report.txt ../archive/</code><br>
+            <code>cd ..</code><br>
+            → Wechselt ins Documents-Verzeichnis, verschiebt eine Datei eine Ebene nach oben, kehrt zurück<br><br>
 
-      ✅ <strong>4. Mehrere Dateien verschieben und dann prüfen</strong><br>
-      <code>mv *.log logs/</code><br>
-      <code>ls logs/</code><br>
-      → Verschiebt alle .log-Dateien ins logs-Verzeichnis, ls zeigt den Inhalt<br><br>
+            ✅ <strong>4. Mehrere Dateien verschieben und dann prüfen</strong><br>
+            <code>mv *.log logs/</code><br>
+            <code>ls logs/</code><br>
+            → Verschiebt alle .log-Dateien ins logs-Verzeichnis, ls zeigt den Inhalt<br><br>
 
-      ✅ <strong>5. Ordner erstellen, dann Dateien hinein verschieben</strong><br>
-      <code>mkdir old_files</code><br>
-      <code>mv file1.txt file2.txt old_files/</code><br>
-      <code>ls old_files/</code><br>
-      → Erstellt den Ordner, verschiebt Dateien hinein, prüft den Inhalt
-                `,
+            ✅ <strong>5. Ordner erstellen, dann Dateien hinein verschieben</strong><br>
+            <code>mkdir old_files</code><br>
+            <code>mv file1.txt file2.txt old_files/</code><br>
+            <code>ls old_files/</code><br>
+            → Erstellt den Ordner, verschiebt Dateien hinein, prüft den Inhalt
+                      `,
           additionalExamples: `
-      ✅ <strong>1. Datei verschieben und dann prüfen wo du bist</strong><br>
-      <code>mv file.txt backup/</code><br>
-      <code>pwd</code><br>
-      → Verschiebt die Datei, pwd zeigt deinen aktuellen Pfad<br><br>
+            ✅ <strong>1. Datei verschieben und dann prüfen wo du bist</strong><br>
+            <code>mv file.txt backup/</code><br>
+            <code>pwd</code><br>
+            → Verschiebt die Datei, pwd zeigt deinen aktuellen Pfad<br><br>
 
-      ✅ <strong>2. Datei umbenennen und dann den Ordner auflisten</strong><br>
-      <code>mv old.txt new.txt</code><br>
-      <code>ls</code><br>
-      → Benennt die Datei um, ls zeigt dass nur new.txt existiert<br><br>
+            ✅ <strong>2. Datei umbenennen und dann den Ordner auflisten</strong><br>
+            <code>mv old.txt new.txt</code><br>
+            <code>ls</code><br>
+            → Benennt die Datei um, ls zeigt dass nur new.txt existiert<br><br>
 
-      ✅ <strong>3. In einen Ordner wechseln, verschieben, zurückkehren</strong><br>
-      <code>cd Documents</code><br>
-      <code>mv report.txt ../archive/</code><br>
-      <code>cd ..</code><br>
-      → Wechselt ins Documents-Verzeichnis, verschiebt eine Datei eine Ebene nach oben, kehrt zurück<br><br>
+            ✅ <strong>3. In einen Ordner wechseln, verschieben, zurückkehren</strong><br>
+            <code>cd Documents</code><br>
+            <code>mv report.txt ../archive/</code><br>
+            <code>cd ..</code><br>
+            → Wechselt ins Documents-Verzeichnis, verschiebt eine Datei eine Ebene nach oben, kehrt zurück<br><br>
 
-      ✅ <strong>4. Mehrere Dateien verschieben und dann prüfen</strong><br>
-      <code>mv *.log logs/</code><br>
-      <code>ls logs/</code><br>
-      → Verschiebt alle .log-Dateien ins logs-Verzeichnis, ls zeigt den Inhalt<br><br>
+            ✅ <strong>4. Mehrere Dateien verschieben und dann prüfen</strong><br>
+            <code>mv *.log logs/</code><br>
+            <code>ls logs/</code><br>
+            → Verschiebt alle .log-Dateien ins logs-Verzeichnis, ls zeigt den Inhalt<br><br>
 
-      ✅ <strong>5. Ordner erstellen, dann Dateien hinein verschieben</strong><br>
-      <code>mkdir old_files</code><br>
-      <code>mv file1.txt file2.txt old_files/</code><br>
-      <code>ls old_files/</code><br>
-      → Erstellt den Ordner, verschiebt Dateien hinein, prüft den Inhalt
-                `,
+            ✅ <strong>5. Ordner erstellen, dann Dateien hinein verschieben</strong><br>
+            <code>mkdir old_files</code><br>
+            <code>mv file1.txt file2.txt old_files/</code><br>
+            <code>ls old_files/</code><br>
+            → Erstellt den Ordner, verschiebt Dateien hinein, prüft den Inhalt
+                      `,
           questions: [
             {
               level: "leicht",
@@ -4802,33 +5079,33 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Backup erstellen und dann prüfen wo du bist</strong><br>
-      <code>cp notes.txt notes_backup.txt</code><br>
-      <code>pwd</code><br>
-      → Kopiert die Datei, dann zeigt pwd deinen aktuellen Pfad<br><br>
+            ✅ <strong>1. Backup erstellen und dann prüfen wo du bist</strong><br>
+            <code>cp notes.txt notes_backup.txt</code><br>
+            <code>pwd</code><br>
+            → Kopiert die Datei, dann zeigt pwd deinen aktuellen Pfad<br><br>
 
-      ✅ <strong>2. Datei kopieren und dann den Inhalt des Ordners anzeigen</strong><br>
-      <code>cp datei.txt backup/</code><br>
-      <code>ls backup/</code><br>
-      → Kopiert die Datei ins backup-Verzeichnis, ls zeigt was drin ist<br><br>
+            ✅ <strong>2. Datei kopieren und dann den Inhalt des Ordners anzeigen</strong><br>
+            <code>cp datei.txt backup/</code><br>
+            <code>ls backup/</code><br>
+            → Kopiert die Datei ins backup-Verzeichnis, ls zeigt was drin ist<br><br>
 
-      ✅ <strong>3. In einen Ordner wechseln, kopieren, zurückkehren</strong><br>
-      <code>cd Documents</code><br>
-      <code>cp report.txt ../backup/</code><br>
-      <code>cd ..</code><br>
-      → Wechselt ins Documents-Verzeichnis, kopiert eine Datei eine Ebene nach oben ins backup, kehrt zurück<br><br>
+            ✅ <strong>3. In einen Ordner wechseln, kopieren, zurückkehren</strong><br>
+            <code>cd Documents</code><br>
+            <code>cp report.txt ../backup/</code><br>
+            <code>cd ..</code><br>
+            → Wechselt ins Documents-Verzeichnis, kopiert eine Datei eine Ebene nach oben ins backup, kehrt zurück<br><br>
 
-      ✅ <strong>4. Mehrere Dateien kopieren und dann auflisten</strong><br>
-      <code>cp *.txt backup/</code><br>
-      <code>ls -a backup/</code><br>
-      → Kopiert alle .txt-Dateien ins backup-Verzeichnis, ls -a zeigt alle Dateien (inkl. versteckter)<br><br>
+            ✅ <strong>4. Mehrere Dateien kopieren und dann auflisten</strong><br>
+            <code>cp *.txt backup/</code><br>
+            <code>ls -a backup/</code><br>
+            → Kopiert alle .txt-Dateien ins backup-Verzeichnis, ls -a zeigt alle Dateien (inkl. versteckter)<br><br>
 
-      ✅ <strong>5. Ordner erstellen, dann Datei hinein kopieren</strong><br>
-      <code>mkdir my_backup</code><br>
-      <code>cp important.txt my_backup/</code><br>
-      <code>ls my_backup/</code><br>
-      → Erstellt zuerst den Ordner, kopiert dann die Datei hinein, prüft mit ls
-                `,
+            ✅ <strong>5. Ordner erstellen, dann Datei hinein kopieren</strong><br>
+            <code>mkdir my_backup</code><br>
+            <code>cp important.txt my_backup/</code><br>
+            <code>ls my_backup/</code><br>
+            → Erstellt zuerst den Ordner, kopiert dann die Datei hinein, prüft mit ls
+                      `,
           questions: [
             {
               level: "leicht",
@@ -4946,32 +5223,32 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Datei löschen und dann prüfen ob sie weg ist</strong><br>
-      <code>rm temp.txt</code><br>
-      <code>ls</code><br>
-      → Löscht die Datei, ls zeigt dass sie nicht mehr existiert<br><br>
+            ✅ <strong>1. Datei löschen und dann prüfen ob sie weg ist</strong><br>
+            <code>rm temp.txt</code><br>
+            <code>ls</code><br>
+            → Löscht die Datei, ls zeigt dass sie nicht mehr existiert<br><br>
 
-      ✅ <strong>2. Dateien auflisten, dann bestimmte löschen</strong><br>
-      <code>ls *.log</code><br>
-      <code>rm *.log</code><br>
-      → Zeigt alle .log-Dateien, rm löscht sie alle<br><br>
+            ✅ <strong>2. Dateien auflisten, dann bestimmte löschen</strong><br>
+            <code>ls *.log</code><br>
+            <code>rm *.log</code><br>
+            → Zeigt alle .log-Dateien, rm löscht sie alle<br><br>
 
-      ✅ <strong>3. In einen Ordner wechseln, löschen, zurückkehren</strong><br>
-      <code>cd temp/</code><br>
-      <code>rm old_file.txt</code><br>
-      <code>cd ..</code><br>
-      → Wechselt ins temp-Verzeichnis, löscht eine Datei, kehrt zurück<br><br>
+            ✅ <strong>3. In einen Ordner wechseln, löschen, zurückkehren</strong><br>
+            <code>cd temp/</code><br>
+            <code>rm old_file.txt</code><br>
+            <code>cd ..</code><br>
+            → Wechselt ins temp-Verzeichnis, löscht eine Datei, kehrt zurück<br><br>
 
-      ✅ <strong>4. Datei kopieren, dann Original löschen</strong><br>
-      <code>cp important.txt backup/</code><br>
-      <code>rm important.txt</code><br>
-      → Kopiert die Datei ins Backup, löscht dann das Original<br><br>
+            ✅ <strong>4. Datei kopieren, dann Original löschen</strong><br>
+            <code>cp important.txt backup/</code><br>
+            <code>rm important.txt</code><br>
+            → Kopiert die Datei ins Backup, löscht dann das Original<br><br>
 
-      ✅ <strong>5. Liste speichern, dann Dateien löschen</strong><br>
-      <code>ls > dateien_liste.txt</code><br>
-      <code>rm temp*.txt</code><br>
-      → Speichert die Liste, löscht dann alle temp*.txt Dateien
-                `,
+            ✅ <strong>5. Liste speichern, dann Dateien löschen</strong><br>
+            <code>ls > dateien_liste.txt</code><br>
+            <code>rm temp*.txt</code><br>
+            → Speichert die Liste, löscht dann alle temp*.txt Dateien
+                      `,
           questions: [
             {
               level: "leicht",
@@ -5144,31 +5421,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Datei anzeigen, dann sortieren</strong><br>
-      <code>cat namen.txt</code><br>
-      <code>sort namen.txt</code><br>
-      → cat zeigt den Inhalt, sort zeigt die sortierte Version<br><br>
+            ✅ <strong>1. Datei anzeigen, dann sortieren</strong><br>
+            <code>cat namen.txt</code><br>
+            <code>sort namen.txt</code><br>
+            → cat zeigt den Inhalt, sort zeigt die sortierte Version<br><br>
 
-      ✅ <strong>2. Nach bestimmten Zeilen suchen, dann sortieren</strong><br>
-      <code>grep "admin" users.txt</code><br>
-      <code>grep "admin" users.txt | sort</code><br>
-      → grep findet alle "admin" Zeilen, sort sortiert sie alphabetisch<br><br>
+            ✅ <strong>2. Nach bestimmten Zeilen suchen, dann sortieren</strong><br>
+            <code>grep "admin" users.txt</code><br>
+            <code>grep "admin" users.txt | sort</code><br>
+            → grep findet alle "admin" Zeilen, sort sortiert sie alphabetisch<br><br>
 
-      ✅ <strong>3. Mehrere Dateien zusammenfügen und sortieren</strong><br>
-      <code>cat liste1.txt liste2.txt</code><br>
-      <code>cat liste1.txt liste2.txt | sort</code><br>
-      → cat zeigt beide Dateien zusammen, sort sortiert das kombinierte Ergebnis<br><br>
+            ✅ <strong>3. Mehrere Dateien zusammenfügen und sortieren</strong><br>
+            <code>cat liste1.txt liste2.txt</code><br>
+            <code>cat liste1.txt liste2.txt | sort</code><br>
+            → cat zeigt beide Dateien zusammen, sort sortiert das kombinierte Ergebnis<br><br>
 
-      ✅ <strong>4. Sortieren und nur die ersten 10 Zeilen zeigen</strong><br>
-      <code>sort große_liste.txt</code><br>
-      <code>sort große_liste.txt | head -n 10</code><br>
-      → Sortiert die Liste, head zeigt nur die ersten 10 Zeilen<br><br>
+            ✅ <strong>4. Sortieren und nur die ersten 10 Zeilen zeigen</strong><br>
+            <code>sort große_liste.txt</code><br>
+            <code>sort große_liste.txt | head -n 10</code><br>
+            → Sortiert die Liste, head zeigt nur die ersten 10 Zeilen<br><br>
 
-      ✅ <strong>5. Sortieren, Duplikate entfernen, dann zählen</strong><br>
-      <code>sort emails.txt | uniq</code><br>
-      <code>sort emails.txt | uniq | wc -l</code><br>
-      → Sortiert, entfernt Duplikate mit uniq, wc -l zählt die eindeutigen Zeilen
-                `,
+            ✅ <strong>5. Sortieren, Duplikate entfernen, dann zählen</strong><br>
+            <code>sort emails.txt | uniq</code><br>
+            <code>sort emails.txt | uniq | wc -l</code><br>
+            → Sortiert, entfernt Duplikate mit uniq, wc -l zählt die eindeutigen Zeilen
+                      `,
           questions: [
             {
               level: "leicht",
@@ -5225,30 +5502,30 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Datei anzeigen, dann numerisch sortieren</strong><br>
-      <code>cat zahlen.txt</code><br>
-      <code>sort -n zahlen.txt</code><br>
-      → cat zeigt den Inhalt, sort -n sortiert Zahlen korrekt (2 vor 10)<br><br>
+            ✅ <strong>1. Datei anzeigen, dann numerisch sortieren</strong><br>
+            <code>cat zahlen.txt</code><br>
+            <code>sort -n zahlen.txt</code><br>
+            → cat zeigt den Inhalt, sort -n sortiert Zahlen korrekt (2 vor 10)<br><br>
 
-      ✅ <strong>2. Normal sortieren vs. numerisch sortieren</strong><br>
-      <code>sort zahlen.txt</code><br>
-      <code>sort -n zahlen.txt</code><br>
-      → sort sortiert als Text (10 vor 2), sort -n sortiert numerisch (2 vor 10)<br><br>
+            ✅ <strong>2. Normal sortieren vs. numerisch sortieren</strong><br>
+            <code>sort zahlen.txt</code><br>
+            <code>sort -n zahlen.txt</code><br>
+            → sort sortiert als Text (10 vor 2), sort -n sortiert numerisch (2 vor 10)<br><br>
 
-      ✅ <strong>3. Sortieren und dann die größten Zahlen zeigen</strong><br>
-      <code>sort -n zahlen.txt</code><br>
-      <code>sort -n zahlen.txt | tail -n 5</code><br>
-      → Sortiert numerisch, tail zeigt die letzten 5 (die größten)<br><br>
+            ✅ <strong>3. Sortieren und dann die größten Zahlen zeigen</strong><br>
+            <code>sort -n zahlen.txt</code><br>
+            <code>sort -n zahlen.txt | tail -n 5</code><br>
+            → Sortiert numerisch, tail zeigt die letzten 5 (die größten)<br><br>
 
-      ✅ <strong>4. Sortieren, Duplikate entfernen, dann zählen</strong><br>
-      <code>sort -n zahlen.txt | uniq</code><br>
-      <code>sort -n zahlen.txt | uniq | wc -l</code><br>
-      → Sortiert numerisch, entfernt Duplikate, wc -l zählt eindeutige Zahlen<br><br>
+            ✅ <strong>4. Sortieren, Duplikate entfernen, dann zählen</strong><br>
+            <code>sort -n zahlen.txt | uniq</code><br>
+            <code>sort -n zahlen.txt | uniq | wc -l</code><br>
+            → Sortiert numerisch, entfernt Duplikate, wc -l zählt eindeutige Zahlen<br><br>
 
-      ✅ <strong>5. Mehrere Dateien kombinieren und numerisch sortieren</strong><br>
-      <code>cat liste1.txt liste2.txt | sort -n</code><br>
-      → Kombiniert beide Dateien, sort -n sortiert alle Zahlen korrekt
-                `,
+            ✅ <strong>5. Mehrere Dateien kombinieren und numerisch sortieren</strong><br>
+            <code>cat liste1.txt liste2.txt | sort -n</code><br>
+            → Kombiniert beide Dateien, sort -n sortiert alle Zahlen korrekt
+                      `,
           questions: [
             {
               level: "leicht",
@@ -5305,31 +5582,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Datei anzeigen, dann Duplikate entfernen</strong><br>
-      <code>cat liste.txt</code><br>
-      <code>uniq liste.txt</code><br>
-      → cat zeigt den Inhalt, uniq entfernt aufeinanderfolgende Duplikate<br><br>
+            ✅ <strong>1. Datei anzeigen, dann Duplikate entfernen</strong><br>
+            <code>cat liste.txt</code><br>
+            <code>uniq liste.txt</code><br>
+            → cat zeigt den Inhalt, uniq entfernt aufeinanderfolgende Duplikate<br><br>
 
-      ✅ <strong>2. Erst sortieren, dann Duplikate entfernen</strong><br>
-      <code>sort namen.txt</code><br>
-      <code>sort namen.txt | uniq</code><br>
-      → Sortiert die Namen, uniq entfernt dann alle Duplikate (weil sie zusammen sind)<br><br>
+            ✅ <strong>2. Erst sortieren, dann Duplikate entfernen</strong><br>
+            <code>sort namen.txt</code><br>
+            <code>sort namen.txt | uniq</code><br>
+            → Sortiert die Namen, uniq entfernt dann alle Duplikate (weil sie zusammen sind)<br><br>
 
-      ✅ <strong>3. Mehrere Dateien kombinieren, sortieren, Duplikate entfernen</strong><br>
-      <code>cat file1.txt file2.txt | sort</code><br>
-      <code>cat file1.txt file2.txt | sort | uniq</code><br>
-      → Kombiniert beide Dateien, sort sortiert, uniq entfernt Duplikate<br><br>
+            ✅ <strong>3. Mehrere Dateien kombinieren, sortieren, Duplikate entfernen</strong><br>
+            <code>cat file1.txt file2.txt | sort</code><br>
+            <code>cat file1.txt file2.txt | sort | uniq</code><br>
+            → Kombiniert beide Dateien, sort sortiert, uniq entfernt Duplikate<br><br>
 
-      ✅ <strong>4. Nach etwas suchen, dann Duplikate entfernen</strong><br>
-      <code>grep "user" log.txt</code><br>
-      <code>grep "user" log.txt | sort | uniq</code><br>
-      → Findet alle "user" Einträge, sort sortiert, uniq entfernt doppelte Zeilen<br><br>
+            ✅ <strong>4. Nach etwas suchen, dann Duplikate entfernen</strong><br>
+            <code>grep "user" log.txt</code><br>
+            <code>grep "user" log.txt | sort | uniq</code><br>
+            → Findet alle "user" Einträge, sort sortiert, uniq entfernt doppelte Zeilen<br><br>
 
-      ✅ <strong>5. Duplikate entfernen und dann zählen</strong><br>
-      <code>sort emails.txt | uniq</code><br>
-      <code>sort emails.txt | uniq | wc -l</code><br>
-      → Sortiert, entfernt Duplikate, wc -l zählt wie viele eindeutige Einträge es gibt
-                `,
+            ✅ <strong>5. Duplikate entfernen und dann zählen</strong><br>
+            <code>sort emails.txt | uniq</code><br>
+            <code>sort emails.txt | uniq | wc -l</code><br>
+            → Sortiert, entfernt Duplikate, wc -l zählt wie viele eindeutige Einträge es gibt
+                      `,
           questions: [
             {
               level: "leicht",
@@ -5370,6 +5647,20 @@
               explanation:
                 "Sortiert → `uniq -c` zählt Vorkommen → `sort -n` sortiert nach Anzahl (häufigste zuletzt).",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Du hast eine unsortierte Liste `emails.txt` mit Duplikaten. Schreibe einen Befehl, der sortiert, Duplikate entfernt und das Ergebnis in `unique_emails.txt` speichert.",
+              correctCommand: "sort emails.txt | uniq > unique_emails.txt",
+              acceptedVariants: [
+                "sort emails.txt | uniq > unique_emails.txt",
+                "sort emails.txt | uniq | tee unique_emails.txt",
+              ],
+              explanation:
+                "`sort` bringt identische Zeilen zusammen, `uniq` entfernt die Duplikate, `>` schreibt die bereinigte Liste in `unique_emails.txt`.",
+            },
           ],
         },
 
@@ -5389,36 +5680,36 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Alle .config-Dateien im aktuellen Verzeichnis finden</strong><br>
-      <code>find . -name "*.config"</code><br><br>
+            ✅ <strong>1. Alle .config-Dateien im aktuellen Verzeichnis finden</strong><br>
+            <code>find . -name "*.config"</code><br><br>
 
-      ✅ <strong>2. .config-Dateien nur im aktuellen Verzeichnis (ohne Unterordner)</strong><br>
-      <code>find . -maxdepth 1 -name "*.config"</code><br><br>
+            ✅ <strong>2. .config-Dateien nur im aktuellen Verzeichnis (ohne Unterordner)</strong><br>
+            <code>find . -maxdepth 1 -name "*.config"</code><br><br>
 
-      ✅ <strong>3. Nur reguläre Dateien (keine Ordner, keine Symlinks)</strong><br>
-      <code>find . -type f -name "*.config"</code><br><br>
+            ✅ <strong>3. Nur reguläre Dateien (keine Ordner, keine Symlinks)</strong><br>
+            <code>find . -type f -name "*.config"</code><br><br>
 
-      ✅ <strong>4. Rekursiv und case-insensitive (.CONFIG, .Config usw.)</strong><br>
-      <code>find . -iname "*.config"</code><br><br>
+            ✅ <strong>4. Rekursiv und case-insensitive (.CONFIG, .Config usw.)</strong><br>
+            <code>find . -iname "*.config"</code><br><br>
 
-      ✅ <strong>5. Alle .config-Dateien + Dateigröße anzeigen</strong><br>
-      <code>find . -type f -name "*.config" -exec ls -lh {} \\;</code><br><br>
+            ✅ <strong>5. Alle .config-Dateien + Dateigröße anzeigen</strong><br>
+            <code>find . -type f -name "*.config" -exec ls -lh {} \\;</code><br><br>
 
-      ✅ <strong>6. Nur die Anzahl der .config-Dateien</strong><br>
-      <code>find . -type f -name "*.config" | wc -l</code><br><br>
+            ✅ <strong>6. Nur die Anzahl der .config-Dateien</strong><br>
+            <code>find . -type f -name "*.config" | wc -l</code><br><br>
 
-      ✅ <strong>7. Unterhalb eines bestimmten Verzeichnisses (z. B. /etc)</strong><br>
-      <code>find /etc -type f -name "*.config"</code><br><br>
+            ✅ <strong>7. Unterhalb eines bestimmten Verzeichnisses (z. B. /etc)</strong><br>
+            <code>find /etc -type f -name "*.config"</code><br><br>
 
-      🛑 <strong>Gefährliche Varianten (nur Info, nicht nutzen!)</strong><br>
-      <em>(Niemals löschen ohne exakt getestetes Pattern)</em><br><br>
-      <code>find . -name "*.config" -delete</code><br>
-      → sehr riskant, löscht sofort.<br><br>
+            🛑 <strong>Gefährliche Varianten (nur Info, nicht nutzen!)</strong><br>
+            <em>(Niemals löschen ohne exakt getestetes Pattern)</em><br><br>
+            <code>find . -name "*.config" -delete</code><br>
+            → sehr riskant, löscht sofort.<br><br>
 
-      💡 <strong>Safe Default für dich:</strong><br>
-      Wenn du einfach alle .config-Dateien finden möchtest:<br>
-      <code>find . -type f -name "*.config"</code>
-                `,
+            💡 <strong>Safe Default für dich:</strong><br>
+            Wenn du einfach alle .config-Dateien finden möchtest:<br>
+            <code>find . -type f -name "*.config"</code>
+                      `,
           questions: [
             {
               level: "leicht",
@@ -5459,6 +5750,21 @@
               correctIndex: 1,
               explanation:
                 "Findet alle .log-Dateien (`-type f` = nur Dateien), dann `-exec rm {} \\;` löscht jede gefundene Datei.",
+            },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Finde unter `/etc` alle Dateien mit der Endung `.conf` und schreibe die vollstaendigen Pfade in `conf_files.txt`.",
+              correctCommand:
+                "find /etc -type f -name '*.conf' > conf_files.txt",
+              acceptedVariants: [
+                "find /etc -name '*.conf' -type f > conf_files.txt",
+                "find /etc -type f -name '*.conf' > conf_files.txt",
+              ],
+              explanation:
+                "`find /etc -type f` sucht nur Dateien, `-name *.conf` filtert die Muster, `>` leitet die Liste in `conf_files.txt` um.",
             },
           ],
         },
@@ -5521,6 +5827,21 @@
               explanation:
                 'Findet Ordner, schließt . aus, `-printf "%f\\n"` gibt nur den Dateinamen (ohne Pfad) aus, `>` speichert in folders.txt.',
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Zaehle nur die direkten Unterordner (ohne `.`) im aktuellen Verzeichnis und schreibe die Zahl in `folder_count.txt`.",
+              correctCommand:
+                "find . -maxdepth 1 -mindepth 1 -type d | wc -l > folder_count.txt",
+              acceptedVariants: [
+                "find . -maxdepth 1 -type d ! -name '.' | wc -l > folder_count.txt",
+                "find . -maxdepth 1 -mindepth 1 -type d | wc -l > folder_count.txt",
+              ],
+              explanation:
+                "`-maxdepth 1` + `-mindepth 1` betrachtet nur die direkte Ebene, `-type d` filtert Ordner, `wc -l` zaehlt und `>` schreibt das Ergebnis in die Datei.",
+            },
           ],
         },
 
@@ -5542,31 +5863,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Normale Liste vs. rekursive Liste</strong><br>
-      <code>ls</code><br>
-      <code>ls -R</code><br>
-      → ls zeigt nur das aktuelle Verzeichnis, ls -R zeigt alles rekursiv<br><br>
+            ✅ <strong>1. Normale Liste vs. rekursive Liste</strong><br>
+            <code>ls</code><br>
+            <code>ls -R</code><br>
+            → ls zeigt nur das aktuelle Verzeichnis, ls -R zeigt alles rekursiv<br><br>
 
-      ✅ <strong>2. Rekursive Liste speichern und dann anzeigen</strong><br>
-      <code>ls -R > alle_struktur.txt</code><br>
-      <code>cat alle_struktur.txt</code><br>
-      → Speichert die gesamte Struktur in eine Datei, cat zeigt den Inhalt<br><br>
+            ✅ <strong>2. Rekursive Liste speichern und dann anzeigen</strong><br>
+            <code>ls -R > alle_struktur.txt</code><br>
+            <code>cat alle_struktur.txt</code><br>
+            → Speichert die gesamte Struktur in eine Datei, cat zeigt den Inhalt<br><br>
 
-      ✅ <strong>3. Nach bestimmten Dateien suchen in der rekursiven Liste</strong><br>
-      <code>ls -R</code><br>
-      <code>ls -R | grep ".txt$"</code><br>
-      → Zeigt alles rekursiv, grep filtert nur .txt-Dateien<br><br>
+            ✅ <strong>3. Nach bestimmten Dateien suchen in der rekursiven Liste</strong><br>
+            <code>ls -R</code><br>
+            <code>ls -R | grep ".txt$"</code><br>
+            → Zeigt alles rekursiv, grep filtert nur .txt-Dateien<br><br>
 
-      ✅ <strong>4. Nur Ordner aus der rekursiven Liste zeigen</strong><br>
-      <code>ls -R</code><br>
-      <code>ls -R | grep ":$"</code><br>
-      → Zeigt alles rekursiv, grep filtert nur Ordner (endet mit :)<br><br>
+            ✅ <strong>4. Nur Ordner aus der rekursiven Liste zeigen</strong><br>
+            <code>ls -R</code><br>
+            <code>ls -R | grep ":$"</code><br>
+            → Zeigt alles rekursiv, grep filtert nur Ordner (endet mit :)<br><br>
 
-      ✅ <strong>5. Rekursive Liste sortieren und dann begrenzen</strong><br>
-      <code>ls -R | sort</code><br>
-      <code>ls -R | sort | head -n 20</code><br>
-      → Sortiert die rekursive Liste alphabetisch, head zeigt nur die ersten 20 Einträge
-                `,
+            ✅ <strong>5. Rekursive Liste sortieren und dann begrenzen</strong><br>
+            <code>ls -R | sort</code><br>
+            <code>ls -R | sort | head -n 20</code><br>
+            → Sortiert die rekursive Liste alphabetisch, head zeigt nur die ersten 20 Einträge
+                      `,
           questions: [
             {
               level: "leicht",
@@ -5606,6 +5927,20 @@
               correctIndex: 1,
               explanation:
                 '`ls -R` zeigt Ordner mit `:` am Ende an – `grep ":$"` filtert nur diese Zeilen.',
+            },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Leite eine rekursive Auflistung aller Ordner in `directories.txt` um (nur Ordnernamen, keine Dateien).",
+              correctCommand: "ls -R | grep ':$' > directories.txt",
+              acceptedVariants: [
+                "ls -R | grep ':$' > directories.txt",
+                "ls -R | grep ':$' > ./directories.txt",
+              ],
+              explanation:
+                "`ls -R` zeigt alle Eintraege, Zeilen mit `:` markieren Ordner; `grep :$` filtert diese, `>` speichert sie in `directories.txt`.",
             },
           ],
         },
@@ -5667,6 +6002,21 @@
               explanation:
                 '`ls -aR ~` listet alles rekursiv, `grep "^\\."` filtert nur versteckte Dateien (beginnen mit .), `wc -l` zählt.',
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Zaehle rekursiv alle versteckten Dateien (Beginnen mit `.`) in deinem Home und schreibe die Anzahl in `hidden_count.txt`.",
+              correctCommand:
+                "ls -aR ~ | grep '^\\.' | wc -l > hidden_count.txt",
+              acceptedVariants: [
+                "ls -aR ~ | grep '^\\.' | wc -l > hidden_count.txt",
+                "ls -aR $HOME | grep '^\\.' | wc -l > hidden_count.txt",
+              ],
+              explanation:
+                "`ls -aR` zeigt auch versteckte Eintraege, `grep '^\.'` filtert sie, `wc -l` zaehlt, `>` schreibt die Zahl in die Datei.",
+            },
           ],
         },
 
@@ -5685,31 +6035,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Normale Liste vs. Baumstruktur</strong><br>
-      <code>ls</code><br>
-      <code>tree</code><br>
-      → ls zeigt flache Liste, tree zeigt hierarchische Struktur<br><br>
+            ✅ <strong>1. Normale Liste vs. Baumstruktur</strong><br>
+            <code>ls</code><br>
+            <code>tree</code><br>
+            → ls zeigt flache Liste, tree zeigt hierarchische Struktur<br><br>
 
-      ✅ <strong>2. Baumstruktur speichern und dann anzeigen</strong><br>
-      <code>tree > struktur.txt</code><br>
-      <code>cat struktur.txt</code><br>
-      → Speichert die Baumstruktur in eine Datei, cat zeigt den Inhalt<br><br>
+            ✅ <strong>2. Baumstruktur speichern und dann anzeigen</strong><br>
+            <code>tree > struktur.txt</code><br>
+            <code>cat struktur.txt</code><br>
+            → Speichert die Baumstruktur in eine Datei, cat zeigt den Inhalt<br><br>
 
-      ✅ <strong>3. In einen Ordner wechseln und Baumstruktur zeigen</strong><br>
-      <code>cd projects</code><br>
-      <code>tree</code><br>
-      → Wechselt ins projects-Verzeichnis, zeigt die Struktur dort<br><br>
+            ✅ <strong>3. In einen Ordner wechseln und Baumstruktur zeigen</strong><br>
+            <code>cd projects</code><br>
+            <code>tree</code><br>
+            → Wechselt ins projects-Verzeichnis, zeigt die Struktur dort<br><br>
 
-      ✅ <strong>4. Baumstruktur begrenzen und dann speichern</strong><br>
-      <code>tree -L 2</code><br>
-      <code>tree -L 2 > struktur_2_ebenen.txt</code><br>
-      → Zeigt nur 2 Ebenen, speichert das Ergebnis<br><br>
+            ✅ <strong>4. Baumstruktur begrenzen und dann speichern</strong><br>
+            <code>tree -L 2</code><br>
+            <code>tree -L 2 > struktur_2_ebenen.txt</code><br>
+            → Zeigt nur 2 Ebenen, speichert das Ergebnis<br><br>
 
-      ✅ <strong>5. Baumstruktur anzeigen und dann nach etwas suchen</strong><br>
-      <code>tree</code><br>
-      <code>tree | grep "config"</code><br>
-      → Zeigt die Struktur, grep filtert nur Zeilen mit "config"
-                `,
+            ✅ <strong>5. Baumstruktur anzeigen und dann nach etwas suchen</strong><br>
+            <code>tree</code><br>
+            <code>tree | grep "config"</code><br>
+            → Zeigt die Struktur, grep filtert nur Zeilen mit "config"
+                      `,
           questions: [
             {
               level: "leicht",
@@ -5744,6 +6094,20 @@
               correctIndex: 1,
               explanation:
                 "`tree -d` (directory-only) zeigt nur Ordner, keine Dateien – perfekt für Strukturübersicht.",
+            },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Erzeuge eine Baumansicht nur der Ordner unter `/var/www` und speichere sie in `tree_www.txt`.",
+              correctCommand: "tree -d /var/www > tree_www.txt",
+              acceptedVariants: [
+                "tree -d /var/www > tree_www.txt",
+                "tree -d /var/www/ > tree_www.txt",
+              ],
+              explanation:
+                "`tree -d` zeigt nur Verzeichnisse, `/var/www` ist der Startpunkt, `>` schreibt die Struktur in die Datei.",
             },
           ],
         },
@@ -5802,6 +6166,20 @@
               explanation:
                 "`-L 2` begrenzt die Tiefe auf 2 Ebenen – kombiniert mit `-d` nur Ordner bis Ebene 2.",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Zeige nur Ordner bis Tiefe 2 ab dem aktuellen Verzeichnis und schreibe die Ausgabe in `struktur.txt`.",
+              correctCommand: "tree -d -L 2 > struktur.txt",
+              acceptedVariants: [
+                "tree -d -L 2 > struktur.txt",
+                "tree -L 2 -d > struktur.txt",
+              ],
+              explanation:
+                "`-d` blendet Dateien aus, `-L 2` begrenzt die Tiefe, `>` leitet in `struktur.txt` um.",
+            },
           ],
         },
 
@@ -5859,6 +6237,20 @@
               explanation:
                 "`sudo tree -L 3 /` zeigt die obersten 3 Ebenen des Wurzelverzeichnisses (benötigt sudo für Systemverzeichnisse).",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Gib die obersten drei Ebenen von `/etc` als Baum aus und speichere das Ergebnis in `etc_top3.txt`.",
+              correctCommand: "tree -L 3 /etc > etc_top3.txt",
+              acceptedVariants: [
+                "tree -L 3 /etc > etc_top3.txt",
+                "sudo tree -L 3 /etc > etc_top3.txt",
+              ],
+              explanation:
+                "`tree -L 3 /etc` begrenzt die Tiefe auf drei Ebenen ab /etc, `>` schreibt die Ausgabe in die Datei.",
+            },
           ],
         },
 
@@ -5877,33 +6269,33 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Text ausgeben und dann in eine Datei schreiben</strong><br>
-      <code>echo "Hallo"</code><br>
-      <code>echo "Hallo" > greeting.txt</code><br>
-      → Erst zeigt echo den Text, dann schreibt > ihn in eine Datei<br><br>
+            ✅ <strong>1. Text ausgeben und dann in eine Datei schreiben</strong><br>
+            <code>echo "Hallo"</code><br>
+            <code>echo "Hallo" > greeting.txt</code><br>
+            → Erst zeigt echo den Text, dann schreibt > ihn in eine Datei<br><br>
 
-      ✅ <strong>2. Text an eine Datei anhängen (statt überschreiben)</strong><br>
-      <code>echo "Zeile 1" > log.txt</code><br>
-      <code>echo "Zeile 2" >> log.txt</code><br>
-      → > überschreibt, >> hängt an (beide Zeilen bleiben erhalten)<br><br>
+            ✅ <strong>2. Text an eine Datei anhängen (statt überschreiben)</strong><br>
+            <code>echo "Zeile 1" > log.txt</code><br>
+            <code>echo "Zeile 2" >> log.txt</code><br>
+            → > überschreibt, >> hängt an (beide Zeilen bleiben erhalten)<br><br>
 
-      ✅ <strong>3. Mehrere Zeilen schreiben und dann anzeigen</strong><br>
-      <code>echo "Start" > status.txt</code><br>
-      <code>echo "Läuft" >> status.txt</code><br>
-      <code>cat status.txt</code><br>
-      → Schreibt zwei Zeilen, cat zeigt den Inhalt<br><br>
+            ✅ <strong>3. Mehrere Zeilen schreiben und dann anzeigen</strong><br>
+            <code>echo "Start" > status.txt</code><br>
+            <code>echo "Läuft" >> status.txt</code><br>
+            <code>cat status.txt</code><br>
+            → Schreibt zwei Zeilen, cat zeigt den Inhalt<br><br>
 
-      ✅ <strong>4. Text in Datei schreiben und dann den Ordner auflisten</strong><br>
-      <code>echo "Test" > test.txt</code><br>
-      <code>ls</code><br>
-      → Erstellt eine Datei mit echo, ls zeigt dass sie existiert<br><br>
+            ✅ <strong>4. Text in Datei schreiben und dann den Ordner auflisten</strong><br>
+            <code>echo "Test" > test.txt</code><br>
+            <code>ls</code><br>
+            → Erstellt eine Datei mit echo, ls zeigt dass sie existiert<br><br>
 
-      ✅ <strong>5. Fehlerausgabe umleiten (statt normale Ausgabe)</strong><br>
-      <code>echo "Fehler!"</code><br>
-      <code>echo "Fehler!" > output.txt</code><br>
-      <code>echo "Fehler!" 2> error.txt</code><br>
-      → > schreibt normale Ausgabe, 2> schreibt Fehlerausgabe
-                `,
+            ✅ <strong>5. Fehlerausgabe umleiten (statt normale Ausgabe)</strong><br>
+            <code>echo "Fehler!"</code><br>
+            <code>echo "Fehler!" > output.txt</code><br>
+            <code>echo "Fehler!" 2> error.txt</code><br>
+            → > schreibt normale Ausgabe, 2> schreibt Fehlerausgabe
+                      `,
           questions: [
             {
               level: "leicht",
@@ -5945,6 +6337,20 @@
               explanation:
                 "`$(date)` wird durch das aktuelle Datum ersetzt, dann wird der gesamte Text an backup.log angehängt.",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                'Schreibe den Text "Deploy gestartet: <Datum>" dynamisch an das Ende von `deploy.log`.',
+              correctCommand: 'echo "Deploy gestartet: $(date)" >> deploy.log',
+              acceptedVariants: [
+                'echo "Deploy gestartet: $(date)" >> deploy.log',
+                'echo "Deploy gestartet: $(date)" >> ./deploy.log',
+              ],
+              explanation:
+                "`echo` erzeugt die Zeile, `$(date)` fuegt das aktuelle Datum ein, `>>` haengt sie an `deploy.log` an.",
+            },
           ],
         },
 
@@ -5963,32 +6369,32 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Text ausgeben vs. in Datei speichern</strong><br>
-      <code>echo "Hallo"</code><br>
-      <code>echo "Hallo" > greeting.txt</code><br>
-      → Erst zeigt echo den Text, dann speichert > ihn in eine Datei<br><br>
+            ✅ <strong>1. Text ausgeben vs. in Datei speichern</strong><br>
+            <code>echo "Hallo"</code><br>
+            <code>echo "Hallo" > greeting.txt</code><br>
+            → Erst zeigt echo den Text, dann speichert > ihn in eine Datei<br><br>
 
-      ✅ <strong>2. Dateiliste speichern und dann anzeigen</strong><br>
-      <code>ls</code><br>
-      <code>ls > dateien.txt</code><br>
-      <code>cat dateien.txt</code><br>
-      → ls zeigt Dateien, > speichert die Liste, cat zeigt den Inhalt<br><br>
+            ✅ <strong>2. Dateiliste speichern und dann anzeigen</strong><br>
+            <code>ls</code><br>
+            <code>ls > dateien.txt</code><br>
+            <code>cat dateien.txt</code><br>
+            → ls zeigt Dateien, > speichert die Liste, cat zeigt den Inhalt<br><br>
 
-      ✅ <strong>3. Dateiinhalt kopieren in neue Datei</strong><br>
-      <code>cat original.txt</code><br>
-      <code>cat original.txt > backup.txt</code><br>
-      → Zeigt den Inhalt, dann speichert > ihn in backup.txt<br><br>
+            ✅ <strong>3. Dateiinhalt kopieren in neue Datei</strong><br>
+            <code>cat original.txt</code><br>
+            <code>cat original.txt > backup.txt</code><br>
+            → Zeigt den Inhalt, dann speichert > ihn in backup.txt<br><br>
 
-      ✅ <strong>4. Nach etwas suchen und Ergebnisse speichern</strong><br>
-      <code>grep "Error" log.txt</code><br>
-      <code>grep "Error" log.txt > fehler.txt</code><br>
-      → Findet Fehler, > speichert alle Treffer in fehler.txt<br><br>
+            ✅ <strong>4. Nach etwas suchen und Ergebnisse speichern</strong><br>
+            <code>grep "Error" log.txt</code><br>
+            <code>grep "Error" log.txt > fehler.txt</code><br>
+            → Findet Fehler, > speichert alle Treffer in fehler.txt<br><br>
 
-      ✅ <strong>5. Mehrere Dateien kombinieren und speichern</strong><br>
-      <code>cat file1.txt file2.txt</code><br>
-      <code>cat file1.txt file2.txt > kombiniert.txt</code><br>
-      → Zeigt beide Dateien zusammen, > speichert das kombinierte Ergebnis
-                `,
+            ✅ <strong>5. Mehrere Dateien kombinieren und speichern</strong><br>
+            <code>cat file1.txt file2.txt</code><br>
+            <code>cat file1.txt file2.txt > kombiniert.txt</code><br>
+            → Zeigt beide Dateien zusammen, > speichert das kombinierte Ergebnis
+                      `,
           questions: [
             {
               level: "leicht",
@@ -6029,6 +6435,17 @@
               explanation:
                 "Die Ausgabe von `ls /etc` wird in die Datei etc_contents.txt umgeleitet (überschreibt sie).",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Ueberschreibe `status.log` mit der aktuellen Speicher- und Plattenauslastung (`df -h`).",
+              correctCommand: "df -h > status.log",
+              acceptedVariants: ["df -h > status.log", "df -h > ./status.log"],
+              explanation:
+                "`df -h` zeigt belegten Speicher in menschenlesbarer Form, `>` ueberschreibt `status.log` mit dieser Ausgabe.",
+            },
           ],
         },
 
@@ -6047,32 +6464,32 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Überschreiben vs. Anhängen</strong><br>
-      <code>echo "Zeile 1" > log.txt</code><br>
-      <code>echo "Zeile 2" >> log.txt</code><br>
-      → > überschreibt, >> hängt an (beide Zeilen bleiben erhalten)<br><br>
+            ✅ <strong>1. Überschreiben vs. Anhängen</strong><br>
+            <code>echo "Zeile 1" > log.txt</code><br>
+            <code>echo "Zeile 2" >> log.txt</code><br>
+            → > überschreibt, >> hängt an (beide Zeilen bleiben erhalten)<br><br>
 
-      ✅ <strong>2. Text anhängen und dann anzeigen</strong><br>
-      <code>echo "Neu" >> status.txt</code><br>
-      <code>cat status.txt</code><br>
-      → Hängt Text an die Datei, cat zeigt den gesamten Inhalt<br><br>
+            ✅ <strong>2. Text anhängen und dann anzeigen</strong><br>
+            <code>echo "Neu" >> status.txt</code><br>
+            <code>cat status.txt</code><br>
+            → Hängt Text an die Datei, cat zeigt den gesamten Inhalt<br><br>
 
-      ✅ <strong>3. Liste speichern, dann weitere Einträge anhängen</strong><br>
-      <code>ls > dateien.txt</code><br>
-      <code>ls -a >> dateien.txt</code><br>
-      → Speichert normale Liste, >> hängt versteckte Dateien an<br><br>
+            ✅ <strong>3. Liste speichern, dann weitere Einträge anhängen</strong><br>
+            <code>ls > dateien.txt</code><br>
+            <code>ls -a >> dateien.txt</code><br>
+            → Speichert normale Liste, >> hängt versteckte Dateien an<br><br>
 
-      ✅ <strong>4. Mehrere Zeilen nacheinander anhängen</strong><br>
-      <code>echo "Start" >> log.txt</code><br>
-      <code>echo "Mitte" >> log.txt</code><br>
-      <code>echo "Ende" >> log.txt</code><br>
-      → Hängt drei Zeilen nacheinander an, alle bleiben erhalten<br><br>
+            ✅ <strong>4. Mehrere Zeilen nacheinander anhängen</strong><br>
+            <code>echo "Start" >> log.txt</code><br>
+            <code>echo "Mitte" >> log.txt</code><br>
+            <code>echo "Ende" >> log.txt</code><br>
+            → Hängt drei Zeilen nacheinander an, alle bleiben erhalten<br><br>
 
-      ✅ <strong>5. Suche-Ergebnisse anhängen statt überschreiben</strong><br>
-      <code>grep "Error" log1.txt > fehler.txt</code><br>
-      <code>grep "Error" log2.txt >> fehler.txt</code><br>
-      → Speichert erste Suche, >> hängt zweite Suche an (kombiniert beide)
-                `,
+            ✅ <strong>5. Suche-Ergebnisse anhängen statt überschreiben</strong><br>
+            <code>grep "Error" log1.txt > fehler.txt</code><br>
+            <code>grep "Error" log2.txt >> fehler.txt</code><br>
+            → Speichert erste Suche, >> hängt zweite Suche an (kombiniert beide)
+                      `,
           questions: [
             {
               level: "leicht",
@@ -6113,6 +6530,20 @@
               correctIndex: 1,
               explanation:
                 "Das aktuelle Datum wird eingefügt, dann wird der Text an system.log angehängt (ideal für Logs).",
+            },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Haenge die letzten 20 Zeilen aus `/var/log/syslog` an `errors.log` an.",
+              correctCommand: "tail -n 20 /var/log/syslog >> errors.log",
+              acceptedVariants: [
+                "tail -n 20 /var/log/syslog >> errors.log",
+                "tail -20 /var/log/syslog >> errors.log",
+              ],
+              explanation:
+                "`tail -n 20` holt die letzten Zeilen, `>>` fuegt sie an `errors.log` an (ohne zu loeschen).",
             },
           ],
         },
@@ -6171,6 +6602,20 @@
               correctIndex: 1,
               explanation:
                 "Sucht rekursiv nach .conf-Dateien, normale Ausgabe bleibt im Terminal, Fehler (z.B. Berechtigungsfehler) landen in der Logdatei.",
+            },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Suche in `/root` nach `*.key` Dateien, leite aber nur die Fehlermeldungen in `find_errors.log` um.",
+              correctCommand: "find /root -name '*.key' 2> find_errors.log",
+              acceptedVariants: [
+                "find /root -type f -name '*.key' 2> find_errors.log",
+                "find /root -name '*.key' 2> find_errors.log",
+              ],
+              explanation:
+                "`find /root` kann Berechtigungsfehler werfen; `2>` schickt stderr nach `find_errors.log`, stdout bleibt im Terminal.",
             },
           ],
         },
@@ -6231,6 +6676,20 @@
               explanation:
                 "`$(whoami)` wird durch den Benutzernamen ersetzt, dann wird der Text in script.log geschrieben.",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Schreibe den aktuell eingeloggten Benutzer in `current_user.txt` (alles bestehende wird ersetzt).",
+              correctCommand: "whoami > current_user.txt",
+              acceptedVariants: [
+                "whoami > current_user.txt",
+                "whoami > ./current_user.txt",
+              ],
+              explanation:
+                "`whoami` liefert den Benutzernamen, `>` leitet ihn in die Datei um und ueberschreibt sie.",
+            },
           ],
         },
 
@@ -6289,6 +6748,20 @@
               explanation:
                 "Symbolische Notation: u (user) = rwx, go (group/others) = rx – sehr präzise Kontrolle.",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Setze die Rechte von `deploy.sh` auf 750 (Besitzer: rwx, Gruppe/Andere: rx).",
+              correctCommand: "chmod 750 deploy.sh",
+              acceptedVariants: [
+                "chmod 750 deploy.sh",
+                "chmod u=rwx,go=rx deploy.sh",
+              ],
+              explanation:
+                "750 gibt dem Besitzer alle Rechte, Gruppe/Andere nur lesen+ausfuehren.",
+            },
           ],
         },
 
@@ -6345,6 +6818,20 @@
               correctIndex: 1,
               explanation:
                 "700 = nur Besitzer hat alle Rechte (rwx), niemand sonst – perfekt für sensible Verzeichnisse wie .ssh.",
+            },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Sichere `/opt/secure` rekursiv, so dass nur der Besitzer vollen Zugriff hat.",
+              correctCommand: "chmod -R 700 /opt/secure",
+              acceptedVariants: [
+                "chmod -R 700 /opt/secure",
+                "chmod 700 -R /opt/secure",
+              ],
+              explanation:
+                "`-R` wirkt auf alle Unterobjekte, 700 erlaubt nur dem Besitzer lesen/schreiben/ausfuehren.",
             },
           ],
         },
@@ -6405,6 +6892,20 @@
               explanation:
                 "Rekursiv (`-R`) wird Besitzer und Gruppe auf www-data gesetzt – Standard für Web-Server-Verzeichnisse.",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Uebergib den Besitz von `/opt/app` rekursiv an Nutzer `deploy` und Gruppe `deploy`.",
+              correctCommand: "sudo chown -R deploy:deploy /opt/app",
+              acceptedVariants: [
+                "sudo chown -R deploy:deploy /opt/app",
+                "chown -R deploy:deploy /opt/app",
+              ],
+              explanation:
+                "`chown user:group -R` setzt Besitzer und Gruppe fuer den gesamten Baum.",
+            },
           ],
         },
 
@@ -6461,6 +6962,20 @@
               correctIndex: 1,
               explanation:
                 "Rekursiv (`-R`) wird die Gruppe auf 'developers' gesetzt – alle Entwickler in dieser Gruppe haben dann Zugriff.",
+            },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Setze fuer `logs/` und alle enthaltenen Dateien die Gruppe auf `devops`.",
+              correctCommand: "sudo chgrp -R devops logs/",
+              acceptedVariants: [
+                "sudo chgrp -R devops logs/",
+                "chgrp -R devops logs",
+              ],
+              explanation:
+                "`chgrp -R` passt die Gruppe rekursiv an; wichtig fuer gemeinsame Schreibrechte.",
             },
           ],
         },
@@ -6521,6 +7036,20 @@
               explanation:
                 "`$(date +%F)` wird durch das Datum (YYYY-MM-DD) ersetzt, dann wird eine Datei wie `backup_2025-01-15.txt` erstellt.",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Lege im Ordner `backups/` eine leere Datei mit heutigem Datum im Namen an (z. B. `backup_2024-05-01.txt`).",
+              correctCommand: 'touch "backups/backup_$(date +%F).txt"',
+              acceptedVariants: [
+                'touch "backups/backup_$(date +%F).txt"',
+                "touch backups/backup_$(date +%F).txt",
+              ],
+              explanation:
+                "`touch` erzeugt (oder aktualisiert) die Datei, `$(date +%F)` liefert das Datum im Format JJJJ-MM-TT.",
+            },
           ],
         },
 
@@ -6539,31 +7068,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Ganze Datei anzeigen vs. nur Anfang</strong><br>
-      <code>cat große_datei.txt</code><br>
-      <code>head große_datei.txt</code><br>
-      → cat zeigt alles, head zeigt nur die ersten 10 Zeilen<br><br>
+            ✅ <strong>1. Ganze Datei anzeigen vs. nur Anfang</strong><br>
+            <code>cat große_datei.txt</code><br>
+            <code>head große_datei.txt</code><br>
+            → cat zeigt alles, head zeigt nur die ersten 10 Zeilen<br><br>
 
-      ✅ <strong>2. Nach etwas suchen, dann nur die ersten Treffer zeigen</strong><br>
-      <code>grep "Error" log.txt</code><br>
-      <code>grep "Error" log.txt | head -n 5</code><br>
-      → grep findet alle Fehler, head zeigt nur die ersten 5<br><br>
+            ✅ <strong>2. Nach etwas suchen, dann nur die ersten Treffer zeigen</strong><br>
+            <code>grep "Error" log.txt</code><br>
+            <code>grep "Error" log.txt | head -n 5</code><br>
+            → grep findet alle Fehler, head zeigt nur die ersten 5<br><br>
 
-      ✅ <strong>3. Datei sortieren und dann nur den Anfang zeigen</strong><br>
-      <code>sort namen.txt</code><br>
-      <code>sort namen.txt | head -n 10</code><br>
-      → Sortiert die Namen, head zeigt nur die ersten 10 (alphabetisch erste)<br><br>
+            ✅ <strong>3. Datei sortieren und dann nur den Anfang zeigen</strong><br>
+            <code>sort namen.txt</code><br>
+            <code>sort namen.txt | head -n 10</code><br>
+            → Sortiert die Namen, head zeigt nur die ersten 10 (alphabetisch erste)<br><br>
 
-      ✅ <strong>4. Erste Zeilen zeigen und dann zählen</strong><br>
-      <code>head -n 20 data.txt</code><br>
-      <code>head -n 20 data.txt | wc -l</code><br>
-      → Zeigt die ersten 20 Zeilen, wc -l zählt dass es genau 20 sind<br><br>
+            ✅ <strong>4. Erste Zeilen zeigen und dann zählen</strong><br>
+            <code>head -n 20 data.txt</code><br>
+            <code>head -n 20 data.txt | wc -l</code><br>
+            → Zeigt die ersten 20 Zeilen, wc -l zählt dass es genau 20 sind<br><br>
 
-      ✅ <strong>5. Mehrere Dateien zusammenfügen und nur Anfang zeigen</strong><br>
-      <code>cat file1.txt file2.txt</code><br>
-      <code>cat file1.txt file2.txt | head -n 15</code><br>
-      → cat kombiniert beide Dateien, head zeigt nur die ersten 15 Zeilen
-                `,
+            ✅ <strong>5. Mehrere Dateien zusammenfügen und nur Anfang zeigen</strong><br>
+            <code>cat file1.txt file2.txt</code><br>
+            <code>cat file1.txt file2.txt | head -n 15</code><br>
+            → cat kombiniert beide Dateien, head zeigt nur die ersten 15 Zeilen
+                      `,
           questions: [
             {
               level: "leicht",
@@ -6604,6 +7133,19 @@
               explanation:
                 "Zeigt nur die ersten 3 Zeilen – nützlich, um schnell den Anfang einer Logdatei zu sehen.",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt: "Zeige die ersten 15 Zeilen von `/var/log/auth.log`.",
+              correctCommand: "head -n 15 /var/log/auth.log",
+              acceptedVariants: [
+                "head -n 15 /var/log/auth.log",
+                "head -15 /var/log/auth.log",
+              ],
+              explanation:
+                "`head -n 15` begrenzt die Ausgabe auf die ersten 15 Zeilen der Datei.",
+            },
           ],
         },
 
@@ -6622,31 +7164,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Ganze Datei vs. nur Ende anzeigen</strong><br>
-      <code>cat log.txt</code><br>
-      <code>tail log.txt</code><br>
-      → cat zeigt alles, tail zeigt nur die letzten 10 Zeilen<br><br>
+            ✅ <strong>1. Ganze Datei vs. nur Ende anzeigen</strong><br>
+            <code>cat log.txt</code><br>
+            <code>tail log.txt</code><br>
+            → cat zeigt alles, tail zeigt nur die letzten 10 Zeilen<br><br>
 
-      ✅ <strong>2. Nach Fehlern suchen, dann nur die letzten Treffer zeigen</strong><br>
-      <code>grep "Error" log.txt</code><br>
-      <code>grep "Error" log.txt | tail -n 5</code><br>
-      → grep findet alle Fehler, tail zeigt nur die letzten 5<br><br>
+            ✅ <strong>2. Nach Fehlern suchen, dann nur die letzten Treffer zeigen</strong><br>
+            <code>grep "Error" log.txt</code><br>
+            <code>grep "Error" log.txt | tail -n 5</code><br>
+            → grep findet alle Fehler, tail zeigt nur die letzten 5<br><br>
 
-      ✅ <strong>3. Datei sortieren und dann das Ende zeigen</strong><br>
-      <code>sort namen.txt</code><br>
-      <code>sort namen.txt | tail -n 10</code><br>
-      → Sortiert die Namen, tail zeigt die letzten 10 (alphabetisch letzte)<br><br>
+            ✅ <strong>3. Datei sortieren und dann das Ende zeigen</strong><br>
+            <code>sort namen.txt</code><br>
+            <code>sort namen.txt | tail -n 10</code><br>
+            → Sortiert die Namen, tail zeigt die letzten 10 (alphabetisch letzte)<br><br>
 
-      ✅ <strong>4. Letzte Zeilen zeigen und dann zählen</strong><br>
-      <code>tail -n 20 data.txt</code><br>
-      <code>tail -n 20 data.txt | wc -l</code><br>
-      → Zeigt die letzten 20 Zeilen, wc -l zählt dass es genau 20 sind<br><br>
+            ✅ <strong>4. Letzte Zeilen zeigen und dann zählen</strong><br>
+            <code>tail -n 20 data.txt</code><br>
+            <code>tail -n 20 data.txt | wc -l</code><br>
+            → Zeigt die letzten 20 Zeilen, wc -l zählt dass es genau 20 sind<br><br>
 
-      ✅ <strong>5. Mehrere Dateien zusammenfügen und nur Ende zeigen</strong><br>
-      <code>cat file1.txt file2.txt</code><br>
-      <code>cat file1.txt file2.txt | tail -n 15</code><br>
-      → cat kombiniert beide Dateien, tail zeigt nur die letzten 15 Zeilen
-                `,
+            ✅ <strong>5. Mehrere Dateien zusammenfügen und nur Ende zeigen</strong><br>
+            <code>cat file1.txt file2.txt</code><br>
+            <code>cat file1.txt file2.txt | tail -n 15</code><br>
+            → cat kombiniert beide Dateien, tail zeigt nur die letzten 15 Zeilen
+                      `,
           questions: [
             {
               level: "leicht",
@@ -6687,6 +7229,20 @@
               explanation:
                 "Live-Monitoring: neue Log-Einträge erscheinen automatisch im Terminal – perfekt zum Debuggen.",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Zeige die letzten 50 Zeilen von `app.log` und beobachte die Datei weiter live.",
+              correctCommand: "tail -n 50 -f app.log",
+              acceptedVariants: [
+                "tail -n 50 -f app.log",
+                "tail -50 -f app.log",
+              ],
+              explanation:
+                "`tail -n 50` startet mit den letzten Zeilen, `-f` folgt neuen Logeintraegen in Echtzeit.",
+            },
           ],
         },
 
@@ -6705,31 +7261,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Datei anzeigen und dann Zeilen zählen</strong><br>
-      <code>cat log.txt</code><br>
-      <code>wc -l log.txt</code><br>
-      → cat zeigt den Inhalt, wc -l zählt wie viele Zeilen es sind<br><br>
+            ✅ <strong>1. Datei anzeigen und dann Zeilen zählen</strong><br>
+            <code>cat log.txt</code><br>
+            <code>wc -l log.txt</code><br>
+            → cat zeigt den Inhalt, wc -l zählt wie viele Zeilen es sind<br><br>
 
-      ✅ <strong>2. Dateien auflisten und dann zählen</strong><br>
-      <code>ls</code><br>
-      <code>ls | wc -l</code><br>
-      → ls zeigt Dateien, wc -l zählt wie viele Dateien/Ordner es sind<br><br>
+            ✅ <strong>2. Dateien auflisten und dann zählen</strong><br>
+            <code>ls</code><br>
+            <code>ls | wc -l</code><br>
+            → ls zeigt Dateien, wc -l zählt wie viele Dateien/Ordner es sind<br><br>
 
-      ✅ <strong>3. Nach etwas suchen und Treffer zählen</strong><br>
-      <code>grep "Error" log.txt</code><br>
-      <code>grep "Error" log.txt | wc -l</code><br>
-      → Findet alle Fehler, wc -l zählt wie viele Treffer es gibt<br><br>
+            ✅ <strong>3. Nach etwas suchen und Treffer zählen</strong><br>
+            <code>grep "Error" log.txt</code><br>
+            <code>grep "Error" log.txt | wc -l</code><br>
+            → Findet alle Fehler, wc -l zählt wie viele Treffer es gibt<br><br>
 
-      ✅ <strong>4. Erste Zeilen zeigen und dann zählen</strong><br>
-      <code>head -n 20 data.txt</code><br>
-      <code>head -n 20 data.txt | wc -l</code><br>
-      → Zeigt die ersten 20 Zeilen, wc -l bestätigt dass es genau 20 sind<br><br>
+            ✅ <strong>4. Erste Zeilen zeigen und dann zählen</strong><br>
+            <code>head -n 20 data.txt</code><br>
+            <code>head -n 20 data.txt | wc -l</code><br>
+            → Zeigt die ersten 20 Zeilen, wc -l bestätigt dass es genau 20 sind<br><br>
 
-      ✅ <strong>5. Sortieren, Duplikate entfernen, dann zählen</strong><br>
-      <code>sort namen.txt | uniq</code><br>
-      <code>sort namen.txt | uniq | wc -l</code><br>
-      → Sortiert und entfernt Duplikate, wc -l zählt wie viele eindeutige Namen es gibt
-                `,
+            ✅ <strong>5. Sortieren, Duplikate entfernen, dann zählen</strong><br>
+            <code>sort namen.txt | uniq</code><br>
+            <code>sort namen.txt | uniq | wc -l</code><br>
+            → Sortiert und entfernt Duplikate, wc -l zählt wie viele eindeutige Namen es gibt
+                      `,
           questions: [
             {
               level: "leicht",
@@ -6770,6 +7326,20 @@
               explanation:
                 "`ls` listet Dateien, `|` leitet an `wc -l` weiter, das die Anzahl der Zeilen (also Dateien) zählt.",
             },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Zaehle, wie viele Shell-Skripte (`*.sh`) es unterhalb des aktuellen Verzeichnisses gibt.",
+              correctCommand: "find . -type f -name '*.sh' | wc -l",
+              acceptedVariants: [
+                "find . -name '*.sh' -type f | wc -l",
+                "find . -type f -name '*.sh' | wc -l",
+              ],
+              explanation:
+                "`find` sammelt alle Skripte, `wc -l` zaehlt die Treffer.",
+            },
           ],
         },
 
@@ -6788,31 +7358,31 @@
             },
           ],
           additionalExamples: `
-      ✅ <strong>1. Datei anzeigen und dann Wörter zählen</strong><br>
-      <code>cat text.txt</code><br>
-      <code>wc -w text.txt</code><br>
-      → cat zeigt den Inhalt, wc -w zählt wie viele Wörter es sind<br><br>
+            ✅ <strong>1. Datei anzeigen und dann Wörter zählen</strong><br>
+            <code>cat text.txt</code><br>
+            <code>wc -w text.txt</code><br>
+            → cat zeigt den Inhalt, wc -w zählt wie viele Wörter es sind<br><br>
 
-      ✅ <strong>2. Erste Zeilen zeigen und dann Wörter zählen</strong><br>
-      <code>head -n 10 log.txt</code><br>
-      <code>head -n 10 log.txt | wc -w</code><br>
-      → Zeigt die ersten 10 Zeilen, wc -w zählt die Wörter darin<br><br>
+            ✅ <strong>2. Erste Zeilen zeigen und dann Wörter zählen</strong><br>
+            <code>head -n 10 log.txt</code><br>
+            <code>head -n 10 log.txt | wc -w</code><br>
+            → Zeigt die ersten 10 Zeilen, wc -w zählt die Wörter darin<br><br>
 
-      ✅ <strong>3. Nach etwas suchen und dann Wörter zählen</strong><br>
-      <code>grep "Error" log.txt</code><br>
-      <code>grep "Error" log.txt | wc -w</code><br>
-      → Findet alle Fehler-Zeilen, wc -w zählt die Wörter in den Treffern<br><br>
+            ✅ <strong>3. Nach etwas suchen und dann Wörter zählen</strong><br>
+            <code>grep "Error" log.txt</code><br>
+            <code>grep "Error" log.txt | wc -w</code><br>
+            → Findet alle Fehler-Zeilen, wc -w zählt die Wörter in den Treffern<br><br>
 
-      ✅ <strong>4. Letzte Zeilen zeigen und dann Wörter zählen</strong><br>
-      <code>tail -n 5 status.txt</code><br>
-      <code>tail -n 5 status.txt | wc -w</code><br>
-      → Zeigt die letzten 5 Zeilen, wc -w zählt die Wörter<br><br>
+            ✅ <strong>4. Letzte Zeilen zeigen und dann Wörter zählen</strong><br>
+            <code>tail -n 5 status.txt</code><br>
+            <code>tail -n 5 status.txt | wc -w</code><br>
+            → Zeigt die letzten 5 Zeilen, wc -w zählt die Wörter<br><br>
 
-      ✅ <strong>5. Mehrere Dateien kombinieren und Wörter zählen</strong><br>
-      <code>cat file1.txt file2.txt</code><br>
-      <code>cat file1.txt file2.txt | wc -w</code><br>
-      → Kombiniert beide Dateien, wc -w zählt alle Wörter zusammen
-                `,
+            ✅ <strong>5. Mehrere Dateien kombinieren und Wörter zählen</strong><br>
+            <code>cat file1.txt file2.txt</code><br>
+            <code>cat file1.txt file2.txt | wc -w</code><br>
+            → Kombiniert beide Dateien, wc -w zählt alle Wörter zusammen
+                      `,
           questions: [
             {
               level: "leicht",
@@ -6847,6 +7417,20 @@
               correctIndex: 1,
               explanation:
                 "`ifconfig` Ausgabe → erste 7 Zeilen (`head -n 7`) → Wörter zählen (`wc -w`) – nützlich für schnelle Analyse.",
+            },
+
+            {
+              level: "schwer",
+              type: "command",
+              prompt:
+                "Zaehle die Woerter in `README.md` und schreibe die Zahl in `words.txt`.",
+              correctCommand: "wc -w README.md > words.txt",
+              acceptedVariants: [
+                "wc -w README.md > words.txt",
+                "cat README.md | wc -w > words.txt",
+              ],
+              explanation:
+                "`wc -w` liefert die Wortanzahl, `>` leitet sie in `words.txt` um.",
             },
           ],
         },
@@ -7900,6 +8484,496 @@
             },
           ],
           quizId: "nano_flow",
+        },
+        // Commands mit Flags im Namen
+        ls_a: {
+          title: "ls -a",
+          summary: "Listet alle Dateien inklusive versteckter Dateien.",
+          flags: [
+            { flag: "-a", description: "zeigt versteckte Dateien und ./." },
+          ],
+          pitfalls: [
+            "Versteckte Dateien beginnen mit Punkt (z.B. .env, .gitignore).",
+          ],
+          examples: [
+            {
+              command: "ls -a ~/.ssh",
+              note: "Zeigt alle SSH-Konfigurationsdateien inklusive versteckter.",
+            },
+          ],
+          quizId: "ls_a",
+        },
+        ls_la: {
+          title: "ls -la",
+          summary:
+            "Listet alle Dateien mit Details inklusive versteckter Dateien.",
+          flags: [
+            {
+              flag: "-l",
+              description: "lange Ausgabe mit Rechten und Besitzer",
+            },
+            { flag: "-a", description: "zeigt versteckte Dateien und ./." },
+          ],
+          pitfalls: ["Kombination -la zeigt auch . und .. Verzeichnisse."],
+          examples: [
+            {
+              command: "ls -la /var/log",
+              note: "Vollständige Übersicht über Log-Dateien mit Rechten.",
+            },
+          ],
+          quizId: "ls_la",
+        },
+        ls_R: {
+          title: "ls -R",
+          summary: "Listet Dateien rekursiv in allen Unterverzeichnissen.",
+          flags: [
+            {
+              flag: "-R",
+              description: "rekursives Auflisten aller Unterverzeichnisse",
+            },
+          ],
+          pitfalls: [
+            "Kann bei großen Verzeichnisbäumen sehr viel Output produzieren.",
+          ],
+          examples: [
+            {
+              command: "ls -R /etc/apache2",
+              note: "Zeigt alle Dateien in Apache-Konfigurationsverzeichnis rekursiv.",
+            },
+          ],
+          quizId: "ls_R",
+        },
+        ls_aR: {
+          title: "ls -aR",
+          summary:
+            "Listet alle Dateien rekursiv inklusive versteckter Dateien.",
+          flags: [
+            { flag: "-a", description: "zeigt versteckte Dateien und ./." },
+            {
+              flag: "-R",
+              description: "rekursives Auflisten aller Unterverzeichnisse",
+            },
+          ],
+          pitfalls: [
+            "Kombination kann sehr viel Output produzieren - nutze | head oder | less.",
+          ],
+          examples: [
+            {
+              command: "ls -aR ~/projects | head -n 50",
+              note: "Erste 50 Zeilen der rekursiven Auflistung.",
+            },
+          ],
+          quizId: "ls_aR",
+        },
+        mkdir_p: {
+          title: "mkdir -p",
+          summary: "Erstellt Verzeichnisse und fehlende Zwischenverzeichnisse.",
+          flags: [
+            {
+              flag: "-p",
+              description: "erstellt fehlende Zwischenverzeichnisse (parents)",
+            },
+          ],
+          pitfalls: [
+            "Ohne -p schlägt mkdir fehl, wenn Zwischenverzeichnisse fehlen.",
+          ],
+          examples: [
+            {
+              command: "mkdir -p /var/www/html/myapp/logs",
+              note: "Erstellt kompletten Pfad auch wenn /var/www/html/myapp nicht existiert.",
+            },
+          ],
+          quizId: "mkdir_p",
+        },
+        cp_r: {
+          title: "cp -r",
+          summary: "Kopiert Verzeichnisse rekursiv.",
+          flags: [
+            {
+              flag: "-r",
+              description: "rekursives Kopieren von Verzeichnissen",
+            },
+            {
+              flag: "-R",
+              description: "rekursives Kopieren (Alternative zu -r)",
+            },
+            {
+              flag: "-a",
+              description: "archiv-Modus (kopiert Rechte, Links, etc.)",
+            },
+          ],
+          pitfalls: [
+            "Ohne -r kann cp keine Verzeichnisse kopieren.",
+            "-a kopiert auch versteckte Dateien und behält alle Attribute.",
+          ],
+          examples: [
+            {
+              command: "cp -r /home/user/documents /backup/",
+              note: "Kopiert gesamtes Verzeichnis rekursiv.",
+            },
+            {
+              command: "cp -a /var/www/html /backup/",
+              note: "Kopiert mit allen Rechten und Attributen (archiv-Modus).",
+            },
+          ],
+          quizId: "cp_r",
+        },
+        rm_r: {
+          title: "rm -r",
+          summary: "Löscht Verzeichnisse rekursiv.",
+          flags: [
+            {
+              flag: "-r",
+              description: "rekursives Löschen von Verzeichnissen",
+            },
+            {
+              flag: "-R",
+              description: "rekursives Löschen (Alternative zu -r)",
+            },
+            { flag: "-f", description: "force (ohne Nachfrage)" },
+            { flag: "-i", description: "interaktiv (mit Nachfrage)" },
+          ],
+          pitfalls: [
+            "rm -rf ist gefährlich - löscht ohne Rückfrage alles rekursiv!",
+            "Verwende -i für Sicherheit bei wichtigen Dateien.",
+          ],
+          examples: [
+            {
+              command: "rm -r /tmp/old_files",
+              note: "Löscht Verzeichnis rekursiv (mit Nachfrage bei geschützten Dateien).",
+            },
+            {
+              command: "rm -rf /tmp/cache",
+              note: "Löscht ohne Nachfrage - Vorsicht!",
+            },
+          ],
+          quizId: "rm_r",
+        },
+        sort_n: {
+          title: "sort -n",
+          summary: "Sortiert numerisch statt alphabetisch.",
+          flags: [
+            { flag: "-n", description: "numerisches Sortieren" },
+            { flag: "-r", description: "reverse (absteigend)" },
+            { flag: "-k", description: "Sortierung nach Spalte" },
+          ],
+          pitfalls: [
+            "Ohne -n werden Zahlen alphabetisch sortiert (1, 10, 2 statt 1, 2, 10).",
+          ],
+          examples: [
+            {
+              command: "sort -n numbers.txt",
+              note: "Sortiert Zahlen korrekt numerisch.",
+            },
+            {
+              command: "sort -rn numbers.txt",
+              note: "Sortiert absteigend numerisch.",
+            },
+          ],
+          quizId: "sort_n",
+        },
+        tree_d: {
+          title: "tree -d",
+          summary: "Zeigt nur Verzeichnisse in Baumstruktur.",
+          flags: [
+            {
+              flag: "-d",
+              description: "zeigt nur Verzeichnisse (directories)",
+            },
+          ],
+          pitfalls: [
+            "Ohne -d zeigt tree auch alle Dateien, was bei großen Verzeichnissen unübersichtlich wird.",
+          ],
+          examples: [
+            {
+              command: "tree -d /var/www",
+              note: "Zeigt nur Verzeichnisstruktur ohne Dateien.",
+            },
+          ],
+          quizId: "tree_d",
+        },
+        tree_L: {
+          title: "tree -L",
+          summary: "Begrenzt die Tiefe der Baumstruktur.",
+          flags: [{ flag: "-L", description: "begrenzt die Tiefe (Level)" }],
+          pitfalls: [
+            "Ohne -L zeigt tree alle Ebenen, was bei tiefen Strukturen unübersichtlich wird.",
+          ],
+          examples: [
+            {
+              command: "tree -L 2 /var/www",
+              note: "Zeigt nur die ersten 2 Ebenen der Verzeichnisstruktur.",
+            },
+          ],
+          quizId: "tree_L",
+        },
+        // Basis-Commands ohne commandMeta
+        mkdir: {
+          title: "mkdir",
+          summary: "Erstellt neue Verzeichnisse.",
+          flags: [
+            {
+              flag: "-p",
+              description: "erstellt fehlende Zwischenverzeichnisse (parents)",
+            },
+            {
+              flag: "-v",
+              description: "verbose (zeigt erstellte Verzeichnisse)",
+            },
+          ],
+          pitfalls: [
+            "Ohne -p schlägt mkdir fehl, wenn Zwischenverzeichnisse fehlen.",
+          ],
+          examples: [
+            {
+              command: "mkdir -p project/{src,docs,tests}",
+              note: "Erstellt mehrere Verzeichnisse auf einmal.",
+            },
+            {
+              command: "mkdir -pv /var/www/html/myapp",
+              note: "Erstellt mit Ausgabe der erstellten Verzeichnisse.",
+            },
+          ],
+          quizId: "mkdir",
+        },
+        cp: {
+          title: "cp",
+          summary: "Kopiert Dateien und Verzeichnisse.",
+          flags: [
+            {
+              flag: "-r",
+              description: "rekursives Kopieren von Verzeichnissen",
+            },
+            {
+              flag: "-R",
+              description: "rekursives Kopieren (Alternative zu -r)",
+            },
+            {
+              flag: "-a",
+              description: "archiv-Modus (kopiert Rechte, Links, etc.)",
+            },
+            {
+              flag: "-i",
+              description: "interaktiv (mit Nachfrage bei Überschreiben)",
+            },
+            { flag: "-u", description: "update (nur wenn Quelle neuer ist)" },
+          ],
+          pitfalls: [
+            "Ohne -i überschreibt cp ohne Warnung existierende Dateien.",
+            "-a ist ideal für Backups, da alle Attribute erhalten bleiben.",
+          ],
+          examples: [
+            {
+              command: "cp -i file.txt backup/",
+              note: "Kopiert mit Nachfrage bei Überschreiben.",
+            },
+            {
+              command: "cp -u *.log /backup/",
+              note: "Kopiert nur neuere Dateien (update-Modus).",
+            },
+          ],
+          quizId: "cp",
+        },
+        rm: {
+          title: "rm",
+          summary: "Löscht Dateien und Verzeichnisse.",
+          flags: [
+            {
+              flag: "-r",
+              description: "rekursives Löschen von Verzeichnissen",
+            },
+            {
+              flag: "-R",
+              description: "rekursives Löschen (Alternative zu -r)",
+            },
+            { flag: "-f", description: "force (ohne Nachfrage)" },
+            { flag: "-i", description: "interaktiv (mit Nachfrage)" },
+          ],
+          pitfalls: [
+            "rm -rf ist extrem gefährlich - löscht ohne Rückfrage alles!",
+            "Verwende -i für Sicherheit bei wichtigen Dateien.",
+          ],
+          examples: [
+            {
+              command: "rm -i important.txt",
+              note: "Löscht mit Nachfrage zur Sicherheit.",
+            },
+            {
+              command: "rm -rf /tmp/old_cache",
+              note: "Löscht rekursiv ohne Nachfrage - Vorsicht!",
+            },
+          ],
+          quizId: "rm",
+        },
+        sort: {
+          title: "sort",
+          summary: "Sortiert Zeilen alphabetisch oder numerisch.",
+          flags: [
+            { flag: "-n", description: "numerisches Sortieren" },
+            { flag: "-r", description: "reverse (absteigend)" },
+            { flag: "-k", description: "Sortierung nach Spalte" },
+            { flag: "-u", description: "unique (entfernt Duplikate)" },
+          ],
+          pitfalls: [
+            "Ohne -n werden Zahlen alphabetisch sortiert (1, 10, 2 statt 1, 2, 10).",
+          ],
+          examples: [
+            {
+              command: "sort file.txt",
+              note: "Sortiert alphabetisch.",
+            },
+            {
+              command: "sort -nu numbers.txt",
+              note: "Sortiert numerisch und entfernt Duplikate.",
+            },
+          ],
+          quizId: "sort",
+        },
+        tree: {
+          title: "tree",
+          summary: "Zeigt Verzeichnisstruktur als Baum.",
+          flags: [
+            { flag: "-d", description: "zeigt nur Verzeichnisse" },
+            { flag: "-L", description: "begrenzt die Tiefe (Level)" },
+            { flag: "-a", description: "zeigt auch versteckte Dateien" },
+          ],
+          pitfalls: [
+            "Ohne -L kann tree bei tiefen Strukturen sehr lang werden.",
+          ],
+          examples: [
+            {
+              command: "tree -L 3 /var/www",
+              note: "Zeigt Verzeichnisstruktur bis 3 Ebenen tief.",
+            },
+            {
+              command: "tree -da /home/user",
+              note: "Zeigt nur Verzeichnisse inklusive versteckter.",
+            },
+          ],
+          quizId: "tree",
+        },
+        mv: {
+          title: "mv",
+          summary: "Verschiebt oder benennt Dateien und Verzeichnisse um.",
+          flags: [
+            {
+              flag: "-i",
+              description: "interaktiv (mit Nachfrage bei Überschreiben)",
+            },
+            { flag: "-v", description: "verbose (zeigt verschobene Dateien)" },
+            { flag: "-n", description: "no-clobber (überschreibt nicht)" },
+          ],
+          pitfalls: [
+            "Ohne -i überschreibt mv ohne Warnung existierende Dateien.",
+            "-n verhindert Überschreiben, aber gibt keine Fehlermeldung.",
+          ],
+          examples: [
+            {
+              command: "mv -i old.txt new.txt",
+              note: "Benennt um mit Nachfrage bei Überschreiben.",
+            },
+            {
+              command: "mv -v *.txt /backup/",
+              note: "Verschiebt mit Ausgabe der verschobenen Dateien.",
+            },
+          ],
+          quizId: "mv",
+        },
+        chgrp: {
+          title: "chgrp",
+          summary: "Ändert nur die Gruppenzugehörigkeit einer Datei.",
+          flags: [
+            { flag: "-R", description: "rekursiv auf Unterverzeichnisse" },
+            { flag: "-v", description: "verbose (zeigt Änderungen)" },
+            { flag: "groupname", description: "Name der neuen Gruppe" },
+          ],
+          pitfalls: [
+            "Unterschied zu chown: chgrp ändert nur die Gruppe, nicht den Besitzer.",
+          ],
+          examples: [
+            {
+              command: "chgrp -v developers project/",
+              note: "Ändert Gruppe mit Ausgabe der Änderungen.",
+            },
+            {
+              command: "sudo chgrp -Rv www-data /var/www/html",
+              note: "Setzt Gruppe rekursiv mit Ausgabe.",
+            },
+          ],
+          quizId: "chgrp",
+        },
+        cat: {
+          title: "cat",
+          summary: "Zeigt Dateiinhalt an oder verkettet mehrere Dateien.",
+          flags: [
+            { flag: "-n", description: "zeigt Zeilennummern" },
+            {
+              flag: "-b",
+              description: "zeigt Zeilennummern (nur nicht-leere Zeilen)",
+            },
+          ],
+          pitfalls: [
+            "Bei großen Dateien kann cat den Terminal überfluten - nutze | less.",
+          ],
+          examples: [
+            {
+              command: "cat -n script.sh",
+              note: "Zeigt Datei mit Zeilennummern.",
+            },
+            {
+              command: "cat file1.txt file2.txt > combined.txt",
+              note: "Verkettet mehrere Dateien zu einer.",
+            },
+          ],
+          quizId: "cat",
+        },
+        uniq: {
+          title: "uniq",
+          summary: "Entfernt doppelte aufeinanderfolgende Zeilen.",
+          flags: [
+            { flag: "-c", description: "zählt Vorkommen" },
+            { flag: "-d", description: "zeigt nur Duplikate" },
+            { flag: "-u", description: "zeigt nur eindeutige Zeilen" },
+          ],
+          pitfalls: [
+            "uniq entfernt nur aufeinanderfolgende Duplikate - nutze sort | uniq für alle Duplikate.",
+          ],
+          examples: [
+            {
+              command: "sort file.txt | uniq -c",
+              note: "Sortiert und zählt Vorkommen jeder Zeile.",
+            },
+            {
+              command: "sort file.txt | uniq -d",
+              note: "Zeigt nur Zeilen, die mehrfach vorkommen.",
+            },
+          ],
+          quizId: "uniq",
+        },
+        // Basis-Command wc (optional, aber sinnvoll für Vollständigkeit)
+        wc: {
+          title: "wc",
+          summary: "Zählt Zeilen, Wörter und Bytes in Dateien oder Eingabe.",
+          flags: [
+            { flag: "-l", description: "zählt Zeilen" },
+            { flag: "-w", description: "zählt Wörter" },
+            { flag: "-c", description: "zählt Bytes" },
+          ],
+          pitfalls: [
+            "Ohne Flag zeigt wc alle drei Werte (Zeilen, Wörter, Bytes).",
+            "Leerzeichen in Dateinamen ohne korrekte Quoting führen zu falschen Zählungen.",
+          ],
+          examples: [
+            {
+              command: "wc file.txt",
+              note: "Zeigt Zeilen, Wörter und Bytes einer Datei.",
+            },
+            {
+              command: "wc -l *.log",
+              note: "Zählt Zeilen in allen Log-Dateien.",
+            },
+          ],
+          quizId: "wc",
         },
       };
 
@@ -9003,21 +10077,21 @@
           }
 
           badge.innerHTML = `
-                  <div class="main-badge-header">
-                    <span class="main-badge-icon">${mainBadge.icon}</span>
-                    <span class="main-badge-name">${mainBadge.name}</span>
-                  </div>
-                  <div class="main-badge-progress-container">
-                    <div class="main-badge-progress-bar">
-                      <div class="main-badge-progress-fill" style="width: ${
-                        progress.percentage
-                      }%"></div>
-                    </div>
-                    <div class="main-badge-progress-text">${
-                      progress.completed
-                    }/${progress.total || 0}</div>
-                  </div>
-                `;
+                        <div class="main-badge-header">
+                          <span class="main-badge-icon">${mainBadge.icon}</span>
+                          <span class="main-badge-name">${mainBadge.name}</span>
+                        </div>
+                        <div class="main-badge-progress-container">
+                          <div class="main-badge-progress-bar">
+                            <div class="main-badge-progress-fill" style="width: ${
+                              progress.percentage
+                            }%"></div>
+                          </div>
+                          <div class="main-badge-progress-text">${
+                            progress.completed
+                          }/${progress.total || 0}</div>
+                        </div>
+                      `;
 
           mainRow.appendChild(badge);
 
@@ -9035,9 +10109,9 @@
                 const subBadge = document.createElement("div");
                 subBadge.className = `sub-badge ${segment.colorClass}`;
                 subBadge.innerHTML = `
-                        <span>${segment.icon}</span>
-                        <span>${segment.name}</span>
-                      `;
+                              <span>${segment.icon}</span>
+                              <span>${segment.name}</span>
+                            `;
                 subBadgeContainer.appendChild(subBadge);
               }
             });
@@ -9103,9 +10177,9 @@
             }
 
             badgeItem.innerHTML = `
-              <span>${segment.icon}</span>
-              <span>${segment.name}</span>
-            `;
+                    <span>${segment.icon}</span>
+                    <span>${segment.name}</span>
+                  `;
 
             badgeItem.title = `Klicken um Kacheln nach "${segment.name}" zu filtern`;
 
@@ -9228,19 +10302,19 @@
         const optionsHTML = masterQuiz.options
           .map(
             (opt, idx) => `
-                    <label class="quiz-option" data-option-index="${idx}">
-                      <input type="radio" name="master-quiz-option" value="${idx}" />
-                      <span><code>${opt}</code></span>
-                    </label>
-                  `
+                          <label class="quiz-option" data-option-index="${idx}">
+                            <input type="radio" name="master-quiz-option" value="${idx}" />
+                            <span><code>${opt}</code></span>
+                          </label>
+                        `
           )
           .join("");
         questionDiv.innerHTML = `
-                <div class="quiz-question-title">${masterQuiz.question}</div>
-                <div class="quiz-options">
-                  ${optionsHTML}
-                </div>
-              `;
+                      <div class="quiz-question-title">${masterQuiz.question}</div>
+                      <div class="quiz-options">
+                        ${optionsHTML}
+                      </div>
+                    `;
         // Chicken-Button für Master-Quiz hinzufügen
         const chickenBtn = document.createElement("button");
         chickenBtn.type = "button";
@@ -10387,6 +11461,277 @@
         ];
       }
 
+      // Parse Modern Tools Content
+      function parseModernToolsContent() {
+        return {
+          installation: {
+            title: "Installation auf Kali Linux",
+            description: "Installiere alle modernen Tools mit einem Befehl:",
+            command:
+              "sudo apt update && sudo apt install -y exa fd-find ripgrep bat htop btop zoxide fzf duf tldr",
+            note: "Hinweis: Einige Tools haben andere Paketnamen (z.B. 'fd-find' statt 'fd', 'bat' statt 'batcat'). Nach der Installation kannst du Aliase erstellen oder die Befehle direkt verwenden.",
+          },
+          tools: [
+            {
+              id: "exa",
+              name: "EXA vs. LS",
+              description:
+                "Modernes File-Listing, farbig, Icons, besser lesbar.",
+              examples: [
+                {
+                  level: "Einfach",
+                  new: "exa",
+                  old: "ls",
+                },
+                {
+                  level: "Mittel",
+                  new: "exa -lh --icons",
+                  old: "ls -lh",
+                  note: "→ zeigt Größen + Icons + human readable",
+                },
+                {
+                  level: "Komplex",
+                  new: "exa -lah --git --sort=name --group-directories-first",
+                  old: "ls -lah --sort=name --group-directories-first",
+                },
+              ],
+            },
+            {
+              id: "fd",
+              name: "FD vs. FIND",
+              description: "Viel einfacher, viel schneller.",
+              examples: [
+                {
+                  level: "Einfach",
+                  new: "fd test",
+                  old: 'find . -name "*test*"',
+                },
+                {
+                  level: "Mittel",
+                  new: 'fd ".conf" /etc',
+                  old: 'find /etc -name "*.conf"',
+                },
+                {
+                  level: "Komplex",
+                  new: "fd \"listen\" /etc/apache2 --type f --exec sed -n '1,5p' {}",
+                  old: "find /etc/apache2 -type f -exec sed -n '1,5p' {} \\;",
+                },
+              ],
+            },
+            {
+              id: "ripgrep",
+              name: "RIPGREP (rg) vs. GREP",
+              description: "Extrem schnelle Suchmaschine.",
+              examples: [
+                {
+                  level: "Einfach",
+                  new: "rg ssh",
+                  old: "grep ssh -r .",
+                },
+                {
+                  level: "Mittel",
+                  new: 'rg "Listen" /etc/apache2',
+                  old: 'grep -R "Listen" /etc/apache2',
+                },
+                {
+                  level: "Komplex",
+                  new: 'rg --type=conf "port" /etc --ignore-case',
+                  old: 'find /etc -name "*.conf" -exec grep -i "port" {} \\;',
+                },
+              ],
+            },
+            {
+              id: "bat",
+              name: "BAT vs. CAT",
+              description: "Schöner Dateiinhalt.",
+              examples: [
+                {
+                  level: "Einfach",
+                  new: "bat config.txt",
+                  old: "cat config.txt",
+                },
+                {
+                  level: "Mittel",
+                  new: "bat -n script.sh",
+                  old: "cat -n script.sh",
+                  note: "→ zeigt Zeilennummern",
+                },
+                {
+                  level: "Komplex",
+                  new: "bat --paging=never --theme=Dracula *.txt",
+                  old: "cat *.txt | less",
+                },
+              ],
+            },
+            {
+              id: "htop",
+              name: "HTOP/BTOP vs. TOP",
+              description: "Bessere Übersicht über Prozesse.",
+              examples: [
+                {
+                  level: "Einfach",
+                  new: "htop",
+                  old: "top",
+                },
+                {
+                  level: "Mittel",
+                  new: "btop --utf-force",
+                  old: "top",
+                  note: "→ animierte Charts",
+                },
+                {
+                  level: "Komplex",
+                  new: "htop --sort-key=MEMORY",
+                  old: "top -o %MEM",
+                },
+              ],
+            },
+            {
+              id: "zoxide",
+              name: "ZOXIDE vs. CD",
+              description: "Merkt sich deine Lieblingsordner.",
+              examples: [
+                {
+                  level: "Einfach",
+                  new: "z proj",
+                  old: "cd /home/user/projects",
+                  note: '→ springt in Ordner, der "proj" am ähnlichsten ist.',
+                },
+                {
+                  level: "Mittel",
+                  new: "z ~/Downloads",
+                  old: "cd ~/Downloads",
+                },
+                {
+                  level: "Komplex",
+                  new: "zoxide add /var/www/html\nz html",
+                  old: "cd /var/www/html",
+                  note: "Ordner merken: zoxide add /var/www/html\nSpringen: z html",
+                },
+              ],
+            },
+            {
+              id: "fzf",
+              name: "FZF",
+              description: "Fuzzy-Search für alles.",
+              examples: [
+                {
+                  level: "Einfach",
+                  new: "fzf",
+                  old: "-",
+                  note: "→ interaktive Dateisuche",
+                },
+                {
+                  level: "Mittel",
+                  new: "ctrl + r",
+                  old: "-",
+                  note: "→ ersetzt normales history browsen",
+                },
+                {
+                  level: "Komplex",
+                  new: "vim $(fzf)",
+                  old: "-",
+                  note: "Datei auswählen und öffnen",
+                },
+              ],
+            },
+            {
+              id: "duf",
+              name: "DUF vs. DF",
+              description: "Schönere Festplattenübersicht.",
+              examples: [
+                {
+                  level: "Einfach",
+                  new: "duf",
+                  old: "df -h",
+                },
+                {
+                  level: "Mittel",
+                  new: "duf /home",
+                  old: "df -h /home",
+                },
+                {
+                  level: "Komplex",
+                  new: "duf --json",
+                  old: "df -h | awk '{...}'",
+                },
+              ],
+            },
+            {
+              id: "tldr",
+              name: "TLDR vs. MAN",
+              description: "Kurz & verständlich.",
+              examples: [
+                {
+                  level: "Einfach",
+                  new: "tldr find",
+                  old: "man find",
+                },
+              ],
+            },
+          ],
+          syntax: {
+            title: "Mini-Syntax-Tutorial",
+            description: "Einfach, klar, ohne Overkill",
+            sections: [
+              {
+                title: "1. Grundstruktur fast aller Linux-Commands",
+                content: "command [optionen] [argumente]",
+                examples: [
+                  "ls -lh /etc",
+                  'grep -R "ssh" /etc',
+                  'find . -name "*.txt"',
+                ],
+              },
+              {
+                title: "2. Wildcards (Regex light)",
+                table: {
+                  headers: ["Zeichen", "Bedeutung"],
+                  rows: [
+                    ["*", "alles"],
+                    ["?", "genau ein Zeichen"],
+                    ["[abc]", "eines aus a,b,c"],
+                    ["{a,b}", "mehrere Varianten"],
+                  ],
+                },
+                examples: ["*.txt", "config?.yml", "file{1,2,3}.txt"],
+              },
+              {
+                title: "3. Pipes (Output eines Commands → Input des nächsten)",
+                examples: ['ls -lh | grep ".txt"'],
+              },
+              {
+                title: "4. Redirects",
+                table: {
+                  headers: ["Zeichen", "Bedeutung"],
+                  rows: [
+                    [">", "schreibt / überschreibt Datei"],
+                    [">>", "hängt an Datei an"],
+                  ],
+                },
+                examples: ['echo "test" > file.txt', "ls >> output.txt"],
+              },
+              {
+                title: "5. Kurzformen / Shortcuts",
+                table: {
+                  headers: ["Shortcut", "Bedeutung"],
+                  rows: [
+                    ["~", "Home"],
+                    ["/", "Root"],
+                    [".", "current directory"],
+                    ["..", "parent directory"],
+                    ["ctrl+r", "search history"],
+                    ["!!", "letzten Befehl wiederholen"],
+                    ["!sudo", "letzten Befehl mit sudo wiederholen"],
+                  ],
+                },
+                examples: ["cd ..", "sudo !!"],
+              },
+            ],
+          },
+        };
+      }
+
       // Open Hotkeys Modal
       function openHotkeysModal() {
         const modal = document.getElementById("hotkeys-root");
@@ -10410,9 +11755,9 @@
             const itemDiv = document.createElement("div");
             itemDiv.className = "hotkeys-item";
             itemDiv.innerHTML = `
-                    <span class="hotkeys-shortcut">${item.shortcut}</span>
-                    <span class="hotkeys-description">– ${item.description}</span>
-                  `;
+                          <span class="hotkeys-shortcut">${item.shortcut}</span>
+                          <span class="hotkeys-description">– ${item.description}</span>
+                        `;
             sectionDiv.appendChild(itemDiv);
           });
 
@@ -10476,14 +11821,14 @@
                     ? "rgba(34, 197, 94, 0.4)"
                     : "rgba(239, 68, 68, 0.4)"
                 }; font-size: 0.8rem;">
-                        <span>${segment.icon}</span>
-                        <span style="color: ${
-                          isUnlocked ? "#86efac" : "#fca5a5"
-                        }; font-weight: 500;">${segment.name}</span>
-                        <span style="color: ${
-                          isUnlocked ? "#86efac" : "#fca5a5"
-                        }; opacity: 0.8; font-size: 0.75rem;">${progress}/${totalQuizzes}</span>
-                      </div>`;
+                              <span>${segment.icon}</span>
+                              <span style="color: ${
+                                isUnlocked ? "#86efac" : "#fca5a5"
+                              }; font-weight: 500;">${segment.name}</span>
+                              <span style="color: ${
+                                isUnlocked ? "#86efac" : "#fca5a5"
+                              }; opacity: 0.8; font-size: 0.75rem;">${progress}/${totalQuizzes}</span>
+                            </div>`;
               }
             }
 
@@ -10512,13 +11857,13 @@
               // Add unlock button for command section if locked
               if (!isUnlocked && item.badgeRequired) {
                 commandHtml += `<div style="margin-top: 0.5rem;">
-                        <button type="button" class="kali-tools-chicken-btn" data-tool-name="${item.name.replace(
-                          /"/g,
-                          "&quot;"
-                        )}" data-segment-id="${
+                              <button type="button" class="kali-tools-chicken-btn" data-tool-name="${item.name.replace(
+                                /"/g,
+                                "&quot;"
+                              )}" data-segment-id="${
                   item.badgeRequired
                 }" data-unlock-type="command" title="Klicken um Inhalt ohne Quiz freizuschalten">🐔 Freischalten</button>
-                      </div>`;
+                            </div>`;
               }
 
               html += commandHtml;
@@ -10619,17 +11964,17 @@
                   // Show feedback
                   const feedback = document.createElement("div");
                   feedback.style.cssText = `
-                          position: fixed;
-                          top: 20px;
-                          right: 20px;
-                          background: rgba(34, 197, 94, 0.9);
-                          color: white;
-                          padding: 1rem 1.5rem;
-                          border-radius: 0.5rem;
-                          z-index: 100;
-                          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                          animation: slideIn 0.3s ease-out;
-                        `;
+                                position: fixed;
+                                top: 20px;
+                                right: 20px;
+                                background: rgba(34, 197, 94, 0.9);
+                                color: white;
+                                padding: 1rem 1.5rem;
+                                border-radius: 0.5rem;
+                                z-index: 100;
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                                animation: slideIn 0.3s ease-out;
+                              `;
                   feedback.textContent = `🐔 Inhalt freigeschaltet!`;
                   document.body.appendChild(feedback);
                   setTimeout(() => {
@@ -10776,10 +12121,10 @@
           }`;
 
           badge.innerHTML = `
-                  <span class="kali-tools-badge-icon">${segment.icon}</span>
-                  <span class="kali-tools-badge-name">${segment.name}</span>
-                  <span class="kali-tools-badge-progress">${progress}/${totalQuizzes}</span>
-                `;
+                        <span class="kali-tools-badge-icon">${segment.icon}</span>
+                        <span class="kali-tools-badge-name">${segment.name}</span>
+                        <span class="kali-tools-badge-progress">${progress}/${totalQuizzes}</span>
+                      `;
 
           badge.title = isUnlocked
             ? `${segment.name} freigeschaltet (${progressPercentage}%)`
@@ -10844,9 +12189,9 @@
 
         if (tool.example) {
           contentHTML += `<div class="kali-tools-example" style="margin-top: 1rem;">
-                  <div class="kali-tools-example-title">📝 Anwendungsbeispiel</div>
-                  <div class="kali-tools-example-content">${tool.example}</div>
-                </div>`;
+                        <div class="kali-tools-example-title">📝 Anwendungsbeispiel</div>
+                        <div class="kali-tools-example-content">${tool.example}</div>
+                      </div>`;
         }
 
         overlayContent.innerHTML = contentHTML;
@@ -11055,21 +12400,21 @@
             // Style für die zusätzlichen Beispiele
             const style = document.createElement("style");
             style.textContent = `
-              #command-modal-additional-examples code {
-                display: block;
-                padding: 0.5rem;
-                background: rgba(59, 130, 246, 0.1);
-                border-radius: 0.4rem;
-                margin: 0.5rem 0;
-                font-size: 0.9rem;
-              }
-              #command-modal-additional-examples strong {
-                color: #c7d2fe;
-                display: block;
-                margin-top: 0.75rem;
-                margin-bottom: 0.25rem;
-              }
-            `;
+                    #command-modal-additional-examples code {
+                      display: block;
+                      padding: 0.5rem;
+                      background: rgba(59, 130, 246, 0.1);
+                      border-radius: 0.4rem;
+                      margin: 0.5rem 0;
+                      font-size: 0.9rem;
+                    }
+                    #command-modal-additional-examples strong {
+                      color: #c7d2fe;
+                      display: block;
+                      margin-top: 0.75rem;
+                      margin-bottom: 0.25rem;
+                    }
+                  `;
             if (!document.getElementById("additional-examples-style")) {
               style.id = "additional-examples-style";
               document.head.appendChild(style);
@@ -11207,13 +12552,14 @@
         const quizBody = document.getElementById("quiz-body");
 
         if (quizTitle) quizTitle.textContent = "Quiz zu " + quiz.title;
-        if (quizSubtitle) quizSubtitle.textContent = "3 Fragen: leicht · mittel · schwer";
+        if (quizSubtitle)
+          quizSubtitle.textContent = "3 Fragen: leicht · mittel · schwer";
         if (quizBody) quizBody.innerHTML = "";
 
         // Render command info auf Front-Seite
         const infoWrapper = document.createElement("div");
         infoWrapper.className = "quiz-command-info";
-        
+
         const titleRow = document.createElement("div");
         titleRow.className = "cmd-title";
         const titleCode = document.createElement("code");
@@ -11241,7 +12587,8 @@
         const quizBodyBack = document.getElementById("quiz-body-back");
 
         if (quizTitleBack) quizTitleBack.textContent = "Quiz zu " + quiz.title;
-        if (quizSubtitleBack) quizSubtitleBack.textContent = "3 Fragen: leicht · mittel · schwer";
+        if (quizSubtitleBack)
+          quizSubtitleBack.textContent = "3 Fragen: leicht · mittel · schwer";
         if (quizBodyBack) quizBodyBack.innerHTML = "";
 
         // Render Quiz-Fragen auf Back-Seite
@@ -11249,21 +12596,22 @@
           quiz.questions.forEach((q, idx) => {
             const wrapper = document.createElement("div");
             wrapper.className = "quiz-question";
-            
+
             const titleDiv = document.createElement("div");
             titleDiv.className = "quiz-question-title";
             titleDiv.textContent = q.prompt;
-            
+
             const meta = document.createElement("div");
             meta.className = "quiz-question-meta";
-            meta.textContent = "Frage " + (idx + 1) + " · Level: " + (q.level || "mittel");
-            
+            meta.textContent =
+              "Frage " + (idx + 1) + " · Level: " + (q.level || "mittel");
+
             wrapper.appendChild(titleDiv);
             wrapper.appendChild(meta);
-            
+
             const options = document.createElement("div");
             options.className = "quiz-options";
-            
+
             if (q.options && Array.isArray(q.options)) {
               q.options.forEach((opt, optIdx) => {
                 const label = document.createElement("label");
@@ -11279,7 +12627,7 @@
                 options.appendChild(label);
               });
             }
-            
+
             wrapper.appendChild(options);
             quizBodyBack.appendChild(wrapper);
           });
@@ -12310,6 +13658,15 @@
         ) {
           closeFaqModal();
         }
+        if (
+          event.key === "Escape" &&
+          document.getElementById("modern-tools-root") &&
+          !document
+            .getElementById("modern-tools-root")
+            .classList.contains("hidden")
+        ) {
+          closeModernToolsModal();
+        }
       });
 
       // Master Quiz Submit Handler
@@ -12621,10 +13978,10 @@
             categoryFilter === category.id ? "active" : ""
           }`;
           categoryItem.innerHTML = `
-                  <span class="faq-category-icon">${category.icon}</span>
-                  <span class="faq-category-name">${category.name}</span>
-                  <span class="faq-category-count">${category.questions.length}</span>
-                `;
+                        <span class="faq-category-icon">${category.icon}</span>
+                        <span class="faq-category-name">${category.name}</span>
+                        <span class="faq-category-count">${category.questions.length}</span>
+                      `;
           categoryItem.addEventListener("click", () => {
             renderFaqContent(category.id, searchQuery);
           });
@@ -12662,15 +14019,15 @@
           const emptyState = document.createElement("div");
           emptyState.className = "faq-empty-state";
           emptyState.innerHTML = `
-                  <div class="faq-empty-state-icon">🔍</div>
-                  <div class="faq-empty-state-text">
-                    ${
-                      searchQuery
-                        ? "Keine FAQs gefunden."
-                        : "Wähle eine Kategorie aus der Sidebar."
-                    }
-                  </div>
-                `;
+                        <div class="faq-empty-state-icon">🔍</div>
+                        <div class="faq-empty-state-text">
+                          ${
+                            searchQuery
+                              ? "Keine FAQs gefunden."
+                              : "Wähle eine Kategorie aus der Sidebar."
+                          }
+                        </div>
+                      `;
           contentEl.appendChild(emptyState);
           return;
         }
@@ -12693,11 +14050,11 @@
             const categoryHeader = document.createElement("div");
             categoryHeader.className = "faq-category-header";
             categoryHeader.innerHTML = `
-                    <h2>
-                      <span class="faq-category-icon">${group.category.icon}</span>
-                      ${group.category.name}
-                    </h2>
-                  `;
+                          <h2>
+                            <span class="faq-category-icon">${group.category.icon}</span>
+                            ${group.category.name}
+                          </h2>
+                        `;
             contentEl.appendChild(categoryHeader);
           }
 
@@ -12709,24 +14066,24 @@
             const questionDiv = document.createElement("div");
             questionDiv.className = "faq-question";
             questionDiv.innerHTML = `
-                    <span class="faq-question-text">${highlightText(
-                      item.question,
-                      searchQuery
-                    )}</span>
-                    <div class="faq-question-actions">
-                      <button
-                        type="button"
-                        class="faq-bookmark-btn ${
-                          isBookmarked(item.id) ? "bookmarked" : ""
-                        }"
-                        data-faq-id="${item.id}"
-                        aria-label="Bookmark"
-                      >
-                        ${isBookmarked(item.id) ? "⭐" : "☆"}
-                      </button>
-                      <span class="faq-expand-icon">▼</span>
-                    </div>
-                  `;
+                          <span class="faq-question-text">${highlightText(
+                            item.question,
+                            searchQuery
+                          )}</span>
+                          <div class="faq-question-actions">
+                            <button
+                              type="button"
+                              class="faq-bookmark-btn ${
+                                isBookmarked(item.id) ? "bookmarked" : ""
+                              }"
+                              data-faq-id="${item.id}"
+                              aria-label="Bookmark"
+                            >
+                              ${isBookmarked(item.id) ? "⭐" : "☆"}
+                            </button>
+                            <span class="faq-expand-icon">▼</span>
+                          </div>
+                        `;
 
             const answerDiv = document.createElement("div");
             answerDiv.className = "faq-answer";
@@ -12877,6 +14234,179 @@
         faqCard.addEventListener("click", () => openFaqModal());
       }
 
+      // Modern Tools Modal Functions
+      function openModernToolsModal() {
+        const modal = document.getElementById("modern-tools-root");
+        const bodyEl = document.getElementById("modern-tools-body");
+
+        if (!modal || !bodyEl) return;
+
+        bodyEl.innerHTML = "";
+        const data = parseModernToolsContent();
+
+        // Installation Section
+        const installSection = document.createElement("div");
+        installSection.className = "modern-tools-section";
+        installSection.innerHTML = `
+                <div class="modern-tools-section-title">${data.installation.title}</div>
+                <p style="margin: 0.5rem 0; color: #cbd5e1;">${data.installation.description}</p>
+                <div class="modern-tools-command-box">
+                  <code>${data.installation.command}</code>
+                </div>
+                <p style="margin: 0.5rem 0 0 0; color: #94a3b8; font-size: 0.9rem;">${data.installation.note}</p>
+              `;
+        bodyEl.appendChild(installSection);
+
+        // Tools Comparison Section
+        const toolsSection = document.createElement("div");
+        toolsSection.className = "modern-tools-section";
+        toolsSection.innerHTML = `<div class="modern-tools-section-title">Tool-Vergleiche</div>`;
+        bodyEl.appendChild(toolsSection);
+
+        data.tools.forEach((tool) => {
+          const toolDiv = document.createElement("div");
+          toolDiv.className = "modern-tools-tool";
+          toolDiv.innerHTML = `
+                  <div class="modern-tools-tool-header">
+                    <span class="modern-tools-tool-icon">⭐</span>
+                    <div>
+                      <div class="modern-tools-tool-name">${tool.name}</div>
+                      <div class="modern-tools-tool-desc">${tool.description}</div>
+                    </div>
+                  </div>
+                `;
+
+          tool.examples.forEach((example) => {
+            const exampleDiv = document.createElement("div");
+            exampleDiv.className = "modern-tools-example";
+            exampleDiv.innerHTML = `
+                    <div class="modern-tools-example-level">🔹 ${
+                      example.level
+                    }</div>
+                    <div class="modern-tools-example-row">
+                      <div class="modern-tools-example-new">
+                        <div class="modern-tools-example-label">Neu (${
+                          tool.id
+                        }):</div>
+                        <code>${example.new}</code>
+                      </div>
+                      <div class="modern-tools-example-old">
+                        <div class="modern-tools-example-label">Alt:</div>
+                        <code>${example.old}</code>
+                      </div>
+                    </div>
+                    ${
+                      example.note
+                        ? `<div class="modern-tools-example-note">${example.note}</div>`
+                        : ""
+                    }
+                  `;
+            toolDiv.appendChild(exampleDiv);
+          });
+
+          bodyEl.appendChild(toolDiv);
+        });
+
+        // Syntax Tutorial Section
+        const syntaxSection = document.createElement("div");
+        syntaxSection.className = "modern-tools-section";
+        syntaxSection.innerHTML = `
+                <div class="modern-tools-section-title">🔥 ${data.syntax.title}</div>
+                <p style="margin: 0.5rem 0; color: #cbd5e1;">${data.syntax.description}</p>
+              `;
+
+        data.syntax.sections.forEach((section) => {
+          const sectionDiv = document.createElement("div");
+          sectionDiv.className = "modern-tools-syntax-item";
+          sectionDiv.innerHTML = `<div class="modern-tools-syntax-title">${section.title}</div>`;
+
+          if (section.content) {
+            const contentDiv = document.createElement("div");
+            contentDiv.className = "modern-tools-syntax-content";
+            contentDiv.innerHTML = `<code>${section.content}</code>`;
+            sectionDiv.appendChild(contentDiv);
+          }
+
+          if (section.table) {
+            const table = document.createElement("table");
+            table.className = "modern-tools-table";
+            const thead = document.createElement("thead");
+            const headerRow = document.createElement("tr");
+            section.table.headers.forEach((header) => {
+              const th = document.createElement("th");
+              th.textContent = header;
+              headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            const tbody = document.createElement("tbody");
+            section.table.rows.forEach((row) => {
+              const tr = document.createElement("tr");
+              row.forEach((cell) => {
+                const td = document.createElement("td");
+                td.innerHTML = `<code>${cell}</code>`;
+                tr.appendChild(td);
+              });
+              tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+            sectionDiv.appendChild(table);
+          }
+
+          if (section.examples && section.examples.length > 0) {
+            const examplesDiv = document.createElement("div");
+            examplesDiv.className = "modern-tools-examples";
+            examplesDiv.innerHTML = `<div style="margin-bottom: 0.5rem; color: #94a3b8;">Beispiele:</div>`;
+            section.examples.forEach((example) => {
+              const exampleCode = document.createElement("div");
+              exampleCode.className = "modern-tools-example-code";
+              exampleCode.innerHTML = `<code>${example}</code>`;
+              examplesDiv.appendChild(exampleCode);
+            });
+            sectionDiv.appendChild(examplesDiv);
+          }
+
+          syntaxSection.appendChild(sectionDiv);
+        });
+
+        bodyEl.appendChild(syntaxSection);
+
+        modal.classList.remove("hidden");
+        modal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeModernToolsModal() {
+        const modal = document.getElementById("modern-tools-root");
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.setAttribute("aria-hidden", "true");
+        }
+      }
+
+      // Modern Tools Card Click Handler
+      const modernToolsCard = document.getElementById("modern-tools-card");
+      if (modernToolsCard) {
+        modernToolsCard.addEventListener("click", openModernToolsModal);
+      }
+
+      // Modern Tools Modal Event Handlers
+      const modernToolsCloseBtn = document.getElementById(
+        "modern-tools-close-btn"
+      );
+      if (modernToolsCloseBtn) {
+        modernToolsCloseBtn.addEventListener("click", closeModernToolsModal);
+      }
+
+      const modernToolsRoot = document.getElementById("modern-tools-root");
+      if (modernToolsRoot) {
+        modernToolsRoot.addEventListener("click", (event) => {
+          if (event.target.classList.contains("quiz-backdrop")) {
+            closeModernToolsModal();
+          }
+        });
+      }
+
       // Beginner Mistakes Modal Event Handlers
       const mistakesCloseBtn = document.getElementById("mistakes-close-btn");
       if (mistakesCloseBtn) {
@@ -12910,6 +14440,12 @@
           }
         });
       }
+
+      // Initialize page on load
+      assignBadgeToCards();
+      updateHeaderBadgeFilter();
+      filterCardsBySegment();
+      buildCheatSheetMap();
     </script>
   </body>
 </html>
