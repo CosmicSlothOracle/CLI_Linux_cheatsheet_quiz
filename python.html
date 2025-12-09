@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Grundlagen – Cyber Security Kurs</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: #0f172a;
+        color: #e5e7eb;
+        line-height: 1.5;
+      }
+      header {
+        padding: 1rem 1.5rem 0.75rem;
+        background: #020617;
+        border-bottom: 1px solid #1f2937;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .header-inner {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin: 0 0 0.2rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #4ade80;
+      }
+      .subtitle {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        margin: 0;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #22c55e;
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        transition: all 0.2s ease;
+      }
+      .back-link:hover {
+        background: rgba(34, 197, 94, 0.2);
+        border-color: rgba(34, 197, 94, 0.5);
+      }
+      .search-container {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .search-input {
+        width: 100%;
+        padding: 0.6rem 0.9rem;
+        background: #111827;
+        border: 1px solid #1f2937;
+        border-radius: 0.6rem;
+        color: #e5e7eb;
+        font-size: 0.9rem;
+        font-family: inherit;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .search-input:focus {
+        outline: none;
+        border-color: #22c55e;
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+      }
+      .search-input::placeholder {
+        color: #6b7280;
+      }
+      .header-badge-filter {
+        margin-top: 0.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .header-badge-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1.5px solid;
+        background: rgba(255, 255, 255, 0.05);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+      .header-badge-item:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+      .header-badge-item.active {
+        border-width: 2px;
+        box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+      }
+      .header-badge-item.segment-3 {
+        border-color: #22c55e;
+        color: #86efac;
+        background: linear-gradient(
+          135deg,
+          rgba(34, 197, 94, 0.15),
+          rgba(21, 128, 61, 0.1)
+        );
+      }
+      .header-badge-item.segment-4 {
+        border-color: #fbbf24;
+        color: #fde68a;
+        background: linear-gradient(
+          135deg,
+          rgba(251, 191, 36, 0.15),
+          rgba(245, 158, 11, 0.1)
+        );
+      }
+      .header-badge-item.active.segment-3 {
+        background: linear-gradient(
+          135deg,
+          rgba(34, 197, 94, 0.25),
+          rgba(21, 128, 61, 0.2)
+        );
+        box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
+      }
+      .header-badge-item.active.segment-4 {
+        background: linear-gradient(
+          135deg,
+          rgba(251, 191, 36, 0.25),
+          rgba(245, 158, 11, 0.2)
+        );
+        box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3);
+      }
+      .header-badge-item-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .header-badge-quiz-btn {
+        padding: 0.35rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        border: 1.5px solid rgba(34, 197, 94, 0.5);
+        background: rgba(34, 197, 94, 0.15);
+        color: #86efac;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+      .header-badge-quiz-btn:hover {
+        transform: translateY(-1px);
+        background: rgba(34, 197, 94, 0.25);
+        border-color: rgba(34, 197, 94, 0.7);
+        box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+      }
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 1rem 2rem 2rem;
+        width: 100%;
+      }
+      .commands-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 0.8rem;
+        width: 100%;
+      }
+      .command-card {
+        border-radius: 0.9rem;
+        border: 1px solid #1f2937;
+        background: radial-gradient(
+            circle at top left,
+            rgba(34, 197, 94, 0.12),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(34, 197, 94, 0.12),
+            transparent 55%
+          ),
+          #020617;
+        padding: 0.9rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        cursor: pointer;
+        transition: transform 0.08s ease-out, box-shadow 0.08s ease-out,
+          border-color 0.08s ease-out;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+      }
+      .command-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 6px;
+        border-radius: 0.9rem 0 0 0.9rem;
+        pointer-events: none;
+        opacity: 0.95;
+        background: linear-gradient(#22c55e, #166534);
+      }
+      .command-card:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        border-color: #22c55e;
+      }
+      .command-card.hidden {
+        display: none;
+      }
+      .command-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.15rem;
+        position: relative;
+      }
+      .command-name {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .command-name code {
+        background: #020617;
+        padding: 0.1rem 0.35rem;
+        border-radius: 999px;
+        border: 1px solid #1f2937;
+        font-size: 0.85rem;
+      }
+      .command-tag {
+        font-size: 0.7rem;
+        color: #9ca3af;
+      }
+      .command-body {
+        font-size: 0.85rem;
+        color: #d1d5db;
+      }
+      .command-body p {
+        margin: 0.1rem 0;
+      }
+      code {
+        font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
+          "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-size: 0.85em;
+        font-feature-settings: "zero", "onum";
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.01em;
+      }
+      @media (max-width: 768px) {
+        .commands-grid {
+          grid-template-columns: 1fr;
+        }
+        main {
+          padding: 1.5rem 1rem;
+        }
+      }
+      /* Header für Desktop optimiert */
+      @media (min-width: 769px) {
+        header {
+          padding: 1rem 2rem 0.75rem;
+        }
+        .header-inner {
+          max-width: 100%;
+        }
+      }
+      /* Command Modal Styles */
+      .command-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      .command-modal.hidden {
+        display: none;
+      }
+      .command-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(6px);
+      }
+      .command-modal-inner {
+        position: relative;
+        background: #020617;
+        border: 1px solid #1f2937;
+        border-radius: 1rem;
+        max-width: 900px;
+        width: 100%;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+      }
+      .command-modal-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #1f2937;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .command-modal-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #22c55e;
+        margin: 0 0 0.5rem;
+      }
+      .command-modal-subtitle {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        margin: 0;
+      }
+      .command-modal-close-btn {
+        background: transparent;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: all 0.2s ease;
+      }
+      .command-modal-close-btn:hover {
+        background: rgba(239, 68, 68, 0.1);
+        border-color: rgba(239, 68, 68, 0.5);
+      }
+      .command-modal-body {
+        padding: 1.5rem;
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0;
+      }
+      .command-modal .command-summary {
+        font-size: 1rem;
+        color: #e0e7ff;
+        line-height: 1.7;
+        margin: 0 0 1.5rem;
+        padding: 1rem 1.2rem;
+        background: rgba(34, 197, 94, 0.08);
+        border-left: 4px solid #22c55e;
+        border-radius: 0.5rem;
+      }
+      .command-modal #command-modal-detail {
+        padding: 1rem 1.2rem;
+        background: rgba(251, 191, 36, 0.08);
+        border-left: 4px solid #fbbf24;
+        border-radius: 0.5rem;
+        color: #fef3c7;
+        line-height: 1.6;
+        margin: 0 0 1.5rem;
+      }
+      .command-modal .command-section {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.02)
+        );
+        border-radius: 0.75rem;
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+      .command-modal .command-section:hover {
+        border-color: rgba(34, 197, 94, 0.3);
+        background: linear-gradient(
+          135deg,
+          rgba(34, 197, 94, 0.06),
+          rgba(21, 128, 61, 0.04)
+        );
+        box-shadow: 0 8px 16px rgba(34, 197, 94, 0.1);
+      }
+      .command-modal .command-section h3 {
+        margin: 0 0 0.8rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #86efac;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.9;
+      }
+      .command-modal .example-item {
+        padding: 1rem;
+        border-radius: 0.6rem;
+        background: linear-gradient(
+          135deg,
+          rgba(34, 197, 94, 0.1),
+          rgba(21, 128, 61, 0.05)
+        );
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        transition: all 0.2s ease;
+        margin-bottom: 0.8rem;
+      }
+      .command-modal .example-item:hover {
+        border-color: rgba(34, 197, 94, 0.5);
+        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1);
+      }
+      .command-modal .example-item code {
+        display: block;
+        font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
+          ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+        color: #86efac;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        background: rgba(15, 23, 42, 0.5);
+        border-radius: 0.4rem;
+        margin-bottom: 0.5rem;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <a href="index.html" class="back-link"
+          >← Zurück zur Linux CLI Übersicht</a
+        >
+        <h1>🐍 Python Grundlagen</h1>
+        <p class="subtitle">
+          Erste Schritte mit Python für Cybersecurity-Einsteiger
+        </p>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Python-Konzepte durchsuchen (z.B. 'if', 'list', 'def'...)"
+            autocomplete="off"
+          />
+        </div>
+        <div class="header-badge-filter" id="header-badge-filter"></div>
+      </div>
+    </header>
+    <main>
+      <section class="commands-grid" id="commands-grid">
+        <!-- Badge 1: Snake Oil Salesman (4 Kacheln) -->
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_conditions"
+          data-quiz-id="python_conditions"
+          data-badge-segment="python_snakeoil_salesman"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Conditions</h2>
+            <span class="command-tag">Basics</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Conditions prüfen Wahr/Falsch mit if, elif und else.
+              Vergleichsoperatoren: ==, !=, >, <, >=, <=. Logische Operatoren:
+              and, or, not.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_datentypen"
+          data-quiz-id="python_datentypen"
+          data-badge-segment="python_snakeoil_salesman"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Datentypen</h2>
+            <span class="command-tag">Basics</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Wichtige Typen: str, int, float, bool. input() liefert immer
+              einen String, Umwandlung erfolgt mit int() oder float().
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_operatoren"
+          data-quiz-id="python_operatoren"
+          data-badge-segment="python_snakeoil_salesman"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Operatoren</h2>
+            <span class="command-tag">Basics</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Mathematische Operatoren: +, -, *, /, //, %, **. Für Strings wird
+              + zur Konkatenation verwendet.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_eingaben"
+          data-quiz-id="python_eingaben"
+          data-badge-segment="python_snakeoil_salesman"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Eingaben</h2>
+            <span class="command-tag">Basics</span>
+          </div>
+          <div class="command-body">
+            <p>
+              input() zeigt einen Text an und liest eine Nutzereingabe. input()
+              gibt immer einen String zurück.
+            </p>
+          </div>
+        </a>
+
+        <!-- Badge 2: Python Voyer (8 Kacheln) -->
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_funktionen_vertieft"
+          data-quiz-id="python_funktionen_vertieft"
+          data-badge-segment="python_voyer"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Funktionen Vertieft</h2>
+            <span class="command-tag">Fortgeschritten</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Parameter, Default-Werte, Rückgabewerte, lokale vs. globale
+              Variablen. Beispiel: def greet(name='User'): return f'Hello
+              {name}'.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_fehlerbehandlung"
+          data-quiz-id="python_fehlerbehandlung"
+          data-badge-segment="python_voyer"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Fehlerbehandlung</h2>
+            <span class="command-tag">Fortgeschritten</span>
+          </div>
+          <div class="command-body">
+            <p>
+              try, except, finally, else. Wann und warum man Fehler abfängt.
+              Beispiel: try: int('x') except ValueError: print('Fehler').
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_listen_comprehensions"
+          data-quiz-id="python_listen_comprehensions"
+          data-badge-segment="python_voyer"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Listen & List-Comprehensions</h2>
+            <span class="command-tag">Fortgeschritten</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Erstellen, Anhängen, Iterieren. Vertiefung: [x*2 for x in numbers
+              if x > 0].
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_dictionaries_vertieft"
+          data-quiz-id="python_dictionaries_vertieft"
+          data-badge-segment="python_voyer"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Dictionaries Vertieft</h2>
+            <span class="command-tag">Fortgeschritten</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Schlüssel/Wert-Paare, Iterieren über keys(), values(), items().
+              Verschachtelte Dicts.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_schleifen_vertieft"
+          data-quiz-id="python_schleifen_vertieft"
+          data-badge-segment="python_voyer"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Schleifen Vertieft</h2>
+            <span class="command-tag">Fortgeschritten</span>
+          </div>
+          <div class="command-body">
+            <p>
+              Verschachtelte Loops, break, continue, enumerate(), range()
+              Varianten.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_module_imports"
+          data-quiz-id="python_module_imports"
+          data-badge-segment="python_voyer"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Module & Imports</h2>
+            <span class="command-tag">Fortgeschritten</span>
+          </div>
+          <div class="command-body">
+            <p>
+              import math, from random import randint, eigene Module, Ordnung im
+              Projekt.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_dateien"
+          data-quiz-id="python_dateien"
+          data-badge-segment="python_voyer"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Dateien lesen & schreiben</h2>
+            <span class="command-tag">Fortgeschritten</span>
+          </div>
+          <div class="command-body">
+            <p>
+              open(), read(), write(), with open() as f, Dateihandling sicher
+              gestalten.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="#"
+          class="command-card"
+          data-command="python_strings_advanced"
+          data-quiz-id="python_strings_advanced"
+          data-badge-segment="python_voyer"
+        >
+          <div class="command-header">
+            <h2 class="command-name">Fortgeschrittene Strings</h2>
+            <span class="command-tag">Fortgeschritten</span>
+          </div>
+          <div class="command-body">
+            <p>
+              f-Strings vertieft, Formatierungen, Escape-Sequenzen,
+              mehrzeilige Strings, .replace(), .split(), .join().
+            </p>
+          </div>
+        </a>
+      </section>
+    </main>
+
+    <!-- Command Modal -->
+    <div
+      id="command-modal-root"
+      class="command-modal hidden"
+      aria-hidden="true"
+    >
+      <div class="command-modal-backdrop"></div>
+      <div class="command-modal-inner">
+        <div class="command-modal-header">
+          <div>
+            <h2 class="command-modal-title" id="command-modal-title"></h2>
+            <p class="command-modal-subtitle" id="command-modal-subtitle"></p>
+          </div>
+          <button
+            class="command-modal-close-btn"
+            id="command-modal-close-btn"
+            type="button"
+          >
+            ✕ Schließen
+          </button>
+        </div>
+        <div class="command-modal-body" id="command-modal-body">
+          <div class="command-summary" id="command-modal-summary"></div>
+          <div class="command-section" id="command-modal-detail"></div>
+          <div class="command-section" id="command-modal-simple-example-section">
+            <h3>Einfaches Beispiel</h3>
+            <div class="example-item" id="command-modal-simple-example"></div>
+          </div>
+          <div class="command-section" id="command-modal-complex-example-section">
+            <h3>Komplexes Beispiel</h3>
+            <div class="example-item" id="command-modal-complex-example"></div>
+          </div>
+          <div
+            class="command-section"
+            id="command-modal-additional-examples-section"
+          >
+            <h3>Weitere Beispiele</h3>
+            <div id="command-modal-additional-examples"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Badge-Segmente
+      const badgeSegments = [
+        {
+          id: "python_snakeoil_salesman",
+          name: "Snake Oil Salesman",
+          icon: "👔",
+          colorClass: "segment-4",
+          quizIds: [
+            "python_conditions",
+            "python_datentypen",
+            "python_operatoren",
+            "python_eingaben",
+          ],
+        },
+        {
+          id: "python_voyer",
+          name: "Python Voyer",
+          icon: "👁️",
+          colorClass: "segment-3",
+          quizIds: [
+            "python_funktionen_vertieft",
+            "python_fehlerbehandlung",
+            "python_listen_comprehensions",
+            "python_dictionaries_vertieft",
+            "python_schleifen_vertieft",
+            "python_module_imports",
+            "python_dateien",
+            "python_strings_advanced",
+          ],
+        },
+      ];
+
+      // Quiz-Daten (vorerst leer, für später)
+      const quizData = {};
+
+      // Command-Meta-Daten für alle Kacheln
+      const commandMeta = {
+        python_conditions: {
+          title: "Conditions",
+          subtitle: "Bedingte Ausführung",
+          summary:
+            "Conditions prüfen Wahr/Falsch mit if, elif und else. Vergleichsoperatoren: ==, !=, >, <, >=, <=. Logische Operatoren: and, or, not.",
+          detail:
+            "Mit if-Statements kannst du Code basierend auf Bedingungen ausführen. elif ermöglicht weitere Bedingungen, else fängt alle anderen Fälle ab.",
+          simpleExample: "if age >= 18:\n    print('Volljährig')\nelse:\n    print('Minderjährig')",
+          complexExample:
+            "score = 85\nif score >= 90:\n    grade = 'A'\nelif score >= 80:\n    grade = 'B'\nelif score >= 70:\n    grade = 'C'\nelse:\n    grade = 'F'\nprint(f'Note: {grade}')",
+          additionalExamples: `
+            ✅ <strong>1. Einfache Bedingung</strong><br>
+            <code>if True:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Wird ausgeführt")</code><br><br>
+
+            ✅ <strong>2. Vergleichsoperatoren</strong><br>
+            <code>x = 10<br>if x > 5:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("x ist größer als 5")</code><br><br>
+
+            ✅ <strong>3. Logische Operatoren</strong><br>
+            <code>age = 20<br>if age >= 18 and age < 65:<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Erwachsen")</code><br><br>
+
+            ✅ <strong>4. Verschachtelte Bedingungen</strong><br>
+            <code>if x > 0:<br>&nbsp;&nbsp;&nbsp;&nbsp;if x % 2 == 0:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Positive gerade Zahl")</code>
+          `,
+        },
+        python_datentypen: {
+          title: "Datentypen",
+          subtitle: "Grundlegende Datentypen in Python",
+          summary:
+            "Wichtige Typen: str, int, float, bool. input() liefert immer einen String, Umwandlung erfolgt mit int() oder float().",
+          detail:
+            "Python hat verschiedene eingebaute Datentypen. str (String) für Text, int für ganze Zahlen, float für Kommazahlen, bool für Wahrheitswerte. Die type() Funktion zeigt den Typ einer Variable an.",
+          simpleExample:
+            "name = 'Python'  # str<br>age = 30  # int<br>price = 19.99  # float<br>is_active = True  # bool",
+          complexExample:
+            "user_input = input('Alter eingeben: ')<br># input() gibt immer String zurück<br>age = int(user_input)  # Umwandlung zu int<br>if age >= 18:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f'Du bist {age} Jahre alt')",
+          additionalExamples: `
+            ✅ <strong>1. Typen prüfen</strong><br>
+            <code>print(type(42))  # &lt;class 'int'&gt;<br>print(type('Text'))  # &lt;class 'str'&gt;</code><br><br>
+
+            ✅ <strong>2. Typumwandlung</strong><br>
+            <code>number_str = '123'<br>number_int = int(number_str)<br>number_float = float(number_str)</code><br><br>
+
+            ✅ <strong>3. String-Formatierung</strong><br>
+            <code>name = 'Alice'<br>age = 25<br>print(f'{name} ist {age} Jahre alt')</code>
+          `,
+        },
+        python_operatoren: {
+          title: "Operatoren",
+          subtitle: "Mathematische und String-Operatoren",
+          summary:
+            "Mathematische Operatoren: +, -, *, /, //, %, **. Für Strings wird + zur Konkatenation verwendet.",
+          detail:
+            "Python unterstützt verschiedene Operatoren: + (Addition/Konkatenation), - (Subtraktion), * (Multiplikation/Wiederholung), / (Division), // (Ganzzahldivision), % (Modulo), ** (Potenz).",
+          simpleExample:
+            "a = 10 + 5  # 15<br>b = 10 - 3  # 7<br>c = 4 * 2  # 8<br>d = 10 / 3  # 3.333...<br>e = 10 // 3  # 3<br>f = 10 % 3  # 1<br>g = 2 ** 3  # 8",
+          complexExample:
+            "result = (2 + 3) * 4 - 1  # 19<br>text1 = 'Hello '<br>text2 = 'World'<br>combined = text1 + text2  # 'Hello World'<br>repeated = 'Hi ' * 3  # 'Hi Hi Hi '",
+          additionalExamples: `
+            ✅ <strong>1. String-Konkatenation</strong><br>
+            <code>first = 'Python'<br>last = 'Programmierung'<br>full = first + ' ' + last</code><br><br>
+
+            ✅ <strong>2. Modulo-Operator</strong><br>
+            <code>remainder = 17 % 5  # 2<br>is_even = 10 % 2 == 0  # True</code><br><br>
+
+            ✅ <strong>3. Potenz-Operator</strong><br>
+            <code>square = 5 ** 2  # 25<br>cube = 3 ** 3  # 27</code>
+          `,
+        },
+        python_eingaben: {
+          title: "Eingaben",
+          subtitle: "Nutzerinput mit input()",
+          summary:
+            "input() zeigt einen Text an und liest eine Nutzereingabe. input() gibt immer einen String zurück.",
+          detail:
+            "Die input() Funktion liest eine Zeile vom Nutzer ein. Sie gibt immer einen String zurück, auch wenn Zahlen eingegeben werden. Umwandlung zu Zahlen erfolgt mit int() oder float().",
+          simpleExample:
+            "name = input('Wie heißt du? ')<br>print(f'Hallo, {name}!')",
+          complexExample:
+            "try:<br>&nbsp;&nbsp;&nbsp;&nbsp;age_input = input('Alter eingeben: ')<br>&nbsp;&nbsp;&nbsp;&nbsp;age = int(age_input)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f'Du bist {age} Jahre alt')<br>except ValueError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Bitte eine gültige Zahl eingeben')",
+          additionalExamples: `
+            ✅ <strong>1. Einfache Eingabe</strong><br>
+            <code>user_input = input('Eingabe: ')<br>print(f'Du hast eingegeben: {user_input}')</code><br><br>
+
+            ✅ <strong>2. Zahleneingabe</strong><br>
+            <code>number_str = input('Zahl eingeben: ')<br>number = int(number_str)<br>print(number * 2)</code><br><br>
+
+            ✅ <strong>3. Mehrere Eingaben</strong><br>
+            <code>name = input('Name: ')<br>age = input('Alter: ')<br>print(f'{name}, {age} Jahre')</code>
+          `,
+        },
+        python_funktionen_vertieft: {
+          title: "Funktionen Vertieft",
+          subtitle: "Parameter, Default-Werte, Rückgabewerte",
+          summary:
+            "Parameter, Default-Werte, Rückgabewerte, lokale vs. globale Variablen. Beispiel: def greet(name='User'): return f'Hello {name}'.",
+          detail:
+            "Funktionen können Parameter haben, Default-Werte setzen und Werte zurückgeben. Lokale Variablen existieren nur in der Funktion, globale außerhalb.",
+          simpleExample:
+            "def greet(name='User'):<br>&nbsp;&nbsp;&nbsp;&nbsp;return f'Hello {name}'<br><br>print(greet())  # 'Hello User'<br>print(greet('Alice'))  # 'Hello Alice'",
+          complexExample:
+            "def calculate_total(price, tax_rate=0.19, discount=0):<br>&nbsp;&nbsp;&nbsp;&nbsp;subtotal = price - discount<br>&nbsp;&nbsp;&nbsp;&nbsp;total = subtotal * (1 + tax_rate)<br>&nbsp;&nbsp;&nbsp;&nbsp;return total<br><br>result = calculate_total(100, discount=10)  # 107.1",
+          additionalExamples: `
+            ✅ <strong>1. Funktion mit Rückgabewert</strong><br>
+            <code>def add(a, b):<br>&nbsp;&nbsp;&nbsp;&nbsp;return a + b<br><br>result = add(3, 5)  # 8</code><br><br>
+
+            ✅ <strong>2. Default-Parameter</strong><br>
+            <code>def power(base, exponent=2):<br>&nbsp;&nbsp;&nbsp;&nbsp;return base ** exponent<br><br>print(power(3))  # 9<br>print(power(3, 3))  # 27</code><br><br>
+
+            ✅ <strong>3. Lokale vs. globale Variablen</strong><br>
+            <code>global_var = 10<br><br>def func():<br>&nbsp;&nbsp;&nbsp;&nbsp;local_var = 5<br>&nbsp;&nbsp;&nbsp;&nbsp;return local_var + global_var<br><br>print(func())  # 15</code>
+          `,
+        },
+        python_fehlerbehandlung: {
+          title: "Fehlerbehandlung",
+          subtitle: "Exception Handling mit try/except",
+          summary:
+            "try, except, finally, else. Wann und warum man Fehler abfängt. Beispiel: try: int('x') except ValueError: print('Fehler').",
+          detail:
+            "Mit try/except kannst du Fehler abfangen und behandeln. finally wird immer ausgeführt, else nur wenn keine Exception auftritt.",
+          simpleExample:
+            "try:<br>&nbsp;&nbsp;&nbsp;&nbsp;number = int('123')<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f'Zahl: {number}')<br>except ValueError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Keine gültige Zahl')",
+          complexExample:
+            "try:<br>&nbsp;&nbsp;&nbsp;&nbsp;file = open('data.txt', 'r')<br>&nbsp;&nbsp;&nbsp;&nbsp;content = file.read()<br>except FileNotFoundError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Datei nicht gefunden')<br>except PermissionError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Keine Berechtigung')<br>finally:<br>&nbsp;&nbsp;&nbsp;&nbsp;file.close()",
+          additionalExamples: `
+            ✅ <strong>1. Einfache Exception-Behandlung</strong><br>
+            <code>try:<br>&nbsp;&nbsp;&nbsp;&nbsp;result = 10 / 0<br>except ZeroDivisionError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Division durch Null!')</code><br><br>
+
+            ✅ <strong>2. Mehrere Exceptions</strong><br>
+            <code>try:<br>&nbsp;&nbsp;&nbsp;&nbsp;value = int(input('Zahl: '))<br>except ValueError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Keine Zahl')<br>except KeyboardInterrupt:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Abgebrochen')</code><br><br>
+
+            ✅ <strong>3. else und finally</strong><br>
+            <code>try:<br>&nbsp;&nbsp;&nbsp;&nbsp;result = int('42')<br>except ValueError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Fehler')<br>else:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Erfolg')<br>finally:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Fertig')</code>
+          `,
+        },
+        python_listen_comprehensions: {
+          title: "Listen & List-Comprehensions",
+          subtitle: "Listen erstellen und manipulieren",
+          summary:
+            "Erstellen, Anhängen, Iterieren. Vertiefung: [x*2 for x in numbers if x > 0].",
+          detail:
+            "Listen sind veränderbare Sammlungen von Elementen. List-Comprehensions bieten eine kompakte Syntax zum Erstellen von Listen basierend auf anderen Listen.",
+          simpleExample:
+            "numbers = [1, 2, 3, 4, 5]<br>numbers.append(6)  # [1, 2, 3, 4, 5, 6]<br>for num in numbers:<br>&nbsp;&nbsp;&nbsp;&nbsp;print(num)",
+          complexExample:
+            "numbers = [1, 2, 3, 4, 5]<br>doubled = [x * 2 for x in numbers]  # [2, 4, 6, 8, 10]<br>filtered = [x for x in numbers if x > 2]  # [3, 4, 5]<br>squared_evens = [x**2 for x in numbers if x % 2 == 0]  # [4, 16]",
+          additionalExamples: `
+            ✅ <strong>1. Liste erstellen</strong><br>
+            <code>fruits = ['Apfel', 'Banane', 'Orange']<br>print(fruits[0])  # 'Apfel'</code><br><br>
+
+            ✅ <strong>2. List-Comprehension</strong><br>
+            <code>squares = [x**2 for x in range(5)]  # [0, 1, 4, 9, 16]</code><br><br>
+
+            ✅ <strong>3. Bedingte List-Comprehension</strong><br>
+            <code>evens = [x for x in range(10) if x % 2 == 0]  # [0, 2, 4, 6, 8]</code>
+          `,
+        },
+        python_dictionaries_vertieft: {
+          title: "Dictionaries Vertieft",
+          subtitle: "Schlüssel-Wert-Paare",
+          summary:
+            "Schlüssel/Wert-Paare, Iterieren über keys(), values(), items(). Verschachtelte Dicts.",
+          detail:
+            "Dictionaries speichern Daten als Schlüssel-Wert-Paare. Du kannst über keys(), values() oder items() iterieren. Dictionaries können auch verschachtelt sein.",
+          simpleExample:
+            "person = {'name': 'Alice', 'age': 30, 'city': 'Berlin'}<br>print(person['name'])  # 'Alice'<br>person['email'] = 'alice@example.com'",
+          complexExample:
+            "users = {<br>&nbsp;&nbsp;&nbsp;&nbsp;'alice': {'age': 25, 'email': 'alice@test.com'},<br>&nbsp;&nbsp;&nbsp;&nbsp;'bob': {'age': 30, 'email': 'bob@test.com'}<br>}<br><br>for username, info in users.items():<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f'{username}: {info[\"age\"]} Jahre')",
+          additionalExamples: `
+            ✅ <strong>1. Dictionary erstellen</strong><br>
+            <code>data = {'key1': 'value1', 'key2': 'value2'}<br>print(data['key1'])  # 'value1'</code><br><br>
+
+            ✅ <strong>2. Iterieren über Werte</strong><br>
+            <code>for value in data.values():<br>&nbsp;&nbsp;&nbsp;&nbsp;print(value)</code><br><br>
+
+            ✅ <strong>3. Verschachtelte Dictionaries</strong><br>
+            <code>nested = {'person': {'name': 'Alice', 'age': 25}}<br>print(nested['person']['name'])  # 'Alice'</code>
+          `,
+        },
+        python_schleifen_vertieft: {
+          title: "Schleifen Vertieft",
+          subtitle: "Verschachtelte Loops, break, continue, enumerate",
+          summary:
+            "Verschachtelte Loops, break, continue, enumerate(), range() Varianten.",
+          detail:
+            "Python unterstützt for- und while-Schleifen. break beendet die Schleife, continue überspringt den Rest der Iteration. enumerate() gibt Index und Wert zurück.",
+          simpleExample:
+            "for i in range(5):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(i)  # 0, 1, 2, 3, 4<br><br>for i in range(2, 10, 2):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(i)  # 2, 4, 6, 8",
+          complexExample:
+            "matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]<br>for row in matrix:<br>&nbsp;&nbsp;&nbsp;&nbsp;for cell in row:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if cell == 5:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(cell)",
+          additionalExamples: `
+            ✅ <strong>1. break und continue</strong><br>
+            <code>for i in range(10):<br>&nbsp;&nbsp;&nbsp;&nbsp;if i == 5:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break  # Beendet bei 5<br>&nbsp;&nbsp;&nbsp;&nbsp;if i % 2 == 0:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue  # Überspringt gerade Zahlen<br>&nbsp;&nbsp;&nbsp;&nbsp;print(i)</code><br><br>
+
+            ✅ <strong>2. enumerate()</strong><br>
+            <code>items = ['a', 'b', 'c']<br>for index, value in enumerate(items):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f'{index}: {value}')</code><br><br>
+
+            ✅ <strong>3. Verschachtelte Loops</strong><br>
+            <code>for i in range(3):<br>&nbsp;&nbsp;&nbsp;&nbsp;for j in range(2):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f'{i}, {j}')</code>
+          `,
+        },
+        python_module_imports: {
+          title: "Module & Imports",
+          subtitle: "Code organisieren und wiederverwenden",
+          summary:
+            "import math, from random import randint, eigene Module, Ordnung im Projekt.",
+          detail:
+            "Module ermöglichen Code-Organisation und Wiederverwendung. Du kannst ganze Module oder spezifische Funktionen importieren. Eigene Module werden wie normale Python-Dateien erstellt.",
+          simpleExample:
+            "import math<br>print(math.sqrt(16))  # 4.0<br><br>from random import randint<br>number = randint(1, 100)",
+          complexExample:
+            "import math<br>from datetime import datetime, timedelta<br><br>today = datetime.now()<br>future = today + timedelta(days=7)<br>distance = math.sqrt(3**2 + 4**2)  # 5.0",
+          additionalExamples: `
+            ✅ <strong>1. Standard-Module importieren</strong><br>
+            <code>import os<br>import sys<br>print(os.getcwd())  # Aktuelles Verzeichnis</code><br><br>
+
+            ✅ <strong>2. Spezifische Funktionen importieren</strong><br>
+            <code>from math import pi, sqrt<br>print(pi * 2)  # 6.283...</code><br><br>
+
+            ✅ <strong>3. Alias verwenden</strong><br>
+            <code>import datetime as dt<br>now = dt.datetime.now()</code>
+          `,
+        },
+        python_dateien: {
+          title: "Dateien lesen & schreiben",
+          subtitle: "Datei-Operationen sicher durchführen",
+          summary:
+            "open(), read(), write(), with open() as f, Dateihandling sicher gestalten.",
+          detail:
+            "Mit open() kannst du Dateien öffnen. Der with-Statement stellt sicher, dass Dateien automatisch geschlossen werden, auch bei Fehlern. read() liest, write() schreibt.",
+          simpleExample:
+            "with open('data.txt', 'r') as f:<br>&nbsp;&nbsp;&nbsp;&nbsp;content = f.read()<br>&nbsp;&nbsp;&nbsp;&nbsp;print(content)",
+          complexExample:
+            "try:<br>&nbsp;&nbsp;&nbsp;&nbsp;with open('log.txt', 'a') as f:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.write('Neuer Eintrag\\n')<br>&nbsp;&nbsp;&nbsp;&nbsp;with open('log.txt', 'r') as f:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lines = f.readlines()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f'{len(lines)} Zeilen')<br>except FileNotFoundError:<br>&nbsp;&nbsp;&nbsp;&nbsp;print('Datei nicht gefunden')",
+          additionalExamples: `
+            ✅ <strong>1. Datei schreiben</strong><br>
+            <code>with open('output.txt', 'w') as f:<br>&nbsp;&nbsp;&nbsp;&nbsp;f.write('Hallo Welt')</code><br><br>
+
+            ✅ <strong>2. Datei lesen</strong><br>
+            <code>with open('data.txt', 'r') as f:<br>&nbsp;&nbsp;&nbsp;&nbsp;for line in f:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(line.strip())</code><br><br>
+
+            ✅ <strong>3. An Datei anhängen</strong><br>
+            <code>with open('log.txt', 'a') as f:<br>&nbsp;&nbsp;&nbsp;&nbsp;f.write('Neuer Eintrag\\n')</code>
+          `,
+        },
+        python_strings_advanced: {
+          title: "Fortgeschrittene Strings",
+          subtitle: "String-Manipulation und Formatierung",
+          summary:
+            "f-Strings vertieft, Formatierungen, Escape-Sequenzen, mehrzeilige Strings, .replace(), .split(), .join().",
+          detail:
+            "Strings haben viele nützliche Methoden. replace() ersetzt Text, split() teilt Strings, join() verbindet Listen zu Strings. f-Strings ermöglichen moderne Formatierung.",
+          simpleExample:
+            "text = 'Hello World'<br>new_text = text.replace('World', 'Python')<br>words = text.split(' ')  # ['Hello', 'World']<br>combined = '-'.join(words)  # 'Hello-World'",
+          complexExample:
+            "name = 'Alice'<br>age = 25<br>message = f'Name: {name}, Alter: {age}'<br>multiline = '''Zeile 1<br>Zeile 2<br>Zeile 3'''<br>escaped = 'Pfad: C:\\\\Users\\\\Name'",
+          additionalExamples: `
+            ✅ <strong>1. f-Strings</strong><br>
+            <code>name = 'Bob'<br>score = 95<br>print(f'{name} hat {score} Punkte')</code><br><br>
+
+            ✅ <strong>2. String-Methoden</strong><br>
+            <code>text = '  Python  '<br>print(text.strip())  # 'Python'<br>print(text.upper())  # '  PYTHON  '<br>print(text.lower())  # '  python  '</code><br><br>
+
+            ✅ <strong>3. split() und join()</strong><br>
+            <code>csv = 'Alice,Bob,Charlie'<br>names = csv.split(',')  # ['Alice', 'Bob', 'Charlie']<br>joined = ' | '.join(names)  # 'Alice | Bob | Charlie'</code>
+          `,
+        },
+      };
+
+      // Modal Controller
+      const modalController = (() => {
+        const registry = new Map();
+        const openStack = [];
+
+        function register(key, config) {
+          const root = document.getElementById(config.rootId);
+          if (!root) {
+            console.warn(`[ModalController] Root not found for ${key}`);
+            return;
+          }
+
+          const entry = {
+            key,
+            root,
+            closeButtons: config.closeButtons || [],
+            closeOnBackdrop: config.closeOnBackdrop !== false,
+            closeOnEscape: config.closeOnEscape !== false,
+            onOpen: config.onOpen || null,
+            onClose: config.onClose || null,
+          };
+
+          entry.closeButtons.forEach((btnId) => {
+            const btn = document.getElementById(btnId);
+            if (btn) btn.addEventListener("click", () => close(key));
+          });
+
+          if (entry.closeOnBackdrop) {
+            root.addEventListener("click", (event) => {
+              if (event.target.classList.contains("command-modal-backdrop")) {
+                close(key);
+              }
+            });
+          }
+
+          registry.set(key, entry);
+        }
+
+        function open(key, context) {
+          const entry = registry.get(key);
+          if (!entry) return;
+
+          if (typeof entry.onOpen === "function") {
+            entry.onOpen(context);
+          }
+
+          entry.root.classList.remove("hidden");
+          entry.root.setAttribute("aria-hidden", "false");
+
+          if (!openStack.includes(key)) {
+            openStack.push(key);
+          }
+        }
+
+        function close(key) {
+          const entry = registry.get(key);
+          if (!entry) return;
+
+          entry.root.classList.add("hidden");
+          entry.root.setAttribute("aria-hidden", "true");
+
+          if (typeof entry.onClose === "function") {
+            entry.onClose();
+          }
+
+          const idx = openStack.indexOf(key);
+          if (idx !== -1) openStack.splice(idx, 1);
+        }
+
+        function handleEscape(event) {
+          if (event.key !== "Escape" || openStack.length === 0) return;
+          for (let i = openStack.length - 1; i >= 0; i--) {
+            const entry = registry.get(openStack[i]);
+            if (entry && entry.closeOnEscape) {
+              event.preventDefault();
+              close(entry.key);
+              break;
+            }
+          }
+        }
+
+        document.addEventListener("keydown", handleEscape);
+
+        return {
+          register,
+          open,
+          close,
+          getRoot: (key) => registry.get(key)?.root || null,
+        };
+      })();
+
+      // Modal registrieren
+      modalController.register("command", {
+        rootId: "command-modal-root",
+        closeButtons: ["command-modal-close-btn"],
+        closeOnBackdrop: true,
+        closeOnEscape: true,
+      });
+
+      // Command Modal öffnen
+      function openCommandModal(commandKey, quizId) {
+        const meta = commandMeta[commandKey] || commandMeta[quizId];
+        if (!meta) {
+          console.warn("Keine Metadaten für", commandKey || quizId);
+          return;
+        }
+
+        renderCommandModalContent(meta);
+        modalController.open("command");
+      }
+
+      // Command Modal Content rendern
+      function renderCommandModalContent(meta) {
+        const title = document.getElementById("command-modal-title");
+        const subtitle = document.getElementById("command-modal-subtitle");
+        const summary = document.getElementById("command-modal-summary");
+        const detail = document.getElementById("command-modal-detail");
+        const simpleExample = document.getElementById(
+          "command-modal-simple-example"
+        );
+        const complexExample = document.getElementById(
+          "command-modal-complex-example"
+        );
+        const additionalExamples = document.getElementById(
+          "command-modal-additional-examples"
+        );
+        const simpleExampleSection = document.getElementById(
+          "command-modal-simple-example-section"
+        );
+        const complexExampleSection = document.getElementById(
+          "command-modal-complex-example-section"
+        );
+        const additionalExamplesSection = document.getElementById(
+          "command-modal-additional-examples-section"
+        );
+
+        if (title) title.textContent = meta.title || "Python Konzept";
+        if (subtitle) subtitle.textContent = meta.subtitle || "Details";
+        if (summary) summary.textContent = meta.summary || "";
+
+        if (detail) {
+          if (meta.detail) {
+            detail.style.display = "block";
+            detail.innerHTML = `<p style="margin: 0; color: #cbd5e1; line-height: 1.6;">${meta.detail}</p>`;
+          } else {
+            detail.style.display = "none";
+          }
+        }
+
+        if (simpleExample) {
+          if (meta.simpleExample) {
+            simpleExample.innerHTML = `<code>${meta.simpleExample.replace(/\n/g, "<br>")}</code>`;
+            simpleExampleSection.style.display = "block";
+          } else {
+            simpleExampleSection.style.display = "none";
+          }
+        }
+
+        if (complexExample) {
+          if (meta.complexExample) {
+            complexExample.innerHTML = `<code>${meta.complexExample.replace(/\n/g, "<br>")}</code>`;
+            complexExampleSection.style.display = "block";
+          } else {
+            complexExampleSection.style.display = "none";
+          }
+        }
+
+        if (additionalExamples) {
+          if (meta.additionalExamples) {
+            additionalExamples.innerHTML = meta.additionalExamples;
+            additionalExamplesSection.style.display = "block";
+          } else {
+            additionalExamplesSection.style.display = "none";
+          }
+        }
+      }
+
+      // Kachel-Event-Handler
+      const commandCards = document.querySelectorAll("#commands-grid .command-card");
+      commandCards.forEach((card) => {
+        const quizId = card.dataset.quizId;
+        if (!quizId) return;
+        card.addEventListener("click", (e) => {
+          e.preventDefault();
+          openCommandModal(card.dataset.command || quizId, quizId);
+        });
+      });
+
+      // Badge-Filter im Header
+      let activeFilterSegment = null;
+
+      function updateHeaderBadgeFilter() {
+        const container = document.getElementById("header-badge-filter");
+        if (!container) return;
+
+                  container.innerHTML = "";
+
+                  badgeSegments.forEach((segment) => {
+                    const wrapper = document.createElement("div");
+                    wrapper.className = "header-badge-item-wrapper";
+
+                    const item = document.createElement("div");
+                    item.className = `header-badge-item ${segment.colorClass} ${
+                      activeFilterSegment === segment.id ? "active" : ""
+                    }`;
+                    item.innerHTML = `<span>${segment.icon}</span><span>${segment.name}</span>`;
+                    item.addEventListener("click", () => {
+                      if (activeFilterSegment === segment.id) {
+                        activeFilterSegment = null;
+                      } else {
+                        activeFilterSegment = segment.id;
+                      }
+                      updateHeaderBadgeFilter();
+                      filterCardsBySegment();
+                    });
+                    wrapper.appendChild(item);
+
+                    if (segment.quizIds && segment.quizIds.length > 0) {
+                      const quizButton = document.createElement("button");
+                      quizButton.className = "header-badge-quiz-btn";
+                      quizButton.textContent = "Quiz starten";
+                      quizButton.addEventListener("click", (e) => {
+                        e.stopPropagation(); // Prevent filter click
+                        window.location.href = `snakeoilsalesman_quiz.html?badge=${segment.id}`;
+                      });
+                      wrapper.appendChild(quizButton);
+                    }
+                    container.appendChild(wrapper);
+                  });
+                }
+
+      function filterCardsBySegment() {
+        if (!activeFilterSegment) {
+          commandCards.forEach((card) => {
+            const searchInput = document.getElementById("search-input");
+            if (searchInput && searchInput.value.trim()) {
+              return;
+            }
+            card.classList.remove("hidden");
+          });
+          return;
+        }
+
+        const segment = badgeSegments.find((s) => s.id === activeFilterSegment);
+        if (!segment) return;
+
+        commandCards.forEach((card) => {
+          const quizId = card.dataset.quizId;
+          const belongsToSegment = segment.quizIds.includes(quizId);
+          card.classList.toggle("hidden", !belongsToSegment);
+        });
+      }
+
+      // Suchfunktion
+      const searchInput = document.getElementById("search-input");
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          const query = e.target.value.toLowerCase().trim();
+
+          const segment = activeFilterSegment
+            ? badgeSegments.find((s) => s.id === activeFilterSegment)
+            : null;
+
+          commandCards.forEach((card) => {
+            const quizId = card.dataset.quizId;
+
+            let belongsToSegment = true;
+            if (segment) {
+              belongsToSegment = segment.quizIds.includes(quizId);
+            }
+
+            if (segment && !belongsToSegment) {
+              card.classList.add("hidden");
+              return;
+            }
+
+            const command =
+              card.dataset.command?.toLowerCase() || "";
+            const tag =
+              card.querySelector(".command-tag")?.textContent.toLowerCase() ||
+              "";
+            const body =
+              card.querySelector(".command-body")?.textContent.toLowerCase() ||
+              "";
+
+            const matches =
+              !query ||
+              command.includes(query) ||
+              tag.includes(query) ||
+              body.includes(query);
+
+            if (!matches) {
+              card.classList.add("hidden");
+            } else if (!segment) {
+              card.classList.remove("hidden");
+            } else if (segment && belongsToSegment) {
+              card.classList.remove("hidden");
+            }
+          });
+        });
+      }
+
+      // Initialisierung
+      updateHeaderBadgeFilter();
+
+      // Export für quiz.html
+      window.quizData = quizData;
+      window.badgeSegments = badgeSegments;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+**Tile 1: `python_conditions`**
+
+*   **Multiple Choice:**
+    *   **Question:** Welcher Code-Block wird ausgeführt, wenn `x = 10` ist?
+        ```python
+        if x > 10:
+            print("A")
+        elif x == 10:
+            print("B")
+        else:
+            print("C")
+        ```
+    *   **Options:** A, B, C, Keiner
+    *   **Answer:** B
+*   **Creative 1 (Code Correction):**
+    *   **Task:** Finde und korrigiere den Fehler im folgenden Code, der prüfen soll, ob eine Zahl gerade ist.
+        ```python
+        num = 10
+        if num % 2 = 0:
+            print("Gerade")
+        ```
+    *   **Answer:** `if num % 2 == 0:` (Vergleichsoperator ist `==`, nicht `=`)
+*   **Creative 2 (Scenario):**
+    *   **Task:** Ein Türsteher-Programm lässt nur volljährige und nicht betrunkene Personen eintreten. Schreibe die `if`-Bedingung.
+    *   **Variables:** `age = 20`, `is_drunk = False`
+    *   **Answer:** `if age >= 18 and not is_drunk:`
+*   **Creative 3 (Drag & Drop Logic):**
+    *   **Task:** Ordne die Code-Blöcke in der richtigen Reihenfolge an, um zu prüfen, ob eine Zahl positiv, negativ oder null ist.
+    *   **Blocks:** `print("Positiv")`, `if num > 0:`, `else:`, `print("Negativ oder Null")`
+    *   **Answer:**
+        1.  `if num > 0:`
+        2.  `print("Positiv")`
+        3.  `else:`
+        4.  `print("Negativ oder Null")`
+
+**Tile 2: `python_datentypen`**
+
+*   **Multiple Choice:**
+    *   **Question:** Was ist der Datentyp von `x` nach dieser Zuweisung: `x = "5"`?
+    *   **Options:** int, float, str, bool
+    *   **Answer:** str
+*   **Creative 1 (Type Conversion):**
+    *   **Task:** Du erhältst eine Benutzereingabe für das Alter. Wie wandelst du sie in eine Zahl um, um damit rechnen zu können?
+    *   **Code:** `age_input = input("Dein Alter: ")`
+    *   **Answer:** `age_number = int(age_input)`
+*   **Creative 2 (Fill in the Blank):**
+    *   **Task:** Vervollständige den Code, um den Typ der Variable `price` auszugeben.
+    *   **Code:** `price = 19.99; print(____(price))`
+    *   **Answer:** `type`
+*   **Creative 3 (Odd One Out):**
+    *   **Task:** Welcher Wert passt vom Datentyp her nicht in diese Gruppe?
+    *   **Group:** `"Hallo"`, `5`, `3.14`, `True`
+    *   **Answer:** `"Hallo"` (Die anderen sind numerisch oder boolean)
+
+**Tile 3: `python_operatoren`**
+
+*   **Multiple Choice:**
+    *   **Question:** Welchen Wert hat `result` nach dieser Berechnung: `result = 10 // 3`?
+    *   **Options:** 3.33, 3, 1, 0
+    *   **Answer:** 3
+*   **Creative 1 (String Concatenation):**
+    *   **Task:** Verbinde die beiden Strings `s1` and `s2` mit einem Leerzeichen dazwischen.
+    *   **Code:** `s1 = "Hallo"; s2 = "Welt"`
+    *   **Answer:** `s1 + " " + s2`
+*   **Creative 2 (Operator Mix-up):**
+    *   **Task:** Was ist der Unterschied zwischen `/` und `//` in Python? Erkläre mit einem Beispiel.
+    *   **Answer:** `/` ist die normale Division (ergibt float), `//` ist die Ganzzahldivision (schneidet Nachkommastellen ab). Beispiel: `10 / 3` ist `3.33...`, `10 // 3` ist `3`.
+*   **Creative 3 (Meme this):**
+    *   **Task:** Erstelle ein "Meme" oder einen witzigen Satz, der den Modulo-Operator (`%`) erklärt.
+    *   **Example Answer:** "Modulo % – der Rest vom Fest!"
+
+**Tile 4: `python_eingaben`**
+
+*   **Multiple Choice:**
+    *   **Question:** Welchen Datentyp hat der Rückgabewert der `input()`-Funktion immer?
+    *   **Options:** int, float, str, bool
+    *   **Answer:** str
+*   **Creative 1 (Code Completion):**
+    *   **Task:** Vervollständige den Code, um den Benutzer nach seinem Namen zu fragen und ihn dann zu begrüßen.
+    *   **Code:** `name = ____("Wie ist dein Name? "); print("Hallo, " + name)`
+    *   **Answer:** `input`
+*   **Creative 2 (Spot the Bug):**
+    *   **Task:** Der folgende Code wirft einen Fehler. Warum?
+        ```python
+        num1_str = input("Zahl 1: ")
+        num2_str = input("Zahl 2: ")
+        print(num1_str + num2_str)
+        ```
+    *   **Answer:** Er wirft keinen Fehler, aber er addiert die Zahlen nicht. Er konkateniert die Strings. Um zu addieren, müsste man `int()` verwenden.
+*   **Creative 3 (Interactive Story):**
+    *   **Task:** Schreibe ein kurzes Skript, das den Benutzer nach seinem Lieblingsessen fragt und dann einen Satz ausgibt wie: "Ah, [Essen] ist eine gute Wahl!".
+    *   **Answer:**
+        ```python
+        food = input("Was ist dein Lieblingsessen? ")
+        print(f"Ah, {food} ist eine gute Wahl!")
+        ```

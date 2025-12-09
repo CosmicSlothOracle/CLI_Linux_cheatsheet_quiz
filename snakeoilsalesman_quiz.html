@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz – Snake Oil Salesman</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: #0f172a;
+        color: #e5e7eb;
+        line-height: 1.5;
+      }
+      header {
+        padding: 1rem 1.5rem;
+        background: #020617;
+        border-bottom: 1px solid #1f2937;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .header-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .badge-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .badge-icon {
+        font-size: 1.5rem;
+      }
+      .badge-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      .progress-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.9rem;
+        color: #9ca3af;
+      }
+      .chicken-counter {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(251, 191, 36, 0.15);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        color: #fde68a;
+      }
+      .glasses-counter {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #93c5fd;
+      }
+      .cancel-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+      .cancel-btn:hover {
+        background: rgba(239, 68, 68, 0.25);
+        border-color: rgba(239, 68, 68, 0.5);
+      }
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+      .quiz-container {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 1rem;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .quiz-question {
+        padding: 0.6rem 0.7rem;
+        border-radius: 0.7rem;
+        border: 1px solid #1f2937;
+        background: #020617;
+        margin-bottom: 2rem;
+      }
+      .quiz-question-title {
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        color: #e5e7eb;
+      }
+      .quiz-question-meta {
+        font-size: 0.75rem;
+        color: #9ca3af;
+        margin-bottom: 0.35rem;
+      }
+      .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        margin-bottom: 1rem;
+      }
+      .quiz-option {
+        display: flex;
+        gap: 0.4rem;
+        align-items: flex-start;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.4rem;
+        transition: all 0.2s ease;
+      }
+      .quiz-option:hover {
+        background: rgba(59, 130, 246, 0.1);
+      }
+      .quiz-option input[type="radio"] {
+        margin-top: 0.2rem;
+        cursor: pointer;
+      }
+      .quiz-option.highlight-correct {
+        background: rgba(34, 197, 94, 0.15);
+        border-left: 3px solid #22c55e;
+        padding-left: 0.5rem;
+        border-radius: 0.25rem;
+      }
+      .quiz-command-wrapper {
+        position: relative;
+        margin-top: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .quiz-command-input {
+        width: 100%;
+        padding: 0.75rem;
+        font-family: "JetBrains Mono", "Fira Code", "Source Code Pro",
+          ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+        font-size: 0.9rem;
+        background: rgba(15, 23, 42, 0.8);
+        border: 2px solid rgba(59, 130, 246, 0.3);
+        border-radius: 0.5rem;
+        color: #e2e8f0;
+        margin-top: 0.75rem;
+        transition: border-color 0.2s ease;
+        font-feature-settings: "zero", "onum";
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.01em;
+      }
+      .quiz-command-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      .quiz-command-input::placeholder {
+        color: #64748b;
+        font-style: italic;
+      }
+      .quiz-command-input.correct {
+        border-color: rgba(34, 197, 94, 0.5);
+        background: rgba(34, 197, 94, 0.1);
+      }
+      .quiz-command-input.incorrect {
+        border-color: rgba(239, 68, 68, 0.5);
+        background: rgba(239, 68, 68, 0.1);
+      }
+      .quiz-command-input::placeholder {
+        color: #64748b;
+        font-style: italic;
+      }
+      .quiz-chicken-btn,
+      .quiz-chicken-btn-command {
+        margin-top: 0.5rem;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+        background: rgba(251, 191, 36, 0.15);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        border-radius: 0.4rem;
+        color: #fbbf24;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 500;
+      }
+      .quiz-chicken-btn:hover:not(:disabled),
+      .quiz-chicken-btn-command:hover:not(:disabled) {
+        background: rgba(251, 191, 36, 0.25);
+        border-color: rgba(251, 191, 36, 0.5);
+        transform: translateY(-1px);
+      }
+      .quiz-chicken-btn:active,
+      .quiz-chicken-btn-command:active {
+        transform: translateY(0);
+      }
+      .quiz-chicken-btn:disabled,
+      .quiz-chicken-btn-command:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .quiz-glasses-btn,
+      .quiz-glasses-btn-command {
+        margin-top: 0.5rem;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 0.4rem;
+        color: #93c5fd;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 500;
+        position: relative;
+      }
+      .quiz-glasses-btn:hover:not(:disabled),
+      .quiz-glasses-btn-command:hover:not(:disabled) {
+        background: rgba(59, 130, 246, 0.25);
+        border-color: rgba(59, 130, 246, 0.5);
+        transform: translateY(-1px);
+      }
+      .quiz-glasses-btn:active,
+      .quiz-glasses-btn-command:active {
+        transform: translateY(0);
+      }
+      .quiz-glasses-btn:disabled,
+      .quiz-glasses-btn-command:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .quiz-tips-dropdown {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        min-width: 350px;
+        max-width: 500px;
+        background: rgba(30, 41, 59, 0.98);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        padding-top: 2.5rem;
+        z-index: 1000;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        max-height: 400px;
+        overflow-y: auto;
+        margin-bottom: 1rem;
+      }
+      .quiz-tips-dropdown.hidden {
+        display: none;
+      }
+      .quiz-tips-section {
+        margin-bottom: 1rem;
+      }
+      .quiz-tips-section:last-child {
+        margin-bottom: 0;
+      }
+      .quiz-tips-section-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #93c5fd;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .quiz-tips-flag-item {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 0.25rem;
+      }
+      .quiz-tips-flag-item:last-child {
+        margin-bottom: 0;
+      }
+      .quiz-tips-flag {
+        font-family: "Courier New", monospace;
+        color: #60a5fa;
+        font-weight: 600;
+        min-width: 80px;
+      }
+      .quiz-tips-flag-desc {
+        color: #cbd5e1;
+        font-size: 0.9rem;
+      }
+      .quiz-tips-syntax {
+        font-family: "Courier New", monospace;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.25rem;
+        color: #93c5fd;
+        margin: 0 0;
+        font-size: 0.9rem;
+      }
+      .quiz-tips-example {
+        font-family: "Courier New", monospace;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.25rem;
+        color: #86efac;
+        margin: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+      .quiz-tips-note {
+        font-size: 0.85rem;
+        color: #9ca3af;
+        font-style: italic;
+        margin-top: 0.25rem;
+      }
+      .quiz-tips-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: transparent;
+        border: none;
+        color: #9ca3af;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        transition: all 0.2s ease;
+      }
+      .quiz-tips-close:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #e5e7eb;
+      }
+      .quiz-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .quiz-next-btn,
+      .quiz-finish-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: #ffffff;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 0.85rem;
+      }
+      .quiz-next-btn:hover:not(:disabled),
+      .quiz-finish-btn:hover:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+      }
+      .quiz-next-btn:disabled,
+      .quiz-finish-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .quiz-feedback {
+        font-size: 0.8rem;
+        padding: 0.6rem;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+      }
+      .quiz-feedback.success {
+        background: rgba(34, 197, 94, 0.15);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #86efac;
+      }
+      .quiz-feedback.error {
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+      }
+      .quiz-completion {
+        text-align: center;
+        padding: 3rem 2rem;
+      }
+      .quiz-completion-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .quiz-completion-message {
+        font-size: 1.1rem;
+        color: #9ca3af;
+        margin-bottom: 2rem;
+      }
+      .quiz-completion.success .quiz-completion-title {
+        color: #86efac;
+      }
+      .quiz-completion.failed .quiz-completion-title {
+        color: #fca5a5;
+      }
+      .hidden {
+        display: none;
+      }
+      /* Glow-Pulse-Effekte */
+      @keyframes glowPulseTip {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(135, 206, 250, 0);
+        }
+        50% {
+          box-shadow: 0 0 40px 20px rgba(135, 206, 250, 0.6);
+        }
+      }
+      @keyframes glowPulseError {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+        }
+        50% {
+          box-shadow: 0 0 40px 20px rgba(239, 68, 68, 0.6);
+        }
+      }
+      @keyframes glowPulseChicken {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
+        }
+        50% {
+          box-shadow: 0 0 40px 20px rgba(251, 191, 36, 0.6);
+        }
+      }
+      @keyframes glowPulseCorrect {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+        }
+        50% {
+          box-shadow: 0 0 40px 20px rgba(20, 184, 166, 0.6);
+        }
+      }
+      .quiz-container.glow-pulse-tip {
+        animation: glowPulseTip 0.8s ease-out;
+      }
+.quiz-container.glow-pulse-error {
+        animation: glowPulseError 0.8s ease-out;
+      }
+      .quiz-container.glow-pulse-chicken {
+        animation: glowPulseChicken 0.8s ease-out;
+      }
+      .quiz-container.glow-pulse-correct {
+        animation: glowPulseCorrect 0.8s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <div class="badge-info">
+          <span class="badge-icon" id="badge-icon">🧭</span>
+          <span class="badge-name" id="badge-name">Badge Name</span>
+        </div>
+        <div class="progress-info">
+          <span id="progress-text">Frage 1 von 10</span>
+          <div class="chicken-counter">
+            <span>🐔</span>
+            <span id="chicken-count">0/3</span>
+          </div>
+          <div class="glasses-counter">
+            <span>👓</span>
+            <span id="glasses-count">0/6</span>
+          </div>
+          <div
+            class="chicken-counter"
+            style="
+              background: rgba(239, 68, 68, 0.15);
+              border-color: rgba(239, 68, 68, 0.3);
+              color: #fca5a5;
+            "
+          >
+            <span>❌</span>
+            <span id="wrong-count">0/3</span>
+          </div>
+          <button class="cancel-btn" id="cancel-btn">Abbrechen</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="quiz-container">
+        <div id="quiz-content">
+          <!-- Quiz-Fragen werden hier eingefügt -->
+        </div>
+        <div id="quiz-completion" class="quiz-completion hidden">
+          <!-- Completion-Nachricht wird hier eingefügt -->
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // URL-Parameter lesen
+            const badgeId = "python_snakeoil_salesman";
+
+            // Lade Daten aus index.html per iframe
+                        let quizData = {
+                          "python_conditions": {
+                            "questions": [
+                              {
+                                "type": "multiple-choice",
+                                "prompt": "Welcher Code-Block wird ausgeführt, wenn `x = 10` ist?<br><pre><code>if x > 10:\n    print(\"A\")\nelif x == 10:\n    print(\"B\")\nelse:\n    print(\"C\")</code></pre>",
+                                "options": ["A", "B", "C", "Keiner"],
+                                "correctIndex": 1,
+                                "level": "Einfach",
+                                "tips": "Geh den Code Zeile für Zeile durch. Ist `x` (also 10) größer als 10? Nein. Ist `x` gleich 10? Ja. Was passiert also?"
+                              },
+                              {
+                                "type": "code-correction",
+                                "prompt": "Du programmierst den Zündmechanismus für die neue veggy Zerberstlingers Wurst. Der Code soll bei einer geraden Anzahl an Zutaten zünden, aber irgendwas stimmt nicht! Korrigiere den Code, bevor alles explodiert!",
+                                "correctCommand": "if num % 2 == 0:",
+                                "level": "Mittel",
+                                "tips": "Der Zuweisungsoperator (`=`) weist einen Wert zu. Du brauchst aber einen Operator, der zwei Werte vergleicht. Welcher war das nochmal? Es sind zwei gleiche Zeichen..."
+                              },
+                              {
+                                "type": "scenario",
+                                "prompt": "Die Zerberstlingers Wurst darf nur verkauft werden, wenn sie `is_veggy` ist und die `explosionsgefahr` unter 10 liegt. Schreibe die `if`-Bedingung, die den Verkauf freigibt.",
+                                "correctCommand": "if is_veggy and explosionsgefahr < 10:",
+                                "level": "Mittel",
+                                "tips": "Du musst zwei Bedingungen gleichzeitig prüfen. Nutze einen logischen Operator, der sicherstellt, dass BEIDE Bedingungen wahr sind. Wie heißt dieser Operator auf Englisch?"
+                              },
+                                          {
+                                            "type": "multiple-choice",
+                                            "prompt": "In welcher Reihenfolge müssen diese Code-Blöcke angeordnet sein, um zu prüfen, ob eine Zahl positiv, negativ oder null ist?<br>1. `print(\"Positiv\")`<br>2. `if num > 0:`<br>3. `else:`<br>4. `print(\"Negativ oder Null\")`",
+                                            "options": ["2, 1, 3, 4", "1, 2, 3, 4", "2, 3, 1, 4", "4, 3, 2, 1"],
+                                            "correctIndex": 0,
+                                            "level": "Schwer"
+                                          }
+                                        ]
+                                      },
+                                      "python_datentypen": {
+                                        "questions": [
+                                          {
+                                            "type": "multiple-choice",
+                                            "prompt": "Was ist der Datentyp von `x` nach dieser Zuweisung: `x = \"5\"`?",
+                                            "options": ["int", "float", "str", "bool"],
+                                            "correctIndex": 2,
+                                            "level": "Einfach",
+                                            "tips": "Achte auf die Anführungszeichen (`\"\"`). Text, der in Anführungszeichen steht, wird in Python als ein bestimmter Datentyp behandelt, egal ob Zahlen oder Buchstaben darin vorkommen."
+                                          },
+                                          {
+                                            "type": "type-conversion",
+                                            "prompt": "Die Anzahl der Chilis für die Zerberstlingers Wurst wird über ein Textfeld eingegeben. Der Wert `chili_count_str` ist also ein String. Wandle ihn in eine Zahl um, damit die Wurst nicht wegen eines Typ-Fehlers unkontrolliert zerberstet!",
+                                            "correctCommand": "chili_count = int(chili_count_str)",
+                                            "level": "Einfach",
+                                            "tips": "Python hat eingebaute Funktionen, um Datentypen zu ändern. Du willst einen String in eine ganze Zahl (integer) umwandeln. Wie heißt die Funktion dafür?"
+                                          },                              {
+                                "type": "fill-in-the-blank",
+                                "prompt": "Um die explosive Mischung der Zerberstlingers Wurst zu debuggen, musst du den Datentyp der Zutat `spice_level` herausfinden. Vervollständige den Code, um den Typ auszugeben.<br><pre><code>price = 19.99; print(____(price))</code></pre>",
+                                "correctAnswer": "type",
+                                "level": "Mittel",
+                                "tips": "Es gibt eine universelle Python-Funktion, die dir den 'Typ' von allem Möglichen verrät. Sie ist kurz und knackig."
+                              },
+                              {
+                                "type": "odd-one-out",
+                                "prompt": "Welcher Wert passt vom Datentyp her nicht in diese Gruppe?",
+                                "options": ["\"Hallo\"", "5", "3.14", "True"],
+                                "correctIndex": 0,
+                                "level": "Mittel"
+                              }
+                            ]
+                          },
+                          "python_operatoren": {
+                            "questions": [
+                              {
+                                "type": "multiple-choice",
+                                "prompt": "Welchen Wert hat `result` nach dieser Berechnung: `result = 10 // 3`?",
+                                "options": ["3.33", "3", "1", "0"],
+                                "correctIndex": 1,
+                                "level": "Einfach",
+                                "tips": "Der `//` Operator ist für die Ganzzahldivision. Er führt die Division durch und wirft dann alle Nachkommastellen weg. Was ist also 10 geteilt durch 3, wenn man die Nachkommastellen ignoriert?"
+                              },
+                              {
+                                "type": "string-concatenation",
+                                "prompt": "Der Warnhinweis für die Zerberstlingers Wurst ist in zwei Teilen gespeichert. Füge `part1` und `part2` zu einem einzigen, alarmierenden Satz zusammen, der vor dem 'Zerbersten' warnt.",
+                                "correctCommand": "part1 + \" \" + part2",
+                                "level": "Einfach",
+                                "tips": "Welches mathematische Zeichen wird in Python auch verwendet, um Texte (Strings) aneinanderzuhängen?"
+                              },
+                              {
+                                "type": "operator-mixup",
+                                "prompt": "Ein Kollege hat die Explosions-Rate der Zerberstlingers falsch berechnet. Er teilt 10 Gramm Sprengstoff auf 3 Würste auf. Sein Code: `10 / 3`. Du weißt aber, dass nur ganze Gramm pro Wurst zählen, der Rest verfällt. Erkläre ihm den Unterschied zwischen seiner Rechnung (`/`) und der korrekten (`//`), um eine Katastrophe zu verhindern.",
+                                "correctAnswer": "/ ist die normale Division (ergibt float), // ist die Ganzzahldivision (schneidet Nachkommastellen ab). Beispiel: 10 / 3 ist 3.33..., 10 // 3 ist 3.",
+                                "level": "Mittel",
+                                "tips": "Ein Operator ist für die 'echte' mathematische Division, die auch Kommazahlen ergibt. Der andere ist für die 'Ganzzahl'-Division, bei der alles nach dem Komma ignoriert wird."
+                              },
+                              {
+                                "type": "meme-this",
+                                "prompt": "Der geheime Zündcode der Zerberstlingers Wurst basiert auf dem Rest, der bei der Division der Zutatenanzahl durch 7 übrig bleibt. Beschreibe den Modulo-Operator (`%`) mit einem witzigen Vergleich, der diesen 'Rest' verdeutlicht.",
+                                "correctAnswer": "Modulo % – der Rest vom Fest!",
+                                "level": "Kreativ",
+                                "tips": "Denk an das Teilen mit Rest aus der Grundschule. 10 geteilt durch 3 ist 3, Rest 1. Der Modulo-Operator gibt dir genau diesen Rest."
+                              }
+                            ]
+                          },
+                          "python_eingaben": {
+                            "questions": [
+                              {
+                                "type": "multiple-choice",
+                                "prompt": "Welchen Datentyp hat der Rückgabewert der `input()`-Funktion immer?",
+                                "options": ["int", "float", "str", "bool"],
+                                "correctIndex": 2,
+                                "level": "Einfach",
+                                "tips": "Die `input()`-Funktion liest alles, was du tippst, als eine Kette von Zeichen ein. Wie nennt man eine 'Zeichenkette' in der Programmierung?"
+                              },
+                              {
+                                "type": "code-completion",
+                                "prompt": "Du schreibst ein Programm, das den Namen des mutigen Testers der Zerberstlingers Wurst erfasst. Vervollständige den Code, um den Namen des Testers zu erfragen.",
+                                "correctCommand": "input",
+                                "level": "Einfach",
+                                "tips": "Wie lautet die Python-Funktion, die eine Zeile Text vom Benutzer 'entgegennimmt' oder 'einliest'?"
+                              },
+                              {
+                                "type": "spot-the-bug",
+                                "prompt": "Der folgende Code soll die Schärfegrade zweier Zerberstlinger-Varianten addieren, aber das Ergebnis ist seltsam und führt zu einer unerwarteten Geschmacksexplosion. Warum funktioniert die Addition nicht wie erwartet?",
+                                "correctAnswer": "Er wirft keinen Fehler, aber er addiert die Zahlen nicht. Er konkateniert die Strings. Um zu addieren, müsste man int() verwenden.",
+                                "level": "Mittel",
+                                "tips": "Achte auf den Datentyp, den `input()` zurückgibt. Was passiert, wenn man zwei Texte mit `+` verbindet, anstatt zwei Zahlen zu addieren?"
+                              },
+                              {
+                                "type": "interactive-story",
+                                              "prompt": "Programmiere einen kleinen Beicht-Automaten. Er soll den Benutzer nach seiner 'letzten Sünde vor dem Genuss der Zerberstlingers Wurst' fragen und dann tröstend antworten: 'Sei unbesorgt, nach der Zerberstlingers ist alles vergeben!'",
+                                              "correctCommand": "sin = input(\"Was ist deine letzte Sünde vor dem Genuss der Zerberstlingers Wurst? \")\nprint(\"Sei unbesorgt, nach der Zerberstlingers ist alles vergeben!\")",                                "level": "Kreativ",
+                                "tips": "Du brauchst eine Funktion, um die Eingabe zu lesen, und eine `print()`-Anweisung, die diese Eingabe in einem Satz wieder ausgibt. f-Strings sind hier sehr nützlich!"
+                              }
+                            ]
+                          }
+                        };            let badgeSegments = [
+              {
+                id: "python_snakeoil_salesman",
+                name: "Snake Oil Salesman",
+                icon: "👔",
+                colorClass: "segment-4",
+                quizIds: [
+                  "python_conditions",
+                  "python_datentypen",
+                  "python_operatoren",
+                  "python_eingaben",
+                ],
+              }
+            ];
+
+            async function loadQuizData() {
+              initQuiz();
+            }
+      // Quiz-State
+      let currentQuestionIndex = 0;
+      let chickenUsed = 0;
+      let glassesUsed = 0;
+      let wrongAnswers = 0;
+      let answers = [];
+      let allQuestions = [];
+      let currentSegment = null;
+      let quizFailed = false;
+      let wrongAnsweredQuestions = new Set();
+      let commandMeta = {};
+
+      function initQuiz() {
+        // Finde Segment
+        currentSegment = badgeSegments.find((s) => s.id === badgeId);
+        if (!currentSegment) {
+          document.body.innerHTML = `
+            <div style="padding: 2rem; text-align: center;">
+              <h1>Fehler</h1>
+              <p>Badge nicht gefunden.</p>
+              <a href="index.html" style="color: #60a5fa;">Zurück zur Startseite</a>
+            </div>
+          `;
+          return;
+        }
+
+        // Setze Badge-Info
+        document.getElementById("badge-icon").textContent = currentSegment.icon;
+        document.getElementById("badge-name").textContent = currentSegment.name;
+
+        // Sammle alle Fragen aus allen Quizzes des Badges
+        allQuestions = [];
+        currentSegment.quizIds.forEach((quizId, quizIndex) => {
+          const quiz = quizData[quizId];
+          if (quiz && quiz.questions) {
+            quiz.questions.forEach((question, qIndex) => {
+              allQuestions.push({
+                ...question,
+                quizId: quizId,
+                globalIndex: allQuestions.length,
+              });
+            });
+          }
+        });
+
+        if (allQuestions.length === 0) {
+          document.body.innerHTML = `
+            <div style="padding: 2rem; text-align: center;">
+              <h1>Fehler</h1>
+              <p>Keine Fragen für dieses Badge gefunden.</p>
+              <a href="index.html" style="color: #60a5fa;">Zurück zur Startseite</a>
+            </div>
+          `;
+          return;
+        }
+
+        // Initialisiere Antworten-Array
+        answers = new Array(allQuestions.length).fill(null);
+        // Reset falsch beantwortete Fragen
+        wrongAnsweredQuestions.clear();
+
+        // Zeige erste Frage
+        showQuestion(0);
+
+        // Cancel-Button Handler
+        document.getElementById("cancel-btn").addEventListener("click", () => {
+          if (
+            confirm(
+              "Möchtest du das Quiz wirklich abbrechen? Dein Fortschritt geht verloren."
+            )
+          ) {
+            window.location.href = "index.html";
+          }
+        });
+      }
+
+      function showQuestion(index) {
+        if (index >= allQuestions.length) {
+          finishQuiz();
+          return;
+        }
+
+        currentQuestionIndex = index;
+        const question = allQuestions[index];
+
+        // Update Progress
+        document.getElementById("progress-text").textContent = `Frage ${
+          index + 1
+        } von ${allQuestions.length}`;
+        document.getElementById(
+          "chicken-count"
+        ).textContent = `${chickenUsed}/3`;
+        document.getElementById(
+          "glasses-count"
+        ).textContent = `${glassesUsed}/6`;
+        document.getElementById(
+          "wrong-count"
+        ).textContent = `${wrongAnswers}/3`;
+
+        // Render Frage
+        const quizContent = document.getElementById("quiz-content");
+        quizContent.innerHTML = "";
+
+        const questionDiv = document.createElement("div");
+        questionDiv.className = "quiz-question";
+
+        const title = document.createElement("div");
+        title.className = "quiz-question-title";
+        title.innerHTML = question.prompt;
+
+        const meta = document.createElement("div");
+        meta.className = "quiz-question-meta";
+        meta.textContent = `Level: ${question.level}`;
+
+        questionDiv.appendChild(title);
+        questionDiv.appendChild(meta);
+
+        if (question.type === "command" || question.type === "code-correction" || question.type === "scenario" || question.type === "type-conversion" || question.type === "string-concatenation" || question.type === "code-completion" || question.type === "interactive-story") {
+          // Command-Input-Frage
+          const commandWrapper = document.createElement("div");
+          commandWrapper.className = "quiz-command-wrapper";
+
+          const input = document.createElement("input");
+          input.type = "text";
+          input.className = "quiz-command-input";
+          input.placeholder = "Tippe die Antwort hier ein...";
+          if (answers[index]) {
+            input.value = answers[index];
+            if (answers[index] === question.correctCommand) {
+              input.classList.add("correct");
+            }
+          }
+
+          input.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+              validateCommandAnswer(input, question, index);
+            }
+          });
+
+          input.addEventListener("blur", () => {
+            if (input.value.trim()) {
+              validateCommandAnswer(input, question, index);
+            }
+          });
+
+          const buttonContainer = document.createElement("div");
+          buttonContainer.style.display = "flex";
+          buttonContainer.style.gap = "0.75rem";
+          buttonContainer.style.flexWrap = "wrap";
+
+          const glassesBtn = document.createElement("button");
+          glassesBtn.type = "button";
+          glassesBtn.className = "quiz-glasses-btn-command";
+          glassesBtn.textContent = "👓 Tipp anzeigen";
+          glassesBtn.disabled = glassesUsed >= 6;
+          glassesBtn.addEventListener("click", () => {
+            if (glassesUsed < 6) {
+              showTipsDropdown(glassesBtn, question, question.quizId);
+              glassesUsed++;
+              updateGlassesCounter();
+              glassesBtn.disabled = glassesUsed >= 6;
+              triggerGlowPulse("tip");
+            }
+          });
+
+          const chickenBtn = document.createElement("button");
+          chickenBtn.type = "button";
+          chickenBtn.className = "quiz-chicken-btn-command";
+          chickenBtn.textContent = "🐔 Lösung zeigen";
+          chickenBtn.disabled = chickenUsed >= 3;
+          chickenBtn.addEventListener("click", () => {
+            if (chickenUsed < 3) {
+              showCommandSolution(input, question, index);
+              chickenUsed++;
+              answers[index] = question.correctCommand;
+              updateChickenCounter();
+              chickenBtn.disabled = chickenUsed >= 3;
+              triggerGlowPulse("chicken");
+            }
+          });
+
+          buttonContainer.appendChild(glassesBtn);
+          buttonContainer.appendChild(chickenBtn);
+          commandWrapper.appendChild(input);
+          commandWrapper.appendChild(buttonContainer);
+          questionDiv.appendChild(commandWrapper);
+        } else if (question.type === "fill-in-the-blank" || question.type === "operator-mixup" || question.type === "meme-this" || question.type === "spot-the-bug") {
+          const commandWrapper = document.createElement("div");
+          commandWrapper.className = "quiz-command-wrapper";
+
+          const input = document.createElement("input");
+          input.type = "text";
+          input.className = "quiz-command-input";
+          input.placeholder = "Tippe die Antwort hier ein...";
+          if (answers[index]) {
+            input.value = answers[index];
+            if (answers[index] === question.correctAnswer) {
+              input.classList.add("correct");
+            }
+          }
+
+          input.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+              validateFillInTheBlankAnswer(input, question, index);
+            }
+          });
+
+          input.addEventListener("blur", () => {
+            if (input.value.trim()) {
+              validateFillInTheBlankAnswer(input, question, index);
+            }
+          });
+          commandWrapper.appendChild(input);
+          questionDiv.appendChild(commandWrapper);
+
+        } else {
+          // Multiple-Choice-Frage
+          const optionsDiv = document.createElement("div");
+          optionsDiv.className = "quiz-options";
+
+          question.options.forEach((option, optIndex) => {
+            const label = document.createElement("label");
+            label.className = "quiz-option";
+            if (answers[index] === optIndex) {
+              if (optIndex === question.correctIndex) {
+                label.classList.add("highlight-correct");
+              }
+            }
+
+            const radio = document.createElement("input");
+            radio.type = "radio";
+            radio.name = `question_${index}`;
+            radio.value = optIndex;
+            radio.checked = answers[index] === optIndex;
+            radio.addEventListener("change", () => {
+              answers[index] = optIndex;
+
+              // Entferne highlight-correct von allen Optionen
+              optionsDiv.querySelectorAll("label").forEach((l) => {
+                l.classList.remove("highlight-correct");
+              });
+
+              if (optIndex === question.correctIndex) {
+                label.classList.add("highlight-correct");
+                triggerGlowPulse("correct");
+              } else {
+                // Falsche Antwort gewählt - zähle nur einmal pro Frage
+                if (!wrongAnsweredQuestions.has(index)) {
+                  wrongAnsweredQuestions.add(index);
+                  wrongAnswers++;
+                  document.getElementById(
+                    "wrong-count"
+                  ).textContent = `${wrongAnswers}/3`;
+                  triggerGlowPulse("error");
+                  // Prüfe ob Quiz gescheitert ist
+                  if (wrongAnswers >= 3) {
+                    setTimeout(() => {
+                      handleQuizFailure("Du hast 3x falsch geantwortet.");
+                    }, 500);
+                    return;
+                  }
+                }
+              }
+              updateNavigation();
+            });
+
+            const text = document.createElement("span");
+            text.innerHTML = option;
+
+            label.appendChild(radio);
+            label.appendChild(text);
+            optionsDiv.appendChild(label);
+          });
+
+          const buttonContainer = document.createElement("div");
+          buttonContainer.style.display = "flex";
+          buttonContainer.style.gap = "0.75rem";
+          buttonContainer.style.flexWrap = "wrap";
+
+          const glassesBtn = document.createElement("button");
+          glassesBtn.type = "button";
+          glassesBtn.className = "quiz-glasses-btn";
+          glassesBtn.textContent = "👓 Tipp anzeigen";
+          glassesBtn.disabled = glassesUsed >= 6;
+          glassesBtn.addEventListener("click", () => {
+            if (glassesUsed < 6) {
+              showTipsDropdown(glassesBtn, question, question.quizId);
+              glassesUsed++;
+              updateGlassesCounter();
+              glassesBtn.disabled = glassesUsed >= 6;
+              triggerGlowPulse("tip");
+            }
+          });
+
+          const chickenBtn = document.createElement("button");
+          chickenBtn.type = "button";
+          chickenBtn.className = "quiz-chicken-btn";
+          chickenBtn.textContent = "🐔 Lösung zeigen";
+          chickenBtn.disabled = chickenUsed >= 3;
+          chickenBtn.addEventListener("click", () => {
+            if (chickenUsed < 3) {
+              showMultipleChoiceSolution(optionsDiv, question, index);
+              chickenUsed++;
+              answers[index] = question.correctIndex;
+              updateChickenCounter();
+              chickenBtn.disabled = chickenUsed >= 3;
+              triggerGlowPulse("chicken");
+            }
+          });
+
+          buttonContainer.appendChild(glassesBtn);
+          buttonContainer.appendChild(chickenBtn);
+          questionDiv.appendChild(optionsDiv);
+          questionDiv.appendChild(buttonContainer);
+        }
+
+        // Navigation
+        const navigation = document.createElement("div");
+        navigation.className = "quiz-navigation";
+
+        const nextBtn = document.createElement("button");
+        nextBtn.className =
+          index === allQuestions.length - 1
+            ? "quiz-finish-btn"
+            : "quiz-next-btn";
+        nextBtn.textContent =
+          index === allQuestions.length - 1 ? "Abschließen" : "Weiter";
+        nextBtn.disabled = answers[index] === null;
+        nextBtn.addEventListener("click", () => {
+          if (index === allQuestions.length - 1) {
+            finishQuiz();
+          } else {
+            showQuestion(index + 1);
+          }
+        });
+
+        navigation.appendChild(nextBtn);
+        questionDiv.appendChild(navigation);
+
+        quizContent.appendChild(questionDiv);
+        updateNavigation();
+      }
+
+      function validateCommandAnswer(input, question, index) {
+        const userAnswer = input.value.trim();
+        if (!userAnswer) {
+          return; // Keine Validierung bei leerem Input
+        }
+
+        const correctCommand = question.correctCommand.trim();
+        const acceptedVariants = question.acceptedVariants || [];
+
+        // Normalisiere Antworten
+        const normalize = (cmd) => cmd.toLowerCase().replace(/\s+/g, " ");
+
+        const isCorrect =
+          normalize(userAnswer) === normalize(correctCommand) ||
+          acceptedVariants.some(
+            (variant) => normalize(userAnswer) === normalize(variant)
+          );
+
+        if (isCorrect) {
+          input.classList.remove("incorrect");
+          input.classList.add("correct");
+          answers[index] = userAnswer;
+          triggerGlowPulse("correct");
+        } else {
+          input.classList.remove("correct");
+          input.classList.add("incorrect");
+          answers[index] = userAnswer;
+
+          // Zähle falsche Antwort nur einmal pro Frage
+          if (!wrongAnsweredQuestions.has(index)) {
+            wrongAnsweredQuestions.add(index);
+            wrongAnswers++;
+            document.getElementById(
+              "wrong-count"
+            ).textContent = `${wrongAnswers}/3`;
+            triggerGlowPulse("error");
+            // Prüfe ob Quiz gescheitert ist
+            if (wrongAnswers >= 3) {
+              setTimeout(() => {
+                handleQuizFailure("Du hast 3x falsch geantwortet.");
+              }, 500);
+              return;
+            }
+          }
+        }
+
+        updateNavigation();
+      }
+
+      function validateFillInTheBlankAnswer(input, question, index) {
+        const userAnswer = input.value.trim();
+        if (!userAnswer) {
+          return; // Keine Validierung bei leerem Input
+        }
+
+        const isCorrect = userAnswer.toLowerCase() === question.correctAnswer.toLowerCase();
+
+        if (isCorrect) {
+          input.classList.remove("incorrect");
+          input.classList.add("correct");
+          answers[index] = userAnswer;
+          triggerGlowPulse("correct");
+        } else {
+          input.classList.remove("correct");
+          input.classList.add("incorrect");
+          answers[index] = userAnswer;
+
+          // Zähle falsche Antwort nur einmal pro Frage
+          if (!wrongAnsweredQuestions.has(index)) {
+            wrongAnsweredQuestions.add(index);
+            wrongAnswers++;
+            document.getElementById(
+              "wrong-count"
+            ).textContent = `${wrongAnswers}/3`;
+            triggerGlowPulse("error");
+            // Prüfe ob Quiz gescheitert ist
+            if (wrongAnswers >= 3) {
+              setTimeout(() => {
+                handleQuizFailure("Du hast 3x falsch geantwortet.");
+              }, 500);
+              return;
+            }
+          }
+        }
+
+        updateNavigation();
+      }
+
+      function showCommandSolution(input, question, index) {
+        input.value = question.correctCommand;
+        input.classList.remove("incorrect");
+        input.classList.add("correct");
+        answers[index] = question.correctCommand;
+        updateNavigation();
+      }
+
+      function showMultipleChoiceSolution(optionsDiv, question, index) {
+        const labels = optionsDiv.querySelectorAll("label");
+        labels.forEach((label, labelIndex) => {
+          if (labelIndex === question.correctIndex) {
+            label.classList.add("highlight-correct");
+            const radio = label.querySelector("input[type='radio']");
+            if (radio) radio.checked = true;
+          } else {
+            label.classList.remove("highlight-correct");
+          }
+        });
+        answers[index] = question.correctIndex;
+        updateNavigation();
+      }
+
+      function updateChickenCounter() {
+        document.getElementById(
+          "chicken-count"
+        ).textContent = `${chickenUsed}/3`;
+      }
+
+      function updateGlassesCounter() {
+        document.getElementById(
+          "glasses-count"
+        ).textContent = `${glassesUsed}/6`;
+      }
+
+      // Glow-Pulse-Effekt auslösen
+      function triggerGlowPulse(type) {
+        const container = document.querySelector(".quiz-container");
+        if (!container) return;
+
+        // Entferne alle bestehenden Glow-Klassen
+        container.classList.remove(
+          "glow-pulse-tip",
+          "glow-pulse-error",
+          "glow-pulse-chicken",
+          "glow-pulse-correct"
+        );
+
+        // Füge die entsprechende Klasse hinzu
+        switch (type) {
+          case "tip":
+            container.classList.add("glow-pulse-tip");
+            break;
+          case "error":
+            container.classList.add("glow-pulse-error");
+            break;
+          case "chicken":
+            container.classList.add("glow-pulse-chicken");
+            break;
+          case "correct":
+            container.classList.add("glow-pulse-correct");
+            break;
+        }
+
+        // Entferne die Klasse nach der Animation
+        setTimeout(() => {
+          container.classList.remove(
+            "glow-pulse-tip",
+            "glow-pulse-error",
+            "glow-pulse-chicken",
+            "glow-pulse-correct"
+          );
+        }, 800);
+      }
+
+      // Generiere Tipps für eine Frage basierend auf den Quiz-Daten
+      function getTipsForQuestion(question, quizId) {
+        if (question.tips) {
+          return {
+            hints: [question.tips]
+          }
+        }
+        const tips = {
+          flags: [],
+          syntax: [],
+          examples: [],
+          hints: [],
+        };
+
+        // Versuche Quiz-Daten zu finden
+        const quiz = quizId && quizData[quizId] ? quizData[quizId] : null;
+
+        // Hole Flags aus Quiz-Daten
+        if (quiz && quiz.flags) {
+          tips.flags = quiz.flags.map((f) => ({
+            flag: f.flag || f,
+            description: f.description || "",
+          }));
+        }
+
+        // Hole Examples aus Quiz-Daten
+        if (quiz) {
+          if (quiz.simpleExample) {
+            tips.examples.push({
+              command: quiz.simpleExample,
+              note: "Einfaches Beispiel",
+            });
+          }
+          if (quiz.complexExample) {
+            tips.examples.push({
+              command: quiz.complexExample,
+              note: quiz.complexExampleExplanation || "Erweitertes Beispiel",
+            });
+          }
+          if (quiz.additionalExamples) {
+            tips.examples.push(...quiz.additionalExamples);
+          }
+        }
+
+        // Für Command-Fragen: Extrahiere Befehl und generiere Tipps
+        if (question.type === "command" && question.correctCommand) {
+          const cmd = question.correctCommand.trim();
+
+          // Extrahiere Basis-Befehl (erste Wort)
+          const baseCommand = cmd.split(/\s+/)[0].split(/[|&;]/)[0];
+
+          // Generiere Syntax-Hinweise basierend auf dem Befehl
+          if (cmd.includes("&&")) {
+            tips.syntax.push(
+              "&& verbindet Befehle - der zweite Befehl wird nur ausgeführt, wenn der erste erfolgreich war"
+            );
+          }
+          if (cmd.includes("|")) {
+            tips.syntax.push(
+              "| leitet die Ausgabe eines Befehls als Eingabe an den nächsten weiter"
+            );
+          }
+          if (cmd.includes(">")) {
+            tips.syntax.push(
+              "> leitet die Ausgabe in eine Datei um (überschreibt)"
+            );
+          }
+          if (cmd.includes(">>")) {
+            tips.syntax.push(" >> hängt die Ausgabe an eine Datei an");
+          }
+          if (cmd.includes("-")) {
+            const flags = cmd.match(/-\w+/g);
+            if (flags) {
+              flags.forEach((flag) => {
+                tips.flags.push({
+                  flag: flag,
+                  description: `Das Flag ${flag} wird in diesem Befehl verwendet`,
+                });
+              });
+            }
+          }
+
+          // Basis-Syntax für häufige Befehle
+          if (baseCommand === "mkdir" && cmd.includes("-p")) {
+            tips.flags.push({
+              flag: "-p",
+              description: "erstellt alle fehlenden Zwischenverzeichnisse",
+            });
+          }
+          if (baseCommand === "cp" && cmd.includes("-r")) {
+            tips.flags.push({
+              flag: "-r",
+              description: "kopiert Verzeichnisse rekursiv",
+            });
+          }
+          if (baseCommand === "chmod" && cmd.includes("+x")) {
+            tips.flags.push({
+              flag: "+x",
+              description: "setzt das Ausführungsbit",
+            });
+          }
+          if (baseCommand === "ls" && cmd.includes("-a")) {
+            tips.flags.push({
+              flag: "-a",
+              description: "zeigt versteckte Dateien",
+            });
+          }
+          if (baseCommand === "ls" && cmd.includes("-l")) {
+            tips.flags.push({
+              flag: "-l",
+              description: "lange Ausgabe mit Details",
+            });
+          }
+        }
+
+        // Für Multiple-Choice: Extrahiere Hinweise aus den Optionen
+        if (!question.type || question.type !== "command") {
+          // Prüfe ob Optionen Command-Referenzen enthalten
+          if (question.options) {
+            question.options.forEach((opt) => {
+              const codeMatch = opt.match(/`([^`]+)`/);
+              if (codeMatch) {
+                const code = codeMatch[1];
+                if (code.includes("-")) {
+                  const flagMatch = code.match(/-(\w+)/);
+                  if (flagMatch) {
+                    tips.flags.push({
+                      flag: `-${flagMatch[1]}`,
+                      description: "Dieses Flag könnte relevant sein",
+                    });
+                  }
+                }
+              }
+            });
+          }
+        }
+
+        return tips;
+      }
+
+      // Zeige Dropdown mit Tipps
+      function showTipsDropdown(button, question, quizId) {
+        // Schließe bereits geöffnete Dropdowns
+        const existingDropdown = document.querySelector(
+          ".quiz-tips-dropdown:not(.hidden)"
+        );
+        if (existingDropdown) {
+          existingDropdown.classList.add("hidden");
+        }
+
+        const tips = getTipsForQuestion(question, quizId);
+
+        // Erstelle Dropdown
+        const dropdown = document.createElement("div");
+        dropdown.className = "quiz-tips-dropdown";
+
+        let html =
+          '<button class="quiz-tips-close" onclick="this.parentElement.classList.add(\'hidden\')">×</button>';
+
+        // Hints-Sektion (für die neuen Custom-Tipps)
+        if (tips.hints && tips.hints.length > 0) {
+          html +=
+            '<div class="quiz-tips-section"><div class="quiz-tips-section-title">💡 Tipp</div>';
+          tips.hints.forEach((hint) => {
+            html += `<div class="quiz-tips-flag-desc">${hint}</div>`;
+          });
+          html += "</div>";
+        }
+
+        // Flags-Sektion
+        if (tips.flags && tips.flags.length > 0) {
+          html +=
+            '<div class="quiz-tips-section"><div class="quiz-tips-section-title">📋 Relevante Flags</div>';
+          tips.flags.forEach((flag) => {
+            html += `<div class="quiz-tips-flag-item">
+              <span class="quiz-tips-flag">${flag.flag}</span>
+              <span class="quiz-tips-flag-desc">${flag.description || ""}</span>
+            </div>`;
+          });
+          html += "</div>";
+        }
+
+        // Syntax-Sektion
+        if (tips.syntax.length > 0) {
+          html +=
+            '<div class="quiz-tips-section"><div class="quiz-tips-section-title">🔤 Syntax & Operatoren</div>';
+          tips.syntax.forEach((s) => {
+            html += `<div class="quiz-tips-syntax">${s}</div>`;
+          });
+          html += "</div>";
+        }
+
+        // Examples-Sektion (ohne die Lösung zu verraten)
+        if (tips.examples.length > 0) {
+          html +=
+            '<div class="quiz-tips-section"><div class="quiz-tips-section-title">💡 Ähnliche Beispiele</div>';
+          tips.examples.forEach((ex) => {
+            html += `<div class="quiz-tips-example">${ex.command || ex}</div>`;
+            if (ex.note) {
+              html += `<div class="quiz-tips-note">${ex.note}</div>`;
+            }
+          });
+          html += "</div>";
+        }
+
+        // Wenn keine Tipps gefunden, zeige generische Hilfe
+        if (
+          tips.flags.length === 0 &&
+          tips.syntax.length === 0 &&
+          tips.examples.length === 0
+        ) {
+          html +=
+            '<div class="quiz-tips-section"><div class="quiz-tips-section-title">💡 Tipp</div>';
+          html +=
+            '<div class="quiz-tips-flag-desc">Lies die Frage genau und überlege, welche Befehle und Flags für diese Aufgabe relevant sein könnten.</div>';
+          html += "</div>";
+        }
+
+        dropdown.innerHTML = html;
+
+        // Positioniere Dropdown relativ zum Button-Container
+        const buttonContainer = button.parentElement;
+        if (
+          buttonContainer &&
+          buttonContainer.classList.contains("quiz-command-wrapper")
+        ) {
+          // Für Command-Wrapper: Dropdown am Wrapper anhängen
+          buttonContainer.style.position = "relative";
+          buttonContainer.appendChild(dropdown);
+        } else {
+          // Für andere Buttons: Dropdown am Button anhängen
+          button.style.position = "relative";
+          button.appendChild(dropdown);
+        }
+
+        // Schließe bei Klick außerhalb
+        setTimeout(() => {
+          const closeHandler = (e) => {
+            if (
+              !dropdown.contains(e.target) &&
+              e.target !== button &&
+              !button.contains(e.target)
+            ) {
+              dropdown.classList.add("hidden");
+              document.removeEventListener("click", closeHandler);
+            }
+          };
+          document.addEventListener("click", closeHandler);
+        }, 100);
+      }
+
+      function handleQuizFailure(reason) {
+        quizFailed = true;
+        const quizContent = document.getElementById("quiz-content");
+        const completion = document.getElementById("quiz-completion");
+        quizContent.classList.add("hidden");
+        completion.classList.remove("hidden");
+        completion.className = "quiz-completion failed";
+        completion.innerHTML =
+          `
+          <div class="quiz-completion-title">❌ Quiz gescheitert</div>
+          <div class="quiz-completion-message">
+            ${reason}<br>
+            Falsche Antworten: ${wrongAnswers}/3<br>
+            Chicken-Button verwendet: ${chickenUsed}/3<br>
+            Lesebrillen-Button verwendet: ${glassesUsed}/6
+          </div>
+          <button class="quiz-finish-btn" onclick="window.location.href='index.html'">
+            Zurück zur Startseite
+          </button>
+        `;
+      }
+
+      function updateNavigation() {
+        const nextBtn = document.querySelector(
+          ".quiz-next-btn, .quiz-finish-btn"
+        );
+        if (nextBtn) {
+          nextBtn.disabled = answers[currentQuestionIndex] === null;
+        }
+      }
+
+      function finishQuiz() {
+        // Prüfe ob Quiz bereits gescheitert ist
+        if (quizFailed) {
+          return;
+        }
+
+        // Prüfe alle Antworten
+        let correctCount = 0;
+        allQuestions.forEach((question, index) => {
+          const userAnswer = answers[index];
+          let isCorrect = false;
+          if (userAnswer === null || userAnswer === undefined) {
+            isCorrect = false;
+          } else if (question.type === "command" || question.type === "code-correction" || question.type === "scenario" || question.type === "type-conversion" || question.type === "string-concatenation" || question.type === "code-completion" || question.type === "interactive-story") {
+            const correctCommand = question.correctCommand.trim();
+            const acceptedVariants = question.acceptedVariants || [];
+            const normalize = (cmd) => cmd.toLowerCase().replace(/\s+/g, " ");
+            if (
+              userAnswer &&
+              (normalize(userAnswer) === normalize(correctCommand) ||
+                acceptedVariants.some(
+                  (variant) => normalize(userAnswer) === normalize(variant)
+                ))
+            ) {
+              isCorrect = true;
+            }
+          } else if (question.type === "fill-in-the-blank" || question.type === "operator-mixup" || question.type === "meme-this" || question.type === "spot-the-bug") {
+            if (userAnswer.toLowerCase() === question.correctAnswer.toLowerCase()) {
+              isCorrect = true;
+            }
+          }
+          else {
+            if (userAnswer === question.correctIndex) {
+              isCorrect = true;
+            }
+          }
+
+          if(isCorrect) {
+            correctCount++;
+          }
+        });
+
+        const allCorrect = correctCount === allQuestions.length;
+        const canGetBadge =
+          allCorrect &&
+          chickenUsed <= 3 &&
+          glassesUsed <= 6 &&
+          wrongAnswers < 3;
+
+        // Zeige Completion-Nachricht
+        const quizContent = document.getElementById("quiz-content");
+        const completion = document.getElementById("quiz-completion");
+        quizContent.classList.add("hidden");
+        completion.classList.remove("hidden");
+
+        if (canGetBadge) {
+          completion.className = "quiz-completion success";
+          completion.innerHTML =
+            `
+            <div class="quiz-completion-title">🎉 Badge erhalten!</div>
+            <div class="quiz-completion-message">
+              Du hast alle Fragen richtig beantwortet und das Badge "${currentSegment.name}" erhalten!
+            </div>
+            <button class="quiz-finish-btn" onclick="window.location.href='index.html?highlight=${badgeId}'">
+              Zurück zur Startseite
+            </button>
+          `;
+
+          // Speichere Badge-Status
+          let badgeSaturated = {};
+          const stored = localStorage.getItem("badgeSaturated");
+          if (stored) {
+            try {
+              badgeSaturated = JSON.parse(stored);
+            } catch (e) {
+              badgeSaturated = {};
+            }
+          }
+          badgeSaturated[badgeId] = true;
+          localStorage.setItem(
+            "badgeSaturated",
+            JSON.stringify(badgeSaturated)
+          );
+
+          // Update badgeProgress
+          let badgeProgress = {};
+          const progressStored = localStorage.getItem("badgeProgress");
+          if (progressStored) {
+            try {
+              badgeProgress = JSON.parse(progressStored);
+            } catch (e) {
+              badgeProgress = {};
+            }
+          }
+          badgeProgress[badgeId] = currentSegment.quizIds.length;
+          localStorage.setItem("badgeProgress", JSON.stringify(badgeProgress));
+        } else {
+          completion.className = "quiz-completion failed";
+          let reason = "";
+          if (wrongAnswers >= 3) {
+            reason = "Du hast 3x falsch geantwortet.";
+          } else if (!allCorrect) {
+            reason = "Nicht alle Fragen wurden richtig beantwortet.";
+          } else if (chickenUsed > 3) {
+            reason = "Du hast mehr als 3x den Chicken-Button verwendet.";
+          } else if (glassesUsed > 6) {
+            reason = "Du hast mehr als 6x den Lesebrillen-Button verwendet.";
+          }
+          completion.innerHTML =
+            `
+            <div class="quiz-completion-title">❌ Badge nicht erhalten</div>
+            <div class="quiz-completion-message">
+              ${reason}<br>
+              Richtige Antworten: ${correctCount}/${allQuestions.length}<br>
+              Falsche Antworten: ${wrongAnswers}/3<br>
+              Chicken-Button verwendet: ${chickenUsed}/3<br>
+              Lesebrillen-Button verwendet: ${glassesUsed}/6
+            </div>
+            <button class="quiz-finish-btn" onclick="window.location.href='index.html'">
+              Zurück zur Startseite
+            </button>
+          `;
+        }
+      }
+
+      // Starte Quiz wenn Seite geladen ist
+      if (badgeId) {
+        loadQuizData();
+      }
+    </script>
+  </body>
+</html>
